@@ -1,0 +1,84 @@
+[gd_scene load_steps=9 format=3 uid="uid://b70hn4smkqaly"]
+
+[ext_resource type="Script" path="res://texture/curve.gd" id="1_vn5e3"]
+
+[sub_resource type="Curve" id="Curve_pm4xc"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_iklmc"]
+_data = [Vector2(0.00903226, 0.497721), 0.0, 0.0, 0, 0, Vector2(0.612903, 0.238116), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_o1vdr"]
+_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(0.447742, 0.809529), 0.0, 0.0, 0, 0, Vector2(1, 0.122422), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_8vry6"]
+curve_x = SubResource("Curve_pm4xc")
+curve_y = SubResource("Curve_iklmc")
+curve_z = SubResource("Curve_o1vdr")
+
+[sub_resource type="Curve" id="Curve_106ao"]
+_data = [Vector2(0.00258064, 0.252225), 0.0, 1.4, 0, 0, Vector2(0.292903, 0.596484), 0.0624823, 0.0624823, 0, 0, Vector2(0.729032, 0.345344), 0.0, 0.0, 0, 0, Vector2(0.953548, 0.919579), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_4ubim"]
+texture_mode = 1
+curve = SubResource("Curve_106ao")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_66fom"]
+viewport_path = NodePath("TextureRect/SubViewport")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vn5e3")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 154.0
+offset_top = 201.0
+offset_bottom = -282.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CurveXYZTexture_8vry6")
+stretch_mode = 1
+
+[node name="SubViewport" type="SubViewport" parent="TextureRect"]
+disable_3d = true
+use_xr = true
+size = Vector2i(0, 0)
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 154.0
+offset_top = 438.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CurveTexture_4ubim")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 512.0
+offset_bottom = 576.0
+texture = SubResource("ViewportTexture_66fom")

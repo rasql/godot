@@ -1,0 +1,174 @@
+[gd_scene load_steps=3 format=3 uid="uid://c73c6jr72j51q"]
+
+[sub_resource type="SyntaxHighlighter" id="SyntaxHighlighter_82wbd"]
+
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_7yyid"]
+number_color = Color(0.921569, 0, 0, 1)
+symbol_color = Color(0, 0.796078, 0, 1)
+function_color = Color(0.384314, 0.0509804, 0.498039, 1)
+member_variable_color = Color(0.188235, 0.588235, 0.592157, 1)
+
+[node name="Control" type="GridContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "TextEdit
+"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CodeEdit"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Label nodes are great for 
+displaying basic text, but they have limitations.
+ If you want to change the color of 
+the text, or its alignment, 
+you can only do that to the entire label. You can't make a part of the text have another color, or have a part of the text centered. 
+To get around these limitations, 
+you would use a RichTextLabel.
+Label nodes are great for 
+displaying basic text, but they have limitations.
+ If you want to change the color of 
+the text, or its alignment, 
+you can only do that to the entire label. You can't make a part of the text have another color, or have a part of the text centered. 
+To get around these limitations, 
+you would use a RichTextLabel.
+Label nodes are great for 
+displaying basic text, but they have limitations.
+ If you want to change the color of 
+the text, or its alignment, 
+you can only do that to the entire label. You can't make a part of the text have another color, or have a part of the text centered. 
+To get around these limitations, 
+you would use a RichTextLabel.
+Label nodes are great for 
+displaying basic text, but they have limitations.
+ If you want to change the color of 
+the text, or its alignment, 
+you can only do that to the entire label. You can't make a part of the text have another color, or have a part of the text centered. 
+To get around these limitations, 
+you would use a RichTextLabel."
+placeholder_text = "Enter your text"
+wrap_mode = 1
+minimap_draw = true
+caret_blink = true
+syntax_highlighter = SubResource("SyntaxHighlighter_82wbd")
+highlight_all_occurrences = true
+highlight_current_line = true
+draw_control_chars = true
+draw_tabs = true
+draw_spaces = true
+
+[node name="CodeEdit" type="CodeEdit" parent="."]
+layout_mode = 2
+text = "# Everything after \"#\" is a comment.
+# A file is a class!
+
+# (optional) icon to show in the editor dialogs:
+@icon(\"res://path/to/optional/icon.svg\")
+
+# (optional) class definition:
+class_name MyClass
+
+# Inheritance:
+extends BaseClass
+
+
+# Member variables.
+var a = 5
+var s = \"Hello\"
+var arr = [1, 2, 3]
+var dict = {\"key\": \"value\", 2: 3}
+var other_dict = {key = \"value\", other_key = 2}
+var typed_var: int
+var inferred_type := \"String\"
+
+# Constants.
+const ANSWER = 42
+const THE_NAME = \"Charly\"
+
+# Enums.
+enum {UNIT_NEUTRAL, UNIT_ENEMY, UNIT_ALLY}
+enum Named {THING_1, THING_2, ANOTHER_THING = -1}
+
+# Built-in vector types.
+var v2 = Vector2(1, 2)
+var v3 = Vector3(1, 2, 3)
+
+
+# Functions.
+func some_function(param1, param2, param3):
+	const local_const = 5
+
+	if param1 < local_const:
+		print(param1)
+	elif param2 > 5:
+		print(param2)
+	else:
+		print(\"Fail!\")
+
+	for i in range(20):
+		print(i)
+
+	while param2 != 0:
+		param2 -= 1
+
+	match param3:
+		3:
+			print(\"param3 is 3!\")
+		_:
+			print(\"param3 is not 3!\")
+
+	var local_var = param1 + 3
+	return local_var
+
+
+# Functions override functions with the same name on the base/super class.
+# If you still want to call them, use \"super\":
+func something(p1, p2):
+	super(p1, p2)
+
+
+# It's also possible to call another function in the super class:
+func other_something(p1, p2):
+	super.something(p1, p2)
+
+
+# Inner class
+class Something:
+	var a = 10
+
+
+# Constructor
+func _init():
+	print(\"Constructed!\")
+	var lv = Something.new()
+	print(lv.a)"
+placeholder_text = "Enter your code"
+scroll_smooth = true
+scroll_past_end_of_file = true
+minimap_draw = true
+caret_blink = true
+syntax_highlighter = SubResource("CodeHighlighter_7yyid")
+symbol_lookup_on_click = true
+line_folding = true
+gutters_draw_breakpoints_gutter = true
+gutters_draw_bookmarks = true
+gutters_draw_executing_lines = true
+gutters_draw_line_numbers = true
+gutters_zero_pad_line_numbers = true
+gutters_draw_fold_gutter = true
+code_completion_enabled = true
+auto_brace_completion_enabled = true
+auto_brace_completion_highlight_matching = true

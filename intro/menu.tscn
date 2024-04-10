@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://dp7iaq6wk5p8f"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_n5fqy"]
+[ext_resource type="Script" path="res://control/tree.gd" id="2_3hrqc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5nion"]
+size = Vector2(1346, 20)
+
+[node name="Node" type="Node"]
+script = ExtResource("1_n5fqy")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 278.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -18.0
+autoplay = true
+
+[node name="Dirs" type="Tree" parent="."]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 113.0
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+script = ExtResource("2_3hrqc")
+
+[node name="Files" type="Tree" parent="."]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 113.0
+offset_right = 278.0
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+script = ExtResource("2_3hrqc")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(531, 635)
+rotation = 0.0349066
+shape = SubResource("RectangleShape2D_5nion")
+
+[connection signal="cell_selected" from="Dirs" to="." method="_on_dirs_cell_selected"]
+[connection signal="cell_selected" from="Files" to="." method="_on_files_cell_selected"]

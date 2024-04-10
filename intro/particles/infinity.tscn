@@ -1,0 +1,101 @@
+[gd_scene load_steps=12 format=3 uid="uid://bkpnbi0pjl4li"]
+
+[ext_resource type="Texture2D" uid="uid://b0nirvelkp3x2" path="res://particles/spark_particle2.png" id="1_3am81"]
+
+[sub_resource type="Curve2D" id="Curve2D_oi78q"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 558, 265, -12.193, -8.82941, 12.193, 8.82941, 587, 291, -18.0793, 14.5055, 18.0793, -14.5055, 645, 293, -2.73291, 16.6077, 2.73291, -16.6077, 666, 260, 5.46583, 3.15336, -5.46583, -3.15336, 644, 225, 15.5566, -7.77829, -15.5566, 7.77829, 610, 217, 16.6077, -26.0678, -16.6077, 26.0678, 582, 251, 10.5112, -15.977, -10.5112, 15.977, 567, 278, 25.8576, -2.94314, -25.8576, 2.94314, 512, 320, 9.24986, 18.2895, -9.24986, -18.2895, 456, 286, -15.1361, 9.46008, 15.1361, -9.46008, 472, 239, 0, 0, 0, 0, 520, 233, 0, 0, 0, 0, 545, 251, 0, 0, 0, 0, 558, 265)
+}
+point_count = 14
+
+[sub_resource type="CanvasItemMaterial" id="12"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="13"]
+offsets = PackedFloat32Array(0, 0.0769231, 0.16568, 0.266272, 0.378698, 0.491124, 0.609467, 0.704142, 0.804734, 0.911243, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.152961, 0, 1, 1, 0.726562, 0, 1, 0.78125, 1, 0, 1, 0.289062, 1, 0, 1, 0, 1, 0.472656, 1, 0, 1, 0.835938, 1, 0, 0.71875, 1, 1, 0.21875, 0, 1, 1, 1, 0, 0.773438, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="14"]
+gradient = SubResource("13")
+
+[sub_resource type="Curve" id="15"]
+_data = [Vector2(0, 0.510742), 0.0, 0.0, 0, 0, Vector2(0.7, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="16"]
+curve = SubResource("15")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fcq72"]
+emission_shape = 1
+emission_sphere_radius = 5.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -10.0
+radial_accel_max = -10.0
+scale_curve = SubResource("16")
+color_ramp = SubResource("14")
+
+[sub_resource type="Animation" id="Animation_ehklg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_eecch"]
+resource_name = "run"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e5lfu"]
+_data = {
+"RESET": SubResource("Animation_ehklg"),
+"run": SubResource("Animation_eecch")
+}
+
+[node name="Infinity" type="Path2D"]
+position = Vector2(-445, -213)
+curve = SubResource("Curve2D_oi78q")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(558, 265)
+rotation = 0.730907
+
+[node name="MagicGlobalCoordinates" type="GPUParticles2D" parent="PathFollow2D" groups=["trailable_particles"]]
+texture_filter = 4
+material = SubResource("12")
+amount = 400
+process_material = SubResource("ParticleProcessMaterial_fcq72")
+texture = ExtResource("1_3am81")
+lifetime = 2.0
+explosiveness = 0.38
+randomness = 0.38
+
+[node name="_Timer_227429" type="Timer" parent="PathFollow2D"]
+wait_time = 0.2
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_e5lfu")
+}
+autoplay = "run"

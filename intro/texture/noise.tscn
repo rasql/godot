@@ -1,0 +1,111 @@
+[gd_scene load_steps=5 format=3 uid="uid://xw6ifd754n5k"]
+
+[ext_resource type="Script" path="res://texture/noise.gd" id="1_5iey6"]
+
+[sub_resource type="Gradient" id="Gradient_mvuvy"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.387727, 0.543933, 0.610879)
+colors = PackedColorArray(0, 0, 0, 1, 0.884795, 0.445285, 0.911083, 1, 0.672891, 0.134617, 0.708952, 1, 0, 0, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ixqo0"]
+noise_type = 2
+seed = 133
+frequency = 0.0068
+offset = Vector3(907.63, 176, -1000)
+fractal_type = 0
+fractal_gain = 0.8
+domain_warp_enabled = true
+domain_warp_fractal_type = 0
+domain_warp_fractal_octaves = 2
+domain_warp_fractal_lacunarity = 4.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h6cxg"]
+color_ramp = SubResource("Gradient_mvuvy")
+noise = SubResource("FastNoiseLite_ixqo0")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5iey6")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "NoiseTexture"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 435.0
+offset_top = 42.0
+offset_right = -115.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_h6cxg")
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 42.0
+offset_right = 356.0
+offset_bottom = 276.0
+max_text_lines = 2
+auto_height = true
+
+[node name="Tree" type="Tree" parent="."]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 323.0
+offset_right = 356.0
+offset_bottom = 584.0
+column_titles_visible = true
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 606.0
+offset_right = 352.0
+offset_bottom = 622.0
+min_value = 0.001
+max_value = 1.0
+step = 0.002
+value = 0.019
+exp_edit = true
+
+[node name="Label" type="Label" parent="HSlider"]
+layout_mode = 0
+offset_left = -103.0
+offset_right = -22.0
+offset_bottom = 23.0
+text = "Frequency"
+
+[node name="Seed" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 636.0
+offset_right = 352.0
+offset_bottom = 652.0
+min_value = 1.0
+value = 1.0
+exp_edit = true
+
+[node name="Label" type="Label" parent="Seed"]
+layout_mode = 0
+offset_left = -103.0
+offset_right = -22.0
+offset_bottom = 23.0
+text = "Seed"
+
+[connection signal="item_selected" from="ItemList" to="." method="_on_item_list_item_selected"]
+[connection signal="value_changed" from="HSlider" to="." method="_on_frequency_value_changed"]
+[connection signal="value_changed" from="Seed" to="." method="_on_seed_value_changed"]

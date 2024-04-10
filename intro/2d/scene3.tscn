@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4mifdgm1vi3l"]
+
+[ext_resource type="Script" path="res://2d/scene3.gd" id="1_712on"]
+
+[node name="Main3" type="Node"]
+script = ExtResource("1_712on")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 3.0
+offset_top = 48.0
+offset_right = 355.0
+offset_bottom = 98.0
+text = "Scene 3 - instantiate"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(0, 650, 1153, 653, 1152, 1, 1087, 597, 96, 561, 1, -1)

@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://cy3t5pemlbcsa"]
+
+[ext_resource type="PackedScene" uid="uid://dkgg4opj0hbux" path="res://2d/ball.tscn" id="1_3ocnk"]
+[ext_resource type="Script" path="res://2d/world.gd" id="1_r51w6"]
+[ext_resource type="PackedScene" uid="uid://dfy7d4akt6oo" path="res://2d/cube.tscn" id="2_yvs8x"]
+[ext_resource type="PackedScene" uid="uid://bjxa1j4wojqu5" path="res://2d/brick.tscn" id="3_ooan3"]
+
+[sub_resource type="Gradient" id="Gradient_sdwwd"]
+colors = PackedColorArray(0, 0, 0, 1, 0.946726, 0.861199, 0.278544, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_si4cf"]
+gradient = SubResource("Gradient_sdwwd")
+fill_from = Vector2(0.305556, 0)
+fill_to = Vector2(0.529915, 1)
+
+[sub_resource type="Gradient" id="Gradient_lujwp"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_v016a"]
+gradient = SubResource("Gradient_lujwp")
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.527439, 0.439024)
+
+[node name="TextureRect" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_si4cf")
+script = ExtResource("1_r51w6")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.223529, 0.176471, 0.156863, 1)
+
+[node name="Cube" parent="." instance=ExtResource("2_yvs8x")]
+position = Vector2(720, 160)
+rotation = 1.57079
+
+[node name="Ball" parent="." instance=ExtResource("1_3ocnk")]
+position = Vector2(608, 160)
+
+[node name="Brick" parent="." instance=ExtResource("3_ooan3")]
+position = Vector2(560, 640)
+scale = Vector2(1, 8.72)
+constant_linear_velocity = Vector2(1000, 2.08165e-12)
+
+[node name="Brick4" parent="." instance=ExtResource("3_ooan3")]
+position = Vector2(480, 240)
+rotation = 1.83259
+scale = Vector2(1, 4.64)
+
+[node name="Brick2" parent="." instance=ExtResource("3_ooan3")]
+position = Vector2(1120, 240)
+rotation = 0.261799
+scale = Vector2(1, 6.65634)
+
+[node name="Brick3" parent="." instance=ExtResource("3_ooan3")]
+position = Vector2(7.62939e-06, 240)
+rotation = 2.87979
+scale = Vector2(0.999581, 6.52898)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+position = Vector2(1120, -560)
+rotation = 0.523598
+scale = Vector2(24.8125, 16.25)
+color = Color(0.960784, 0.690196, 1, 1)
+shadow_enabled = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(800, 0)
+scale = Vector2(24.8125, 16.25)
+energy = 3.9
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_v016a")

@@ -1,0 +1,108 @@
+[gd_scene load_steps=9 format=3 uid="uid://cjntpocv2jrjv"]
+
+[ext_resource type="Texture2D" uid="uid://dhvfbc5h6wc85" path="res://icon.svg" id="1_0yo0a"]
+[ext_resource type="Texture2D" uid="uid://bap1cyd4dv37i" path="res://particles/fire_particle.png" id="2_urw28"]
+[ext_resource type="Texture2D" uid="uid://brwp8bimc75uu" path="res://particles/icon.webp" id="3_2vi6t"]
+
+[sub_resource type="Gradient" id="Gradient_wfidv"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 0.14902, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o8xhh"]
+gradient = SubResource("Gradient_wfidv")
+fill = 1
+fill_from = Vector2(0.292683, 0.295732)
+fill_to = Vector2(0.957317, 0.859756)
+
+[sub_resource type="Gradient" id="Gradient_aavhl"]
+colors = PackedColorArray(0, 0, 0, 1, 0.0588235, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ns88v"]
+gradient = SubResource("Gradient_aavhl")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_rj10r"]
+
+[node name="GridContainer" type="GridContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("GradientTexture2D_o8xhh")
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "GradientTexture2D"
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("GradientTexture1D_ns88v")
+
+[node name="Label" type="Label" parent="TextureRect2"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "GradientTexture1D"
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("CanvasTexture_rj10r")
+
+[node name="Label" type="Label" parent="TextureRect3"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "GradientTexture2D"
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_0yo0a")
+
+[node name="Label" type="Label" parent="TextureRect4"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "CompressedTexture
+"
+
+[node name="TextureRect5" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("2_urw28")
+
+[node name="Label" type="Label" parent="TextureRect5"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "CompressedTexture
+"
+
+[node name="TextureRect6" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_2vi6t")

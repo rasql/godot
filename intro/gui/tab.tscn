@@ -1,0 +1,83 @@
+[gd_scene load_steps=6 format=3 uid="uid://4ukd4rlr6077"]
+
+[ext_resource type="Texture2D" uid="uid://brwp8bimc75uu" path="res://particles/icon.webp" id="1_xcst1"]
+
+[sub_resource type="Gradient" id="Gradient_7tqu1"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_e1efr"]
+gradient = SubResource("Gradient_7tqu1")
+
+[sub_resource type="Gradient" id="Gradient_4ikat"]
+interpolation_color_space = 1
+offsets = PackedFloat32Array(0, 0.57, 1)
+colors = PackedColorArray(1, 0.0196078, 1, 1, 0.61389, 0.00656863, 0.61389, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ia1rt"]
+gradient = SubResource("Gradient_4ikat")
+fill = 1
+fill_from = Vector2(0.292683, 0.359756)
+fill_to = Vector2(1, 1)
+
+[node name="Control" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 2
+current_tab = 2
+all_tabs_in_front = true
+drag_to_rearrange_enabled = true
+use_hidden_tabs_for_min_size = true
+
+[node name="Control" type="Control" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="TabContainer"]
+visible = false
+layout_mode = 2
+color = Color(0.0901961, 1, 1, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="TabContainer"]
+layout_mode = 2
+color = Color(0.823529, 0.0862745, 0.854902, 1)
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer"]
+visible = false
+layout_mode = 2
+texture = SubResource("GradientTexture1D_e1efr")
+
+[node name="TextureRect2" type="TextureRect" parent="TabContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("1_xcst1")
+stretch_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="TabContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("1_xcst1")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="TabContainer/TextureRect4"]
+custom_minimum_size = Vector2(2.08165e-12, 100)
+layout_mode = 2
+offset_top = 8.0
+offset_right = 40.0
+offset_bottom = 108.0
+text = "Fire"
+
+[node name="TextureRect3" type="TextureRect" parent="TabContainer"]
+visible = false
+layout_mode = 2
+texture = SubResource("GradientTexture2D_ia1rt")
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="TabContainer"]
+visible = false
+layout_mode = 2
+color = Color(0.454902, 0.129412, 0.615686, 1)

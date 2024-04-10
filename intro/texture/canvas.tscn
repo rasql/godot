@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwdj6crk8wpwy"]
+
+[ext_resource type="Script" path="res://texture/canvas.gd" id="1_q1uu3"]
+[ext_resource type="PackedScene" uid="uid://dtof82h6i2xr5" path="res://texture/grid.tscn" id="2_cbfsh"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_vluo3"]
+specular_color = Color(0.541176, 0.776471, 0.921569, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q1uu3")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 586.0
+offset_top = 266.0
+offset_right = -64.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_vluo3")
+
+[node name="Grid" parent="." instance=ExtResource("2_cbfsh")]
+position = Vector2(56, 58)
+color = Color(0.411765, 1, 1, 1)
+
+[node name="Grid2" parent="." instance=ExtResource("2_cbfsh")]
+position = Vector2(694, 69)
+rotation = 0.261799
+scale = Vector2(0.668192, 0.57253)
+rows = 3
+lines = 3
+color = Color(0.937255, 0.454902, 0.439216, 1)
+width = 5
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Shows a CanvasTexture and three Grid nodes."

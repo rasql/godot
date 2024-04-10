@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://bjdld3dirbfm"]
+
+[ext_resource type="Texture2D" uid="uid://734kppvbe7ba" path="res://particles/flipbook.png" id="1_e861j"]
+
+[sub_resource type="CanvasItemMaterial" id="7"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="2"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 85.0781), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="3"]
+curve = SubResource("2")
+
+[sub_resource type="Curve" id="4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.11, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="5"]
+curve = SubResource("4")
+
+[sub_resource type="ParticleProcessMaterial" id="8"]
+emission_shape = 1
+emission_sphere_radius = 75.0
+angular_velocity_curve = SubResource("3")
+gravity = Vector3(0, -26, 0)
+scale_curve = SubResource("5")
+color = Color(0, 0.67, 2, 1)
+hue_variation_max = 0.02
+anim_offset_max = 1.0
+
+[node name="Flipbook" type="GPUParticles2D"]
+texture_filter = 4
+material = SubResource("7")
+position = Vector2(6, 4)
+amount = 20
+process_material = SubResource("8")
+texture = ExtResource("1_e861j")
+lifetime = 3.0
+preprocess = 3.0
+fixed_fps = 0
+interpolate = false

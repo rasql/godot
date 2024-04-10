@@ -1,0 +1,93 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcl5n75joyrxb"]
+
+[ext_resource type="Script" path="res://object/class_db.gd" id="1_aa1g1"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aa1g1")
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+
+[node name="Classes" type="Tree" parent="."]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 54.0
+offset_right = 246.0
+offset_bottom = 624.0
+
+[node name="Enums" type="Tree" parent="."]
+layout_mode = 0
+offset_left = 254.0
+offset_top = 58.0
+offset_right = 438.0
+offset_bottom = 310.0
+
+[node name="Signals" type="Tree" parent="."]
+layout_mode = 0
+offset_left = 446.0
+offset_top = 54.0
+offset_right = 630.0
+offset_bottom = 306.0
+
+[node name="Enums2" type="Tree" parent="."]
+layout_mode = 0
+offset_left = 254.0
+offset_top = 318.0
+offset_right = 438.0
+offset_bottom = 624.0
+
+[node name="Methods" type="Tree" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.485
+anchor_bottom = 0.103
+offset_left = 878.0
+offset_top = 54.0
+offset_right = 568.98
+offset_bottom = 245.316
+
+[node name="Methods2" type="Tree" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.485
+anchor_bottom = 0.103
+offset_left = 642.0
+offset_top = 318.0
+offset_right = 568.98
+offset_bottom = 559.316
+
+[node name="Properties" type="Tree" parent="."]
+layout_mode = 0
+offset_left = 638.0
+offset_top = 54.0
+offset_right = 866.0
+offset_bottom = 310.0
+
+[node name="Inheritance" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 23.0
+offset_right = 139.0
+offset_bottom = 54.0
+button_pressed = true
+text = "Inheritance"
+
+[connection signal="item_selected" from="Classes" to="." method="_on_class_item_selected"]
+[connection signal="item_selected" from="Enums" to="." method="_on_enums_item_selected"]
+[connection signal="item_selected" from="Methods" to="." method="_on_methods_item_selected"]
+[connection signal="toggled" from="Inheritance" to="." method="_on_inheritance_toggled"]

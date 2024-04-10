@@ -1,0 +1,95 @@
+[gd_scene load_steps=8 format=3 uid="uid://cvkhskff6d0t3"]
+
+[ext_resource type="Texture2D" uid="uid://dcmfjklmeuj86" path="res://light/light.png" id="1_eebq1"]
+[ext_resource type="Texture2D" uid="uid://dhvfbc5h6wc85" path="res://icon.svg" id="2_6bc0i"]
+
+[sub_resource type="Animation" id="Animation_cm471"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(720, 160)]
+}
+
+[sub_resource type="Animation" id="Animation_q5ts1"]
+resource_name = "light"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(960, 480), Vector2(720, 160), Vector2(160, 400)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_py6qd"]
+_data = {
+"RESET": SubResource("Animation_cm471"),
+"light": SubResource("Animation_q5ts1")
+}
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hsyay"]
+polygon = PackedVector2Array(-76.1998, 80.8, 80, 80, 80, -80, -80, -80)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jxtyg"]
+polygon = PackedVector2Array(53, -54.1, 56, -52.1, 56, 53, 54.1, 53, 52.1, 56, -53, 56, -53, 54.1, -56, 52.1, -56, -52.1, -53, -54.1, -53, -56, 53, -56)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_py6qd")
+}
+autoplay = "light"
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.992157, 0.992157, 0.992157, 1)
+polygon = PackedVector2Array(0, 0, 1153, -0.5, 1152.7, 650.3, -1.79956, 647.6)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+modulate = Color(0.486275, 0.486275, 0.486275, 1)
+color = Color(0.317647, 0.298039, 0.27451, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(720, 160)
+scale = Vector2(1.04688, 1.04688)
+color = Color(1, 1, 0.384314, 1)
+shadow_enabled = true
+texture = ExtResource("1_eebq1")
+height = 1.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+modulate = Color(0.85098, 0.227451, 0.964706, 1)
+self_modulate = Color(0, 0.568627, 0.568627, 1)
+show_behind_parent = true
+position = Vector2(480, 560)
+scale = Vector2(0.366783, 0.366783)
+occluder = SubResource("OccluderPolygon2D_hsyay")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="."]
+show_behind_parent = true
+top_level = true
+position = Vector2(480, 320)
+scale = Vector2(0.595591, 0.538462)
+occluder = SubResource("OccluderPolygon2D_jxtyg")
+metadata/_edit_group_ = true
+
+[node name="Icon" type="Sprite2D" parent="LightOccluder2D2"]
+texture = ExtResource("2_6bc0i")
+
+[node name="Icon2" type="Sprite2D" parent="."]
+position = Vector2(320, 160)
+texture = ExtResource("2_6bc0i")

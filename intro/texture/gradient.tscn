@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://drm3tqfmyhas0"]
+
+[ext_resource type="Script" path="res://texture/gradient.gd" id="1_y1obx"]
+[ext_resource type="Gradient" uid="uid://cdem4k4a4qlx8" path="res://texture/grad_pink.tres" id="2_if8ni"]
+
+[sub_resource type="Gradient" id="Gradient_afdff"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_d5eoh"]
+gradient = SubResource("Gradient_afdff")
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_56ov2"]
+gradient = ExtResource("2_if8ni")
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.527439)
+fill_to = Vector2(0.0182927, 0.00914634)
+
+[node name="gradient" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y1obx")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 130.0
+offset_right = 2.0
+offset_bottom = -420.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_d5eoh")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 300.0
+offset_right = -614.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_56ov2")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 612.0
+offset_top = 300.0
+offset_right = -56.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_56ov2")

@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=3 uid="uid://baqsm4yn86aps"]
+
+[ext_resource type="Texture2D" uid="uid://bap1cyd4dv37i" path="res://particles/fire_particle.png" id="1_xi27i"]
+[ext_resource type="AudioStream" uid="uid://b8rpb6l8w0ajs" path="res://particles/fire.ogg" id="2_808ih"]
+
+[sub_resource type="CanvasItemMaterial" id="1"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="2"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 85.0781), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="3"]
+curve = SubResource("2")
+
+[sub_resource type="Gradient" id="Gradient_wdtkk"]
+offsets = PackedFloat32Array(0, 0.142857, 0.5, 0.961039)
+colors = PackedColorArray(0, 0, 0.803922, 1, 0.858824, 0.180392, 0.0470588, 1, 0.788235, 0.294118, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fv41j"]
+gradient = SubResource("Gradient_wdtkk")
+
+[sub_resource type="Curve" id="4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.11, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="5"]
+curve = SubResource("4")
+
+[sub_resource type="ParticleProcessMaterial" id="6"]
+emission_shape = 1
+emission_sphere_radius = 8.0
+angular_velocity_curve = SubResource("3")
+gravity = Vector3(0, -250, 0)
+scale_curve = SubResource("5")
+color_ramp = SubResource("GradientTexture1D_fv41j")
+
+[sub_resource type="Animation" id="Animation_610u2"]
+resource_name = "loop"
+length = 3.5
+loop_mode = 1
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_808ih")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pgj0r"]
+_data = {
+"loop": SubResource("Animation_610u2")
+}
+
+[node name="Fire" type="GPUParticles2D"]
+texture_filter = 4
+material = SubResource("1")
+amount = 32
+process_material = SubResource("6")
+texture = ExtResource("1_xi27i")
+preprocess = 1.0
+visibility_rect = Rect2(-69.6266, -200.207, 140.693, 270.422)
+local_coords = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AudioStreamPlayer"]
+libraries = {
+"": SubResource("AnimationLibrary_pgj0r")
+}
+autoplay = "loop"

@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlq2cpn212aa8"]
+
+[ext_resource type="Script" path="res://bird/slingshot.gd" id="1_jgw5h"]
+[ext_resource type="Texture2D" uid="uid://bdr5oxrwpv28a" path="res://bird/slingshot.png" id="2_7wfxg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_37iwl"]
+radius = 87.2066
+
+[node name="Slingshot" type="Node2D"]
+script = ExtResource("1_jgw5h")
+
+[node name="Slingshot" type="Sprite2D" parent="."]
+position = Vector2(4, -228)
+texture = ExtResource("2_7wfxg")
+
+[node name="Line1" type="Line2D" parent="."]
+points = PackedVector2Array(-72, -373, -344, -321)
+
+[node name="Line2" type="Line2D" parent="."]
+points = PackedVector2Array(82, -367, -332, -323)
+
+[node name="TouchArea" type="Area2D" parent="."]
+position = Vector2(-342, -310)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TouchArea"]
+shape = SubResource("CircleShape2D_37iwl")
+
+[node name="Center" type="Marker2D" parent="."]
+position = Vector2(8, -380)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-2, -214)
+
+[connection signal="input_event" from="TouchArea" to="." method="_on_touch_area_input_event"]

@@ -1,0 +1,307 @@
+[gd_scene load_steps=33 format=3 uid="uid://dfb4jow1qnl4m"]
+
+[ext_resource type="PackedScene" uid="uid://baqsm4yn86aps" path="res://particles/fire.tscn" id="1_qpmtg"]
+[ext_resource type="Texture2D" uid="uid://bii6kglnqm6r2" path="res://particles/smoke_particle.png" id="2"]
+[ext_resource type="PackedScene" uid="uid://bjdld3dirbfm" path="res://particles/flipbook.tscn" id="2_0geuf"]
+[ext_resource type="Texture2D" uid="uid://b0nirvelkp3x2" path="res://particles/spark_particle2.png" id="3"]
+[ext_resource type="PackedScene" uid="uid://dpdtbbh448e2o" path="res://particles/smoke.tscn" id="3_4ya62"]
+[ext_resource type="PackedScene" uid="uid://rcltpqmlhtmv" path="res://particles/magic.tscn" id="4_mk7fq"]
+[ext_resource type="PackedScene" uid="uid://bkpnbi0pjl4li" path="res://particles/infinity.tscn" id="5_lg1t2"]
+[ext_resource type="Script" path="res://particles/pause.gd" id="6_5a71v"]
+[ext_resource type="PackedScene" uid="uid://bh7eiky1bsj7k" path="res://particles/mask_outline.tscn" id="6_078l5"]
+[ext_resource type="PackedScene" uid="uid://cs1stbr2fxm5i" path="res://particles/mask_direction.tscn" id="7_7m2cg"]
+[ext_resource type="PackedScene" uid="uid://syhl1k7dvjvt" path="res://particles/particles_with_subemitter.tscn" id="8_udkxy"]
+[ext_resource type="PackedScene" uid="uid://xk2c2exqwyf3" path="res://particles/turbulence.tscn" id="9_pi32e"]
+[ext_resource type="PackedScene" uid="uid://b6j0l23e1e6bf" path="res://particles/mask_solid.tscn" id="11_6vdja"]
+[ext_resource type="PackedScene" uid="uid://b6umpgd2atcep" path="res://particles/light_occluder.tscn" id="12_uwiei"]
+
+[sub_resource type="Environment" id="Environment_y7usk"]
+background_mode = 3
+glow_levels/1 = 1.0
+glow_levels/2 = 0.8
+glow_levels/3 = 0.4
+glow_levels/4 = 0.1
+glow_levels/5 = 0.0
+glow_blend_mode = 0
+glow_hdr_threshold = 0.01
+
+[sub_resource type="CanvasItemMaterial" id="20"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="21"]
+offsets = PackedFloat32Array(0, 0.171598, 0.301775, 0.390533, 1)
+colors = PackedColorArray(1, 0.63501, 0.28125, 1, 1, 0.398438, 0, 1, 0.679688, 0.277451, 0.169922, 0.232039, 0.515625, 0.362454, 0.199402, 0.0784314, 1, 1, 1, 0.0839033)
+
+[sub_resource type="GradientTexture1D" id="22"]
+gradient = SubResource("21")
+
+[sub_resource type="Curve" id="23"]
+max_value = 50.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0180711, 0), 74.6314, 74.6314, 0, 0, Vector2(0.0392147, 40.9884), 0.0, 0.0, 0, 0, Vector2(1, 50), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="24"]
+curve = SubResource("23")
+
+[sub_resource type="Curve" id="25"]
+max_value = 2.0
+_data = [Vector2(0, 0), 0.0, 5.5132, 0, 1, Vector2(0.31, 1.70909), 0.287081, 0.287081, 0, 0, Vector2(1, 2), 0.421607, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="26"]
+curve = SubResource("25")
+
+[sub_resource type="ParticleProcessMaterial" id="27"]
+emission_shape = 2
+emission_sphere_radius = 60.0
+gravity = Vector3(0, 0, 0)
+radial_accel_curve = SubResource("24")
+scale_curve = SubResource("26")
+color_ramp = SubResource("22")
+
+[sub_resource type="Curve" id="Curve_qu2at"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.142857, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_mx2gv"]
+curve = SubResource("Curve_qu2at")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mg3j6"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(40, 1, 1)
+angle_max = 360.0
+gravity = Vector3(0, 400, 0)
+damping_min = 20.0
+damping_max = 200.0
+scale_curve = SubResource("CurveTexture_mx2gv")
+hue_variation_max = 0.25
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.39
+collision_use_scale = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jtilh"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(40, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 5.0
+initial_velocity_min = 150.0
+initial_velocity_max = 400.0
+gravity = Vector3(0, 400, 0)
+scale_min = 0.4
+scale_max = 0.7
+scale_curve = SubResource("CurveTexture_mx2gv")
+hue_variation_min = -0.25
+collision_mode = 2
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wbw05"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(-1, -1, 0)
+spread = 5.0
+initial_velocity_min = 400.0
+initial_velocity_max = 400.0
+gravity = Vector3(0, 400, 0)
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_mx2gv")
+color = Color(0, 1, 0, 1)
+hue_variation_max = 0.3
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+sub_emitter_mode = 3
+sub_emitter_amount_at_collision = 1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oib53"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(40, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 5.0
+initial_velocity_min = 150.0
+initial_velocity_max = 400.0
+gravity = Vector3(0, 400, 0)
+scale_min = 0.4
+scale_max = 0.7
+scale_curve = SubResource("CurveTexture_mx2gv")
+color = Color(0.584314, 0.709804, 1, 1)
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[sub_resource type="Animation" id="Animation_y6gdc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Infinity/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_bl3q0"]
+resource_name = "move_particles"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Infinity/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j1xdo"]
+_data = {
+"RESET": SubResource("Animation_y6gdc"),
+"move_particles": SubResource("Animation_bl3q0")
+}
+
+[node name="GPUParticles3D" type="WorldEnvironment"]
+environment = SubResource("Environment_y7usk")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(576, 324)
+
+[node name="Fire" parent="." instance=ExtResource("1_qpmtg")]
+position = Vector2(280, 80)
+
+[node name="Flipbook" parent="." instance=ExtResource("2_0geuf")]
+position = Vector2(380, -102)
+
+[node name="Smoke" parent="." instance=ExtResource("3_4ya62")]
+position = Vector2(416, 199)
+
+[node name="Magic" parent="." instance=ExtResource("4_mk7fq")]
+position = Vector2(35, -31)
+
+[node name="Infinity" parent="." instance=ExtResource("5_lg1t2")]
+position = Vector2(-105, 138)
+
+[node name="Explosion" type="GPUParticles2D" parent="." groups=["trailable_particles"]]
+texture_filter = 4
+material = SubResource("20")
+position = Vector2(613.467, 182.62)
+rotation = 3.13794
+amount = 16
+process_material = SubResource("27")
+texture = ExtResource("2")
+lifetime = 2.0
+preprocess = 2.0
+explosiveness = 1.0
+
+[node name="OutlineMask" parent="." instance=ExtResource("6_078l5")]
+position = Vector2(118, 188)
+
+[node name="DirectionMask" parent="." instance=ExtResource("7_7m2cg")]
+position = Vector2(118, 56)
+
+[node name="ParticlesWithSubemitter" parent="." instance=ExtResource("8_udkxy")]
+
+[node name="Turbulence" parent="." instance=ExtResource("9_pi32e")]
+
+[node name="CollisionRigid" type="GPUParticles2D" parent="." groups=["trailable_particles"]]
+texture_filter = 4
+position = Vector2(982, 290)
+amount = 150
+process_material = SubResource("ParticleProcessMaterial_mg3j6")
+texture = ExtResource("3")
+lifetime = 5.0
+preprocess = 5.0
+fixed_fps = 0
+interpolate = false
+collision_base_size = 0.5
+trail_sections = 16
+
+[node name="CollisionHideOnContact" type="GPUParticles2D" parent="." groups=["trailable_particles"]]
+texture_filter = 4
+position = Vector2(1083, -6)
+amount = 150
+process_material = SubResource("ParticleProcessMaterial_jtilh")
+texture = ExtResource("3")
+lifetime = 2.0
+preprocess = 2.0
+fixed_fps = 0
+interpolate = false
+collision_base_size = 0.0
+
+[node name="CollisionHideOnContactSpawnSubemitter" type="GPUParticles2D" parent="." groups=["trailable_particles"]]
+texture_filter = 4
+position = Vector2(1072, 650)
+amount = 100
+sub_emitter = NodePath("CollisionSubemitter")
+process_material = SubResource("ParticleProcessMaterial_wbw05")
+texture = ExtResource("3")
+lifetime = 2.0
+preprocess = 2.0
+fixed_fps = 0
+interpolate = false
+collision_base_size = 0.0
+
+[node name="CollisionSubemitter" type="GPUParticles2D" parent="CollisionHideOnContactSpawnSubemitter" groups=["trailable_particles"]]
+texture_filter = 4
+position = Vector2(-27, -6)
+emitting = false
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_oib53")
+texture = ExtResource("3")
+lifetime = 0.5
+preprocess = 0.5
+fixed_fps = 0
+interpolate = false
+collision_base_size = 0.0
+
+[node name="LightOccluder2D" parent="." instance=ExtResource("12_uwiei")]
+
+[node name="LightOccluder2D2" parent="." instance=ExtResource("12_uwiei")]
+position = Vector2(30, 7)
+
+[node name="LightOccluder2D3" parent="." instance=ExtResource("12_uwiei")]
+position = Vector2(76, 121)
+
+[node name="LightOccluder2D4" parent="." instance=ExtResource("12_uwiei")]
+position = Vector2(185, 56)
+
+[node name="LightOccluder2D5" parent="." instance=ExtResource("12_uwiei")]
+position = Vector2(230, -59)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j1xdo")
+}
+autoplay = "move_particles"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+process_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -94.0
+offset_right = 357.0
+offset_bottom = -16.0
+grow_vertical = 0
+text = "Space: Pause/Resume
+T: Toggle particle trails
+Up/Down arrows: Adjust particle trail length
+G: Toggle glow"
+script = ExtResource("6_5a71v")
+
+[node name="GPUParticles2D2" parent="." instance=ExtResource("11_6vdja")]
+position = Vector2(118, 348)

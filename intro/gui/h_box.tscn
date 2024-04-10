@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://c7x80ih1nh07m"]
+
+[node name="HBox" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 15
+size_flags_vertical = 9
+text = "Button"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 15
+size_flags_vertical = 9
+size_flags_stretch_ratio = 2.0
+text = "Button"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 15
+size_flags_vertical = 9
+text = "Button"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 3
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="GridContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.427451, 0.768627, 0.462745, 1)
+
+[node name="ColorPickerButton2" type="ColorPickerButton" parent="GridContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.427451, 0.768627, 0.462745, 1)
+
+[node name="ColorPickerButton3" type="ColorPickerButton" parent="GridContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.427451, 0.768627, 0.462745, 1)
+
+[node name="ColorPickerButton4" type="ColorPickerButton" parent="GridContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.427451, 0.768627, 0.462745, 1)
+
+[node name="ColorPickerButton5" type="ColorPickerButton" parent="GridContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.427451, 0.768627, 0.462745, 1)

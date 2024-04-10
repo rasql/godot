@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfy7d4akt6oo"]
+
+[ext_resource type="Texture2D" uid="uid://bkl6sugki20q" path="res://2d/kenney_rolling-ball-assets/PNG/Default/block_square.png" id="1_l4g8w"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gwris"]
+bounce = 1.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_848bu"]
+polygon = PackedVector2Array(32, -32, 32, 32, -32, 32, -32, -32, 31, -32)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_24v86"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_as5n2"]
+size = Vector2(64, 64)
+
+[node name="Cube" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_gwris")
+metadata/_edit_group_ = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+show_behind_parent = true
+occluder = SubResource("OccluderPolygon2D_848bu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_l4g8w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+material = SubResource("CanvasItemMaterial_24v86")
+shape = SubResource("RectangleShape2D_as5n2")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)

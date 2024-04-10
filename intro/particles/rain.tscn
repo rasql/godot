@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://df4kytxo00fe5"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mmx2w"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_oq4hk"]
+_data = [Vector2(0, 0), 0.0, 8.77751, 0, 1, Vector2(0.0850277, 0.746332), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.277242, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_btg5c"]
+offsets = PackedFloat32Array(0, 0.277433, 1)
+colors = PackedColorArray(0, 0, 1, 1, 0.561077, 0.561077, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_gn7cr"]
+colors = PackedColorArray(0, 0.647059, 0.709804, 1, 1, 1, 1, 1)
+
+[sub_resource type="Curve" id="Curve_fdgq3"]
+min_value = -1.0
+_data = [Vector2(0, -1), 0.0, 2.0, 0, 1, Vector2(1, 1), 2.0, 0.0, 1, 0]
+point_count = 2
+
+[node name="Rain" type="CPUParticles2D"]
+material = SubResource("CanvasItemMaterial_mmx2w")
+amount = 8000
+lifetime = 2.0
+emission_shape = 3
+emission_rect_extents = Vector2(600, 10)
+gravity = Vector2(50, 500)
+angular_velocity_min = -363.74
+angular_velocity_max = -219.24
+damping_min = 22.491
+damping_max = 29.757
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_oq4hk")
+color_ramp = SubResource("Gradient_btg5c")
+color_initial_ramp = SubResource("Gradient_gn7cr")
+hue_variation_curve = SubResource("Curve_fdgq3")
+anim_speed_min = 44.29
+anim_speed_max = 44.29

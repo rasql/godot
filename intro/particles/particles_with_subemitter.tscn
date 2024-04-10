@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=3 uid="uid://syhl1k7dvjvt"]
+
+[ext_resource type="Texture2D" uid="uid://b0nirvelkp3x2" path="res://particles/spark_particle2.png" id="1_st7yf"]
+[ext_resource type="Texture2D" uid="uid://bii6kglnqm6r2" path="res://particles/smoke_particle.png" id="2_4613o"]
+
+[sub_resource type="Curve" id="Curve_e07dx"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.36, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_p4r4n"]
+curve = SubResource("Curve_e07dx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jod5w"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 25.0
+initial_velocity_min = 160.0
+initial_velocity_max = 160.0
+gravity = Vector3(0, 200, 0)
+scale_curve = SubResource("CurveTexture_p4r4n")
+sub_emitter_mode = 2
+sub_emitter_amount_at_end = 1
+sub_emitter_keep_velocity = true
+
+[sub_resource type="Curve" id="Curve_dlskh"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.09, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.690909), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_eeisx"]
+curve = SubResource("Curve_dlskh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m4hvx"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, -400, 0)
+scale_curve = SubResource("CurveTexture_eeisx")
+color = Color(1, 0.835294, 0, 1)
+sub_emitter_mode = 2
+sub_emitter_amount_at_end = 1
+
+[sub_resource type="Gradient" id="Gradient_dxj60"]
+offsets = PackedFloat32Array(0, 0.935065)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bw7sy"]
+gradient = SubResource("Gradient_dxj60")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mcjyg"]
+particle_flag_disable_z = true
+angle_max = 360.0
+gravity = Vector3(2.08165e-12, 100, 2.08165e-12)
+scale_curve = SubResource("CurveTexture_eeisx")
+color_ramp = SubResource("GradientTexture1D_bw7sy")
+sub_emitter_keep_velocity = true
+
+[node name="ParticlesWithSubemitter" type="GPUParticles2D" groups=["trailable_particles"]]
+texture_filter = 4
+amount = 15
+sub_emitter = NodePath("SubemitterEndSparks")
+process_material = SubResource("ParticleProcessMaterial_jod5w")
+texture = ExtResource("1_st7yf")
+preprocess = 1.0
+trail_enabled = true
+trail_lifetime = 0.5
+trail_sections = 11
+
+[node name="SubemitterEndSparks" type="GPUParticles2D" parent="." groups=["trailable_particles"]]
+texture_filter = 4
+emitting = false
+amount = 15
+sub_emitter = NodePath("SubemitterEndSmoke")
+process_material = SubResource("ParticleProcessMaterial_m4hvx")
+texture = ExtResource("1_st7yf")
+lifetime = 0.6
+preprocess = 1.0
+
+[node name="SubemitterEndSmoke" type="GPUParticles2D" parent="SubemitterEndSparks" groups=["trailable_particles"]]
+texture_filter = 4
+emitting = false
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_mcjyg")
+texture = ExtResource("2_4613o")
+preprocess = 1.0
+fixed_fps = 0
+interpolate = false
+trail_section_subdivisions = 2

@@ -1,0 +1,93 @@
+[gd_scene load_steps=5 format=3 uid="uid://tsnhgw3bx8lb"]
+
+[ext_resource type="Texture2D" uid="uid://dka5cg82br1r0" path="res://2d/kenney_rolling-ball-assets/PNG/Default/ball_red_large_alt.png" id="1_1buu4"]
+[ext_resource type="Texture2D" uid="uid://cjxv1ynoxhyjb" path="res://2d/kenney_rolling-ball-assets/PNG/Default/block_large.png" id="2_bk23v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kming"]
+radius = 32.0156
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hdpyl"]
+size = Vector2(60, 124)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="GroveJoint2D" type="GrooveJoint2D" parent="."]
+position = Vector2(894, 65)
+node_a = NodePath("RigidBody2D")
+node_b = NodePath("StaticBody2D")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="GroveJoint2D"]
+position = Vector2(164, 36)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="GroveJoint2D/RigidBody2D"]
+texture = ExtResource("1_1buu4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroveJoint2D/RigidBody2D"]
+shape = SubResource("CircleShape2D_kming")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="GroveJoint2D"]
+position = Vector2(48, -4)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="GroveJoint2D/StaticBody2D"]
+texture = ExtResource("2_bk23v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroveJoint2D/StaticBody2D"]
+shape = SubResource("RectangleShape2D_hdpyl")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(548, 61)
+node_a = NodePath("RigidBody2D")
+node_b = NodePath("StaticBody2D")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="PinJoint2D"]
+position = Vector2(164, 36)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="PinJoint2D/RigidBody2D"]
+texture = ExtResource("1_1buu4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PinJoint2D/RigidBody2D"]
+shape = SubResource("CircleShape2D_kming")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="PinJoint2D"]
+position = Vector2(48, -4)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="PinJoint2D/StaticBody2D"]
+texture = ExtResource("2_bk23v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PinJoint2D/StaticBody2D"]
+shape = SubResource("RectangleShape2D_hdpyl")
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
+position = Vector2(184, 63)
+node_a = NodePath("RigidBody2D")
+node_b = NodePath("StaticBody2D")
+stiffness = 10.0
+damping = 0.01
+
+[node name="RigidBody2D" type="RigidBody2D" parent="DampedSpringJoint2D"]
+position = Vector2(2, 136)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="DampedSpringJoint2D/RigidBody2D"]
+texture = ExtResource("1_1buu4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DampedSpringJoint2D/RigidBody2D"]
+shape = SubResource("CircleShape2D_kming")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="DampedSpringJoint2D"]
+position = Vector2(0, 1)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="DampedSpringJoint2D/StaticBody2D"]
+texture = ExtResource("2_bk23v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DampedSpringJoint2D/StaticBody2D"]
+shape = SubResource("RectangleShape2D_hdpyl")
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(32, 62)
+points = PackedVector2Array(153, 0, 156, 136)

@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://dkgg4opj0hbux"]
+
+[ext_resource type="Texture2D" uid="uid://c0783jr7nkjns" path="res://2d/kenney_rolling-ball-assets/PNG/Default/ball_blue_large.png" id="1_6ri7k"]
+[ext_resource type="Script" path="res://2d/ball.gd" id="1_rjtmt"]
+[ext_resource type="AudioStream" uid="uid://ty2t3j045iw3" path="res://audio/kenney_impact-sounds/Audio/impactSoft_medium_000.ogg" id="3_fywcm"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gwris"]
+bounce = 1.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_shsvd"]
+closed = false
+cull_mode = 2
+polygon = PackedVector2Array(31, -20, 31, -17.8, 32, -16.8, 32, 16, 16.8, 32, -17, 32, -31, 19.9, -31, 17.8, -32, 16.8, -32, -16, -23, -29, -20.6, -29, -16.1, -32, 16, -32)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_24v86"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6yo10"]
+radius = 31.0
+
+[node name="Ball" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_gwris")
+can_sleep = false
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_rjtmt")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_shsvd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6ri7k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+material = SubResource("CanvasItemMaterial_24v86")
+shape = SubResource("CircleShape2D_6yo10")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fywcm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

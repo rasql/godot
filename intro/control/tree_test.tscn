@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://p2q8r3srujv3"]
+
+[ext_resource type="PackedScene" uid="uid://b6hfjsdk5nre2" path="res://control/tree.tscn" id="1_0w40e"]
+[ext_resource type="Script" path="res://control/tree_test.gd" id="1_tmcyc"]
+
+[node name="Control" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tmcyc")
+
+[node name="Classes" parent="." instance=ExtResource("1_0w40e")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Methods" parent="." instance=ExtResource("1_0w40e")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Signals" parent="." instance=ExtResource("1_0w40e")]
+layout_mode = 2
+size_flags_horizontal = 3

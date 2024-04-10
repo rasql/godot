@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqbv1km7gij1t"]
+
+[sub_resource type="Gradient" id="Gradient_jl4n6"]
+offsets = PackedFloat32Array(0, 0.40107, 1)
+colors = PackedColorArray(1, 1, 0.0313726, 1, 0, 0.0862745, 0.980392, 1, 0.945098, 0, 0, 1)
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+amount = 200
+lifetime = 3.0
+explosiveness = 0.88
+randomness = 0.19
+lifetime_randomness = 0.37
+emission_shape = 2
+emission_sphere_radius = 94.4
+spread = 72.57
+gravity = Vector2(2.08165e-12, 98)
+initial_velocity_max = 184.68
+scale_amount_min = 5.0
+scale_amount_max = 20.0
+color = Color(0.984314, 0.980392, 0.976471, 1)
+color_ramp = SubResource("Gradient_jl4n6")

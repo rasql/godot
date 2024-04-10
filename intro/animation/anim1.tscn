@@ -1,0 +1,227 @@
+[gd_scene load_steps=8 format=3 uid="uid://ix11x85okm0y"]
+
+[ext_resource type="Texture2D" uid="uid://dhvfbc5h6wc85" path="res://icon.svg" id="1_6eu8p"]
+[ext_resource type="Script" path="res://animation/anim1.gd" id="1_abnes"]
+
+[sub_resource type="Animation" id="Animation_fhveg"]
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(240, 320), Vector2(880, 80), Vector2(800, 480)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Icon2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Icon3:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Icon4:skew")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.21107e-17]
+}
+
+[sub_resource type="Animation" id="Animation_vcw3b"]
+resource_name = "position"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.1, 6.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(160, 160), Vector2(960, 160), Vector2(880, 480)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Icon2:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5708]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Icon3:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(3, 3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Icon4:skew")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.21107e-17, 0.701622]
+}
+
+[sub_resource type="Animation" id="Animation_a2h40"]
+resource_name = "rotation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Icon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(240, 320), Vector2(1040, 320)]
+}
+
+[sub_resource type="Animation" id="Animation_h2v7n"]
+resource_name = "scale"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(10, 10), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Icon:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(5, 5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mxs6p"]
+_data = {
+"RESET": SubResource("Animation_fhveg"),
+"position": SubResource("Animation_vcw3b"),
+"rotation": SubResource("Animation_a2h40"),
+"scale": SubResource("Animation_h2v7n")
+}
+
+[node name="Anim1" type="Node2D"]
+script = ExtResource("1_abnes")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(240, 320)
+texture = ExtResource("1_6eu8p")
+
+[node name="Label" type="Label" parent="Icon"]
+offset_left = -58.2415
+offset_top = -91.7373
+offset_right = 4.75851
+offset_bottom = -68.7373
+text = "position"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mxs6p")
+}
+autoplay = "position"
+movie_quit_on_finish = true
+
+[node name="Icon2" type="Sprite2D" parent="."]
+position = Vector2(665, 143)
+texture = ExtResource("1_6eu8p")
+
+[node name="Label" type="Label" parent="Icon2"]
+offset_left = -59.5
+offset_top = -94.0
+offset_right = 3.5
+offset_bottom = -71.0
+text = "rotation"
+
+[node name="Icon3" type="Sprite2D" parent="."]
+position = Vector2(293, 437)
+texture = ExtResource("1_6eu8p")
+
+[node name="Label" type="Label" parent="Icon3"]
+offset_left = -60.6667
+offset_top = -86.6667
+offset_right = 2.33333
+offset_bottom = -63.6667
+text = "scale"
+
+[node name="Icon4" type="Sprite2D" parent="."]
+position = Vector2(703.153, 529.42)
+texture = ExtResource("1_6eu8p")
+
+[node name="Label" type="Label" parent="Icon4"]
+offset_left = -59.5
+offset_top = -94.0
+offset_right = 3.5
+offset_bottom = -71.0
+text = "skew"

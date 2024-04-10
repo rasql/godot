@@ -1,0 +1,175 @@
+[gd_scene format=3 uid="uid://cmxe8exeiwrs4"]
+
+[node name="Control" type="HSplitContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VSplitContainer" type="VFlowContainer" parent="."]
+layout_mode = 2
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="VSplitContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Background"
+color = Color(0.772549, 0.901961, 0, 1)
+
+[node name="Button" type="Button" parent="VSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+text = "Button"
+
+[node name="LineEdit" type="LineEdit" parent="VSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 50
+text = "Apples"
+placeholder_text = "Enter your text"
+expand_to_text_length = true
+
+[node name="ColorPickerButton2" type="ColorPickerButton" parent="VSplitContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Background"
+color = Color(0, 0.819608, 0, 1)
+
+[node name="LineEdit4" type="LineEdit" parent="VSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 50
+text = "Grapefruit"
+placeholder_text = "Enter your text"
+expand_to_text_length = true
+
+[node name="ColorPickerButton3" type="ColorPickerButton" parent="VSplitContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Background"
+color = Color(0.8, 0.427451, 0.894118, 1)
+
+[node name="LineEdit2" type="LineEdit" parent="VSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 50
+text = "Oranges"
+placeholder_text = "Enter your text"
+expand_to_text_length = true
+
+[node name="LineEdit5" type="LineEdit" parent="VSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 50
+text = "Beans"
+placeholder_text = "Enter your text"
+expand_to_text_length = true
+
+[node name="LineEdit6" type="LineEdit" parent="VSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 50
+text = "Raspberry"
+placeholder_text = "Enter your text"
+expand_to_text_length = true
+
+[node name="LineEdit3" type="LineEdit" parent="VSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 50
+text = "Banana"
+placeholder_text = "Enter your text"
+expand_to_text_length = true
+
+[node name="HFlowContainer" type="HFlowContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="HFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Button"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="HFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Background"
+
+[node name="LineEdit" type="LineEdit" parent="HFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "Apples"
+placeholder_text = "Enter your text"
+expand_to_text_length = true
+
+[node name="LineEdit2" type="LineEdit" parent="HFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "Oranges"
+placeholder_text = "Enter your text"
+expand_to_text_length = true
+
+[node name="LineEdit3" type="LineEdit" parent="HFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "Banana"
+placeholder_text = "Enter your text"
+expand_to_text_length = true
+
+[node name="ColorPickerButton3" type="ColorPickerButton" parent="HFlowContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Background"
+color = Color(0, 0.819608, 0, 1)
+
+[node name="LineEdit4" type="LineEdit" parent="HFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "Grapefruit"
+placeholder_text = "Enter your text"
+expand_to_text_length = true
+
+[node name="ColorPickerButton4" type="ColorPickerButton" parent="HFlowContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Background"
+color = Color(0.8, 0.427451, 0.894118, 1)
+
+[node name="LineEdit5" type="LineEdit" parent="HFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "Beans"
+placeholder_text = "Enter your text"
+expand_to_text_length = true
+
+[node name="LineEdit6" type="LineEdit" parent="HFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "Raspberry"
+placeholder_text = "Enter your text"
+expand_to_text_length = true
+
+[node name="ColorPickerButton2" type="ColorPickerButton" parent="HFlowContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Background"
+color = Color(0.772549, 0.901961, 0, 1)

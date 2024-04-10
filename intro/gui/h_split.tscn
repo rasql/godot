@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://ewxas11m1xve"]
+
+[node name="HSplitContainer" type="HSplitContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Button in HSplit
+"
+
+[node name="HSplitContainer" type="VSplitContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button2" type="Button" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Button in 
+VSplit
+"
+
+[node name="Button3" type="Button" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Button in 
+VSplit
+"

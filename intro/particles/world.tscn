@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://cfi5vxep11tf3"]
+
+[ext_resource type="Script" path="res://particles/world.gd" id="1_qh8sd"]
+[ext_resource type="PackedScene" uid="uid://baqsm4yn86aps" path="res://particles/fire.tscn" id="1_ru1bx"]
+[ext_resource type="PackedScene" uid="uid://dpdtbbh448e2o" path="res://particles/smoke.tscn" id="2_dhcca"]
+[ext_resource type="PackedScene" uid="uid://syhl1k7dvjvt" path="res://particles/particles_with_subemitter.tscn" id="2_n61j4"]
+[ext_resource type="PackedScene" uid="uid://bjdld3dirbfm" path="res://particles/flipbook.tscn" id="3_vrccd"]
+[ext_resource type="PackedScene" uid="uid://dqbv1km7gij1t" path="res://particles/fire2.tscn" id="5_tw1v0"]
+
+[sub_resource type="Environment" id="Environment_0wymg"]
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource("Environment_0wymg")
+script = ExtResource("1_qh8sd")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(579, 339)
+
+[node name="ParticlesWithSubemitter" parent="." instance=ExtResource("2_n61j4")]
+position = Vector2(889, 382)
+
+[node name="Smoke" parent="." instance=ExtResource("2_dhcca")]
+position = Vector2(242, 339)
+scale = Vector2(2, 2)
+local_coords = true
+
+[node name="Smoke2" parent="." instance=ExtResource("2_dhcca")]
+position = Vector2(673, 119)
+scale = Vector2(2, 2)
+local_coords = true
+
+[node name="Fire" parent="." instance=ExtResource("1_ru1bx")]
+modulate = Color(0.00784314, 1, 0.454902, 1)
+position = Vector2(134, 570)
+
+[node name="Fire2" parent="." instance=ExtResource("1_ru1bx")]
+position = Vector2(673, 450)
+scale = Vector2(2, 2)
+collision_base_size = 0.0
+visibility_rect = Rect2(-69.4646, -198.925, 140.42, 268.842)
+
+[node name="Fire3" parent="." instance=ExtResource("1_ru1bx")]
+modulate = Color(1, 0.282353, 1, 1)
+position = Vector2(242, 570)
+
+[node name="Flipbook" parent="." instance=ExtResource("3_vrccd")]
+position = Vector2(1005, 514)
+
+[node name="Flipbook2" parent="." instance=ExtResource("3_vrccd")]
+position = Vector2(1015, 171)
+
+[node name="CPUParticles2D" parent="." instance=ExtResource("5_tw1v0")]
+position = Vector2(497, 293)

@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://dp65txu4yxkj7"]
+
+[ext_resource type="Script" path="res://control/tree_button.gd" id="1_200n3"]
+[ext_resource type="Texture2D" uid="uid://bf7fxylkonnyk" path="res://control/icons/Tilemap/tilemap.png" id="2_dlyr8"]
+
+[node name="TreeButton" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_200n3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_dlyr8")
+centered = false
+hframes = 34
+vframes = 24
+frame = 3
+
+[node name="Tree" type="Tree" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 554.0
+offset_top = 1.0
+offset_right = -128.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[connection signal="button_clicked" from="Tree" to="." method="_on_tree_button_clicked"]

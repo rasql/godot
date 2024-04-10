@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://2gjir7v6cgv2"]
+
+[ext_resource type="Script" path="res://sound/sound.gd" id="1_n6hix"]
+[ext_resource type="Script" path="res://control/tree.gd" id="2_5lccm"]
+[ext_resource type="AudioStream" uid="uid://cyhepq5gx5tdc" path="res://audio/kenney_sci-fi-sounds/Audio/computerNoise_000.ogg" id="2_t4tr0"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n6hix")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+
+[node name="File" type="Label" parent="."]
+layout_mode = 1
+offset_left = 394.0
+offset_top = 65.0
+offset_right = 902.118
+offset_bottom = 93.016
+text = "File path"
+
+[node name="Files" type="Tree" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 61.0
+offset_right = 354.0
+offset_bottom = 643.0
+script = ExtResource("2_5lccm")
+
+[node name="Volume" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 461.0
+offset_top = 129.0
+offset_right = 884.0
+offset_bottom = 152.0
+min_value = -60.0
+max_value = 2.08165e-12
+step = 3.0
+value = -24.0
+
+[node name="Label" type="Label" parent="Volume"]
+layout_mode = 0
+offset_left = -79.0
+offset_right = -20.0
+offset_bottom = 23.0
+text = "Volume"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_t4tr0")
+volume_db = -24.0
+
+[connection signal="item_selected" from="Files" to="." method="_on_files_item_selected"]
+[connection signal="value_changed" from="Volume" to="." method="_on_volume_value_changed"]

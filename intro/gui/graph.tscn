@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://dygrnaonvdb51"]
+
+[node name="GraphEdit" type="GraphEdit"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scroll_offset = Vector2(-40, -40)
+
+[node name="GraphNode" type="GraphNode" parent="."]
+layout_mode = 0
+offset_left = 265.0
+offset_top = 209.0
+offset_right = 406.0
+offset_bottom = 264.0
+mouse_filter = 1
+position_offset = Vector2(225, 169)
+title = "Warrier"
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+
+[node name="GraphElement" type="GraphElement" parent="GraphNode"]
+layout_mode = 2
+offset_left = 18.0
+offset_top = 43.0
+offset_right = 123.0
+offset_bottom = 58.0
+size_flags_vertical = 3
+
+[node name="GraphElement2" type="GraphElement" parent="GraphNode"]
+layout_mode = 2
+offset_left = 18.0
+offset_top = 60.0
+offset_right = 123.0
+offset_bottom = 45.0
+size_flags_vertical = 3
+
+[node name="GraphNode2" type="GraphNode" parent="."]
+layout_mode = 0
+offset_left = 271.0
+offset_top = 476.0
+offset_right = 385.0
+offset_bottom = 531.0
+mouse_filter = 1
+position_offset = Vector2(231, 436)
+title = "Home"
+
+[node name="GraphNode3" type="GraphNode" parent="."]
+layout_mode = 0
+offset_left = 574.0
+offset_top = 321.0
+offset_right = 755.0
+offset_bottom = 376.0
+mouse_filter = 1
+position_offset = Vector2(534, 281)
+title = "Platforme"
+
+[node name="GraphNode4" type="GraphNode" parent="."]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 122.0
+offset_right = 685.0
+offset_bottom = 177.0
+mouse_filter = 1
+position_offset = Vector2(400, 82)
+title = "Castle"
+
+[node name="GraphNode5" type="GraphNode" parent="."]
+layout_mode = 2
+offset_left = 126.0
+offset_top = 122.0
+offset_right = 271.0
+offset_bottom = 177.0
+mouse_filter = 1
+position_offset = Vector2(86, 82)
+title = "Paradise"
