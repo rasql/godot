@@ -20,35 +20,30 @@
 [node name="ArmL" type="Sprite2D" parent="."]
 position = Vector2(94.6521, -154.889)
 rotation = -1.00941
-scale = Vector2(1, 1)
 texture = ExtResource("1_p8udb")
 offset = Vector2(7.50037, 18.0999)
 
 [node name="HandL" type="Sprite2D" parent="."]
 position = Vector2(173.88, -102.24)
 rotation = -2.02316
-scale = Vector2(1, 1)
 texture = ExtResource("2_di376")
 offset = Vector2(17, 60)
 
 [node name="LegL" type="Sprite2D" parent="."]
 position = Vector2(26.8701, 8.48522)
 rotation = -0.903582
-scale = Vector2(1, 1)
 texture = ExtResource("3_x2m4m")
 offset = Vector2(-20.1307, 50.0993)
 
 [node name="ShinL" type="Sprite2D" parent="."]
 position = Vector2(87.7512, 112.367)
 rotation = -0.171932
-scale = Vector2(1, 1)
 texture = ExtResource("4_0fhym")
 offset = Vector2(19.5, 39)
 
 [node name="FootL" type="Sprite2D" parent="."]
 position = Vector2(104.182, 215.325)
 rotation = -0.044773
-scale = Vector2(1, 1)
 texture = ExtResource("5_kxli3")
 offset = Vector2(45.9689, 4.57518)
 

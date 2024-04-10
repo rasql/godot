@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://c67tc0idw2x5e"]
+
+[ext_resource type="Script" path="res://control/slider_test.gd" id="1_smm7v"]
+[ext_resource type="PackedScene" uid="uid://djfv26hirxak3" path="res://control/slider.tscn" id="1_wboij"]
+
+[node name="SliderTest" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 41.0
+offset_top = 34.0
+offset_right = -424.0
+offset_bottom = -356.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_smm7v")
+
+[node name="Slider" parent="." instance=ExtResource("1_wboij")]
+layout_mode = 2
+
+[node name="Slider2" parent="." instance=ExtResource("1_wboij")]
+layout_mode = 2
+
+[node name="Slider3" parent="." instance=ExtResource("1_wboij")]
+layout_mode = 2
+
+[node name="Slider4" parent="." instance=ExtResource("1_wboij")]
+layout_mode = 2
