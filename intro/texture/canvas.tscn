@@ -40,11 +40,3 @@ rows = 3
 lines = 3
 color = Color(0.937255, 0.454902, 0.439216, 1)
 width = 5
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 23.0
-grow_horizontal = 2
-text = "Shows a CanvasTexture and three Grid nodes."

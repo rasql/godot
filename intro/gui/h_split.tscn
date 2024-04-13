@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ewxas11m1xve"]
 
 [node name="HSplitContainer" type="HSplitContainer"]
+editor_description = "HSplitContainer and VSplitcontainer demo"
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

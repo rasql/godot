@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bcxkrq7bxlvo4" path="res://animation/cutout_animation_assets/gbot/gBot_foot_r.png" id="14_gluir"]
 
 [node name="root" type="Node2D"]
+editor_description = "Robot ragdoll model"
 
 [node name="ArmL" type="Sprite2D" parent="."]
 position = Vector2(94.6521, -154.889)

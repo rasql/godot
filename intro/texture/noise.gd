@@ -1,12 +1,13 @@
 extends Control
 
+var doc = """NoiseTexture and a type selector."""
+
+
 var noise_types = ['simplex', 'simplex_smooth', 'cellular',
 		'perlin', 'cubic', 'value']
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	$Label.text = """Displays a NoiseTexture and a Item selector."""
-	
+func _ready():	
 	$Tree.set_column_title(0, 'Noise Type')
 	$Tree.column_titles_visible = true
 	$Tree.create_item()

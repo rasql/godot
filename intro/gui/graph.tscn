@@ -1,19 +1,19 @@
 [gd_scene format=3 uid="uid://dygrnaonvdb51"]
 
 [node name="GraphEdit" type="GraphEdit"]
+editor_description = "GraphEdit demo"
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scroll_offset = Vector2(-40, -40)
 
 [node name="GraphNode" type="GraphNode" parent="."]
 layout_mode = 0
-offset_left = 265.0
-offset_top = 209.0
-offset_right = 406.0
-offset_bottom = 264.0
+offset_left = 225.0
+offset_top = 169.0
+offset_right = 366.0
+offset_bottom = 226.0
 mouse_filter = 1
 position_offset = Vector2(225, 169)
 title = "Warrier"
@@ -54,40 +54,40 @@ size_flags_vertical = 3
 
 [node name="GraphNode2" type="GraphNode" parent="."]
 layout_mode = 0
-offset_left = 271.0
-offset_top = 476.0
-offset_right = 385.0
-offset_bottom = 531.0
+offset_left = 231.0
+offset_top = 436.0
+offset_right = 345.0
+offset_bottom = 491.0
 mouse_filter = 1
 position_offset = Vector2(231, 436)
 title = "Home"
 
 [node name="GraphNode3" type="GraphNode" parent="."]
 layout_mode = 0
-offset_left = 574.0
-offset_top = 321.0
-offset_right = 755.0
-offset_bottom = 376.0
+offset_left = 534.0
+offset_top = 281.0
+offset_right = 715.0
+offset_bottom = 336.0
 mouse_filter = 1
 position_offset = Vector2(534, 281)
 title = "Platforme"
 
 [node name="GraphNode4" type="GraphNode" parent="."]
 layout_mode = 0
-offset_left = 440.0
-offset_top = 122.0
-offset_right = 685.0
-offset_bottom = 177.0
+offset_left = 400.0
+offset_top = 82.0
+offset_right = 645.0
+offset_bottom = 137.0
 mouse_filter = 1
 position_offset = Vector2(400, 82)
 title = "Castle"
 
 [node name="GraphNode5" type="GraphNode" parent="."]
 layout_mode = 2
-offset_left = 126.0
-offset_top = 122.0
-offset_right = 271.0
-offset_bottom = 177.0
+offset_left = 86.0
+offset_top = 82.0
+offset_right = 231.0
+offset_bottom = 137.0
 mouse_filter = 1
 position_offset = Vector2(86, 82)
 title = "Paradise"

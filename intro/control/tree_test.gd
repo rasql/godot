@@ -1,5 +1,7 @@
 extends Control
 
+var doc = """Test extended Tree class with classes, methods and signals."""
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var classes = ClassDB.get_class_list()

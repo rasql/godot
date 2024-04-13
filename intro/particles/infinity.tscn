@@ -73,6 +73,7 @@ _data = {
 }
 
 [node name="Infinity" type="Path2D"]
+editor_description = "PathFollow2D with particle emission"
 position = Vector2(-445, -213)
 curve = SubResource("Curve2D_oi78q")
 

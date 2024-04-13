@@ -1,5 +1,7 @@
 extends HBoxContainer
 
+var doc = """Slider with label and value."""
+
 # Called when the node enters the scene tree for the first time.
 func _ready():	
 	$Value.text = str($Slider.value)

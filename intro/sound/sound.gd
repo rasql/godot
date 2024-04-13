@@ -1,6 +1,8 @@
 extends Control
 # Display an audio file list and play a sound file when clicking.
 
+var doc = """Display a sound list."""
+
 var files
 var path = "res://audio/kenney_sci-fi-sounds/Audio/"
 

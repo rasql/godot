@@ -32,6 +32,7 @@ scale_curve = SubResource("16")
 color_ramp = SubResource("14")
 
 [node name="Magic" type="GPUParticles2D" groups=["trailable_particles"]]
+editor_description = "Magic sparcs flowing slowly inside from a circular starting position"
 texture_filter = 4
 material = SubResource("12")
 amount = 150

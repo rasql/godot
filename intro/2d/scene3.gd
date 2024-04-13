@@ -1,5 +1,7 @@
 extends Node
 
+var doc = """Click to instantiate new ball."""
+
 var scene = preload("res://2d/ball2.tscn") # packed scene resource
 
 func _input(event):		

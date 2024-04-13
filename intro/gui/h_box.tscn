@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c7x80ih1nh07m"]
 
 [node name="HBox" type="HBoxContainer"]
+editor_description = "HBoxContainer demo"
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

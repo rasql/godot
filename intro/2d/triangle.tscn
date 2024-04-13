@@ -1,11 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1gervti3qbs"]
+[gd_scene load_steps=4 format=3 uid="uid://b1gervti3qbs"]
 
 [ext_resource type="Texture2D" uid="uid://buwskc8gftpn3" path="res://2d/kenney_rolling-ball-assets/PNG/Default/block_corner_large.png" id="1_v01a7"]
+
+[sub_resource type="GDScript" id="GDScript_4lnbp"]
+script/source = "extends RigidBody2D
+
+var doc = \"\"\"Triangle with gravity.\"\"\"
+"
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_y8unx"]
 polygon = PackedVector2Array(64, 43.2, 64, 64, -64, 64, -64, -64, -44, -64)
 
 [node name="RigidBody2D" type="RigidBody2D"]
+editor_description = "Triangle RigidBody"
+script = SubResource("GDScript_4lnbp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(66, -67)

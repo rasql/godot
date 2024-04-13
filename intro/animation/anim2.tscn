@@ -234,6 +234,7 @@ _data = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_thswa"]
 
 [node name="Animation" type="Node2D"]
+editor_description = "Animation with sound"
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 libraries = {

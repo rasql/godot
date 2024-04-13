@@ -1,5 +1,6 @@
 extends Control
 
+var doc = """Displays all built-in InputMap actions"""
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

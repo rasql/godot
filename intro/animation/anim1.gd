@@ -1,5 +1,6 @@
 extends Node2D
 
+var doc = """These icons are animated with position, rotation, scale and skew."""
 # Three icons are animated during 10s : positoin, rotation, scale
 # The animated icons show a position, rotation and scale label.
 # The labels are updated within the _process() function.

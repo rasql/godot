@@ -2,6 +2,8 @@ extends Node
 # Displays a 1st level clickable directory tree (folders) 
 # Displays a 2nd level clickable schene file (tscn) tree (files)
 
+var doc = """Select the category and the scene to display."""
+
 var path = "res://"
 var folders
 var folder
@@ -10,6 +12,7 @@ var file
 var scene
 var scenes
 var menu_visible = true
+var id # voice id
 
 func _input(event):
 	if event is InputEventKey and event.is_pressed():
@@ -46,10 +49,13 @@ func _input(event):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var voices = DisplayServer.tts_get_voices_for_language('en')
+	id = voices[0]
 	$AudioStreamPlayer.playing = false
 	folders = Array(DirAccess.get_directories_at(path))
 	folders = folders.filter(func(x) : return x not in ['audio', 'addons'])
 	$Dirs.set_list(folders)
+	$ColorRect/Label.text = doc
 
 
 func _on_dirs_cell_selected():
@@ -68,13 +74,10 @@ func _on_files_cell_selected():
 	#var i = item.get_index()
 	file = item.get_text(0)
 	var _path = path + folder + '/' + file + '.tscn'
-	print(_path)
 	scene = load(_path)
-	print(scene)
 	for child in $Control.get_children():
 		child.free()
 	var node = scene.instantiate()
-	print(node)
 	$Control.add_child(node)
 	
 	if node.get_class() in ['GPUParticles2D', 'CPUParticles2D']:
@@ -82,7 +85,13 @@ func _on_files_cell_selected():
 		node.scale = Vector2(3, 3)
 		node.local_coords = true
 	
+	var s = ''
 	if node.get('doc'):
-		$Label.text = node.doc
+		s = node.doc
+	elif node.editor_description:
+		s= node.editor_description
+		
+	$ColorRect/Label.text = s
+	DisplayServer.tts_speak(s, id)
 	
 	

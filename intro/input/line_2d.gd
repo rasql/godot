@@ -1,5 +1,7 @@
 extends Node2D
 
+var doc = """Draws a 2D line with mouse clicks."""
+
 func _input(event):
 	if event is InputEventMouse and event.is_pressed():
 		var p = event.position

@@ -1,5 +1,7 @@
 extends Control
 
+var doc = """Control galery."""
+
 @onready var tree = $MainPanel/HSplitContainer/VSplitContainer/Lists/VBoxContainer/HBoxContainer/VBoxContainer2/Tree
 
 # Called when the node enters the scene tree for the first time.

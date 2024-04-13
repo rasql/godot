@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://b0url6c8mqhgq"]
+
+[node name="Win" type="Node2D"]
+position = Vector2(-2, -1)
+
+[node name="Inspector" type="Window" parent="."]
+title = "Inspector"
+position = Vector2i(500, 36)
+size = Vector2i(300, 200)
+
+[node name="TextEdit" type="TextEdit" parent="Inspector"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "Enter text here"
+
+[node name="Editor" type="Window" parent="."]
+mode = 1
+title = "Editor"
+initial_position = 3
+size = Vector2i(300, 200)
+current_screen = 0
+
+[node name="Files" type="Window" parent="."]
+mode = 2
+title = "Files"
+position = Vector2i(100, 200)
+size = Vector2i(300, 200)
+theme_override_colors/title_color = Color(0.909804, 0, 0, 1)
+theme_override_colors/title_outline_modulate = Color(0, 0.909804, 0, 1)
+theme_override_constants/title_outline_size = 5
+theme_override_constants/title_height = 29
+theme_override_font_sizes/title_font_size = 30
+
+[node name="Parameters" type="Window" parent="."]
+mode = 3
+title = "Parameters"
+position = Vector2i(400, 500)
+size = Vector2i(300, 200)
+transparent = true
+keep_title_visible = true
+
+[node name="Button" type="Button" parent="Parameters"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Button"

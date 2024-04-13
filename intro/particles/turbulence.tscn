@@ -35,6 +35,7 @@ turbulence_noise_speed = Vector3(1, 1, 0)
 turbulence_noise_speed_random = 10.0
 
 [node name="Turbulence" type="GPUParticles2D"]
+editor_description = "Turbulence simulation"
 position = Vector2(768, 328)
 amount = 50
 process_material = SubResource("ParticleProcessMaterial_vbd24")

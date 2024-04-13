@@ -1,5 +1,7 @@
 extends Control
 
+var doc = """ClassDB with classes, methods and signals."""
+
 var classes
 var _class
 var enums

@@ -5,6 +5,7 @@ offsets = PackedFloat32Array(0, 0.40107, 1)
 colors = PackedColorArray(1, 1, 0.0313726, 1, 0, 0.0862745, 0.980392, 1, 0.945098, 0, 0, 1)
 
 [node name="CPUParticles2D" type="CPUParticles2D"]
+editor_description = "Colorful explosion of squares"
 amount = 200
 lifetime = 3.0
 explosiveness = 0.88

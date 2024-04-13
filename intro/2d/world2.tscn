@@ -15,6 +15,7 @@ fill_from = Vector2(0.305556, 0)
 fill_to = Vector2(0.529915, 1)
 
 [node name="TextureRect" type="TextureRect"]
+editor_description = "Scene with cube, balls and bricks"
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -1,5 +1,7 @@
 extends TextureRect
 
+var doc = """Click to add more cubes."""
+
 var scene = preload("res://2d/ball.tscn") # packed scene resource
 var cube = preload("res://2d/cube.tscn") # packed scene resource
 
@@ -15,7 +17,3 @@ func _input(event):
 func _ready():
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

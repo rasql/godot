@@ -48,6 +48,7 @@ polygon = PackedVector2Array(-76.1998, 80.8, 80, 80, 80, -80, -80, -80)
 polygon = PackedVector2Array(53, -54.1, 56, -52.1, 56, 53, 54.1, 53, 52.1, 56, -53, 56, -53, 54.1, -56, 52.1, -56, -52.1, -53, -54.1, -53, -56, 53, -56)
 
 [node name="Node2D" type="Node2D"]
+editor_description = "PointLight demo"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

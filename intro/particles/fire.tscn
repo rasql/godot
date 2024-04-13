@@ -63,6 +63,7 @@ _data = {
 }
 
 [node name="Fire" type="GPUParticles2D"]
+editor_description = "Fire with sound."
 texture_filter = 4
 material = SubResource("1")
 amount = 32

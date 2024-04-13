@@ -1,9 +1,11 @@
 extends Control
 
+var doc = """Displays GradientTexture1D and GradientTexture2D."""
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Label.text = """Displays GradientTexture1D and GradientTexture2D."""
+
 	# Create GradientTexture1D
 	var g = Gradient.new()
 	g.add_point(0.5, Color.CHARTREUSE)

@@ -1,7 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://tsnhgw3bx8lb"]
+[gd_scene load_steps=6 format=3 uid="uid://tsnhgw3bx8lb"]
 
 [ext_resource type="Texture2D" uid="uid://dka5cg82br1r0" path="res://2d/kenney_rolling-ball-assets/PNG/Default/ball_red_large_alt.png" id="1_1buu4"]
 [ext_resource type="Texture2D" uid="uid://cjxv1ynoxhyjb" path="res://2d/kenney_rolling-ball-assets/PNG/Default/block_large.png" id="2_bk23v"]
+
+[sub_resource type="GDScript" id="GDScript_83ov8"]
+script/source = "extends Node2D
+
+var doc = \"\"\"Grove joint, pin joint and damped spring joint.\"\"\"
+"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kming"]
 radius = 32.0156
@@ -10,6 +16,8 @@ radius = 32.0156
 size = Vector2(60, 124)
 
 [node name="Node2D" type="Node2D"]
+editor_description = "Grove, Pin and Damped spring joint demo."
+script = SubResource("GDScript_83ov8")
 
 [node name="GroveJoint2D" type="GrooveJoint2D" parent="."]
 position = Vector2(894, 65)

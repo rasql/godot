@@ -18,6 +18,7 @@ _data = [Vector2(0, -1), 0.0, 2.0, 0, 1, Vector2(1, 1), 2.0, 0.0, 1, 0]
 point_count = 2
 
 [node name="WaterFall" type="CPUParticles2D"]
+editor_description = "Waterfall simulation"
 amount = 8000
 lifetime = 2.0
 randomness = 0.05

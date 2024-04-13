@@ -1,16 +1,17 @@
 [gd_scene format=3 uid="uid://cmxe8exeiwrs4"]
 
-[node name="Control" type="HSplitContainer"]
+[node name="HSplitContainer" type="HSplitContainer"]
+editor_description = "VFlowContainer and HFlowContainer demo"
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VSplitContainer" type="VFlowContainer" parent="."]
+[node name="VFlowContainer" type="VFlowContainer" parent="."]
 layout_mode = 2
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="VSplitContainer"]
+[node name="ColorPickerButton" type="ColorPickerButton" parent="VFlowContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -18,13 +19,13 @@ size_flags_vertical = 0
 text = "Background"
 color = Color(0.772549, 0.901961, 0, 1)
 
-[node name="Button" type="Button" parent="VSplitContainer"]
+[node name="Button" type="Button" parent="VFlowContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 3
 text = "Button"
 
-[node name="LineEdit" type="LineEdit" parent="VSplitContainer"]
+[node name="LineEdit" type="LineEdit" parent="VFlowContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 50
@@ -32,7 +33,7 @@ text = "Apples"
 placeholder_text = "Enter your text"
 expand_to_text_length = true
 
-[node name="ColorPickerButton2" type="ColorPickerButton" parent="VSplitContainer"]
+[node name="ColorPickerButton2" type="ColorPickerButton" parent="VFlowContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -40,7 +41,7 @@ size_flags_vertical = 0
 text = "Background"
 color = Color(0, 0.819608, 0, 1)
 
-[node name="LineEdit4" type="LineEdit" parent="VSplitContainer"]
+[node name="LineEdit4" type="LineEdit" parent="VFlowContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 50
@@ -48,7 +49,7 @@ text = "Grapefruit"
 placeholder_text = "Enter your text"
 expand_to_text_length = true
 
-[node name="ColorPickerButton3" type="ColorPickerButton" parent="VSplitContainer"]
+[node name="ColorPickerButton3" type="ColorPickerButton" parent="VFlowContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -56,7 +57,7 @@ size_flags_vertical = 0
 text = "Background"
 color = Color(0.8, 0.427451, 0.894118, 1)
 
-[node name="LineEdit2" type="LineEdit" parent="VSplitContainer"]
+[node name="LineEdit2" type="LineEdit" parent="VFlowContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 50
@@ -64,7 +65,7 @@ text = "Oranges"
 placeholder_text = "Enter your text"
 expand_to_text_length = true
 
-[node name="LineEdit5" type="LineEdit" parent="VSplitContainer"]
+[node name="LineEdit5" type="LineEdit" parent="VFlowContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 50
@@ -72,7 +73,7 @@ text = "Beans"
 placeholder_text = "Enter your text"
 expand_to_text_length = true
 
-[node name="LineEdit6" type="LineEdit" parent="VSplitContainer"]
+[node name="LineEdit6" type="LineEdit" parent="VFlowContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 50
@@ -80,7 +81,7 @@ text = "Raspberry"
 placeholder_text = "Enter your text"
 expand_to_text_length = true
 
-[node name="LineEdit3" type="LineEdit" parent="VSplitContainer"]
+[node name="LineEdit3" type="LineEdit" parent="VFlowContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 50

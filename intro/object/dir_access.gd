@@ -1,6 +1,8 @@
 @tool
 extends Control
 
+var doc = """DirAccess to get files and directories."""
+
 var dir : DirAccess
 var files : PackedStringArray
 var file : String

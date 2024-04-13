@@ -36,6 +36,7 @@ hue_variation_max = 0.02
 anim_offset_max = 1.0
 
 [node name="Flipbook" type="GPUParticles2D"]
+editor_description = "Flipbook of different shapes with a trail"
 texture_filter = 4
 material = SubResource("7")
 position = Vector2(6, 4)

@@ -3,6 +3,7 @@ extends Control
 # Project > Project Settings > General > Audio
 # Text to Speech = ON
 
+var doc = """Text-to-speech."""
 var id = 0 # utterance id
 var ut_map = {}
 var vs # voices dictionary {name, id, language}

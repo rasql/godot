@@ -2,6 +2,8 @@
 class_name Grid
 extends Node2D
 
+var doc = """Create a new class Grid, using the _draw() function."""
+
 @export var rows = 5
 @export var lines = 5
 @export var color = Color.WHITE

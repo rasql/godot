@@ -1,5 +1,7 @@
 extends Tree
 
+var doc = """Tree with function to set a list."""
+
 @export var debug = false
 
 func set_list(list: Array, title="", _clear=true, show_size=true):

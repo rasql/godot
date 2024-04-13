@@ -1,5 +1,6 @@
 extends Node2D
 
+var doc = """Selects icons with mouse clicks"""
 var selected = null
 
 func _input(event):

@@ -1,5 +1,6 @@
 extends Control
 
+var doc = """Tree with multiple buttons."""
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,11 +37,6 @@ func _ready():
 	
 	var subchild1 = tree.create_item(item)
 	subchild1.set_text(0, "Subchild1")
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 
 func _on_tree_button_clicked(item, column, id, mouse_button_index):

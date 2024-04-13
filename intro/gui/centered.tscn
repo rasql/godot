@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dwn7yh5bbhgsk"]
 
 [node name="CenterContainer" type="CenterContainer"]
+editor_description = "CenterContainer demo"
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
