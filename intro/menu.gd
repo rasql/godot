@@ -49,6 +49,7 @@ func _input(event):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print('menu _ready()')
 	var voices = DisplayServer.tts_get_voices_for_language('en')
 	id = voices[0]
 	$AudioStreamPlayer.playing = false
@@ -56,6 +57,7 @@ func _ready():
 	folders = folders.filter(func(x) : return x not in ['audio', 'addons'])
 	$Dirs.set_list(folders)
 	$ColorRect/Label.text = doc
+	$Window.hide()
 
 
 func _on_dirs_cell_selected():
@@ -74,6 +76,18 @@ func _on_files_cell_selected():
 	#var i = item.get_index()
 	file = item.get_text(0)
 	var _path = path + folder + '/' + file + '.tscn'
+	
+	# show script code in a window
+	var script_path = path + folder + '/' + file + '.gd'
+	var f = FileAccess.open(script_path, FileAccess.READ)
+	if f:
+		$Window.show()
+		$Window.title = file + '.gd'
+		$Window/CodeEdit.text = f.get_as_text()
+	else:
+		$Window.hide()
+	
+	# load scene
 	scene = load(_path)
 	for child in $Control.get_children():
 		child.free()
@@ -92,6 +106,9 @@ func _on_files_cell_selected():
 		s= node.editor_description
 		
 	$ColorRect/Label.text = s
+	DisplayServer.tts_stop()
 	DisplayServer.tts_speak(s, id)
-	
-	
+
+
+func _on_window_close_requested():
+	$Window.hide()

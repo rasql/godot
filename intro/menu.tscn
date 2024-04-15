@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dp7iaq6wk5p8f"]
+[gd_scene load_steps=6 format=3 uid="uid://dp7iaq6wk5p8f"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_n5fqy"]
 [ext_resource type="Script" path="res://control/tree.gd" id="2_3hrqc"]
@@ -7,7 +7,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5nion"]
 size = Vector2(1346, 20)
 
-[node name="Node" type="Node"]
+[sub_resource type="SyntaxHighlighter" id="SyntaxHighlighter_sa8d2"]
+
+[node name="Menu" type="Node"]
 script = ExtResource("1_n5fqy")
 
 [node name="Control" type="Control" parent="."]
@@ -69,5 +71,25 @@ position = Vector2(531, 635)
 rotation = 0.0349066
 shape = SubResource("RectangleShape2D_5nion")
 
+[node name="Window" type="Window" parent="."]
+title = "Code"
+position = Vector2i(700, 100)
+size = Vector2i(400, 500)
+
+[node name="CodeEdit" type="CodeEdit" parent="Window"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+syntax_highlighter = SubResource("SyntaxHighlighter_sa8d2")
+highlight_all_occurrences = true
+gutters_draw_line_numbers = true
+gutters_draw_fold_gutter = true
+code_completion_enabled = true
+auto_brace_completion_enabled = true
+auto_brace_completion_highlight_matching = true
+
 [connection signal="cell_selected" from="Dirs" to="." method="_on_dirs_cell_selected"]
 [connection signal="cell_selected" from="Files" to="." method="_on_files_cell_selected"]
+[connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]

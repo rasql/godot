@@ -21,3 +21,4 @@ func _run():
 	print('randi() =', randi())	
 	for i in range(10):
 		printt(i, type_string(i))
+		

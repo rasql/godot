@@ -19,10 +19,6 @@ config/icon="res://icon.svg"
 
 general/text_to_speech=true
 
-[autoload]
-
-Menu="*res://menu.tscn"
-
 [display]
 
 window/stretch/mode="canvas_items"

@@ -1,6 +1,6 @@
 extends TextureRect
 
-var doc = """Click to add more cubes."""
+var doc = "Click to add more cubes"
 
 var scene = preload("res://2d/ball.tscn") # packed scene resource
 var cube = preload("res://2d/cube.tscn") # packed scene resource

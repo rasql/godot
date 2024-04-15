@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://crch2t538llov"]
+
+[ext_resource type="Script" path="res://misc/move.gd" id="1_yt4s3"]
+[ext_resource type="Texture2D" uid="uid://dhvfbc5h6wc85" path="res://icon.svg" id="2_0vf1o"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_yt4s3")
+
+[node name="Ball1" type="Sprite2D" parent="."]
+position = Vector2(216, 205)
+texture = ExtResource("2_0vf1o")
+
+[node name="Ball2" type="Sprite2D" parent="."]
+position = Vector2(582, 313)
+texture = ExtResource("2_0vf1o")
+
+[node name="Ball3" type="Sprite2D" parent="."]
+position = Vector2(334, 461)
+texture = ExtResource("2_0vf1o")

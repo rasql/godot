@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dxk0jwf8bhlty"]
+
+[node name="Dialog" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="Window" type="Window" parent="."]
+title = "Window"
+position = Vector2i(50, 36)
+size = Vector2i(300, 200)
+
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+position = Vector2i(500, 300)
+size = Vector2i(193, 106)
+visible = true
+dialog_text = "This is an AcceptDialog
+Live editing OK"
+dialog_autowrap = true
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+position = Vector2i(0, 300)
+size = Vector2i(450, 106)
+visible = true
+ok_button_text = "OK très bien"
+dialog_text = "This is a ConfirmationDialog. What would you like to do?"
+dialog_autowrap = true
+cancel_button_text = "Cancel, zut"
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open File(s)"
+position = Vector2i(500, 36)
+size = Vector2i(603, 159)
+visible = true
+ok_button_text = "Open"
+file_mode = 1
+access = 2

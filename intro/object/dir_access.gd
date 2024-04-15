@@ -23,6 +23,7 @@ func _ready():
 	files = dir.get_files()
 	$HBoxContainer/Dirs.set_list(folders, 'folders')
 	$HBoxContainer/Files.set_list(files, 'Files')
+	$Win
 
 
 func _on_dirs_cell_selected():

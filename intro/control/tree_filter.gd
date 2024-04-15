@@ -1,10 +1,14 @@
 extends Tree
 
 @export var debug = false
-var doc = """Tree with function to set a list."""
+var items
+var _title
+var doc = "TreeContainer with filter"
 
 
 func set_list(list: Array, title="", _clear=true, show_size=true):
+	items = list
+	_title = title
 	if _clear:
 		self.clear()
 	self.column_titles_visible = false
@@ -25,3 +29,21 @@ func _ready():
 	if debug:
 		var classes = ClassDB.get_class_list()
 		self.set_list(classes, 'Classes')
+
+
+func _on_filter_text_changed(new_text):
+	clear()
+	var root = create_item()
+	var i = 0
+	if !items:
+		return
+	for item in items:
+		var filter_empty = $Filter.text.is_empty()
+		var filter_match = $Filter.text.to_lower() in item.to_lower()
+		if (filter_empty or filter_match):
+			var child = create_item(root)
+			child.set_text(0, item)
+			i += 1
+	column_titles_visible = true
+	set_column_title(0, _title + " (%d)" % i)
+

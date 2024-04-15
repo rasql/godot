@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1n3fau4qbt16"]
+
+[ext_resource type="Script" path="res://win/win_code.gd" id="1_1w1wx"]
+
+[node name="Window" type="Window"]
+title = "Code"
+position = Vector2i(0, 36)
+size = Vector2i(200, 200)
+script = ExtResource("1_1w1wx")
+
+[node name="CodeEdit" type="CodeEdit" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "# replace with 
+# your code"
+symbol_lookup_on_click = true
+line_folding = true
+gutters_draw_executing_lines = true
+gutters_draw_line_numbers = true
+gutters_draw_fold_gutter = true
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]

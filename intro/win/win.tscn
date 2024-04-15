@@ -1,7 +1,10 @@
-[gd_scene format=3 uid="uid://b0url6c8mqhgq"]
+[gd_scene load_steps=2 format=3 uid="uid://b0url6c8mqhgq"]
+
+[ext_resource type="Script" path="res://win/win.gd" id="1_3t714"]
 
 [node name="Win" type="Node2D"]
 position = Vector2(-2, -1)
+script = ExtResource("1_3t714")
 
 [node name="Inspector" type="Window" parent="."]
 title = "Inspector"
@@ -46,3 +49,5 @@ keep_title_visible = true
 offset_right = 8.0
 offset_bottom = 8.0
 text = "Button"
+
+[connection signal="close_requested" from="Inspector" to="." method="_on_inspector_close_requested"]

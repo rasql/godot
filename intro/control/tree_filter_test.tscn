@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6xa7uy3ifr5a"]
+
+[ext_resource type="PackedScene" uid="uid://ch3by0jsag3mq" path="res://control/tree_filter.tscn" id="1_5uybb"]
+[ext_resource type="Script" path="res://control/tree_filter_test.gd" id="1_f55wb"]
+
+[node name="TreeFilterTest" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f55wb")
+
+[node name="Classes" parent="." instance=ExtResource("1_5uybb")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+
+[node name="Methods" parent="." instance=ExtResource("1_5uybb")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Signals" parent="." instance=ExtResource("1_5uybb")]
+layout_mode = 2
+size_flags_horizontal = 3

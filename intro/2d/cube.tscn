@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfy7d4akt6oo"]
+[gd_scene load_steps=6 format=3 uid="uid://dfy7d4akt6oo"]
 
-[ext_resource type="Script" path="res://2d/cube.gd" id="1_16f5b"]
 [ext_resource type="Texture2D" uid="uid://bkl6sugki20q" path="res://2d/kenney_rolling-ball-assets/PNG/Default/block_square.png" id="1_l4g8w"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gwris"]
@@ -15,8 +14,8 @@ polygon = PackedVector2Array(32, -32, 32, 32, -32, 32, -32, -32, 31, -32)
 size = Vector2(64, 64)
 
 [node name="Cube" type="RigidBody2D"]
+editor_description = "Cube with gravity"
 physics_material_override = SubResource("PhysicsMaterial_gwris")
-script = ExtResource("1_16f5b")
 metadata/_edit_group_ = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
