@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://cdehckmkmte4i"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2d6nn"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_1inmp"]
+sky_material = SubResource("ProceduralSkyMaterial_2d6nn")
+
+[sub_resource type="Environment" id="Environment_723uc"]
+background_mode = 2
+sky = SubResource("Sky_1inmp")
+tonemap_mode = 2
+ssao_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lbsj2"]
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_iduq7"]
+noise = SubResource("FastNoiseLite_lbsj2")
+
+[sub_resource type="FogMaterial" id="FogMaterial_8knsc"]
+density = 0.1
+density_texture = SubResource("NoiseTexture3D_iduq7")
+
+[node name="Interior" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, 0.17101, -0.469846, 3.27752e-16, 0.939693, 0.34202, 0.5, 0.296198, -0.813798, 0, 0, 0)
+light_color = Color(1, 0.92549, 0.658824, 1)
+light_energy = 1.5
+light_volumetric_fog_energy = 8.0
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_723uc")
+
+[node name="Building" type="CSGBox3D" parent="."]
+size = Vector3(20, 16, 20)
+metadata/_edit_lock_ = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Building"]
+operation = 2
+
+[node name="Interior" type="CSGBox3D" parent="Building/CSGCombiner3D"]
+size = Vector3(18, 14, 20)
+
+[node name="Overhang" type="CSGBox3D" parent="Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -8)
+size = Vector3(18, 4, 1)
+
+[node name="Pillar" type="CSGBox3D" parent="Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+size = Vector3(1, 14, 1)
+
+[node name="Pillar2" type="CSGBox3D" parent="Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -9)
+size = Vector3(1, 14, 1)
+
+[node name="Pillar3" type="CSGBox3D" parent="Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -9)
+size = Vector3(1, 14, 1)
+
+[node name="FogVolume" type="FogVolume" parent="."]
+size = Vector3(20, 16, 20)
+material = SubResource("FogMaterial_8knsc")
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="."]
+size = Vector3(30, 30, 30)
+interior = true

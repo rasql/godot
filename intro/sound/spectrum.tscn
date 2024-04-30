@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfyeamw4sg2af"]
+
+[ext_resource type="Script" path="res://sound/spectrum.gd" id="1_4lcya"]
+[ext_resource type="AudioStream" uid="uid://n3nrxm6k0u2k" path="res://sound/maldita.ogg" id="2_tqwui"]
+
+[node name="ShowSpectrum" type="Node2D"]
+script = ExtResource("1_4lcya")
+
+[node name="Player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_tqwui")
+autoplay = true

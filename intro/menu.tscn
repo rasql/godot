@@ -1,16 +1,43 @@
-[gd_scene load_steps=6 format=3 uid="uid://dp7iaq6wk5p8f"]
+[gd_scene load_steps=9 format=3 uid="uid://dp7iaq6wk5p8f"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_n5fqy"]
 [ext_resource type="Script" path="res://control/tree.gd" id="2_3hrqc"]
 [ext_resource type="AudioStream" uid="uid://bd21s3i1tuert" path="res://audio/kenney_impact-sounds/Audio/impactWood_light_000.ogg" id="2_aos1x"]
+
+[sub_resource type="AudioStream" id="AudioStream_7yrm5"]
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_ynbx5"]
+
+[sub_resource type="AnimationRootNode" id="AnimationRootNode_hj08h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5nion"]
 size = Vector2(1346, 20)
 
 [sub_resource type="SyntaxHighlighter" id="SyntaxHighlighter_sa8d2"]
 
-[node name="Menu" type="Node"]
+[node name="Menu" type="Node" node_paths=PackedStringArray("node", "node_2d")]
 script = ExtResource("1_n5fqy")
+dict = {
+"id": 1009,
+"name": "James",
+Vector2(2, 3): 0.123
+}
+f = "res://addons/godot-git-plugin/LICENSE"
+dir = "res://2d"
+i = 10.748
+j = 3.039
+k = 3.2
+col = Color(1, 0.756863, 0.121569, 0.415686)
+node = NodePath("ColorRect")
+node_2d = NodePath("StaticBody2D/CollisionShape2D")
+resource = SubResource("AudioStream_7yrm5")
+resource2 = SubResource("AnimationNodeBlendSpace1D_ynbx5")
+resource3 = SubResource("AnimationRootNode_hj08h")
+enums = -1
+character_class = 2
+character_speed = 200
+character_name = "Leah"
+flag = true
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -48,7 +75,6 @@ autoplay = true
 [node name="Dirs" type="Tree" parent="."]
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_top = 31.0
 offset_right = 113.0
 grow_vertical = 2
 mouse_default_cursor_shape = 2
@@ -58,7 +84,6 @@ script = ExtResource("2_3hrqc")
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_left = 113.0
-offset_top = 31.0
 offset_right = 278.0
 grow_vertical = 2
 mouse_default_cursor_shape = 2

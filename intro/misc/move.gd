@@ -1,3 +1,4 @@
+@tool
 extends Node2D
 
 var doc = "Rotate, move in a circle, and move via keys."

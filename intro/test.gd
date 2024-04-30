@@ -2,6 +2,8 @@
 extends EditorScript
 
 var classes
+@export var string = 'Hello'
+
 
 # This function is run from the Editor's File menu 
 # Shortcut : cmd + maj + X
