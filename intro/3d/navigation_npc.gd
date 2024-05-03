@@ -13,5 +13,5 @@ func _unhandled_input(event):
 		
 func _physics_process(delta):
 	var destination = navigation_agent_3d.get_next_path_position()
-	var local_destination = destination - global
+	#var local_destination = destination - global
 		

@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm1hfl68c36b"]
+
+[ext_resource type="Script" path="res://draw/grid_test.gd" id="1_vep1j"]
+[ext_resource type="Script" path="res://draw/grid.gd" id="2_0ybu2"]
+
+[node name="GridTest" type="Node2D"]
+position = Vector2(352, 176)
+script = ExtResource("1_vep1j")
+
+[node name="@Node2D@30677" type="Node2D" parent="."]
+position = Vector2(-312, 128)
+script = ExtResource("2_0ybu2")
+rows = 2
+lines = 9
+color = Color(1, 0.203922, 1, 1)
+width = 5
+
+[node name="_Node2D_30677" type="Node2D" parent="."]
+position = Vector2(432, 80)
+rotation = 0.68605
+scale = Vector2(0.959643, 1.10196)
+script = ExtResource("2_0ybu2")
+rows = 2
+lines = 9
+color = Color(0.238984, 0.730138, 0.658817, 1)
+width = 8
+
+[node name="@Node2D@33183" type="Node2D" parent="."]
+position = Vector2(-296, -120)
+script = ExtResource("2_0ybu2")
+
+[node name="@Node2D@36291" type="Node2D" parent="."]
+position = Vector2(152, -72)
+rotation = 0.0569974
+script = ExtResource("2_0ybu2")
+color = Color(1, 1, 0.054902, 1)
+width = 7
+
+[node name="@Node2D@17553" type="Node2D" parent="."]
+script = ExtResource("2_0ybu2")

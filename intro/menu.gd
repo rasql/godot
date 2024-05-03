@@ -32,10 +32,10 @@ var doc := """Select the category and the scene to display."""
 @export_dir var dir
 
 @export_group("Ranges")
-@export_range(0, 20) var i
-@export_range(-10, 20) var j
+@export_range(0, 20) var i : int
+@export_range(-10, 20) var j : int
 @export_range(-10, 20, 0.2) var k: float
-@export_exp_easing var transition_speed = 0.1
+@export_exp_easing var transition_speed : float = 0.1
 @export var col := Color.RED
 @export_color_no_alpha var col2: Color
 
@@ -56,13 +56,13 @@ enum NamedEnum {THING_1, THING_2, ANOTHER_THING = -1}
 @export_enum("Rebecca", "Mary", "Leah") var character_name: String
 
 @export_category("Category")
-@export var string = "hi"
-@export var flag = false
+@export var string := "hi"
+@export var flag := false
 
 var path = "res://"
-var folders
-var folder
-var files
+var folders : Array
+var folder : String
+var files : Array
 var file
 var scene
 var scenes

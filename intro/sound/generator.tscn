@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://deuhq8h4ymo7y"]
+[gd_scene load_steps=4 format=3 uid="uid://deuhq8h4ymo7y"]
 
 [ext_resource type="Script" path="res://sound/generator.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://dfyeamw4sg2af" path="res://sound/spectrum.tscn" id="2_1v7hl"]
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_8tsrq"]
 buffer_length = 0.1
@@ -96,6 +97,9 @@ popup/item_1/text = "triangle"
 popup/item_1/id = 1
 popup/item_2/text = "square"
 popup/item_2/id = 2
+
+[node name="ShowSpectrum" parent="." instance=ExtResource("2_1v7hl")]
+position = Vector2(33, 267)
 
 [connection signal="value_changed" from="CenterContainer/Frequency/FrequencyHSlider" to="." method="_on_frequency_h_slider_value_changed"]
 [connection signal="value_changed" from="CenterContainer/Volume/VolumeHSlider" to="." method="_on_volume_h_slider_value_changed"]

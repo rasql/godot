@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtof82h6i2xr5"]
+
+[ext_resource type="Script" path="res://draw/grid.gd" id="1_qe5b8"]
+
+[node name="Grid" type="Node2D"]
+process_mode = 3
+position = Vector2(80, 80)
+script = ExtResource("1_qe5b8")
+rows = 11
+lines = 2
+color = Color(0.0470588, 1, 1, 1)

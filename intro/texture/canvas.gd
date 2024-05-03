@@ -6,7 +6,7 @@ var doc = """Shows a CanvasTexture and three Grid nodes."""
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
-	var g = load("res://texture/grid.tscn").instantiate()
+	var g = load("res://draw/grid.tscn").instantiate()
 	g.position = Vector2(400, 100)
 	g.scale = Vector2(0.5, 0.5)
 	g.color = Color.GOLD

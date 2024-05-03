@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://q8gxw0h30qua"]
+
+[ext_resource type="Script" path="res://draw/draw.gd" id="1_6pidb"]
+[ext_resource type="PackedScene" uid="uid://5ejf8vn5srbv" path="res://draw/robot.tscn" id="2_2khgm"]
+[ext_resource type="Texture2D" uid="uid://dhvfbc5h6wc85" path="res://icon.svg" id="2_x7h8e"]
+[ext_resource type="PackedScene" uid="uid://dfyeamw4sg2af" path="res://sound/spectrum.tscn" id="3_g8aju"]
+
+[node name="Draw" type="Node2D"]
+script = ExtResource("1_6pidb")
+texture = ExtResource("2_x7h8e")
+length = 200
+w = 20
+
+[node name="Robot" parent="." instance=ExtResource("2_2khgm")]
+position = Vector2(424, 200)
+color2 = Color(0.15786, 0.924949, 0.920609, 1)
+color3 = Color(0.964706, 0.0705882, 0.756863, 1)
+
+[node name="Robot2" parent="." instance=ExtResource("2_2khgm")]
+position = Vector2(104, 392)
+scale = Vector2(1.70671, 2.55068)
+color = Color(0.69001, 0.292885, 0.92819, 1)
+color2 = Color(0.98443, 0.903402, 0.954775, 1)
+
+[node name="Robot3" parent="." instance=ExtResource("2_2khgm")]
+position = Vector2(744, 296)
+scale = Vector2(2.71827, 3.14129)
+color = Color(0.233852, 0.599107, 0.467227, 1)
+color2 = Color(0.989641, 0.936869, 0.970063, 1)
+color3 = Color(0.41093, 0.250432, 0.890091, 1)
+
+[node name="ShowSpectrum" parent="." instance=ExtResource("3_g8aju")]
+position = Vector2(328, 344)

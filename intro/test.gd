@@ -24,3 +24,8 @@ func _run():
 	for i in range(10):
 		printt(i, type_string(i))
 		
+	var parent = get_scene().get_node("Parent")
+	print(parent)
+	var node = Button.new()
+	parent.add_child(node)
+		

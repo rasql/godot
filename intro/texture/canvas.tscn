@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cwdj6crk8wpwy"]
 
 [ext_resource type="Script" path="res://texture/canvas.gd" id="1_q1uu3"]
-[ext_resource type="PackedScene" uid="uid://dtof82h6i2xr5" path="res://texture/grid.tscn" id="2_cbfsh"]
+[ext_resource type="PackedScene" uid="uid://dtof82h6i2xr5" path="res://draw/grid.tscn" id="2_cbfsh"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_vluo3"]
 specular_color = Color(0.541176, 0.776471, 0.921569, 1)
