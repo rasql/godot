@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c0783jr7nkjns" path="res://2d/kenney_rolling-ball-assets/PNG/Default/ball_blue_large.png" id="1_6ri7k"]
 [ext_resource type="Script" path="res://2d/ball.gd" id="1_rjtmt"]
-[ext_resource type="AudioStream" uid="uid://ty2t3j045iw3" path="res://audio/kenney_impact-sounds/Audio/impactSoft_medium_000.ogg" id="3_fywcm"]
+[ext_resource type="AudioStream" uid="uid://ty2t3j045iw3" path="res://assets/kenney_impact-sounds/Audio/impactSoft_medium_000.ogg" id="3_fywcm"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gwris"]
 bounce = 1.0

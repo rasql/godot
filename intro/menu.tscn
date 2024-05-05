@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://menu.gd" id="1_n5fqy"]
 [ext_resource type="Script" path="res://control/tree.gd" id="2_3hrqc"]
-[ext_resource type="AudioStream" uid="uid://bd21s3i1tuert" path="res://audio/kenney_impact-sounds/Audio/impactWood_light_000.ogg" id="2_aos1x"]
+[ext_resource type="AudioStream" uid="uid://bd21s3i1tuert" path="res://assets/kenney_impact-sounds/Audio/impactWood_light_000.ogg" id="2_aos1x"]
 
 [sub_resource type="AudioStream" id="AudioStream_7yrm5"]
 

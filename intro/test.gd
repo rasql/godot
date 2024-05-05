@@ -4,6 +4,9 @@ extends EditorScript
 var classes
 @export var string = 'Hello'
 
+# ATTENTION
+# WARNING
+# INFO
 
 # This function is run from the Editor's File menu 
 # Shortcut : cmd + maj + X
@@ -21,11 +24,22 @@ func _run():
 	print('db 80 = ', db_to_linear(80))
 	print('randf() =', randf())
 	print('randi() =', randi())	
-	for i in range(10):
+	for i in 10:
 		printt(i, type_string(i))
 		
-	var parent = get_scene().get_node("Parent")
-	print(parent)
-	var node = Button.new()
-	parent.add_child(node)
+	#var parent = get_scene().get_node("Parent")
+	#print(parent)
+	#var node = Button.new()
+	#par
+	
+	# loop variables (i, c, e) do not need to be declared
+	# they only exist in the scope of the loop
+	for i in 3:
+		print(i)
+	for c in 'abc':
+		print(c)
+	for e in [1, true, 'abc']:
+		print(e)
+	
+	
 		

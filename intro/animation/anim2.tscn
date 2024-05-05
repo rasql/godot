@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://2tt8e1y2lrr6"]
 
 [ext_resource type="Texture2D" uid="uid://dhvfbc5h6wc85" path="res://icon.svg" id="1_na0dr"]
-[ext_resource type="AudioStream" uid="uid://ctrbfpvfsoisf" path="res://audio/kenney_sci-fi-sounds/Audio/doorClose_000.ogg" id="2_tbgmu"]
-[ext_resource type="AudioStream" uid="uid://bypunlvfirdni" path="res://audio/kenney_sci-fi-sounds/Audio/doorOpen_002.ogg" id="3_ggq63"]
+[ext_resource type="AudioStream" uid="uid://ctrbfpvfsoisf" path="res://assets/kenney_sci-fi-sounds/Audio/doorClose_000.ogg" id="2_tbgmu"]
+[ext_resource type="AudioStream" uid="uid://bypunlvfirdni" path="res://assets/kenney_sci-fi-sounds/Audio/doorOpen_002.ogg" id="3_ggq63"]
 
 [sub_resource type="Animation" id="Animation_t3o65"]
 resource_name = "new_animation"

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwpg1u8cphqds"]
+
+[ext_resource type="Script" path="res://audio/key.gd" id="1_0ia45"]
+[ext_resource type="PackedScene" uid="uid://cc2fhev5s4pbt" path="res://audio/spectrum.tscn" id="3_kvv0w"]
+
+[node name="Key" type="Node"]
+script = ExtResource("1_0ia45")
+
+[node name="Spectrum" parent="." instance=ExtResource("3_kvv0w")]
+position = Vector2(40, 308)
+n = 128

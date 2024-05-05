@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://2d/ball2.gd" id="1_guhju"]
 [ext_resource type="Texture2D" uid="uid://bni7yn7y7048k" path="res://2d/ball.png" id="1_vrxia"]
-[ext_resource type="AudioStream" uid="uid://ty2t3j045iw3" path="res://audio/kenney_impact-sounds/Audio/impactSoft_medium_000.ogg" id="3_v6ocu"]
+[ext_resource type="AudioStream" uid="uid://ty2t3j045iw3" path="res://assets/kenney_impact-sounds/Audio/impactSoft_medium_000.ogg" id="3_v6ocu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8vjt2"]
 rough = true

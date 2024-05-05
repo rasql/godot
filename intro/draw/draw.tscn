@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://draw/draw.gd" id="1_6pidb"]
 [ext_resource type="PackedScene" uid="uid://5ejf8vn5srbv" path="res://draw/robot.tscn" id="2_2khgm"]
 [ext_resource type="Texture2D" uid="uid://dhvfbc5h6wc85" path="res://icon.svg" id="2_x7h8e"]
-[ext_resource type="PackedScene" uid="uid://dfyeamw4sg2af" path="res://sound/spectrum.tscn" id="3_g8aju"]
+[ext_resource type="PackedScene" uid="uid://dfyeamw4sg2af" path="res://audio/spectrum.tscn" id="3_g8aju"]
 
 [node name="Draw" type="Node2D"]
 script = ExtResource("1_6pidb")

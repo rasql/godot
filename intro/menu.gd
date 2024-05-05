@@ -118,7 +118,7 @@ func _ready():
 	id = voices[0]
 	$AudioStreamPlayer.playing = false
 	folders = Array(DirAccess.get_directories_at(path))
-	folders = folders.filter(func(x) : return x not in ['audio', 'addons'])
+	folders = folders.filter(func(x) : return x not in ['VisualShaderNodeScreenUVToSDF', 'addons'])
 	$Dirs.set_list(folders)
 	$ColorRect/Label.text = doc
 	$Window.hide()

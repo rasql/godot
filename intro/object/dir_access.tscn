@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b6hfjsdk5nre2" path="res://control/tree.tscn" id="1_r4f8t"]
 [ext_resource type="Script" path="res://object/dir_access.gd" id="1_t7pw5"]
-[ext_resource type="AudioStream" uid="uid://cyhepq5gx5tdc" path="res://audio/kenney_sci-fi-sounds/Audio/computerNoise_000.ogg" id="3_176hq"]
+[ext_resource type="AudioStream" uid="uid://cyhepq5gx5tdc" path="res://assets/kenney_sci-fi-sounds/Audio/computerNoise_000.ogg" id="3_176hq"]
 
 [sub_resource type="CodeHighlighter" id="CodeHighlighter_qy2x0"]
 

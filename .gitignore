@@ -7,7 +7,6 @@ export.cfg
 export_presets.cfg
 # ho
 addons/
-audio/
 web/
 
 # Imported translations (automatically generated from CSV files)

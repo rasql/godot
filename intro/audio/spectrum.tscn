@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc2fhev5s4pbt"]
+
+[ext_resource type="Script" path="res://audio/spectrum.gd" id="1_4lcya"]
+[ext_resource type="PackedScene" uid="uid://cmcc03m31jns5" path="res://audio/plot.tscn" id="3_m62ah"]
+
+[node name="Spectrum" type="Node2D"]
+script = ExtResource("1_4lcya")
+
+[node name="Plot" parent="." instance=ExtResource("3_m62ah")]
+size = Vector2(1000, 300)
