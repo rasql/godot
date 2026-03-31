@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2wxroqmj0jq6"]
+
+[ext_resource type="PackedScene" uid="uid://sqx83mgs2ndi" path="res://3d/room.tscn" id="1_tbheh"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6il0r"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_8xx6l"]
+sky_material = SubResource("ProceduralSkyMaterial_6il0r")
+
+[sub_resource type="Environment" id="Environment_eh5t1"]
+background_mode = 2
+sky = SubResource("Sky_8xx6l")
+tonemap_mode = 2
+ssao_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+volumetric_fog_albedo = Color(1, 1, 0.560784, 1)
+
+[node name="Interior2" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_eh5t1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.822144, -0.194705, 0.534948, 3.27752e-16, 0.939693, 0.34202, -0.56928, 0.28119, -0.772563, 0, 0, 0)
+light_energy = 1.5
+light_volumetric_fog_energy = 8.0
+shadow_enabled = true
+
+[node name="Room" parent="." instance=ExtResource("1_tbheh")]

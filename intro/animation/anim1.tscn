@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ix11x85okm0y"]
+[gd_scene load_steps=9 format=3 uid="uid://ix11x85okm0y"]
 
 [ext_resource type="Texture2D" uid="uid://dhvfbc5h6wc85" path="res://icon.svg" id="1_6eu8p"]
 [ext_resource type="Script" path="res://animation/anim1.gd" id="1_abnes"]
@@ -164,12 +164,53 @@ tracks/1/keys = {
 "values": [Vector2(1, 1), Vector2(5, 5)]
 }
 
+[sub_resource type="Animation" id="Animation_0u0do"]
+resource_name = "talk"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.6, 1.7, 3.3, 4.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": ["hello"],
+"method": &"talk"
+}, {
+"args": ["world"],
+"method": &"talk"
+}, {
+"args": ["tomorrow"],
+"method": &"talk"
+}, {
+"args": ["future"],
+"method": &"talk"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Icon:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6, 1.7, 3.3, 4.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(160, 119), Vector2(506, 78), Vector2(957.744, 250.385), Vector2(489.794, 488.639)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mxs6p"]
 _data = {
 "RESET": SubResource("Animation_fhveg"),
 "position": SubResource("Animation_vcw3b"),
 "rotation": SubResource("Animation_a2h40"),
-"scale": SubResource("Animation_h2v7n")
+"scale": SubResource("Animation_h2v7n"),
+"talk": SubResource("Animation_0u0do")
 }
 
 [node name="Anim1" type="Node2D"]
@@ -184,13 +225,14 @@ offset_left = -58.2415
 offset_top = -91.7373
 offset_right = 4.75851
 offset_bottom = -68.7373
+scale = Vector2(3, 3)
 text = "position"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_mxs6p")
 }
-autoplay = "position"
+autoplay = "talk"
 movie_quit_on_finish = true
 
 [node name="Icon2" type="Sprite2D" parent="."]

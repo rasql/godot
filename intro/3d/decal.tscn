@@ -35,6 +35,7 @@ custom_aabb = AABB(2.08165e-12, 2, 2.08165e-12, 2.08165e-12, 2.08165e-12, 2.0816
 [node name="Decal" type="Node3D"]
 
 [node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 mesh = SubResource("PlaneMesh_l5vur")
 skeleton = NodePath("../MeshInstance3D3/Decal5")
 
@@ -57,28 +58,34 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.99056, 0, 0.137081, 0, 1, 0, -0.137081, 0, 0.99056, 2.08165e-12, 1.47554, -1.306)
+transform = Transform3D(0.99056, 0, 0.137081, 0, 1, 0, -0.137081, 0, 0.99056, 2.08165e-12, 1.09869, -1.306)
 mesh = SubResource("BoxMesh_hncq5")
 
 [node name="Decal" type="Decal" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, -1.2728e-08, 0, 1, 0, -1.2728e-08, 0, 1, -0.243907, 0.913715, -0.0807587)
+transform = Transform3D(0.999997, 0, -4.23016e-07, 0, 1, 0, 3.38367e-07, 0, 0.99999, -0.243907, 0.913715, -0.240915)
+size = Vector3(2, 2, 2.32031)
 texture_albedo = ExtResource("1_ftak7")
+modulate = Color(0.0627451, 1, 1, 1)
 
 [node name="Decal2" type="Decal" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, -3.73872e-08, 0, 1, 0, 1.39061e-08, 0, 1, -2.4358, 0.913715, 0.0447928)
+transform = Transform3D(1, 0, -5.17809e-08, 0, 1, 0, 3.21951e-08, 0, 1, -2.42701, 1.03862, 0.0578399)
 texture_albedo = ExtResource("1_ftak7")
 
 [node name="Decal4" type="Decal" parent="MeshInstance3D"]
-transform = Transform3D(0.999999, -4.94079e-08, -6.83074e-16, -1.5246e-23, -4.37114e-08, -1, 1.30621e-08, 1, -4.37113e-08, 2.33504, -0.000946164, -0.496137)
+transform = Transform3D(0.999999, -6.6682e-08, 1.33288e-15, -1.5246e-23, -4.37114e-08, -1, 1.61685e-08, 1, -4.37113e-08, 2.2906, -0.0446098, -0.501999)
 texture_albedo = ExtResource("1_ftak7")
 
 [node name="Decal3" type="Decal" parent="MeshInstance3D"]
-transform = Transform3D(0.999999, 0, -1.5246e-23, -1.52459e-23, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.02791, 0.0659224, 0.662516)
+transform = Transform3D(0.999999, -3.54396e-08, 5.66747e-17, -1.52459e-23, -4.37114e-08, -1, 1.60279e-08, 1, -4.37114e-08, 2.32065, 0.415865, -2.16191)
 size = Vector3(1, 1, 1)
 texture_albedo = ExtResource("1_ftak7")
 
+[node name="Decal5" type="Decal" parent="MeshInstance3D"]
+transform = Transform3D(0.999997, 0, -2.46965e-07, 0, 1, 0, 5.86213e-08, 0, 0.999998, 2.8346, 1, 1.4018)
+texture_albedo = ExtResource("1_ftak7")
+
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1.16469, -2.765)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.32748, 1.16469, -4.17038)
 mesh = SubResource("CapsuleMesh_byaed")
 
 [node name="Decal5" type="Decal" parent="MeshInstance3D2"]

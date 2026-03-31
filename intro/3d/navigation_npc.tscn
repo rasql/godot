@@ -18,3 +18,5 @@ shape = SubResource("ConvexPolygonShape3D_wx1k1")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 debug_enabled = true
+debug_path_custom_color = Color(1, 0.0156863, 0.0156863, 1)
+debug_path_custom_point_size = 20.0

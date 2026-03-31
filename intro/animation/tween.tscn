@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjw4rq4x1oye8"]
+
+[ext_resource type="Script" path="res://animation/tween.gd" id="1_88bwx"]
+[ext_resource type="Texture2D" uid="uid://dhvfbc5h6wc85" path="res://icon.svg" id="2_xn1jr"]
+
+[node name="Tween" type="Node2D"]
+script = ExtResource("1_88bwx")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(299.5, 177.5)
+texture = ExtResource("2_xn1jr")
