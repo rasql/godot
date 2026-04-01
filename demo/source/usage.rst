@@ -39,3 +39,19 @@ To insert an image, you can use the ``.. image::`` directive:
 To insert an image, you can use the ``.. image::`` directive:
 
 .. image:: images/obj_scene.png
+
+
+.. image:: images/obj_scene.png
+   :width: 50%
+   :align: center
+
+
+.. image:: images/obj_scene.png
+   :width: 100px
+   :align: right
+
+
+Web
+---
+
+

@@ -57,6 +57,11 @@ Source: https://www.sphinx-doc.org/en/master/tutorial/getting-started.html
 - open the file `build/html/index.html``
 
 
+## Take image capture
 
+- press `cmd+ctrl+5``
+- select the region
+- save to the `image` folder
+- rename
 
 
