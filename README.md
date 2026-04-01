@@ -61,7 +61,10 @@ Source: https://www.sphinx-doc.org/en/master/tutorial/getting-started.html
 
 - press `cmd+ctrl+5``
 - select the region
-- save to the `image` folder
+- save to the `images` folder
 - rename
 
+## HTML5 Games 
+
+- Place the HTML5 games into the `_static` folder
 

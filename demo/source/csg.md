@@ -27,6 +27,8 @@ Create this complex shapes which are combined from a
 
 [Folder](../../csg/web)
 
+## Files in _static
 
+[CSG Demo](_static/web/CSG.html)
 
 

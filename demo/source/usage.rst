@@ -51,7 +51,14 @@ To insert an image, you can use the ``.. image::`` directive:
    :align: right
 
 
-Web
----
+Folders
+-------
+
+root
+  :doc:`\`
+
+root
+  :doc:`\_static`
+
 
 
