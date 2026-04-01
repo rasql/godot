@@ -20,8 +20,17 @@ Create this complex shapes which are combined from a
 
 ![scene](images/ex2_scene.png)
 
-## Web demo
+## Local host
 
+CSG
+[CSG](localhost:5500/docs/csg/index.html)
+
+[link](http://127.0.0.1:5500/docs/csg/index.html)
+
+Web
+[Instantiation](localhost:5500/docs/web/index.html)
+
+[link](http://127.0.0.1:5500/docs/web/index.html)
 
 
 
