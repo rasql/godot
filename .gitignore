@@ -21,6 +21,3 @@ mono_crash.*.json
 .DS_Store
 .venv
 build
-_build
-_static
-_templates
