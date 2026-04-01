@@ -23,12 +23,5 @@ Create this complex shapes which are combined from a
 ## Web demo
 
 
-[CSG Demo](../../csg/web/CSG.html)
-
-[Folder](../../csg/web)
-
-## Files in _static
-
-[CSG Demo](_static/web/CSG.html)
 
 
