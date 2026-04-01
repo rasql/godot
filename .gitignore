@@ -19,4 +19,8 @@ mono_crash.*.json
 
 # Mac-specific
 .DS_Store
-
+.venv
+build
+_build
+_static
+_templates
