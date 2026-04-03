@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bug5r86tbasvo"]
+
+[ext_resource type="PackedScene" uid="uid://bcbmgya3u763g" path="res://player.tscn" id="1_jo5df"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ilmep"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_jo5df"]
+sky_material = SubResource("ProceduralSkyMaterial_ilmep")
+
+[sub_resource type="Environment" id="Environment_a4gjy"]
+background_mode = 2
+sky = SubResource("Sky_jo5df")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="SceneManager" type="Node3D" unique_id=2090495643]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1815653950]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=607180567]
+environment = SubResource("Environment_a4gjy")
+
+[node name="Floor" type="CSGBox3D" parent="." unique_id=1978330804]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(10, 1, 10)
+
+[node name="Player" parent="." unique_id=1392281023 instance=ExtResource("1_jo5df")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44031894, 0.5378349, 2.1666079)
+speed = 20.0
+jump_impulse = 10.0
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1769920733]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1.5)
+use_collision = true

@@ -62,9 +62,27 @@ Source: https://www.sphinx-doc.org/en/master/tutorial/getting-started.html
 - press `cmd+ctrl+5``
 - select the region
 - save to the `images` folder
-- rename
+- rename the captures
 
 ## HTML5 Games 
 
-- Place the HTML5 games into the `_static` folder
+Export the HTML5 files from Godot. The folder contains:
 
+- index.html (the entry point)
+- index.wasm (web assembly, 36 Mb)
+- index.pck
+- index.js
+- index.png
+
+Place the HTML5 games into the `docs` folder.  
+Add full links to the game like this:
+
+```
+[link](https://rasql.github.io/godot/csg/index.html)
+```
+
+# Godot
+
+- ziping an almost empty Godot project produces a 2.6 MB file
+- exporting with **Project > Pack Project as ZIP...** makes a 3 KB file
+- it does not contain the .godot file

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b1c0dgstjln50"]
+
+[ext_resource type="Script" uid="uid://cpw8r51f6dvx5" path="res://stairs.gd" id="1_l5oqe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l5oqe"]
+albedo_color = Color(1, 1, 0.08627451, 1)
+
+[node name="Stairs" type="Node3D" unique_id=476667031]
+script = ExtResource("1_l5oqe")
+repeat = 9
+material = SubResource("StandardMaterial3D_l5oqe")
