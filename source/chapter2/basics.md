@@ -2,6 +2,7 @@
 
 [Preview the game](../basics.html){.external}
 
+
 In this chapter we are placing the basis
 
 We create an Autoload function with 
