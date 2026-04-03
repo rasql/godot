@@ -1,6 +1,6 @@
 # Basics
 
-[Preview the game](../web/basics.html){.external}
+[Preview the game](../basics.html){.external}
 
 In this chapter we are placing the basis
 
