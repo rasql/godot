@@ -67,8 +67,9 @@ html_static_path = ['_static']
 epub_show_urls = 'footnote'
 
 html_extra_path = [
-    'chapter1/godot',
-    'chapter2/godot',
+    'chapter1/web',
+    'chapter2/web',
+    'chapter3/web',
     ]
 
 

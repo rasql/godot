@@ -1,5 +1,7 @@
 # Basics
 
+[Preview the game](../web/basics.html){.external}
+
 In this chapter we are placing the basis
 
 We create an Autoload function with 
@@ -162,13 +164,8 @@ func create():
 
 ## Download links
 
-Download a {download}`Godot Script <godot/basics/player.gd>`.
+Download a {download}`Godot Script <basics/player.gd>`.
 
-Download a {download}`Godot Scene <godot/basics/player.tscn>`.
+Download a {download}`Godot Scene <basics/player.tscn>`.
 
-Download a {download}`Godot Project <godot/basics.zip>`.
-
-
-## View the game
-
-View the [See the game](../web/basics.html){.external}
+Download a {download}`Godot Project <basics.zip>`.

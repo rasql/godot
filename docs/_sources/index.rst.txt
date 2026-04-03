@@ -12,8 +12,6 @@ This documentation shows with many small examples how to
 - visualize them in the editor
 
 
-
-
 .. note::
 
    This project is under active development.
@@ -24,9 +22,9 @@ This documentation shows with many small examples how to
 
 
    introduction
-   csg
    chapter1/text
    chapter2/basics
+   chapter3/csg
 
 
 
