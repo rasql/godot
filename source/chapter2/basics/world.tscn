@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://bug5r86tbasvo"]
+
+[ext_resource type="PackedScene" uid="uid://bcbmgya3u763g" path="res://player.tscn" id="1_f3sb7"]
+[ext_resource type="Texture2D" uid="uid://flptxw511216" path="res://icon.svg" id="2_fj7yv"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ilmep"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_jo5df"]
+sky_material = SubResource("ProceduralSkyMaterial_ilmep")
+
+[sub_resource type="Environment" id="Environment_a4gjy"]
+background_mode = 2
+sky = SubResource("Sky_jo5df")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f3sb7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tlwt5"]
+albedo_texture = ExtResource("2_fj7yv")
+
+[sub_resource type="SphereMesh" id="SphereMesh_f3sb7"]
+material = SubResource("StandardMaterial3D_tlwt5")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fj7yv"]
+
+[node name="World" type="Node3D" unique_id=2090495643]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1815653950]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=607180567]
+environment = SubResource("Environment_a4gjy")
+
+[node name="Floor" type="CSGBox3D" parent="." unique_id=1978330804]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0007381439, -0.5168724, 0.010953903)
+use_collision = true
+size = Vector3(100, 1, 100)
+
+[node name="Player" parent="." unique_id=1392281023 instance=ExtResource("1_f3sb7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.238734, 0.047700644, 3.4306617)
+speed = 20.0
+jump_impulse = 10.0
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=827914848]
+transform = Transform3D(0.5435639, 0, -0.4486643, 0, 2, 0, -0.13825858, 0, 3.7935414, 0.3044728, 1.7854393, 3.7831473)
+fov = 71.93616
+
+[node name="Label3D" type="Label3D" parent="." unique_id=111590810]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9060235, 0)
+text = "Label3D
+"
+
+[node name="Label" type="Label" parent="." unique_id=847278729]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "Use WASD keys to move player
+Use Space key to jump
+Use mouse to move camera"
+
+[node name="CSG" type="Node3D" parent="." unique_id=1514107598]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSG" unique_id=1204793962]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+use_collision = true
+
+[node name="Label3D" type="Label3D" parent="CSG/CSGBox3D" unique_id=1635444818]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "CSGBox3D"
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSG" unique_id=139511372]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51732, 0.5, 0)
+use_collision = true
+height = 1.0
+sides = 16
+
+[node name="Label3D" type="Label3D" parent="CSG/CSGCylinder3D" unique_id=1527478072]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "CSGCylinder3D"
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSG" unique_id=1253397708]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0173202, 0.5, 0)
+use_collision = true
+radial_segments = 24
+rings = 12
+
+[node name="Label3D" type="Label3D" parent="CSG/CSGSphere3D" unique_id=4062639]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "CSGSphere3D"
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1475026101]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_f3sb7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=1064807364]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("SphereMesh_f3sb7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1830988736]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_fj7yv")
+
+[node name="Label3D" type="Label3D" parent="RigidBody3D" unique_id=747826025]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+billboard = 1
+text = "RigidBody3D
+MeshInstance3D"

@@ -8,6 +8,7 @@ export_presets.cfg
 # ho
 addons/
 web/
+*.import
 
 # Imported translations (automatically generated from CSV files)
 *.translation

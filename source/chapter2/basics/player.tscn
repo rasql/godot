@@ -4,24 +4,31 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4flbx"]
+albedo_color = Color(0.9003103, 0.73856676, 0.1712198, 1)
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4flbx"]
 
 [node name="Player" type="RigidBody3D" unique_id=1392281023]
 lock_rotation = true
+linear_damp = 3.0
 script = ExtResource("1_4flbx")
-speed = 10
-jump_impulse = null
+speed = 10.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=413932956]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_sh265")
+surface_material_override/0 = SubResource("StandardMaterial3D_4flbx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1041196373]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_4flbx")
 
-[node name="Pivot" type="Node3D" parent="." unique_id=1058477785]
-transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 1.5, 0)
+[node name="TwistPivot" type="Node3D" parent="." unique_id=1058477785]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 2.5, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Pivot" unique_id=1584818633]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+[node name="PitchPivot" type="Node3D" parent="TwistPivot" unique_id=658285416]
+transform = Transform3D(1, 0, 0, 0, 0.98739487, -0.15827878, 0, 0.15827878, 0.98739487, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="TwistPivot/PitchPivot" unique_id=1584818633]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 2.9802322e-08, 0, -2.9802322e-08, 1.0000001, 0, 2.3841858e-07, 2)
