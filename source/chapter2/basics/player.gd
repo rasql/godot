@@ -10,10 +10,13 @@ extends RigidBody3D
 var twist_input := 0.0
 var pitch_input := 0.0
 
-	
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
 		apply_central_impulse(Vector3.UP * jump_impulse)
+		
+	if event is InputEventMouseButton:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
 func _ready() -> void:
@@ -39,7 +42,8 @@ func _process(_delta: float) -> void:
 	)
 	twist_input = 0
 	pitch_input = 0
-		
+
+
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:

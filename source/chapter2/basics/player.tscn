@@ -13,7 +13,7 @@ albedo_color = Color(0.9003103, 0.73856676, 0.1712198, 1)
 lock_rotation = true
 linear_damp = 3.0
 script = ExtResource("1_4flbx")
-speed = 10.0
+speed = 20.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=413932956]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

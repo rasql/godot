@@ -21,10 +21,11 @@ This documentation shows with many small examples how to
    :caption: Contents:
 
 
-   introduction
+   chapter0/intro
    chapter1/text
    chapter2/basics
    chapter3/csg
+   myst
 
 
 

@@ -24,6 +24,45 @@ We start with creating the world environment
 
 ## Player
 
+The player is the object representing the user. A camera is attached to the player in order to see the world.
+
+```{image} ./images/player_tree.png
+:width: 300px
+```
+
+Create the objects as indicated:
+
+- Create a **RigidBody3D** node and name it `Player`
+- Add a **MeshInstance3D** and make it a capsule shape
+- Add a **CollisionShape3D** via the `Mesh` button (sibling, capsule)
+- Add a Node3D and name it `TwistPivot`
+- Add a child Node3D and name it `PitchPivot`
+- Add a child Camera3D
+
+
+
+
+
+![Create New Node dialog showing search results for ribo with RigidBody3D selected, displaying class hierarchy and physics simulation description](images/new_node_win.png)
+
+This is the GDScript to move the player.
+
+## This
+
+```{literalinclude} ./basics/player.gd
+:language: gd
+:start-at: func _input
+:end-before: func _ready
+```
+
+
+
+
+## All
+
+```{literalinclude} ./basics/player.gd
+:language: gd
+```
 
 ## Creating a box
 
@@ -33,20 +72,15 @@ The `@tool` directive allows to execute the programme in the editor.
 
 The `size` of the box and the `material` is exported to the inspector panel.
 
-![box](images/box_inspector.png)
+```{image} ./images/box_inspector.png
+:width: 400px
+```
 
-### Fly mode
-By pressing the `shift+F` the editor goes into fly mode:
-- the mouse cursor disappears
-- the WS keys allow to zoom the camera (get closer)
-- the AD keys allow to go left-right
-- the QE keys allow to go up-down
-- the mouse allows to orient the camera
 
 The corner of the box is aligned with the origin by offsetting the box by half of its size: 
 `box.position = 0.5 * size`
 
-```gdscript
+```gd
 @tool
 extends Node3D
 class_name Box

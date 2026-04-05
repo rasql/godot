@@ -63,10 +63,9 @@ html_theme = 'furo'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-# EPUB options
-epub_show_urls = 'footnote'
 
 html_extra_path = [
+    'chapter0/web',
     'chapter1/web',
     'chapter2/web',
     'chapter3/web',
@@ -74,7 +73,7 @@ html_extra_path = [
 
 
 # Set the default highlighting language for the entire project
-highlight_language = 'gdscript'
+highlight_language = 'gd'
 
 # Optional: Add any custom Pygments style you prefer
 #pygments_style = 'sphinx' 
@@ -82,6 +81,3 @@ highlight_language = 'gdscript'
 myst_enable_extensions = [
     "attrs_inline",  # This enables the { .class } and { .external } syntax
 ]
-
-
-
