@@ -256,8 +256,8 @@ func _process(delta: float) -> void:
 To change the camera rotation, we will use not the mouse, but the direction keys.
 They have built-in actions already.
 
-- we initialize direction with `Vector2.ZERO'
-- we use `Input.get_axis()` to get the axix value (-1, 1) for two oposing keys
+- we initialize direction with `Vector2.ZERO`
+- we use `Input.get_axis()` to get the axis value (-1, 1) for two oposing keys
 - we accumulate the input direction in a 2D vector `tilt`
 - this is used to adjust the camera rotation
 
@@ -285,7 +285,7 @@ They have built-in actions already.
 ## Web export
 
 - Go to `Project > Export`
-- Add `Web``
+- Add `Web`
 
 ![img](images/export_os.png){w=200}
 
@@ -302,6 +302,6 @@ Export the project into a separate folder.
 Finally let's export the project as a ZIP file.
 Go to `Project > Pack Project as ZIP`
 
-![img](images/pack_project.png){w=300}
+![img](images/pack_project.png){w=400}
 
 Download the {download}`Godot Project <intro.zip>`.

@@ -17,10 +17,13 @@
 [node name="Export" type="Node3D" unique_id=1767462152 node_paths=PackedStringArray("node", "some_button")]
 script = ExtResource("1_jkwhv")
 flag = true
+text = "Long text with NEW
+line1
+line2
+line3"
 vector3i = Vector3i(5, 2, 3)
-a = [false, PackedByteArray(0, 0), 3]
+a = [false, PackedByteArray(0, 0), 3, null, null, null]
 ints = Array[int]([6, 3])
-bools = Array[bool]([true, true])
 floats = Array[float]([1.0, 2.0])
 b = [{
 23: "text",
@@ -34,8 +37,12 @@ laser_angles = Array[float]([234.14599999999996, -122.927])
 skill_trees = Array[String](["uid://d2rly877n7jjp", "uid://fqn5u6fenc4k"])
 hair_colors = PackedColorArray(0.3025534, 0.72320396, 0.3848222, 1, 0.14908153, 0.43002698, 0.48438674, 1)
 barista_suggestions = Array[String](["Mocha"])
-character_name = "Leah"
-layers_2d_physics = 3
+Enumeration = -1
+character_class = 0
+character_speed = 60
+character_name = "Rebecca"
+spell_elements = 3
+layers_2d_physics = 1
 layers_2d_render = 2
 layers_2d_navigation = 34
 float1 = 9.0

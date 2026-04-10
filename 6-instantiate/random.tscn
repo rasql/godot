@@ -5,5 +5,4 @@
 
 [node name="Random" type="Node3D" unique_id=700920654]
 script = ExtResource("1_2e35y")
-count = 200
 scene = ExtResource("2_2truy")

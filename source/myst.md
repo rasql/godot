@@ -129,11 +129,11 @@ The `_process` function
 
 Include full resolution.
 
-![fishy](chapter1/images/text.png)
+![fishy](chapter1/images/export_scene.png)
 
 Image with 200px width.
 
-![fishy](chapter1/images/text.png){w=200px}
+![fishy](chapter1/images/export_scene.png){w=200px}
 
 ## Math
 

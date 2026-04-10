@@ -1,5 +1,5 @@
-@icon("res://icon.svg")
-@tool
+#@icon("res://icon.svg")
+#@tool
 extends Node3D
 
 # CRITICAL : this is a BUG and NOTICE
@@ -19,28 +19,29 @@ One of the fundamental benefits of exporting member variables is
 to have them visible and editable in the editor. 
 """
 
-
-
-@export var number: int = 5 ## an integer variable
-@export var message: String = "hello"
-@export var flag = false
-@export_multiline var text = "enter your text"
+@export var number: int = 5 ## Integer variable
+@export var message: String = "hello" ## Text string
+@export var flag = false ## Boolean flag
+@export_multiline var text = "Long text with\nline1\nline2\nline3"
 
 @export_group("Vectors")
-@export var rectangle =  Rect2(1, 2, 3, 4)
-@export var rectanglei =  Rect2i(1, 2, 3, 4)
 @export var vector2 =  Vector2(1, 2)
 @export var vector2i =  Vector2i(1, 2)
 @export var vector3 =  Vector3(1, 2, 3)
 @export var vector3i =  Vector3i(1, 2, 3)
+
+@export_group("Rectangles")
+@export var rectangle =  Rect2(1, 2, 3, 4)
+@export var rectangle_int =  Rect2i(1, 2, 3, 4)
 @export var aabb =  AABB(Vector3(1, 2, 3), Vector3(4, 5, 6))
 
-@export_group("Buttons")
-@export_tool_button("Configure", "BoxMesh") var hello_action = hello
-@export_tool_button("Edit", "StyleBoxFlat") var action = hello
 
-func hello():
-	print("You clicked 2D/3D")
+#@export_group("Buttons")
+#@export_tool_button("Configure", "BoxMesh") var hello_action = hello
+#@export_tool_button("Edit", "StyleBoxFlat") var action = hello
+#
+#func hello():
+	#print("You clicked 2D/3D")
 
 @export_group("Arrays")
 @export var a = [1, 2, 3]
