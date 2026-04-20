@@ -87,7 +87,19 @@ Add full links to the game like this:
 - exporting with **Project > Pack Project as ZIP...** makes a 3 KB file
 - it does not contain the .godot file
 
-# Export to Github Pages
+- export web file into `source/_static`
 
-- to export to Github pages
+# Sphinx
+
+The structure is 
+
+- `source` contains the markdown text and the godot files
+- `build` contains the sphinx-created HTML files
+- `doc` contains the HTML files to be published 
+
+To change Github pages: copy `build/html` into `docs`
+
+The site is here: 
+https://rasql.github.io/godot/
+
 
