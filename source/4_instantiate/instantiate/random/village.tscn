@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://5eykxfnnt3tx"]
+
+[ext_resource type="PackedScene" uid="uid://ufr6srcb8nk2" path="res://random/random.tscn" id="1_8kvwf"]
+[ext_resource type="PackedScene" uid="uid://delpdppvjc8tl" path="res://random/random_transform.tscn" id="2_4ex6p"]
+[ext_resource type="PackedScene" uid="uid://cnxj7hswp85oy" path="res://house.tscn" id="2_8kvwf"]
+
+[node name="Village" type="Node3D" unique_id=1948092707]
+
+[node name="Random" parent="." unique_id=700920654 instance=ExtResource("1_8kvwf")]
+limits = Vector3i(10, 0, 10)
+count = 33
+
+[node name="RandScale" parent="Random" unique_id=1044055350 instance=ExtResource("2_4ex6p")]
+transform = Transform3D(1.1517978, 0, 0, 0, 1.1517978, 0, 0, 0, 1.1517978, 0, 0, 0)
+scale_max = 1.5
+
+[node name="House2" parent="Random/RandScale" unique_id=1285751922 instance=ExtResource("2_8kvwf")]
+transform = Transform3D(-0.87409824, 0, -0.22897434, 0, 0.9035911, 0, 0.22897434, 0, -0.87409824, 0, 0, 0)

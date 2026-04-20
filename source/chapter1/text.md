@@ -2,6 +2,8 @@
 
 [View the game](../text.html){.external}
 
+[Play the project online](../_static/text/text.html){.external}
+
 ## Introduction
 
 In Godot, class members (properties, attributs) can be exported. They are saved along with the scene.

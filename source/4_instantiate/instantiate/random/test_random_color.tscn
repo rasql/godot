@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cfwi70637mfun"]
+
+[ext_resource type="Script" uid="uid://yk0hfrnv2o3c" path="res://matrix/matrix.gd" id="1_sd7go"]
+[ext_resource type="PackedScene" uid="uid://705xqa8ngp28" path="res://random/random_color.tscn" id="2_3x628"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sd7go"]
+albedo_color = Color(0.96659046, 0.13667512, 0.052694023, 1)
+metallic = 0.82
+roughness = 0.07
+
+[sub_resource type="SphereMesh" id="SphereMesh_3x628"]
+material = SubResource("StandardMaterial3D_sd7go")
+radius = 0.4
+height = 0.8
+
+[node name="TestRandomColor" type="Node3D" unique_id=1488256247]
+
+[node name="Matrix" type="Node3D" parent="." unique_id=132614624]
+script = ExtResource("1_sd7go")
+repeat = Vector3i(4, 3, 4)
+metadata/_custom_type_script = "uid://yk0hfrnv2o3c"
+
+[node name="RandomColor" parent="Matrix" unique_id=1044055350 instance=ExtResource("2_3x628")]
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Matrix/RandomColor" unique_id=433066979]
+mesh = SubResource("SphereMesh_3x628")

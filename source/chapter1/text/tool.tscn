@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cdhgy608ddedt"]
+
+[ext_resource type="Script" uid="uid://deskcij3gg6qu" path="res://rotate.gd" id="1_f6vxs"]
+
+[node name="Tool" type="Node3D" unique_id=691948948]
+
+[node name="Rotate" type="CSGBox3D" parent="." unique_id=1059136777]
+transform = Transform3D(1, 0, 0, 0, 0.021709355, 0.9997643, 0, -0.9997643, 0.021709355, 0, 0, 0)
+script = ExtResource("1_f6vxs")

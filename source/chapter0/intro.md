@@ -1,19 +1,29 @@
 # Introduction
 
-In this chapter we create a basic 3D scene and look at useful shortcuts.
+In this chapter we create a basic 3D scene and look at useful shortcuts. You will:
+
+- build an arch
+- add light and a sky environment
+- add a camera 
+- write a script to move the camera with keys
+- export the game to the web
 
 ## Create a new project
 
-- menu `Project > Quit to Project List`
+Become familiar with the project manager:
+
+- select menu `Project > Quit to Project List`
 - click on `New Project`
-- click star to add/remove favorites
-- use filter to restrict choice
+- click star ★ to add/remove favorites
+- use filter 🔎 to restrict choice
 - create a new folder
 - select a folder
 
 ![img](images/open_dir.png)
-
+ 
 ## Add nodes
+
+Quickly create nodes in the scene tree:
 
 - click on `Node3D` to create a root node
 - press `enter` and rename it to `World` 
@@ -28,11 +38,13 @@ In this chapter we create a basic 3D scene and look at useful shortcuts.
 
 ## Add more nodes
 
+You can add quickly more nodes:
+
 - use `cmd+D` to duplicate nodes
 - use snap (`Y`) to lock to the grid
 - use the gizmo (red dots) to size the box
 - create 2 pillars of height 3 m
-- add a top bar of 4 m lenght
+- add a top bar of 4 m length
 
 ![img](images/arch.png)
 
@@ -42,14 +54,14 @@ You should now have this scene tree
 
 ## Axis gismo
 
-Whith the axis gismo you can quickly go to 
+With the axis gismo, by clicking on X Y or Z, you can quickly go to 
 - `X` Right orthogonal view
 - `Y` Top orthogonal view
 - `Z` Front orthogonal view
 
 ![img](images/axis_gizmo.png)
 
-Let's check our arch in front view and correct it if necessary.
+Let's check our arch in the front view and correct it if necessary.
 
 ![img](images/arch_front.png)
 
@@ -58,7 +70,7 @@ Let's check our arch in front view and correct it if necessary.
 
 ![img](images/3d_tools.png)
 
-Most of the tools have a 1-key shortcut and they lie on a row (QWER).
+Most of the tools have a very useful 1-key shortcut and they lie in a row (QWERT).
 
 - `Q` move + rotate
 - `W` move
@@ -71,23 +83,23 @@ The last 5 tools are:
 - `M` measuring distance (triangle)
 - `T` toggle global/local frame (box)
 - `Y` toggle snap to grid (magnet)
-- toggle sun (sun)
+- toggle light (sun)
 - toggle world environment (globe)
 
 ## Moving the view
 
-- `O` places the origin of the axis in the center
-- `F` places the selected object in the center (focus)
+- `O` places the **O**rigin of the axis in the center
+- `F` places the selected object in the center (**F**ocus)
 
-The mouse allows to swivel around that center point of the view
+The mouse allows the user to swivel around that center point of the view
 - with `V` select the top arch
-- with mouse x-direction you can go 360° around the selected object
-- with mouse y-direction you can go from -90° (bottom) to 90° (top)
+- with mouse x-direction, you can go 360° around the selected object
+- with mouse y-direction, you can go from -90° (bottom) to 90° (top)
 
 - with `alt` + mouse-y you can zoom the camera
 
 
-## Shortcuts in the editor
+## Shortcuts in the scene tree editor
 
 Here are a few tricks to speed up work with nodes:
 
@@ -97,7 +109,7 @@ Here are a few tricks to speed up work with nodes:
 - `cmd+V` to paste
 - `shift+cmd+V` paste as a sibling
 
-You can use the direction keys to navigate inside the scene tree
+You can use the direction keys to navigate inside the scene tree.
 
 - `up/down` to move inside the scene tree
 - `left/right` to open/collapse subtrees
@@ -125,7 +137,7 @@ Try to fly through the arch.
 ## Reparent
 
 It is good practice to rename our nodes and group them. 
-First lets rename the ground plate to `Floor`.
+First let’s rename the ground plate to `Floor`.
 
 The three nodes forming the arch should be grouped. A simple `Node3D` node would be appropriated. 
 - select the 3 nodes
@@ -134,7 +146,7 @@ The three nodes forming the arch should be grouped. A simple `Node3D` node would
 
 ![img](images/reparent.png){w=400px}
 
-We obtain this tree.
+We obtained this tree.
 
 ![img](images/tree_arch.png){w=200px}
 
@@ -144,7 +156,7 @@ Now rename the three nodes to something more expressive.
 
 ## Play the game
 
-When trying to run the projects main scene (`cmd+B`) we get the following message.
+When trying to run the project’s main scene (`cmd+B`) we get the following message.
 
 ![img](images/main_scene_dialog.png)
 
@@ -156,8 +168,8 @@ Now the scene appears in the file editor.
 However the screen remains black. There is no camera and no light. 
 In the meantime, let's make the window bigger, in order to display all icons on one line.
 
-- goto menu `Project > Project Settings...``
-- select `Genera > Display > Window``
+- go to menu `Project > Project Settings...`
+- select `General > Display > Window`
 - set viewport width to 1600
 - set viewport height to 900
 
@@ -165,7 +177,7 @@ In the meantime, let's make the window bigger, in order to display all icons on 
 
 - select the `World` node
 - add a `Camera3D` node
-- set the (move + rotate) gizmo (`Q`)
+- select the move + rotate gizmo (`Q`)
 - pull the camera back 5m (blue arrow, in snap mode)
 - lift the camera up 2m (green arrow)
 
@@ -173,8 +185,8 @@ In the meantime, let's make the window bigger, in order to display all icons on 
 
 - select the camera in the scene tree (left side)
 - observe the camera view in the inspector (right side)
-- you can also click the Preview checkbox to see the camera view in the main window
-- the camera gismo (red dot) allows to change the field of view (FOV)
+- you can also click the **Preview** checkbox to see the camera view in the main window
+- the camera gismo (red dot) allows to change the **field of view** (FOV)
 - this can also be set in the inspector. Set it to 70°
 
 Try to run the projects main scene again (`cmd+B`).
@@ -184,20 +196,20 @@ Now we see the arch, but the scene has no light.
 
 ## Add light and environment
 
-In the editor preview, sunlight and a sky and earth environment is automatically added.
+In the editor preview, **sunlight** and a **sky and earth** environment is automatically added.
 
 In order to add it to our scene, click the 3 dots, next to the globe symbol.
 
 ![img](images/environment_dialog.png){w=500}
 
-- click on `Add Sun to Scene`
-- click on `Add Environment to Scene`
+- click `Add Sun to Scene`
+- click `Add Environment to Scene`
 
 We get this in the scene tree.
 
-![img](images/tree_env.png)
+![img](images/tree_env.png){w=200px}
 
-When we run the project main scene again (`cmd+B`), we now can see.
+When we run the project main scene again (`cmd+B`), we now have sun light, a sky and a horizon.
 
 ![img](images/game_light.png)
 
@@ -211,7 +223,7 @@ Let's try to create a program which imitates the free-fly behavior we have seen 
 
 ![img](images/input_map.png)
 
-- select the Camera3D node
+- select the `Camera3D` node
 - attache a script
 - save it
 
@@ -240,7 +252,7 @@ We see something like this in the console.
 (0.0, 0.0, -1.0)
 ````
 
-Now we use this value to change the position of the camera
+Now we use this value to change the position of the camera.
 
 ```
 func _process(delta: float) -> void:
@@ -251,15 +263,20 @@ func _process(delta: float) -> void:
 	position += basis * input * 0.1
 ```
 
+The `_process()` function is called 60 times per second. 
+So we multiply the `input` vector by 0.1 to obtain a speed of 6 m/s.
+We also use the `basis` matrix to rotate the vector in the camera direction.
+Finally we add the movement vector to the current position.
+
 ## Rotate the camera
 
 To change the camera rotation, we will use not the mouse, but the direction keys.
-They have built-in actions already.
+They already have built-in actions.
 
-- we initialize direction with `Vector2.ZERO`
-- we use `Input.get_axis()` to get the axis value (-1, 1) for two oposing keys
-- we accumulate the input direction in a 2D vector `tilt`
-- this is used to adjust the camera rotation
+- we call the camera move direction `dir` and initialize it as `Vector2.ZERO`
+- we use `Input.get_axis()` to get the axis value (-1, 1) for two opposing keys
+- we accumulate the input direction in a global variable `tilt`
+- this value is used to adjust the camera rotation
 
 ```
 	var dir = Vector2.ZERO
@@ -275,7 +292,11 @@ They have built-in actions already.
 		print(tilt)
 ```
 
+The vertical tilt is clampted between -90° and +90°.
+
 ## Finished program
+
+Here we have the finished program.
 
 ```{literalinclude} intro/camera_3D.gd
 :language: gd
@@ -295,11 +316,16 @@ We can export the project for one or several platforms.
 
 Export the project into a separate folder.
 
-[Play the project online](../intro.html){.external}
+
+[Play the project online](/build/html/_static/intro/intro.html){.external}
+
+[Play the project online](../_static/intro/intro.html){.external}
 
 ## Pack the project as ZIP
 
-Finally let's export the project as a ZIP file.
+Finally let's export the project as a ZIP file. 
+This allows us to distribute the Godot project, so that it can be opend with the Godot editor.
+
 Go to `Project > Pack Project as ZIP`
 
 ![img](images/pack_project.png){w=400}

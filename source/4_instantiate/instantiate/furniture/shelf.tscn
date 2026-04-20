@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ydmnwc4vxv0d"]
+
+[ext_resource type="Script" uid="uid://f2fjqas8vu55" path="res://furniture/shelf.gd" id="1_0lquw"]
+
+[node name="Shelf" type="CSGCombiner3D" unique_id=461715741]
+transform = Transform3D(0.9999705, -0.0076793735, 0, 0.0076793735, 0.9999705, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_0lquw")
+size = Vector3(1, 0.05, 0.3)
+number = 6

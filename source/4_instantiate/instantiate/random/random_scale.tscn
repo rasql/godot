@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cbwx5jn2nytyy"]
+
+[ext_resource type="PackedScene" uid="uid://delpdppvjc8tl" path="res://random/random_transform.tscn" id="1_4g5c1"]
+[ext_resource type="PackedScene" uid="uid://86yb4maltin7" path="res://matrix/matrix.tscn" id="1_7v3lq"]
+[ext_resource type="PackedScene" uid="uid://cnxj7hswp85oy" path="res://house.tscn" id="2_4g5c1"]
+
+[node name="RandomScale" type="Node3D" unique_id=1258863678]
+
+[node name="Matrix" parent="." unique_id=1708534984 instance=ExtResource("1_7v3lq")]
+repeat = Vector3i(6, 1, 6)
+step = Vector3(3, 3, 3)
+
+[node name="RandScale" parent="Matrix" unique_id=1044055350 instance=ExtResource("1_4g5c1")]
+transform = Transform3D(0.9717785, 0, 0.23589516, 0, 1, 0, -0.23589516, 0, 0.9717785, 0, 0, 0)
+rotation_max = Vector3(0, 90, 0)
+scale_max = 1.0
+
+[node name="House2" parent="Matrix/RandScale" unique_id=1285751922 instance=ExtResource("2_4g5c1")]

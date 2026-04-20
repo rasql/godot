@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://delpdppvjc8tl"]
+
+[ext_resource type="Script" uid="uid://bdgw1u63jxk8j" path="res://random/random_transform.gd" id="1_6udxh"]
+[ext_resource type="PackedScene" uid="uid://cnxj7hswp85oy" path="res://house.tscn" id="2_al3gs"]
+
+[node name="RandomTransform" type="Node3D" unique_id=1044055350]
+script = ExtResource("1_6udxh")
+
+[node name="House" parent="." unique_id=1285751922 instance=ExtResource("2_al3gs")]

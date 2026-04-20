@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dor1c2yku5gmv"]
+
+[ext_resource type="Script" uid="uid://drifqambcu0yo" path="res://trees/pine.gd" id="1_qf354"]
+
+[sub_resource type="Gradient" id="Gradient_qf354"]
+offsets = PackedFloat32Array(0, 0.53268766, 1)
+colors = PackedColorArray(0.5058824, 0.92941177, 0.09411765, 1, 0.96862745, 0.96862745, 0.043137256, 1, 0.98039216, 0.3529412, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_spai7"]
+offsets = PackedFloat32Array(0, 0.4592721, 1)
+colors = PackedColorArray(0.9843137, 0, 0, 1, 0.9882353, 0.9843137, 0.003921569, 1, 0.011764706, 1, 0.003921569, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5pu1k"]
+gradient = SubResource("Gradient_spai7")
+use_hdr = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_spai7"]
+albedo_color = Color(0.5331931, 0.24518722, 0.004862024, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5pu1k"]
+material = SubResource("StandardMaterial3D_spai7")
+top_radius = 0.2
+bottom_radius = 0.2
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jmnwx"]
+albedo_color = Color(0.66484505, 0.9428832, 0.07660481, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ax0if"]
+material = SubResource("StandardMaterial3D_jmnwx")
+top_radius = 0.0
+bottom_radius = 0.6
+
+[node name="Pine" type="Node3D" unique_id=1285751922]
+script = ExtResource("1_qf354")
+trunk_color = Color(0.17999998, 0.5491346, 0.9, 1)
+body_color = Color(0.66484505, 0.9428832, 0.07660481, 1)
+tree_color_gradient = SubResource("Gradient_qf354")
+a = [Color(0.92941177, 0, 0, 1), {
+4: "text"
+}, SubResource("GradientTexture1D_5pu1k")]
+
+[node name="Trunk" type="MeshInstance3D" parent="." unique_id=1563123032]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("CylinderMesh_5pu1k")
+
+[node name="Body" type="MeshInstance3D" parent="Trunk" unique_id=1522591730]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5036845, 0)
+mesh = SubResource("CylinderMesh_ax0if")

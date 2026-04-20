@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bcw12wbkctrkx"]
+
+[ext_resource type="PackedScene" uid="uid://86yb4maltin7" path="res://matrix/matrix.tscn" id="1_evsq7"]
+[ext_resource type="PackedScene" uid="uid://cmev271tx7ykr" path="res://matrix/color_ball.tscn" id="2_ciopg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_evsq7"]
+albedo_color = Color(0.6477751, 0.5392143, 0.17264894, 1)
+
+[node name="LLM" type="Node3D" unique_id=473084056]
+
+[node name="Matrix" parent="." unique_id=1708534984 instance=ExtResource("1_evsq7")]
+repeat = Vector3i(4, 4, 3)
+
+[node name="ColorBall" parent="Matrix" unique_id=1683350111 instance=ExtResource("2_ciopg")]
+material = SubResource("StandardMaterial3D_evsq7")
+
+[editable path="Matrix"]

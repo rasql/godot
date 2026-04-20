@@ -3,17 +3,18 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Godot's documentation!
-===================================
+Welcome to Godot3D documentation!
+=================================
 
-This documentation shows with many small examples how to 
+This documentation shows with small examples how to 
 
-- make small scences
+- create objects by code (programmatically)
+- make interactive tools (with `@tool` annotation)
 - visualize them in the editor
 
+The final game is exported for the web.
 
 .. note::
-
    This project is under active development.
 
 .. toctree::
@@ -23,7 +24,7 @@ This documentation shows with many small examples how to
 
    chapter0/intro
    chapter1/text
-   chapter2/basics
+   chapter2/tool
    chapter3/csg
    myst
 

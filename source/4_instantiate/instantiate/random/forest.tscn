@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c3ag55ob8amj6"]
+
+[ext_resource type="PackedScene" uid="uid://ufr6srcb8nk2" path="res://random/random.tscn" id="1_yndar"]
+[ext_resource type="PackedScene" uid="uid://dor1c2yku5gmv" path="res://trees/pine.tscn" id="2_185sp"]
+
+[node name="Forest" type="Node3D" unique_id=1948092707]
+
+[node name="Random" parent="." unique_id=700920654 instance=ExtResource("1_yndar")]
+limits = Vector3i(10, 0, 10)
+count = 100
+
+[node name="Pine" parent="Random" unique_id=1285751922 instance=ExtResource("2_185sp")]
+trunk_color = Color(0.9, 0.17999998, 0.45365328, 1)
+body_color = Color(0.9800566, 0.37050194, 0.0012303703, 1)

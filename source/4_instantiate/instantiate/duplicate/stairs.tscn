@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dd0xmhu2m5igp"]
+
+[ext_resource type="Script" uid="uid://gqnt65ua2h8d" path="res://duplicate/stairs.gd" id="1_8uevg"]
+
+[node name="Stairs" type="Node3D" unique_id=1645921479]
+script = ExtResource("1_8uevg")
+step = Vector3(0, 0.5, 1.5)
+count = 6

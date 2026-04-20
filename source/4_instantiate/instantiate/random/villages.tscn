@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://pndwhw0ki8qb"]
+
+[ext_resource type="PackedScene" uid="uid://ufr6srcb8nk2" path="res://random/random.tscn" id="1_a1q8u"]
+[ext_resource type="PackedScene" uid="uid://cnxj7hswp85oy" path="res://house.tscn" id="2_a1q8u"]
+
+[node name="Villages" type="Node3D" unique_id=1201678194]
+
+[node name="Random2" parent="." unique_id=700920654 instance=ExtResource("1_a1q8u")]
+limits = Vector3i(20, 0, 20)
+type = "normal"
+count = 4
+
+[node name="Random" parent="Random2" unique_id=618394668 instance=ExtResource("1_a1q8u")]
+limits = Vector3i(4, 0, 4)
+type = "normal"
+
+[node name="House2" parent="Random2/Random" unique_id=1285751922 instance=ExtResource("2_a1q8u")]

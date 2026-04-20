@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://deeti8gsu0qqq"]
+
+[ext_resource type="Script" uid="uid://6auogik6l2p3" path="res://duplicate/duplicate.gd" id="1_vrvsx"]
+
+[node name="Duplicate" type="Node3D" unique_id=2107426433]
+script = ExtResource("1_vrvsx")
+count = 5
+transpose = Vector3(1, 1, 0)
+rotate_3d = Vector3(0, 0, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1798928404]
+size = Vector3(1, 1, 4)

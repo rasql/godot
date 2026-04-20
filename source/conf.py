@@ -65,10 +65,10 @@ html_static_path = ['_static']
 
 
 html_extra_path = [
-    'chapter0/web',
-    'chapter1/web',
-    'chapter2/web',
-    'chapter3/web',
+    # 'chapter0/web',
+    # 'chapter1/web',
+    # 'chapter2/web',
+    # 'chapter3/web',
     ]
 
 

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://ch00m5jiyaruu"]
+
+[ext_resource type="Script" uid="uid://dnxgxm1q62my8" path="res://tools/box.gd" id="1_g2tbl"]
+
+[node name="Box" type="Node3D" unique_id=852367467]
+rotation_edit_mode = 2
+script = ExtResource("1_g2tbl")
+size = Vector3(6, 3, 5)

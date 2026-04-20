@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cmev271tx7ykr"]
+
+[ext_resource type="Script" uid="uid://dmfwhxbh2kuho" path="res://matrix/color_ball.gd" id="1_80uh6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_80uh6"]
+albedo_color = Color(0.05541643, 0.0763151, 0.40896243, 1)
+
+[node name="ColorBall" type="CSGSphere3D" unique_id=1683350111]
+radial_segments = 24
+rings = 12
+material = SubResource("StandardMaterial3D_80uh6")
+script = ExtResource("1_80uh6")

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://86yb4maltin7"]
+
+[ext_resource type="Script" uid="uid://yk0hfrnv2o3c" path="res://matrix/matrix.gd" id="1_ixtlh"]
+
+[node name="Matrix" type="Node3D" unique_id=1708534984]
+script = ExtResource("1_ixtlh")

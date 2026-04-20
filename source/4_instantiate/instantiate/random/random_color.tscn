@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://705xqa8ngp28"]
+
+[ext_resource type="Script" uid="uid://bp0mwj4w1tp5a" path="res://random/random_color.gd" id="1_dkkpj"]
+
+[sub_resource type="Gradient" id="Gradient_dkkpj"]
+offsets = PackedFloat32Array(0, 0.46896553, 0.845977)
+colors = PackedColorArray(0.9764706, 0, 0, 1, 0.90588236, 0.9764706, 0.3764706, 1, 0.3882353, 0.9764706, 0.3764706, 1)
+
+[node name="RandomColor" type="Node3D" unique_id=1044055350]
+script = ExtResource("1_dkkpj")
+gradient = SubResource("Gradient_dkkpj")

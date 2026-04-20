@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://85fjgcrs3onf"]
+
+[ext_resource type="PackedScene" uid="uid://dd0xmhu2m5igp" path="res://duplicate/stairs.tscn" id="1_op58m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_op58m"]
+albedo_color = Color(0.39215687, 1, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_op58m"]
+material = SubResource("StandardMaterial3D_op58m")
+top_radius = 1.0
+bottom_radius = 1.0
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6s5wo"]
+albedo_color = Color(0.3019608, 0.5529412, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_op58m"]
+material = SubResource("StandardMaterial3D_6s5wo")
+size = Vector3(4, 0.5, 2)
+
+[node name="Test_stairs" type="Node3D" unique_id=642878750]
+
+[node name="Stairs" parent="." unique_id=1645921479 instance=ExtResource("1_op58m")]
+step = Vector3(0, 0.8, 1.5)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Stairs" unique_id=318120352]
+mesh = SubResource("CylinderMesh_op58m")
+
+[node name="Stairs4" parent="." unique_id=844786122 instance=ExtResource("1_op58m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4042816, 0, 0)
+step = Vector3(0, 1, 1.5)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Stairs4" unique_id=476841304]
+transform = Transform3D(1.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_op58m")
+
+[node name="Stairs2" parent="." unique_id=534864647 instance=ExtResource("1_op58m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5909023, 0, 0)
+count = 10
+
+[node name="Step" type="MeshInstance3D" parent="Stairs2" unique_id=1145396024]
+mesh = SubResource("BoxMesh_op58m")
+
+[node name="Stairs3" parent="." unique_id=1712768212 instance=ExtResource("1_op58m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.237064, 0, 0)
+
+[node name="Step" type="MeshInstance3D" parent="Stairs3" unique_id=327302416]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+mesh = SubResource("BoxMesh_op58m")
+
+[node name="Stairs5" parent="." unique_id=1542362804 instance=ExtResource("1_op58m")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 21.237064, 0, 13)
+
+[node name="Step" type="MeshInstance3D" parent="Stairs5" unique_id=2084351483]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.999999, 0, 9.536743e-07)
+mesh = SubResource("BoxMesh_op58m")
+
+[editable path="Stairs3"]
+[editable path="Stairs5"]

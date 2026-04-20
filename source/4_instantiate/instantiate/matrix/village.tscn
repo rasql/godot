@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bkf88srh2n8pb"]
+
+[ext_resource type="Script" uid="uid://yk0hfrnv2o3c" path="res://matrix/matrix.gd" id="1_1u3o1"]
+[ext_resource type="PackedScene" uid="uid://cnxj7hswp85oy" path="res://house.tscn" id="2_2jxyp"]
+[ext_resource type="PackedScene" uid="uid://dor1c2yku5gmv" path="res://trees/pine.tscn" id="3_7yk3x"]
+[ext_resource type="PackedScene" uid="uid://86yb4maltin7" path="res://matrix/matrix.tscn" id="4_2jxyp"]
+
+[node name="Village" type="Node3D" unique_id=205168114]
+
+[node name="Matrix" type="Node3D" parent="." unique_id=2065591349]
+script = ExtResource("1_1u3o1")
+repeat = Vector3i(2, 1, 2)
+step = Vector3(4, 4, 4)
+metadata/_custom_type_script = "uid://yk0hfrnv2o3c"
+
+[node name="House" parent="Matrix" unique_id=1285751922 instance=ExtResource("2_2jxyp")]
+
+[node name="Pine" parent="Matrix" unique_id=1719982418 instance=ExtResource("3_7yk3x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+trunk_color = Color(0.9, 0.17999998, 0.25164387, 1)
+body_color = Color(0.61953896, 0.9390437, 0.08159616, 1)
+
+[node name="Pine2" parent="Matrix" unique_id=314888863 instance=ExtResource("3_7yk3x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
+trunk_color = Color(0.17999998, 0.3408182, 0.9, 1)
+body_color = Color(0.97414196, 0.68003476, 0.022917388, 1)
+
+[node name="Matrix2" type="Node3D" parent="." unique_id=803012700]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0.5)
+script = ExtResource("1_1u3o1")
+repeat = Vector3i(4, 1, 3)
+step = Vector3(1.5, 4, 3)
+metadata/_custom_type_script = "uid://yk0hfrnv2o3c"
+
+[node name="House" parent="Matrix2" unique_id=2024597551 instance=ExtResource("2_2jxyp")]
+
+[node name="Matrix3" parent="." unique_id=1708534984 instance=ExtResource("4_2jxyp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.5)
+repeat = Vector3i(3, 1, 4)
+
+[node name="Pine" parent="Matrix3" unique_id=1817697792 instance=ExtResource("3_7yk3x")]
+trunk_color = Color(0.9, 0.17999998, 0.71740514, 1)
+body_color = Color(0.97594535, 0.5856581, 0.016305009, 1)
