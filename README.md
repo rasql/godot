@@ -59,7 +59,7 @@ Source: https://www.sphinx-doc.org/en/master/tutorial/getting-started.html
 
 ## Take image capture
 
-- press `cmd+ctrl+5``
+- press `cmd+ctrl+5`
 - select the region
 - save to the `images` folder
 - rename the captures
@@ -86,3 +86,8 @@ Add full links to the game like this:
 - ziping an almost empty Godot project produces a 2.6 MB file
 - exporting with **Project > Pack Project as ZIP...** makes a 3 KB file
 - it does not contain the .godot file
+
+# Export to Github Pages
+
+- to export to Github pages
+
