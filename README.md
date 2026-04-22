@@ -109,3 +109,5 @@ Copy the build files into the `docs` folder.
 ```
 rsync -av --delete build/html/ docs/  
 ```
+
+place an empty file called `.nojekyll` into the `docs` folder.
