@@ -13,7 +13,7 @@
 
 - Use **two asterisks** or underscores for **bold**.
 - Use *one asterisk* or underscore *italics*.
-- Use back-quotes for `code`
+- Use backquotes for `code`
 
 ## Lists
 Use `*`, `-`, or `+` for unordered lists. 
@@ -74,7 +74,7 @@ This is my note.
 ````{note}
 The next info should be nested
 ```{warning}
-Here's my warning
+Here's my warning:
 ```
 ````
 
@@ -93,7 +93,7 @@ print(f'my {a}nd line')
 
 [Reference](https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-literalinclude)
 
-```{literalinclude} chapter2/basics/player.gd
+```{literalinclude} 3_basics/basics/player.gd
 :language: gd
 :linenos:
 ```
@@ -101,7 +101,7 @@ print(f'my {a}nd line')
 
 The `_ready` function:
 
-```{literalinclude} ./chapter2/basics/player.gd
+```{literalinclude} ./3_basics/basics/player.gd
 :language: gd
 :linenos:
 :start-at: func _ready
@@ -110,7 +110,7 @@ The `_ready` function:
 
 The `_unhandled_input` function
 
-```{literalinclude} chapter2/basics/player.gd
+```{literalinclude} 3_basics/basics/player.gd
 :language: gd
 :linenos:
 :start-at: func _unhandled_input(event):
@@ -118,7 +118,7 @@ The `_unhandled_input` function
 
 The `_process` function
 
-```{literalinclude} chapter2/basics/player.gd
+```{literalinclude} 3_basics/basics/player.gd
 :language: gd
 :linenos:
 :start-at: func _process
@@ -137,7 +137,7 @@ Image with 200px width.
 
 ## Math
 
-Since Pythagoras, we know that {math}`a^2 + b^2 = c^2`.
+Since Pythagoras, we know that {math}` a^2 + b^2 = c^2`.
 
 ```{math}
 :label: mymath
@@ -151,21 +151,21 @@ The equation {eq}`mymath` is a quadratic equation.
 
 ## Download
 
-Download a {download}`Godot Script <chapter2/basics/player.gd>`.
+Download a {download}`Godot Script <3_basics/basics/player.gd>`.
 
-Download a {download}`Godot Scene <chapter2/basics/player.tscn>`.
+Download a {download}`Godot Scene <3_basics/basics/player.tscn>`.
 
-Download a {download}`Godot Project <chapter2/basics.zip>`.
+Download a {download}`Godot Project <3_basics/basics.zip>`.
 
 ## Play the web game
 
-[link to the game](basics.html){.external}
+[Play the project online](_static/intro/intro.html){.external}
 
 Include the game with an iframe.
 
 ```
-<iframe src="basics.html" width="100%" height="500px" 
+<iframe src="_static/intro/basics.html" width="100%" height="500px" 
 style="border:none;" allow="cross-origin-isolated"></iframe>
 ```
 
-<iframe src="basics.html" width="100%" height="500px" style="border:none;" allow="cross-origin-isolated"></iframe>
+<iframe src="_static/intro/basics.html" width="100%" height="500px" style="border:none;" allow="cross-origin-isolated"></iframe>

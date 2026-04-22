@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://q4k31lnwwdfj"]
+
+[ext_resource type="Script" uid="uid://c7nv1q7jje00w" path="res://addons/hollow_tube.gd" id="1_qb1fx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qb1fx"]
+albedo_color = Color(0.5106176, 0.9828697, 0.86027473, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ox1qk"]
+albedo_color = Color(0.14509805, 0.91764706, 0.33333334, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gol0a"]
+albedo_color = Color(0.93515205, 0.8800852, 0.7249351, 1)
+
+[node name="HollowTube" type="Node3D" unique_id=2106746358]
+
+[node name="HollowTube" type="CSGCylinder3D" parent="." unique_id=1447050291]
+radius = 1.498
+sides = 32
+material = SubResource("StandardMaterial3D_qb1fx")
+script = ExtResource("1_qb1fx")
+metadata/_custom_type_script = "uid://c7nv1q7jje00w"
+
+[node name="HollowTube2" type="CSGCylinder3D" parent="HollowTube" unique_id=928243958]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 0, 2.9887228)
+radius = 1.498
+sides = 32
+material = SubResource("StandardMaterial3D_ox1qk")
+script = ExtResource("1_qb1fx")
+metadata/_custom_type_script = "uid://c7nv1q7jje00w"
+
+[node name="HollowTube2" type="CSGCylinder3D" parent="." unique_id=2100498331]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1, 0, -5)
+radius = 1.498
+sides = 32
+material = SubResource("StandardMaterial3D_gol0a")
+script = ExtResource("1_qb1fx")
+metadata/_custom_type_script = "uid://c7nv1q7jje00w"
+
+[node name="HollowTube2" type="CSGCylinder3D" parent="HollowTube2" unique_id=1533803442]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0141926, 0, 0)
+radius = 1.0
+sides = 32
+material = SubResource("StandardMaterial3D_gol0a")
+script = ExtResource("1_qb1fx")
+metadata/_custom_type_script = "uid://c7nv1q7jje00w"
+
+[node name="HollowTube3" type="CSGCylinder3D" parent="HollowTube2" unique_id=639370020]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8435869, 0, 1.6385494)
+radius = 1.0
+sides = 32
+material = SubResource("StandardMaterial3D_gol0a")
+script = ExtResource("1_qb1fx")
+metadata/_custom_type_script = "uid://c7nv1q7jje00w"

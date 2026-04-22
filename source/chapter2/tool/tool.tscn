@@ -22,11 +22,11 @@ glow_enabled = true
 environment = SubResource("Environment_n5j8b")
 
 [node name="Rotate" type="CSGBox3D" parent="." unique_id=1059136777]
-transform = Transform3D(1, 0, 0, 0, 0.42647094, -0.90450114, 0, 0.90450114, 0.42647094, -1, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.9914746, -0.13029905, 0, 0.13029905, 0.9914746, -1, 0, 0)
 script = ExtResource("1_f6vxs")
 
 [node name="Move" type="CSGBox3D" parent="." unique_id=1146298890]
-transform = Transform3D(1, 0, 0, 0, -0.9856581, 0.16875441, 0, -0.16875441, -0.9856581, 1, -0.09144742, 0)
+transform = Transform3D(1, 0, 0, 0, -0.9856581, 0.16875441, 0, -0.16875441, -0.9856581, 1, -1.015234, 0)
 script = ExtResource("2_3gk12")
 amplitude = 2
 

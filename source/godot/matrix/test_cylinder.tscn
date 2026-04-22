@@ -1,0 +1,188 @@
+[gd_scene format=3 uid="uid://dn22x5ueqbhh6"]
+
+[ext_resource type="Script" uid="uid://c7nv1q7jje00w" path="res://addons/hollow_tube.gd" id="2_2rho6"]
+[ext_resource type="Script" uid="uid://c6bxv13cxum6j" path="res://addons/hollow_box.gd" id="2_tw8bg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tw8bg"]
+albedo_color = Color(0.3647059, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rrrwl"]
+albedo_color = Color(1, 1, 0.12941177, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i12a4"]
+albedo_color = Color(0.011764706, 0.99607843, 0.019607844, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2rho6"]
+albedo_color = Color(1, 0.10980392, 1, 1)
+
+[node name="TestCylinder" type="Node3D" unique_id=767729500]
+
+[node name="HollowTube2" type="CSGCylinder3D" parent="." unique_id=1362062008]
+transform = Transform3D(1, 0, 0, 0, 0.2588191, -0.96592575, 0, 0.96592575, 0.2588191, -5, 0, 2)
+sides = 16
+cone = true
+script = ExtResource("2_2rho6")
+metadata/_custom_type_script = "uid://c7nv1q7jje00w"
+
+[node name="@CSGCylinder3D@101055" type="CSGCylinder3D" parent="HollowTube2" unique_id=849889327]
+operation = 2
+radius = 0.4
+height = 2.01
+sides = 16
+cone = true
+
+[node name="HollowBox" type="CSGBox3D" parent="." unique_id=1493352272]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -0.014473677)
+size = Vector3(1, 2, 1)
+material = SubResource("StandardMaterial3D_tw8bg")
+script = ExtResource("2_tw8bg")
+metadata/_custom_type_script = "uid://c6bxv13cxum6j"
+
+[node name="@CSGBox3D@47127" type="CSGBox3D" parent="HollowBox" unique_id=1515751093]
+operation = 2
+size = Vector3(0.8, 1.8, 1.01)
+
+[node name="@CSGBox3D@56597" type="CSGBox3D" parent="HollowBox" unique_id=866155200]
+operation = 2
+size = Vector3(0.8, 1.8, 1.01)
+
+[node name="@CSGBox3D@59351" type="CSGBox3D" parent="HollowBox" unique_id=2032212721]
+operation = 2
+size = Vector3(0.8, 1.8, 1.01)
+
+[node name="@CSGBox3D@100606" type="CSGBox3D" parent="HollowBox" unique_id=1656036898]
+operation = 2
+size = Vector3(0.8, 1.8, 1.01)
+
+[node name="@CSGBox3D@18805" type="CSGBox3D" parent="HollowBox" unique_id=205092690]
+operation = 2
+size = Vector3(0.8, 1.8, 1.01)
+
+[node name="@CSGBox3D@23304" type="CSGBox3D" parent="HollowBox" unique_id=842723770]
+operation = 2
+size = Vector3(0.8, 1.8, 1.01)
+
+[node name="@CSGBox3D@24371" type="CSGBox3D" parent="HollowBox" unique_id=1624987342]
+operation = 2
+size = Vector3(0.8, 1.8, 1.01)
+
+[node name="@CSGBox3D@25453" type="CSGBox3D" parent="HollowBox" unique_id=910073121]
+operation = 2
+size = Vector3(0.8, 1.8, 1.01)
+
+[node name="@CSGBox3D@27155" type="CSGBox3D" parent="HollowBox" unique_id=1979020412]
+operation = 2
+size = Vector3(0.8, 1.8, 1.01)
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="." unique_id=1530589664]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+polygon = PackedVector2Array(0, 0.5, -0.5, 0, 0.5, 0)
+
+[node name="HollowTube3" type="CSGCylinder3D" parent="." unique_id=161991779]
+transform = Transform3D(-0.50000006, 0.8660254, 0, -0.8660254, -0.50000006, 0, 0, 0, 1, 0, 0, -3.5)
+radius = 0.737
+sides = 16
+cone = true
+material = SubResource("StandardMaterial3D_rrrwl")
+script = ExtResource("2_2rho6")
+metadata/_custom_type_script = "uid://c7nv1q7jje00w"
+
+[node name="@CSGCylinder3D@44800" type="CSGCylinder3D" parent="HollowTube3" unique_id=1777135016]
+operation = 2
+radius = 0.63699996
+height = 2.01
+sides = 16
+cone = true
+material = SubResource("StandardMaterial3D_rrrwl")
+
+[node name="HollowTube4" type="CSGCylinder3D" parent="." unique_id=1130366181]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1, 1.5)
+radius = 1.473
+height = 1.648
+sides = 16
+material = SubResource("StandardMaterial3D_i12a4")
+script = ExtResource("2_2rho6")
+metadata/_custom_type_script = "uid://c7nv1q7jje00w"
+
+[node name="@CSGCylinder3D@47810" type="CSGCylinder3D" parent="HollowTube4" unique_id=634630665]
+operation = 2
+radius = 1.373
+height = 1.658
+sides = 16
+material = SubResource("StandardMaterial3D_i12a4")
+
+[node name="HollowBox2" type="CSGBox3D" parent="." unique_id=258933666]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 1.75, 5.4639237e-08, 6.985526)
+size = Vector3(1, 4.5, 1)
+script = ExtResource("2_tw8bg")
+metadata/_custom_type_script = "uid://c6bxv13cxum6j"
+
+[node name="@CSGBox3D@97172" type="CSGBox3D" parent="HollowBox2" unique_id=2049181196]
+operation = 2
+size = Vector3(0.8, 4.3, 1.01)
+
+[node name="Wheel" type="CSGCylinder3D" parent="." unique_id=701181801]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 6)
+radius = 1.0
+height = 0.5
+sides = 16
+material = SubResource("StandardMaterial3D_2rho6")
+script = ExtResource("2_2rho6")
+thickness = 0.2
+metadata/_custom_type_script = "uid://c7nv1q7jje00w"
+
+[node name="@CSGCylinder3D@79723" type="CSGCylinder3D" parent="Wheel" unique_id=2134159071]
+operation = 2
+radius = 0.8
+height = 0.51
+sides = 16
+
+[node name="Wheel2" type="CSGCylinder3D" parent="." unique_id=612798478]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 3.5, 0, 6)
+radius = 1.0
+height = 0.5
+sides = 16
+material = SubResource("StandardMaterial3D_2rho6")
+script = ExtResource("2_2rho6")
+thickness = 0.2
+metadata/_custom_type_script = "uid://c7nv1q7jje00w"
+
+[node name="@CSGCylinder3D@80161" type="CSGCylinder3D" parent="Wheel2" unique_id=566032975]
+operation = 2
+radius = 0.8
+height = 0.51
+sides = 16
+
+[node name="Wheel3" type="CSGCylinder3D" parent="." unique_id=1123620394]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 8.5)
+radius = 1.0
+height = 0.5
+sides = 16
+material = SubResource("StandardMaterial3D_2rho6")
+script = ExtResource("2_2rho6")
+thickness = 0.2
+metadata/_custom_type_script = "uid://c7nv1q7jje00w"
+
+[node name="@CSGCylinder3D@67348" type="CSGCylinder3D" parent="Wheel3" unique_id=379859002]
+operation = 2
+radius = 0.8
+height = 0.51
+sides = 16
+material = SubResource("StandardMaterial3D_2rho6")
+
+[node name="Wheel4" type="CSGCylinder3D" parent="." unique_id=1860294806]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 3.5, 0, 8)
+radius = 1.0
+height = 0.5
+sides = 16
+material = SubResource("StandardMaterial3D_2rho6")
+script = ExtResource("2_2rho6")
+thickness = 0.2
+metadata/_custom_type_script = "uid://c7nv1q7jje00w"
+
+[node name="@CSGCylinder3D@68648" type="CSGCylinder3D" parent="Wheel4" unique_id=333688945]
+operation = 2
+radius = 0.8
+height = 0.51
+sides = 16
+material = SubResource("StandardMaterial3D_2rho6")

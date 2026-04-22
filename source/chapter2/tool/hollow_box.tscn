@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://dgja4fqe7nrun"]
+
+[ext_resource type="Script" uid="uid://c6bxv13cxum6j" path="res://addons/hollow_box.gd" id="1_myqoo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_myqoo"]
+albedo_color = Color(0.9959459, 0.7388313, 0.8244892, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qx7gp"]
+albedo_color = Color(0.41960785, 1, 1, 1)
+
+[node name="HollowBox" type="Node3D" unique_id=1606502542]
+
+[node name="HollowBox4" type="CSGBox3D" parent="." unique_id=1325607574]
+material = SubResource("StandardMaterial3D_myqoo")
+script = ExtResource("1_myqoo")
+thickness = 0.05
+metadata/_custom_type_script = "uid://c6bxv13cxum6j"
+
+[node name="HollowBox4" type="CSGBox3D" parent="HollowBox4" unique_id=230421404]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.75, 0)
+size = Vector3(1, 1.5, 1)
+material = SubResource("StandardMaterial3D_myqoo")
+script = ExtResource("1_myqoo")
+thickness = 0.05
+metadata/_custom_type_script = "uid://c6bxv13cxum6j"
+
+[node name="HollowBox2" type="CSGBox3D" parent="." unique_id=1615391655]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8987046, 0, 0)
+script = ExtResource("1_myqoo")
+metadata/_custom_type_script = "uid://c6bxv13cxum6j"
+
+[node name="HollowBox" type="CSGBox3D" parent="HollowBox2" unique_id=439132210]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, -0.5)
+script = ExtResource("1_myqoo")
+metadata/_custom_type_script = "uid://c6bxv13cxum6j"
+
+[node name="HollowBox3" type="CSGBox3D" parent="." unique_id=1091855993]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+material = SubResource("StandardMaterial3D_qx7gp")
+script = ExtResource("1_myqoo")
+metadata/_custom_type_script = "uid://c6bxv13cxum6j"
+
+[node name="HollowBox3" type="CSGBox3D" parent="HollowBox3" unique_id=861174090]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 1, 0)
+size = Vector3(1.5, 1, 1)
+material = SubResource("StandardMaterial3D_qx7gp")
+script = ExtResource("1_myqoo")
+metadata/_custom_type_script = "uid://c6bxv13cxum6j"
