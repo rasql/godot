@@ -242,8 +242,8 @@
 <p><a class="external reference" href="../_static/text/text.html">Play the project online</a></p>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
-<p>In Godot, class members (properties, attributs) can be exported. They are saved along with the scene.</p>
-<p>Also, they can be edited in the inspector. This allows us to create new nodes, which are configurable.</p>
+<p>In Godot, class members (properties, attributes) can be exported. They are saved along with the scene.</p>
+<p>Also, they can be edited by the inspector. This allows us to create new nodes, which are configurable.</p>
 </section>
 <section id="create-a-scene">
 <h2>Create a scene<a class="headerlink" href="#create-a-scene" title="Link to this heading">¶</a></h2>
@@ -257,7 +257,7 @@
 <p>Arrange the 3 objects like this.</p>
 <p><img alt="img" src="../_images/export_scene.png" /></p>
 <p>Attach a script to the node and call it <code class="docutils literal notranslate"><span class="pre">export.gd</span></code>
-Use the <code class="docutils literal notranslate"><span class="pre">&#64;export</span></code> directive to export the folling variables :</p>
+use the <code class="docutils literal notranslate"><span class="pre">&#64;export</span></code> directive to export the following variables :</p>
 <ul class="simple">
 <li><p>an integer (<code class="docutils literal notranslate"><span class="pre">int</span></code>)</p></li>
 <li><p>a text (<code class="docutils literal notranslate"><span class="pre">String</span></code>)</p></li>
@@ -283,7 +283,7 @@ Use the <code class="docutils literal notranslate"><span class="pre">&#64;export
 </section>
 <section id="export-vectors">
 <h2>Export vectors<a class="headerlink" href="#export-vectors" title="Link to this heading">¶</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">&#64;export_group(&quot;Vectors&quot;)</span></code> directive adds a collabsible title to the variable group.
+<p>The <code class="docutils literal notranslate"><span class="pre">&#64;export_group(&quot;Vectors&quot;)</span></code> directive adds a collapsible title to the variable group.
 There are 2 types: 2D and 3D vectors. They have 2 varieties:</p>
 <ul class="simple">
 <li><p>integer (with up/down arrows)</p></li>
@@ -307,18 +307,18 @@ There are 2 types: 2D and 3D vectors. They have 2 varieties:</p>
 <span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">aabb</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">AABB</span><span class="p">(</span><span class="nb nb-Type">Vector3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="nb nb-Type">Vector3</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>There is a 3D version which is called AABB (Axis-Aligned Bounding Box).</p>
+<p>There is a 3D version, which is called AABB (Axis-Aligned Bounding Box).</p>
 <p><a class="reference internal" href="../_images/export_rect.png"><img alt="img" src="../_images/export_rect.png" style="width: 300px;" /></a></p>
 </section>
 <section id="export-arrays">
 <h2>Export arrays<a class="headerlink" href="#export-arrays" title="Link to this heading">¶</a></h2>
-<p>An array with no specified array type, can have a mix of different types.
-With a generic array you can</p>
+<p>An array with no specified array type can have a mix of different types.
+With a generic array, you can</p>
 <ul class="simple">
 <li><p>Choose the array size (up/down arrow)</p></li>
 <li><p>Reposition an element by dragging</p></li>
 <li><p>Chose a type (float, int, AABB, etc.) with the <strong>pen icon</strong></p></li>
-<li><p>Add an elements with the (+) button</p></li>
+<li><p>Add an element with the (+) button</p></li>
 <li><p>Remove the last element with the down button</p></li>
 </ul>
 <div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span>
@@ -335,14 +335,14 @@ With a generic array you can</p>
 <p>With arrays you can</p>
 <ul class="simple">
 <li><p>rearrange the position</p></li>
-<li><p>modifiy the value</p></li>
+<li><p>modify the value</p></li>
 <li><p>remove an element</p></li>
 <li><p>add a new element</p></li>
 </ul>
 </section>
 <section id="export-a-packedscene-array">
 <h2>Export a PackedScene Array<a class="headerlink" href="#export-a-packedscene-array" title="Link to this heading">¶</a></h2>
-<p>This control allows to select multiple scences.</p>
+<p>This control allows to select multiple scenes.</p>
 <div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">scenes</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">Array</span><span class="p">[</span><span class="n">PackedScene</span><span class="p">]</span>
 </pre></div>
 </div>

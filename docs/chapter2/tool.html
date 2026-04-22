@@ -3,7 +3,7 @@
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Constructive Solid Geometry" href="../chapter3/csg.html"><link rel="prev" title="Export properties" href="../chapter1/text.html">
+<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Basics" href="../3_basics/basics.html"><link rel="prev" title="Export properties" href="../chapter1/text.html">
 
     <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
         <title>Execute code in the editor - Godot 0.1 documentation</title>
@@ -195,7 +195,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../chapter0/intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../chapter1/text.html">Export properties</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Execute code in the editor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#basics">Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_basics/basics.html">Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../chapter3/csg.html">Constructive Solid Geometry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../myst.html">MyST reference</a></li>
 </ul>
@@ -240,7 +240,7 @@
 <h1>Execute code in the editor<a class="headerlink" href="#execute-code-in-the-editor" title="Link to this heading">¶</a></h1>
 <p><a class="external reference" href="../basics.html">Preview the game</a></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">&#64;tool</span></code> directive allows us to execute code in the editor.
-This is a convenient preview function. It allows to</p>
+This is a convenient preview function. It allows to:</p>
 <ul class="simple">
 <li><p>animate nodes directly in the editor</p></li>
 <li><p>to create nodes programmatically and interactively</p></li>
@@ -249,7 +249,7 @@ This is a convenient preview function. It allows to</p>
 <h2>Rotate a box<a class="headerlink" href="#rotate-a-box" title="Link to this heading">¶</a></h2>
 <p>To show how to create a rotating cube, create a new scene with the following nodes:</p>
 <ul class="simple">
-<li><p>a <code class="docutils literal notranslate"><span class="pre">Node3D</span></code> as base node called <code class="docutils literal notranslate"><span class="pre">Tool</span></code></p></li>
+<li><p>a <code class="docutils literal notranslate"><span class="pre">Node3D</span></code> as a base node called <code class="docutils literal notranslate"><span class="pre">Tool</span></code></p></li>
 <li><p>a <code class="docutils literal notranslate"><span class="pre">WorldEnvironment</span></code> to have light</p></li>
 <li><p>a <code class="docutils literal notranslate"><span class="pre">CSBBox3D</span></code> renamed <code class="docutils literal notranslate"><span class="pre">Rotate</span></code></p></li>
 <li><p>a <code class="docutils literal notranslate"><span class="pre">Camera3D</span></code> to see the object (moved backward 2m along the z-axis)</p></li>
@@ -258,7 +258,7 @@ This is a convenient preview function. It allows to</p>
 <p>This is the static image you get in the editor.</p>
 <p><img alt="img" src="../_images/tool1_scene.png" /></p>
 <p>Add a script to the <code class="docutils literal notranslate"><span class="pre">Rotate</span></code> node, which appears as a <strong>white</strong> script icon.
-The script makes the box rotate around the x-axis</p>
+The script makes the box rotate around the x-axis.</p>
 <div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">extends</span><span class="w"> </span><span class="n">CSGBox3D</span>
 
 <span class="k">var</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
@@ -286,7 +286,7 @@ The script makes the box rotate around the x-axis</p>
 <p class="admonition-title">Attention</p>
 <p>Each time you make a change in the script, the scene must be reloaded with <code class="docutils literal notranslate"><span class="pre">Scene</span> <span class="pre">&gt;</span> <span class="pre">Reload</span> <span class="pre">Saved</span> <span class="pre">Scene</span></code>.</p>
 </div>
-<p>The script icon now turns <strong>blue</strong> to indicate that the script is executing in the editor via the <code class="docutils literal notranslate"><span class="pre">&#64;tool</span></code> directive.</p>
+<p>The script icon now turns <strong>blue</strong> to indicate that the script is executed in the editor via the <code class="docutils literal notranslate"><span class="pre">&#64;tool</span></code> directive.</p>
 <p><a class="reference internal" href="../_images/tool2_tree.png"><img alt="img" src="../_images/tool2_tree.png" width="300" /></a></p>
 <p>This is the static image you get in the editor.</p>
 <p><img alt="img" src="../_images/tool2_scene.png" /></p>
@@ -314,13 +314,13 @@ Attach the following script.</p>
 </section>
 <section id="change-parameters-in-the-inspector">
 <h2>Change parameters in the inspector<a class="headerlink" href="#change-parameters-in-the-inspector" title="Link to this heading">¶</a></h2>
-<p>It is possible to export the paramters and configure them in the inspector.</p>
+<p>It is possible to export the parameters and configure them in the inspector.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">&#64;export</span></code> directive exports the value:</p>
 <ul class="simple">
 <li><p>it can be changed in the inspector</p></li>
 <li><p>it will be saved with the scene</p></li>
 </ul>
-<p>In ordre to change the speed in the running script we must use a <strong>setter</strong> function <code class="docutils literal notranslate"><span class="pre">set(x)</span></code>.</p>
+<p>In order to change the speed from within the running script, we must use a <strong>setter</strong> function <code class="docutils literal notranslate"><span class="pre">set(x)</span></code>.</p>
 <div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="err">@</span><span class="k">tool</span>
 <span class="k">extends</span><span class="w"> </span><span class="n">CSGBox3D</span>
 
@@ -336,7 +336,7 @@ Attach the following script.</p>
 </section>
 <section id="change-speed-and-amplitude">
 <h2>Change speed and amplitude<a class="headerlink" href="#change-speed-and-amplitude" title="Link to this heading">¶</a></h2>
-<p>For the moving cube, we can add two parameters: speed and amplitude</p>
+<p>For the moving cube, we can add two parameters: speed and amplitude.</p>
 <div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="err">@</span><span class="k">tool</span>
 <span class="k">extends</span><span class="w"> </span><span class="n">CSGBox3D</span>
 
@@ -356,230 +356,159 @@ Attach the following script.</p>
 </pre></div>
 </div>
 </section>
-</section>
-<section id="basics">
-<h1>Basics<a class="headerlink" href="#basics" title="Link to this heading">¶</a></h1>
-<section id="world-environment">
-<h2>World environment<a class="headerlink" href="#world-environment" title="Link to this heading">¶</a></h2>
-<p>We start with creating the world environment</p>
+<section id="create-a-hollow-box">
+<h2>Create a hollow box<a class="headerlink" href="#create-a-hollow-box" title="Link to this heading">¶</a></h2>
+<p>In Godot it is possible to create new types of node objects. For example, it would be convienent to have not just a filled box, but also a hollow box. We can take an existing type and modify it.</p>
+<p><img alt="img" src="../_images/hollowbox.png" /></p>
 <ul class="simple">
-<li><p>configure snap to 0.5</p></li>
-<li><p>create a CSGBox3D of 10x1x10</p></li>
-<li><p>use collision on</p></li>
-<li><p>add environment to scene</p></li>
-<li><p>add Sun to scene</p></li>
+<li><p>create an <code class="docutils literal notranslate"><span class="pre">addons</span></code> folder</p></li>
+<li><p>create a new script file called <code class="docutils literal notranslate"><span class="pre">hollow_box</span></code></p></li>
+<li><p>add the following code:</p></li>
 </ul>
-</section>
-<section id="player">
-<h2>Player<a class="headerlink" href="#player" title="Link to this heading">¶</a></h2>
-<p>The player is the object representing the user. A camera is attached to the player in order to see the world.</p>
-<a class="reference internal image-reference" href="../_images/player_tree.png"><img alt="../_images/player_tree.png" src="../_images/player_tree.png" style="width: 300px;" />
-</a>
-<p>Create the objects as indicated:</p>
-<ul class="simple">
-<li><p>Create a <strong>RigidBody3D</strong> node and name it <code class="docutils literal notranslate"><span class="pre">Player</span></code></p></li>
-<li><p>Add a <strong>MeshInstance3D</strong> and make it a capsule shape</p></li>
-<li><p>Add a <strong>CollisionShape3D</strong> via the <code class="docutils literal notranslate"><span class="pre">Mesh</span></code> button (sibling, capsule)</p></li>
-<li><p>Add a Node3D and name it <code class="docutils literal notranslate"><span class="pre">TwistPivot</span></code></p></li>
-<li><p>Add a child Node3D and name it <code class="docutils literal notranslate"><span class="pre">PitchPivot</span></code></p></li>
-<li><p>Add a child Camera3D</p></li>
-</ul>
-<p><img alt="Create New Node dialog showing search results for ribo with RigidBody3D selected, displaying class hierarchy and physics simulation description" src="../_images/new_node_win.png" /></p>
-<p>This is the GDScript to move the player.</p>
-</section>
-<section id="this">
-<h2>This<a class="headerlink" href="#this" title="Link to this heading">¶</a></h2>
-<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">func</span><span class="w"> </span><span class="n">_input</span><span class="p">(</span><span class="n">event</span><span class="p">:</span><span class="w"> </span><span class="n">InputEvent</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
-<span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="n">event</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s2">&quot;jump&quot;</span><span class="p">):</span>
-<span class="w">		</span><span class="n">apply_central_impulse</span><span class="p">(</span><span class="nb nb-Type">Vector3</span><span class="o">.</span><span class="n">UP</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">jump_impulse</span><span class="p">)</span>
-<span class="w">		</span>
-<span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">InputEventMouseButton</span><span class="p">:</span>
-<span class="w">		</span><span class="n">Input</span><span class="o">.</span><span class="n">set_mouse_mode</span><span class="p">(</span><span class="n">Input</span><span class="o">.</span><span class="n">MOUSE_MODE_CAPTURED</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<section id="all">
-<h2>All<a class="headerlink" href="#all" title="Link to this heading">¶</a></h2>
-<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">extends</span><span class="w"> </span><span class="n">RigidBody3D</span>
-
-<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">mouse_sensitivity</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mf">0.001</span>
-<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">speed</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">float</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">50.0</span>
-<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">jump_impulse</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">float</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5.0</span>
-<span class="w">		</span>
-<span class="err">@</span><span class="k">onready</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">twist_pivot</span><span class="p">:</span><span class="w"> </span><span class="n">Node3D</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">$</span><span class="n">TwistPivot</span>
-<span class="err">@</span><span class="k">onready</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">pitch_pivot</span><span class="p">:</span><span class="w"> </span><span class="n">Node3D</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">$</span><span class="n">TwistPivot</span><span class="o">/</span><span class="n">PitchPivot</span>
-
-<span class="k">var</span><span class="w"> </span><span class="n">twist_input</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span>
-<span class="k">var</span><span class="w"> </span><span class="n">pitch_input</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span>
-
-
-<span class="k">func</span><span class="w"> </span><span class="n">_input</span><span class="p">(</span><span class="n">event</span><span class="p">:</span><span class="w"> </span><span class="n">InputEvent</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
-<span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="n">event</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s2">&quot;jump&quot;</span><span class="p">):</span>
-<span class="w">		</span><span class="n">apply_central_impulse</span><span class="p">(</span><span class="nb nb-Type">Vector3</span><span class="o">.</span><span class="n">UP</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">jump_impulse</span><span class="p">)</span>
-<span class="w">		</span>
-<span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">InputEventMouseButton</span><span class="p">:</span>
-<span class="w">		</span><span class="n">Input</span><span class="o">.</span><span class="n">set_mouse_mode</span><span class="p">(</span><span class="n">Input</span><span class="o">.</span><span class="n">MOUSE_MODE_CAPTURED</span><span class="p">)</span>
-
-
-<span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
-<span class="w">	</span><span class="n">Input</span><span class="o">.</span><span class="n">set_mouse_mode</span><span class="p">(</span><span class="n">Input</span><span class="o">.</span><span class="n">MOUSE_MODE_CAPTURED</span><span class="p">)</span>
-
-
-<span class="k">func</span><span class="w"> </span><span class="n">_process</span><span class="p">(</span><span class="n">_delta</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">float</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
-<span class="w">	</span><span class="k">var</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="nb nb-Type">Vector3</span><span class="o">.</span><span class="n">ZERO</span>
-<span class="w">	</span><span class="n">input</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">get_axis</span><span class="p">(</span><span class="s2">&quot;move_left&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;move_right&quot;</span><span class="p">)</span>
-<span class="w">	</span><span class="n">input</span><span class="o">.</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">get_axis</span><span class="p">(</span><span class="s2">&quot;move_forward&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;move_backward&quot;</span><span class="p">)</span>
-<span class="w">		</span>
-<span class="w">	</span><span class="n">apply_central_force</span><span class="p">(</span><span class="n">twist_pivot</span><span class="o">.</span><span class="n">basis</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">speed</span><span class="p">)</span>
-<span class="w">	</span>
-<span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_just_pressed</span><span class="p">(</span><span class="s2">&quot;ui_cancel&quot;</span><span class="p">):</span>
-<span class="w">		</span><span class="n">Input</span><span class="o">.</span><span class="n">set_mouse_mode</span><span class="p">(</span><span class="n">Input</span><span class="o">.</span><span class="n">MOUSE_MODE_VISIBLE</span><span class="p">)</span>
-<span class="w">		</span>
-<span class="w">	</span><span class="n">twist_pivot</span><span class="o">.</span><span class="n">rotate_y</span><span class="p">(</span><span class="n">twist_input</span><span class="p">)</span>
-<span class="w">	</span><span class="n">pitch_pivot</span><span class="o">.</span><span class="n">rotate_x</span><span class="p">(</span><span class="n">pitch_input</span><span class="p">)</span>
-<span class="w">	</span><span class="n">pitch_pivot</span><span class="o">.</span><span class="n">rotation</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">clamp</span><span class="p">(</span>
-<span class="w">		</span><span class="n">pitch_pivot</span><span class="o">.</span><span class="n">rotation</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
-<span class="w">		</span><span class="n">deg_to_rad</span><span class="p">(</span><span class="o">-</span><span class="mi">30</span><span class="p">),</span>
-<span class="w">		</span><span class="n">deg_to_rad</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span>
-<span class="w">	</span><span class="p">)</span>
-<span class="w">	</span><span class="n">twist_input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-<span class="w">	</span><span class="n">pitch_input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-
-
-<span class="k">func</span><span class="w"> </span><span class="n">_unhandled_input</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
-<span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">InputEventMouseMotion</span><span class="p">:</span>
-<span class="w">		</span><span class="k">if</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">get_mouse_mode</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">MOUSE_MODE_CAPTURED</span><span class="p">:</span>
-<span class="w">			</span><span class="n">twist_input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">event</span><span class="o">.</span><span class="n">relative</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mouse_sensitivity</span>
-<span class="w">			</span><span class="n">pitch_input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">event</span><span class="o">.</span><span class="n">relative</span><span class="o">.</span><span class="n">y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mouse_sensitivity</span>
-</pre></div>
-</div>
-</section>
-<section id="creating-a-box">
-<h2>Creating a box<a class="headerlink" href="#creating-a-box" title="Link to this heading">¶</a></h2>
-<p>The following code creates a CSG box programmatically.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">&#64;tool</span></code> directive allows to execute the programme in the editor.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">size</span></code> of the box and the <code class="docutils literal notranslate"><span class="pre">material</span></code> is exported to the inspector panel.</p>
-<a class="reference internal image-reference" href="../_images/box_inspector.png"><img alt="../_images/box_inspector.png" src="../_images/box_inspector.png" style="width: 400px;" />
-</a>
-<p>The corner of the box is aligned with the origin by offsetting the box by half of its size:
-<code class="docutils literal notranslate"><span class="pre">box.position</span> <span class="pre">=</span> <span class="pre">0.5</span> <span class="pre">*</span> <span class="pre">size</span></code></p>
 <div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="err">@</span><span class="k">tool</span>
-<span class="k">extends</span><span class="w"> </span><span class="n">Node3D</span>
-<span class="k">class_name</span><span class="w"> </span><span class="n">Box</span>
-<span class="c1">## This class creates a Box.</span>
-
-<span class="c1">## The size of the box.</span>
-<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb nb-Type">Vector3</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">):</span>
-<span class="w">	</span><span class="n">set</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<span class="w">		</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span>
-<span class="w">		</span><span class="n">create</span><span class="p">()</span>
-<span class="w">		</span>
-<span class="c1">## The box material.</span>
-<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">material</span><span class="p">:</span><span class="w"> </span><span class="n">BaseMaterial3D</span><span class="w">		</span>
-
-<span class="w">		</span>
-<span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">():</span>
-<span class="w">	</span><span class="n">create</span><span class="p">()</span>
-<span class="w">	</span>
-<span class="c1">## Creating the box.</span>
-<span class="k">func</span><span class="w"> </span><span class="n">create</span><span class="p">():</span>
-<span class="w">	</span><span class="k">for</span><span class="w"> </span><span class="n">child</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">get_children</span><span class="p">():</span>
-<span class="w">		</span><span class="n">child</span><span class="o">.</span><span class="n">queue_free</span><span class="p">()</span>
-<span class="w">	</span>
-<span class="w">	</span><span class="k">var</span><span class="w"> </span><span class="n">box</span><span class="w">	</span>
-<span class="w">	</span><span class="n">box</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CSGBox3D</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
-<span class="w">	</span><span class="n">box</span><span class="o">.</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">size</span>
-<span class="w">	</span><span class="n">box</span><span class="o">.</span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">size</span>
-<span class="w">	</span><span class="n">box</span><span class="o">.</span><span class="n">material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">material</span>
-<span class="w">	</span><span class="n">box</span><span class="o">.</span><span class="n">use_collision</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
-<span class="w">	</span><span class="n">add_child</span><span class="p">(</span><span class="n">box</span><span class="p">)</span>
+<span class="k">extends</span><span class="w"> </span><span class="n">CSGBox3D</span>
+<span class="k">class_name</span><span class="w"> </span><span class="n">HollowBox</span>
+<span class="c1">## Creates a hollow box.</span>
 </pre></div>
 </div>
-<p><img alt="box" src="../_images/box.png" /></p>
-</section>
-<section id="staircase">
-<h2>Staircase<a class="headerlink" href="#staircase" title="Link to this heading">¶</a></h2>
-<p>The following shows how to build a staircase. We place a first step.</p>
-<p><img alt="stairs" src="../_images/stairs_inspector.png" /></p>
-<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="err">@</span><span class="k">tool</span>
-<span class="k">extends</span><span class="w"> </span><span class="n">Node3D</span>
-<span class="c1">## This class creates a staircase.</span>
-<span class="k">class_name</span><span class="w"> </span><span class="n">Stairs</span>
-
-<span class="c1">## Number of steps.</span>
-<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">repeat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">18</span><span class="p">:</span>
-<span class="w">	</span><span class="n">set</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<span class="w">		</span><span class="n">repeat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span>
-<span class="w">		</span><span class="k">if</span><span class="w"> </span><span class="n">is_node_ready</span><span class="p">():</span>
-<span class="w">			</span><span class="n">create</span><span class="p">()</span>
-<span class="w">		</span>
-<span class="c1">## Size of a step.</span>
-<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb nb-Type">Vector3</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">):</span>
-<span class="w">	</span><span class="n">set</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<span class="w">		</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span>
-<span class="w">		</span><span class="k">if</span><span class="w"> </span><span class="n">is_node_ready</span><span class="p">():</span>
-<span class="w">				</span><span class="n">create</span><span class="p">()</span>
-<span class="w">		</span>
-<span class="c1">## Transposition vector (offset).</span>
-<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">transpose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb nb-Type">Vector3</span><span class="p">(</span><span class="mf">1.3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">):</span>
-<span class="w">	</span><span class="n">set</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<span class="w">		</span><span class="n">transpose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span>
-<span class="w">		</span><span class="n">create</span><span class="p">()</span>
-<span class="w">		</span>
-<span class="c1"># Euler angles of rotation</span>
-<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">rotate_3d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb nb-Type">Vector3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">):</span>
-<span class="w">	</span><span class="n">set</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<span class="w">		</span><span class="n">rotate_3d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span>
+<p>First we make it execute in the editor (editor tool).
+This script extends the <code class="docutils literal notranslate"><span class="pre">CSGBox3D</span></code>. The new class name is <code class="docutils literal notranslate"><span class="pre">HollowBox</span></code>
+This already adds the new class as a child of <code class="docutils literal notranslate"><span class="pre">CSGBox3D</span></code>. You can test this by adding a new node to a scene (cmd+A).</p>
+<p><a class="reference internal" href="../_images/hollowbox_node.png"><img alt="img" src="../_images/hollowbox_node.png" width="300" /></a></p>
+<p>Now we add an exported variable, which lets us select the thickness of the wall.
+We use a <strong>setter</strong> function to set the new value and also to call the function <code class="docutils literal notranslate"><span class="pre">create()</span></code>.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">thickness</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">:</span>
+<span class="w">	</span><span class="n">set</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+<span class="w">		</span><span class="n">thickness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span>
 <span class="w">		</span><span class="n">create</span><span class="p">()</span>
 
-<span class="c1"># Show nodes in scene tree		</span>
-<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">show_node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span><span class="p">:</span>
-<span class="w">	</span><span class="n">set</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<span class="w">		</span><span class="n">show_node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span>
-<span class="w">		</span><span class="n">create</span><span class="p">()</span>
-
-<span class="c1"># Staircase material		</span>
-<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">material</span><span class="p">:</span><span class="w"> </span><span class="n">BaseMaterial3D</span><span class="w">		</span>
-
-<span class="w">		</span>
-<span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">():</span>
-<span class="w">	</span><span class="n">create</span><span class="p">()</span>
-<span class="w">	</span>
-<span class="w">	</span>
-<span class="k">func</span><span class="w"> </span><span class="n">create</span><span class="p">():</span>
-<span class="w">	</span><span class="k">for</span><span class="w"> </span><span class="n">child</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">get_children</span><span class="p">():</span>
-<span class="w">		</span><span class="n">child</span><span class="o">.</span><span class="n">free</span><span class="p">()</span>
-<span class="w">	</span>
-<span class="w">	</span><span class="k">var</span><span class="w"> </span><span class="n">box</span><span class="w">	</span>
-<span class="w">	</span><span class="n">box</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CSGBox3D</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
-<span class="w">	</span><span class="n">box</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Step&quot;</span>
-<span class="w">	</span><span class="n">box</span><span class="o">.</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">size</span>
-<span class="w">	</span><span class="n">box</span><span class="o">.</span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">size</span>
-<span class="w">	</span><span class="n">box</span><span class="o">.</span><span class="n">material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">material</span>
-<span class="w">	</span><span class="n">box</span><span class="o">.</span><span class="n">use_collision</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
-<span class="w">	</span><span class="n">add_child</span><span class="p">(</span><span class="n">box</span><span class="p">)</span>
-<span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="n">show_node</span><span class="p">:</span>
-<span class="w">		</span><span class="n">box</span><span class="o">.</span><span class="n">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">edited_scene_root</span>
-<span class="w">	</span>
-<span class="w">	</span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="n">repeat</span><span class="p">):</span>
-<span class="w">		</span><span class="n">box</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">box</span><span class="o">.</span><span class="n">duplicate</span><span class="p">()</span>
-<span class="w">		</span><span class="n">box</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Step&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-<span class="w">		</span><span class="n">box</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">transpose</span><span class="p">)</span>
-<span class="w">		</span><span class="n">box</span><span class="o">.</span><span class="n">rotate_x</span><span class="p">(</span><span class="n">deg_to_rad</span><span class="p">(</span><span class="n">rotate_3d</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>
-<span class="w">		</span><span class="n">box</span><span class="o">.</span><span class="n">rotate_y</span><span class="p">(</span><span class="n">deg_to_rad</span><span class="p">(</span><span class="n">rotate_3d</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
-<span class="w">		</span><span class="n">box</span><span class="o">.</span><span class="n">rotate_z</span><span class="p">(</span><span class="n">deg_to_rad</span><span class="p">(</span><span class="n">rotate_3d</span><span class="o">.</span><span class="n">z</span><span class="p">))</span>
-<span class="w">		</span><span class="n">add_child</span><span class="p">(</span><span class="n">box</span><span class="p">)</span>
-<span class="w">		</span><span class="k">if</span><span class="w"> </span><span class="n">show_node</span><span class="p">:</span>
-<span class="w">			</span><span class="n">box</span><span class="o">.</span><span class="n">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">edited_scene_root</span>
+<span class="c1">## Button action to rebuild the hollow tube.</span>
+<span class="err">@</span><span class="n">export_tool_button</span><span class="p">(</span><span class="s2">&quot;Rebuild&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">create</span>
 </pre></div>
 </div>
-<p><img alt="img" src="../_images/stairs.png" /></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">thickness</span></code> and the <code class="docutils literal notranslate"><span class="pre">action</span></code> button appear in the inspector panel.<br />
+We can change the wall thickness and rebuild the node.</p>
+<p>The size and material of the outer box are selected with the original <code class="docutils literal notranslate"><span class="pre">CSGBox3D</span></code> attributes.</p>
+<p><a class="reference internal" href="../_images/hollowbox_inspector.png"><img alt="img" src="../_images/hollowbox_inspector.png" width="300" /></a></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">_ready()</span></code> function creates the inner CSG box, which is subtracted from the base box.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">():</span>
+<span class="w">	</span><span class="n">create</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">_ready()</span></code> function first looks for a procedurally created node.
+A procedurally created node does not have a parent.
+If we find a node without an owner, this is our <code class="docutils literal notranslate"><span class="pre">inner</span></code> tube.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">func</span><span class="w"> </span><span class="n">create</span><span class="p">():</span>
+<span class="w">	</span><span class="k">var</span><span class="w"> </span><span class="n">inner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb nb-Type">null</span>
+<span class="w">	</span><span class="c1"># find a procedurally created node</span>
+<span class="w">	</span><span class="k">for</span><span class="w"> </span><span class="n">child</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">get_children</span><span class="p">():</span>
+<span class="w">		</span><span class="k">if</span><span class="w"> </span><span class="n">child</span><span class="o">.</span><span class="n">owner</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb nb-Type">null</span><span class="p">:</span>
+<span class="w">			</span><span class="n">inner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">child</span>
+<span class="w">			</span><span class="k">break</span>
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">inner</span></code> does not exist, we create a new box and add it as a child.
+We set up the operation to <strong>subtraction</strong>.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="n">inner</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb nb-Type">null</span><span class="p">:</span>
+<span class="w">		</span><span class="n">inner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CSGBox3D</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="w">		</span><span class="n">add_child</span><span class="p">(</span><span class="n">inner</span><span class="p">)</span>
+<span class="w">		</span><span class="n">inner</span><span class="o">.</span><span class="n">operation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CSGShape3D</span><span class="o">.</span><span class="n">OPERATION_SUBTRACTION</span>
+</pre></div>
+</div>
+<p>If the outer box has a material, we want to make the inside the same.
+The size of the inner box is smaller by the <code class="docutils literal notranslate"><span class="pre">thickness</span></code> in the x and y direction.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="n">material</span><span class="p">:</span>
+<span class="w">		</span><span class="n">inner</span><span class="o">.</span><span class="n">material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">material</span>
+<span class="w">	</span><span class="n">inner</span><span class="o">.</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">size</span>
+<span class="w">	</span><span class="n">inner</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">thickness</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">	</span><span class="n">inner</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">y</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">thickness</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">	</span><span class="n">inner</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">z</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">0.01</span><span class="w"> </span><span class="c1"># Slightly taller to avoid &quot;Z-fighting&quot; or thin faces</span>
+</pre></div>
+</div>
+<p><img alt="img" src="../_images/hollowbox_demo.png" /></p>
+<p>Download the <a class="reference download internal" download="" href="../_downloads/658fd2ab5255153a64d32209d6215dee/hollow_box.gd"><code class="xref download docutils literal notranslate"><span class="pre">Godot</span> <span class="pre">Script</span></code></a>.</p>
 </section>
-<section id="download-links">
-<h2>Download links<a class="headerlink" href="#download-links" title="Link to this heading">¶</a></h2>
-<p>Download a <a class="reference download internal" download="" href="../_downloads/6b6081b8b3631d1896dce726b58806e0/player.gd"><code class="xref download docutils literal notranslate"><span class="pre">Godot</span> <span class="pre">Script</span></code></a>.</p>
-<p>Download a <a class="reference download internal" download="" href="../_downloads/54578e48444d55bbefd5e4c318b3c3c9/player.tscn"><code class="xref download docutils literal notranslate"><span class="pre">Godot</span> <span class="pre">Scene</span></code></a>.</p>
-<p>Download a <a class="reference download internal" download="" href="../_downloads/0788d8dbfd60797c207128426a32b3ad/basics.zip"><code class="xref download docutils literal notranslate"><span class="pre">Godot</span> <span class="pre">Project</span></code></a>.</p>
+<section id="create-automatic-documentation">
+<h2>Create automatic documentation<a class="headerlink" href="#create-automatic-documentation" title="Link to this heading">¶</a></h2>
+<p>All comments preceded by <code class="docutils literal notranslate"><span class="pre">##</span></code> will be added as description.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="c1">## Creates a hollow box.</span>
+</pre></div>
+</div>
+<p><img alt="img" src="../_images/hollowbox_help.png" /></p>
+<p>The help description for exported variables can be :</p>
+<ul class="simple">
+<li><p>an inline description (<code class="docutils literal notranslate"><span class="pre">thickness</span></code>)</p></li>
+<li><p>placed on the previous line (<code class="docutils literal notranslate"><span class="pre">action</span></code>)</p></li>
+</ul>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">thickness</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">:</span><span class="w">  </span><span class="c1">## Wall thickness.</span>
+
+<span class="c1">## Button action to rebuild the node.</span>
+<span class="err">@</span><span class="n">export_tool_button</span><span class="p">(</span><span class="s2">&quot;Rebuild&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create</span>
+</pre></div>
+</div>
+<p><img alt="img" src="../_images/hollowbox_help2.png" /></p>
+</section>
+<section id="hollow-tube">
+<h2>Hollow Tube<a class="headerlink" href="#hollow-tube" title="Link to this heading">¶</a></h2>
+<p>Now lets create a hollow tube, by subtracting an inner cylinder from a <code class="docutils literal notranslate"><span class="pre">CSGCylinder3D</span></code> node.</p>
+<p><img alt="img" src="../_images/hollowtube.png" /></p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">addons</span></code> folder create a new file called <code class="docutils literal notranslate"><span class="pre">hollow_tube.gd</span></code>.</p>
+<p>First make the script a tool with the <code class="docutils literal notranslate"><span class="pre">&#64;tool</span></code> annotation so we can use it interactively.
+Then extend the <code class="docutils literal notranslate"><span class="pre">CSGCylinder3D</span></code> class to create a new class called <code class="docutils literal notranslate"><span class="pre">HollowTube</span></code>.
+Add a help comment with <code class="docutils literal notranslate"><span class="pre">##</span></code>.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="err">@</span><span class="k">tool</span>
+<span class="k">extends</span><span class="w"> </span><span class="n">CSGCylinder3D</span>
+<span class="k">class_name</span><span class="w"> </span><span class="n">HollowTube</span>
+<span class="c1">## Creates a hollow tube.</span>
+</pre></div>
+</div>
+<p>Again, export the <code class="docutils literal notranslate"><span class="pre">thickness</span></code> variable and an <code class="docutils literal notranslate"><span class="pre">action</span></code> button. Add a help comment to them.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">thickness</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">:</span><span class="w">  </span><span class="c1">## Wall thicknness.</span>
+<span class="w">	</span><span class="n">set</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+<span class="w">		</span><span class="n">thickness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span>
+<span class="w">		</span><span class="n">create</span><span class="p">()</span>
+
+<span class="c1">## Button action to rebuild the hollow tube.</span>
+<span class="err">@</span><span class="n">export_tool_button</span><span class="p">(</span><span class="s2">&quot;Rebuild&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">create</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">_ready()</span></code> function creates the hollow tube once the node is ready, after joining the scene tree.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">():</span>
+<span class="w">	</span><span class="n">create</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Like before, check if a procedurally created node exists already. If not, create one.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="c1">## Subtracts an inner cylinder from the `CSGCylidner3D`.</span>
+<span class="k">func</span><span class="w"> </span><span class="n">create</span><span class="p">():</span>
+<span class="w">	</span><span class="k">var</span><span class="w"> </span><span class="n">inner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb nb-Type">null</span>
+<span class="w">	</span><span class="c1"># find a procedurally created node</span>
+<span class="w">	</span><span class="k">for</span><span class="w"> </span><span class="n">child</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">get_children</span><span class="p">():</span>
+<span class="w">		</span><span class="k">if</span><span class="w"> </span><span class="n">child</span><span class="o">.</span><span class="n">owner</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb nb-Type">null</span><span class="p">:</span>
+<span class="w">			</span><span class="n">inner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">child</span>
+<span class="w">			</span><span class="k">break</span>
+<span class="w">			</span>
+<span class="w">	</span><span class="c1"># create one if it does not exist</span>
+<span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="n">inner</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb nb-Type">null</span><span class="p">:</span>
+<span class="w">		</span><span class="n">inner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CSGCylinder3D</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="w">		</span><span class="n">inner</span><span class="o">.</span><span class="n">operation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CSGShape3D</span><span class="o">.</span><span class="n">OPERATION_SUBTRACTION</span>
+<span class="w">		</span><span class="n">add_child</span><span class="p">(</span><span class="n">inner</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally update the inner cylinder.
+Make the radius smaller by the wall thickness.
+Make the height slightly larger to avoid “z-fighting”.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="c1"># update it</span>
+<span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="n">material</span><span class="p">:</span>
+<span class="w">		</span><span class="n">inner</span><span class="o">.</span><span class="n">material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">material</span>
+<span class="w">	</span><span class="n">inner</span><span class="o">.</span><span class="n">radius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">radius</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">thickness</span>
+<span class="w">	</span><span class="n">inner</span><span class="o">.</span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1.01</span><span class="w"> </span><span class="c1"># Slightly taller to avoid &quot;Z-fighting&quot; or thin faces</span>
+<span class="w">	</span><span class="n">inner</span><span class="o">.</span><span class="n">sides</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sides</span>
+<span class="w">	</span><span class="n">inner</span><span class="o">.</span><span class="n">cone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cone</span>
+</pre></div>
+</div>
+<p>Download the <a class="reference download internal" download="" href="../_downloads/de35f29c33a088805db452e07f8377ec/hollow_tube.gd"><code class="xref download docutils literal notranslate"><span class="pre">Godot</span> <span class="pre">Script</span></code></a>.</p>
+<p><img alt="img" src="../_images/hollowtube_scene.png" /></p>
+<p>Download the <a class="reference download internal" download="" href="../_downloads/90a2a621945a470cf5f8f42a5620c915/tool.zip"><code class="xref download docutils literal notranslate"><span class="pre">Godot</span> <span class="pre">project</span></code></a>.</p>
 </section>
 </section>
 
@@ -588,12 +517,12 @@ Attach the following script.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../chapter3/csg.html">
+          <a class="next-page" href="../3_basics/basics.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Constructive Solid Geometry</div>
+                <div class="title">Basics</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -644,16 +573,9 @@ Attach the following script.</p>
 <li><a class="reference internal" href="#move-a-cube">Move a cube</a></li>
 <li><a class="reference internal" href="#change-parameters-in-the-inspector">Change parameters in the inspector</a></li>
 <li><a class="reference internal" href="#change-speed-and-amplitude">Change speed and amplitude</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#basics">Basics</a><ul>
-<li><a class="reference internal" href="#world-environment">World environment</a></li>
-<li><a class="reference internal" href="#player">Player</a></li>
-<li><a class="reference internal" href="#this">This</a></li>
-<li><a class="reference internal" href="#all">All</a></li>
-<li><a class="reference internal" href="#creating-a-box">Creating a box</a></li>
-<li><a class="reference internal" href="#staircase">Staircase</a></li>
-<li><a class="reference internal" href="#download-links">Download links</a></li>
+<li><a class="reference internal" href="#create-a-hollow-box">Create a hollow box</a></li>
+<li><a class="reference internal" href="#create-automatic-documentation">Create automatic documentation</a></li>
+<li><a class="reference internal" href="#hollow-tube">Hollow Tube</a></li>
 </ul>
 </li>
 </ul>

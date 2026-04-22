@@ -3,7 +3,7 @@
 [Preview the game](../basics.html){.external}
 
 The `@tool` directive allows us to execute code in the editor. 
-This is a convenient preview function. It allows to 
+This is a convenient preview function. It allows to:
 
 - animate nodes directly in the editor
 - to create nodes programmatically and interactively
@@ -12,7 +12,7 @@ This is a convenient preview function. It allows to
 
 To show how to create a rotating cube, create a new scene with the following nodes:
 
-- a `Node3D` as base node called `Tool`
+- a `Node3D` as a base node called `Tool`
 - a `WorldEnvironment` to have light
 - a `CSBBox3D` renamed `Rotate`
 - a `Camera3D` to see the object (moved backward 2m along the z-axis)
@@ -25,7 +25,7 @@ This is the static image you get in the editor.
 
 
 Add a script to the `Rotate` node, which appears as a **white** script icon.
-The script makes the box rotate around the x-axis
+The script makes the box rotate around the x-axis.
 
 ```
 extends CSGBox3D
@@ -58,7 +58,7 @@ func _process(delta: float) -> void:
 Each time you make a change in the script, the scene must be reloaded with `Scene > Reload Saved Scene`.
 ```
 
-The script icon now turns **blue** to indicate that the script is executing in the editor via the `@tool` directive.
+The script icon now turns **blue** to indicate that the script is executed in the editor via the `@tool` directive.
 
 ![img](images/tool2_tree.png){w=300}
 
@@ -96,14 +96,14 @@ The first box rotates, the second box moves up and down.
 
 ## Change parameters in the inspector
 
-It is possible to export the paramters and configure them in the inspector.
+It is possible to export the parameters and configure them in the inspector.
 
 The `@export` directive exports the value:
 
 - it can be changed in the inspector
 - it will be saved with the scene
 
-In ordre to change the speed in the running script we must use a **setter** function `set(x)`. 
+In order to change the speed from within the running script, we must use a **setter** function `set(x)`. 
 
 ```
 @tool
@@ -121,7 +121,7 @@ Now we can speed up the rotation, make it zero, or even inverse the direction.
 
 ## Change speed and amplitude
 
-For the moving cube, we can add two parameters: speed and amplitude
+For the moving cube, we can add two parameters: speed and amplitude.
 
 ```
 @tool
@@ -142,200 +142,195 @@ func _process(delta: float) -> void:
 	position.y = amplitude * sin(t * speed)
 ```
 
+## Create a hollow box
 
+In Godot it is possible to create new types of node objects. For example, it would be convienent to have not just a filled box, but also a hollow box. We can take an existing type and modify it.
 
-# Basics
+![img](images/hollowbox.png)
 
-## World environment
+- create an `addons` folder
+- create a new script file called `hollow_box`
+- add the following code:
 
-We start with creating the world environment
-
-- configure snap to 0.5
-- create a CSGBox3D of 10x1x10
-- use collision on
-- add environment to scene
-- add Sun to scene
-
-
-## Player
-
-The player is the object representing the user. A camera is attached to the player in order to see the world.
-
-```{image} ./images/player_tree.png
-:width: 300px
 ```
-
-Create the objects as indicated:
-
-- Create a **RigidBody3D** node and name it `Player`
-- Add a **MeshInstance3D** and make it a capsule shape
-- Add a **CollisionShape3D** via the `Mesh` button (sibling, capsule)
-- Add a Node3D and name it `TwistPivot`
-- Add a child Node3D and name it `PitchPivot`
-- Add a child Camera3D
-
-
-
-
-
-![Create New Node dialog showing search results for ribo with RigidBody3D selected, displaying class hierarchy and physics simulation description](images/new_node_win.png)
-
-This is the GDScript to move the player.
-
-## This
-
-```{literalinclude} ./basics/player.gd
-:language: gd
-:start-at: func _input
-:end-before: func _ready
-```
-
-
-
-
-## All
-
-```{literalinclude} ./basics/player.gd
-:language: gd
-```
-
-## Creating a box
-
-The following code creates a CSG box programmatically.
-
-The `@tool` directive allows to execute the programme in the editor.
-
-The `size` of the box and the `material` is exported to the inspector panel.
-
-```{image} ./images/box_inspector.png
-:width: 400px
-```
-
-
-The corner of the box is aligned with the origin by offsetting the box by half of its size: 
-`box.position = 0.5 * size`
-
-```gd
 @tool
-extends Node3D
-class_name Box
-## This class creates a Box.
+extends CSGBox3D
+class_name HollowBox
+## Creates a hollow box.
+```
+First we make it execute in the editor (editor tool). 
+This script extends the `CSGBox3D`. The new class name is `HollowBox`
+This already adds the new class as a child of `CSGBox3D`. You can test this by adding a new node to a scene (cmd+A).
 
-## The size of the box.
-@export var size = Vector3(2, 1, 4):
-	set(x):
-		size = x
+![img](images/hollowbox_node.png){w=300}
+
+Now we add an exported variable, which lets us select the thickness of the wall. 
+We use a **setter** function to set the new value and also to call the function `create()`.
+
+```
+@export var thickness := 0.1:
+	set(value):
+		thickness = value
 		create()
-		
-## The box material.
-@export var material: BaseMaterial3D		
 
-		
+## Button action to rebuild the hollow tube.
+@export_tool_button("Rebuild") var action := create
+```
+
+The `thickness` and the `action` button appear in the inspector panel.  
+We can change the wall thickness and rebuild the node.
+
+The size and material of the outer box are selected with the original `CSGBox3D` attributes.
+
+![img](images/hollowbox_inspector.png){w=300}
+
+The `_ready()` function creates the inner CSG box, which is subtracted from the base box.
+
+```
 func _ready():
 	create()
-	
-## Creating the box.
-func create():
-	for child in get_children():
-		child.queue_free()
-	
-	var box	
-	box = CSGBox3D.new()
-	box.size = size
-	box.position = 0.5 * size
-	box.material = material
-	box.use_collision = true
-	add_child(box)
 ```
 
-![box](images/box.png)
+The `_ready()` function first looks for a procedurally created node. 
+A procedurally created node does not have a parent.
+If we find a node without an owner, this is our `inner` tube.
+
+```
+func create():
+	var inner = null
+	# find a procedurally created node
+	for child in get_children():
+		if child.owner == null:
+			inner = child
+			break
+```
+
+If `inner` does not exist, we create a new box and add it as a child.
+We set up the operation to **subtraction**.
+
+```
+	if inner == null:
+		inner = CSGBox3D.new()
+		add_child(inner)
+		inner.operation = CSGShape3D.OPERATION_SUBTRACTION
+```
+
+If the outer box has a material, we want to make the inside the same.
+The size of the inner box is smaller by the `thickness` in the x and y direction.
+
+```
+	if material:
+		inner.material = material
+	inner.size = size
+	inner.size.x -= thickness * 2
+	inner.size.y -= thickness * 2
+	inner.size.z += 0.01 # Slightly taller to avoid "Z-fighting" or thin faces
+```
+
+![img](images/hollowbox_demo.png)
+
+Download the {download}`Godot Script <tool/addons/hollow_box.gd>`.
+
+## Create automatic documentation
+
+All comments preceded by `##` will be added as description. 
+
+```
+## Creates a hollow box.
+```
+
+![img](images/hollowbox_help.png)
 
 
-## Staircase
+The help description for exported variables can be :
+- an inline description (`thickness`)
+- placed on the previous line (`action`)
 
-The following shows how to build a staircase. We place a first step.
+```
+@export var thickness := 0.1:  ## Wall thickness.
 
-![stairs](images/stairs_inspector.png)
+## Button action to rebuild the node.
+@export_tool_button("Rebuild") var action = create
+```
 
-```gdscript
+![img](images/hollowbox_help2.png)
+
+## Hollow Tube
+
+Now lets create a hollow tube, by subtracting an inner cylinder from a `CSGCylinder3D` node.
+
+![img](images/hollowtube.png)
+
+In the `addons` folder create a new file called `hollow_tube.gd`.
+
+First make the script a tool with the `@tool` annotation so we can use it interactively.
+Then extend the `CSGCylinder3D` class to create a new class called `HollowTube`.
+Add a help comment with `##`.
+
+```
 @tool
-extends Node3D
-## This class creates a staircase.
-class_name Stairs
+extends CSGCylinder3D
+class_name HollowTube
+## Creates a hollow tube.
+```
 
-## Number of steps.
-@export var repeat = 18:
-	set(x):
-		repeat = x
-		if is_node_ready():
-			create()
-		
-## Size of a step.
-@export var size = Vector3(2, 0.5, 4):
-	set(x):
-		size = x
-		if is_node_ready():
-				create()
-		
-## Transposition vector (offset).
-@export var transpose = Vector3(1.3, 0.5, 0):
-	set(x):
-		transpose = x 
-		create()
-		
-# Euler angles of rotation
-@export var rotate_3d = Vector3(0, 20, 0):
-	set(x):
-		rotate_3d = x
+Again, export the `thickness` variable and an `action` button. Add a help comment to them.
+
+```
+@export var thickness := 0.1:  ## Wall thicknness.
+	set(value):
+		thickness = value
 		create()
 
-# Show nodes in scene tree		
-@export var show_node = false:
-	set(x):
-		show_node = x
-		create()
+## Button action to rebuild the hollow tube.
+@export_tool_button("Rebuild") var action := create
+```
 
-# Staircase material		
-@export var material: BaseMaterial3D		
+The `_ready()` function creates the hollow tube once the node is ready, after joining the scene tree.
 
-		
+```
 func _ready():
 	create()
-	
-	
-func create():
-	for child in get_children():
-		child.free()
-	
-	var box	
-	box = CSGBox3D.new()
-	box.name = "Step"
-	box.size = size
-	box.position = 0.5 * size
-	box.material = material
-	box.use_collision = true
-	add_child(box)
-	if show_node:
-		box.owner = get_tree().edited_scene_root
-	
-	for i in (repeat):
-		box = box.duplicate()
-		box.name = "Step" + str(i+1)
-		box.translate(transpose)
-		box.rotate_x(deg_to_rad(rotate_3d.x))
-		box.rotate_y(deg_to_rad(rotate_3d.y))
-		box.rotate_z(deg_to_rad(rotate_3d.z))
-		add_child(box)
-		if show_node:
-			box.owner = get_tree().edited_scene_root
 ```
 
-![img](images/stairs.png)
+Like before, check if a procedurally created node exists already. If not, create one.
 
-## Download links
+```
+## Subtracts an inner cylinder from the `CSGCylidner3D`.
+func create():
+	var inner = null
+	# find a procedurally created node
+	for child in get_children():
+		if child.owner == null:
+			inner = child
+			break
+			
+	# create one if it does not exist
+	if inner == null:
+		inner = CSGCylinder3D.new()
+		inner.operation = CSGShape3D.OPERATION_SUBTRACTION
+		add_child(inner)
+```
+Finally update the inner cylinder.
+Make the radius smaller by the wall thickness. 
+Make the height slightly larger to avoid "z-fighting".
 
-Download a {download}`Godot Script <basics/player.gd>`.
+```
+	# update it
+	if material:
+		inner.material = material
+	inner.radius = radius - thickness
+	inner.height = height * 1.01 # Slightly taller to avoid "Z-fighting" or thin faces
+	inner.sides = sides
+	inner.cone = cone
+```
 
-Download a {download}`Godot Scene <basics/player.tscn>`.
+Download the {download}`Godot Script <tool/addons/hollow_tube.gd>`.
 
-Download a {download}`Godot Project <basics.zip>`.
+![img](images/hollowtube_scene.png)
+
+
+
+Download the {download}`Godot project <tool.zip>`.
+
+

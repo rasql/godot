@@ -6,9 +6,9 @@
 
 ## Introduction
 
-In Godot, class members (properties, attributs) can be exported. They are saved along with the scene.
+In Godot, class members (properties, attributes) can be exported. They are saved along with the scene.
 
-Also, they can be edited in the inspector. This allows us to create new nodes, which are configurable.
+Also, they can be edited by the inspector. This allows us to create new nodes, which are configurable.
 
 ## Create a scene
 
@@ -25,7 +25,7 @@ Arrange the 3 objects like this.
 ![img](images/export_scene.png)
 
 Attach a script to the node and call it `export.gd`
-Use the `@export` directive to export the folling variables :
+use the `@export` directive to export the following variables :
 
 - an integer (`int`)
 - a text (`String`)
@@ -52,7 +52,7 @@ This produces the following in the inspector.
 
 ## Export vectors
 
-The `@export_group("Vectors")` directive adds a collabsible title to the variable group.
+The `@export_group("Vectors")` directive adds a collapsible title to the variable group.
 There are 2 types: 2D and 3D vectors. They have 2 varieties:
 
 - integer (with up/down arrows)
@@ -79,19 +79,19 @@ The 2D rectangle has a position (`x, y`) and a size (`w, h`)
 @export var aabb =  AABB(Vector3(1, 2, 3), Vector3(4, 5, 6))
 ```
 
-There is a 3D version which is called AABB (Axis-Aligned Bounding Box).
+There is a 3D version, which is called AABB (Axis-Aligned Bounding Box).
 
 ![img](images/export_rect.png){w=300px}
 
 ## Export arrays
 
-An array with no specified array type, can have a mix of different types.
-With a generic array you can
+An array with no specified array type can have a mix of different types.
+With a generic array, you can
 
 - Choose the array size (up/down arrow)
 - Reposition an element by dragging
 - Chose a type (float, int, AABB, etc.) with the **pen icon**
-- Add an elements with the (+) button
+- Add an element with the (+) button
 - Remove the last element with the down button
 
 ```
@@ -112,13 +112,13 @@ If the type is specified, the array only accepts one type.
 With arrays you can
 
 - rearrange the position
-- modifiy the value
+- modify the value
 - remove an element
 - add a new element
 
 ## Export a PackedScene Array
 
-This control allows to select multiple scences.
+This control allows to select multiple scenes.
 
 ```
 @export var scenes: Array[PackedScene]

@@ -102,4 +102,10 @@ To change Github pages: copy `build/html` into `docs`
 The site is here: 
 https://rasql.github.io/godot/
 
+## GitHub pages
 
+Copy the build files into the `docs` folder.
+
+```
+rsync -av --delete build/html/ docs/  
+```
