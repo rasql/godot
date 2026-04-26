@@ -1,7 +1,5 @@
 [gd_scene format=3 uid="uid://brtxoygmw7k4f"]
 
-[ext_resource type="Script" uid="uid://b0w1twfipwaik" path="res://text.gd" id="1_aohfb"]
-
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aohfb"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -21,7 +19,6 @@ text = "This is a text mesh
 "
 
 [node name="Text" type="Node3D" unique_id=239627987]
-script = ExtResource("1_aohfb")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2088363475]
 environment = SubResource("Environment_1d40f")

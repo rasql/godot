@@ -142,6 +142,120 @@ func _process(delta: float) -> void:
 	position.y = amplitude * sin(t * speed)
 ```
 
+## Instantiate new nodes
+
+It is also possible to create new nodes.
+
+- create an `addons` folder.
+- create a new script called `instantiate`
+
+The `@tool` annotation makes the code execute in the editor. 
+This file extendes the `CSGCombiner` class, with a subclass callsed `Instantiate`
+
+```
+@tool
+extends CSGCombiner3D
+class_name Instantiate
+```
+The we create an exported variable for the material and three tool buttons.
+The `@export_tool_button("New Box", "CSGBox3D")` creates a button with the text `New Box` and used the icon `CSGBox3D`.
+
+![img](images/instantiate_inspector.png){w=200px}
+
+```
+@export var material : BaseMaterial3D
+@export_tool_button("New Box", "CSGBox3D") var action1 = new_box
+@export_tool_button("New Cylinder", "CSGCylinder3D") var action2 = new_cylinder
+@export_tool_button("New Sphere", "CSGSphere3D") var action3 = new_sphere
+```
+
+Now we define the three functions which create a box, cylinder and sphere.
+The creation of a new class instance is done with the `new()` method.
+- we give it a name
+- attach a material
+- add the node as a child to the parent `CSGCombiner3D` node
+- update the position
+- define the root node as parent, so the node becomes visible in the scene tree.
+
+```
+var x := 0
+
+## Instantiates a CSG box.
+func new_box():
+	var node = CSGBox3D.new()
+	node.name = "Box"
+	node.material = material
+	add_child(node, true)
+	node.position.x = x
+	x += 1
+	node.owner = get_tree().edited_scene_root
+	
+## Instantiates a CSG box.
+func new_cylinder():
+	var node = CSGCylinder3D.new()
+	node.material = material
+	node.name = "Cylinder"
+	add_child(node, true)
+	node.position.x = x
+	x += 1
+	node.owner = get_tree().edited_scene_root
+
+## Instantiates a CSG box.	
+func new_sphere():
+	var node = CSGSphere3D.new()
+	node.name = "Sphere"
+	node.material = material
+	add_child(node, true)
+	node.position.x = x
+	x += 1
+	node.owner = get_tree().edited_scene_root
+```
+
+Clicking on the different buttons, we can now instantiate 3 types of nodes.
+
+![img](images/instantiate_scene.png)
+
+## Deleting child nodes
+
+We can access the child nodes and modify or remove them. 
+Let's create three more tool buttons to delete either all, the first or the last child node. This time we use the `Remove` icon.
+
+![img](images/instantiate_inspector2.png){w=200px}
+
+```
+@export_tool_button("Delete All", "Remove") var action4 = delete_all
+@export_tool_button("Delete Last", "Remove") var action5 = delete_last
+@export_tool_button("Delete First", "Remove") var action6 = delete_first
+```
+
+The function `get_children()` returns a list with all children. We loop through the list and delete all children. 
+
+```
+## Deletes all children.
+func delete_all():
+	for child in get_children():
+		child.free()
+	x = 0
+```
+
+With `get_child(-1)` we can access the last child. We must take care to call this function only if there are children.
+
+```
+## Deletes the last child.
+func delete_last():
+	if get_child_count():
+		get_child(-1).free()
+		x -= 1
+		
+## Deletes the last child.
+func delete_first():
+	if get_child_count():
+		get_child(0).free()
+		x -= 1
+```
+
+Download the {download}`Godot Script <tool/addons/instantiate.gd>`.
+
 ## Create a hollow box
 
 In Godot it is possible to create new types of node objects. For example, it would be convienent to have not just a filled box, but also a hollow box. We can take an existing type and modify it.
