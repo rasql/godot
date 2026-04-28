@@ -23,10 +23,10 @@ The final game is exported for the web.
 
 
    chapter0/intro
+   1_mesh/mesh
    chapter1/text
    chapter2/tool
    3_basics/basics
-   chapter3/csg
    myst
 
 

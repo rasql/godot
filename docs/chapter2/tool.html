@@ -193,10 +193,10 @@
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../chapter0/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_mesh/mesh.html">Create 3D meshes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../chapter1/text.html">Export properties</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Execute code in the editor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../3_basics/basics.html">Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../chapter3/csg.html">Constructive Solid Geometry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../myst.html">MyST reference</a></li>
 </ul>
 
@@ -355,6 +355,108 @@ Attach the following script.</p>
 <span class="w">	</span><span class="n">position</span><span class="o">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">amplitude</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">speed</span><span class="p">)</span>
 </pre></div>
 </div>
+</section>
+<section id="instantiate-new-nodes">
+<h2>Instantiate new nodes<a class="headerlink" href="#instantiate-new-nodes" title="Link to this heading">¶</a></h2>
+<p>It is also possible to create new nodes.</p>
+<ul class="simple">
+<li><p>create an <code class="docutils literal notranslate"><span class="pre">addons</span></code> folder.</p></li>
+<li><p>create a new script called <code class="docutils literal notranslate"><span class="pre">instantiate</span></code></p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">&#64;tool</span></code> annotation makes the code execute in the editor.
+This file extendes the <code class="docutils literal notranslate"><span class="pre">CSGCombiner</span></code> class, with a subclass callsed <code class="docutils literal notranslate"><span class="pre">Instantiate</span></code></p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="err">@</span><span class="k">tool</span>
+<span class="k">extends</span><span class="w"> </span><span class="n">CSGCombiner3D</span>
+<span class="k">class_name</span><span class="w"> </span><span class="n">Instantiate</span>
+</pre></div>
+</div>
+<p>The we create an exported variable for the material and three tool buttons.
+The <code class="docutils literal notranslate"><span class="pre">&#64;export_tool_button(&quot;New</span> <span class="pre">Box&quot;,</span> <span class="pre">&quot;CSGBox3D&quot;)</span></code> creates a button with the text <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">Box</span></code> and used the icon <code class="docutils literal notranslate"><span class="pre">CSGBox3D</span></code>.</p>
+<p><a class="reference internal" href="../_images/instantiate_inspector.png"><img alt="img" src="../_images/instantiate_inspector.png" style="width: 200px;" /></a></p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">material</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">BaseMaterial3D</span>
+<span class="err">@</span><span class="n">export_tool_button</span><span class="p">(</span><span class="s2">&quot;New Box&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;CSGBox3D&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">action1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_box</span>
+<span class="err">@</span><span class="n">export_tool_button</span><span class="p">(</span><span class="s2">&quot;New Cylinder&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;CSGCylinder3D&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">action2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_cylinder</span>
+<span class="err">@</span><span class="n">export_tool_button</span><span class="p">(</span><span class="s2">&quot;New Sphere&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;CSGSphere3D&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">action3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_sphere</span>
+</pre></div>
+</div>
+<p>Now we define the three functions which create a box, cylinder and sphere.
+The creation of a new class instance is done with the <code class="docutils literal notranslate"><span class="pre">new()</span></code> method.</p>
+<ul class="simple">
+<li><p>we give it a name</p></li>
+<li><p>attach a material</p></li>
+<li><p>add the node as a child to the parent <code class="docutils literal notranslate"><span class="pre">CSGCombiner3D</span></code> node</p></li>
+<li><p>update the position</p></li>
+<li><p>define the root node as parent, so the node becomes visible in the scene tree.</p></li>
+</ul>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+
+<span class="c1">## Instantiates a CSG box.</span>
+<span class="k">func</span><span class="w"> </span><span class="n">new_box</span><span class="p">():</span>
+<span class="w">	</span><span class="k">var</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CSGBox3D</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="w">	</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Box&quot;</span>
+<span class="w">	</span><span class="n">node</span><span class="o">.</span><span class="n">material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">material</span>
+<span class="w">	</span><span class="n">add_child</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="bp">true</span><span class="p">)</span>
+<span class="w">	</span><span class="n">node</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span>
+<span class="w">	</span><span class="n">x</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">	</span><span class="n">node</span><span class="o">.</span><span class="n">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">edited_scene_root</span>
+<span class="w">	</span>
+<span class="c1">## Instantiates a CSG box.</span>
+<span class="k">func</span><span class="w"> </span><span class="n">new_cylinder</span><span class="p">():</span>
+<span class="w">	</span><span class="k">var</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CSGCylinder3D</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="w">	</span><span class="n">node</span><span class="o">.</span><span class="n">material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">material</span>
+<span class="w">	</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Cylinder&quot;</span>
+<span class="w">	</span><span class="n">add_child</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="bp">true</span><span class="p">)</span>
+<span class="w">	</span><span class="n">node</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span>
+<span class="w">	</span><span class="n">x</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">	</span><span class="n">node</span><span class="o">.</span><span class="n">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">edited_scene_root</span>
+
+<span class="c1">## Instantiates a CSG box.	</span>
+<span class="k">func</span><span class="w"> </span><span class="n">new_sphere</span><span class="p">():</span>
+<span class="w">	</span><span class="k">var</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CSGSphere3D</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="w">	</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Sphere&quot;</span>
+<span class="w">	</span><span class="n">node</span><span class="o">.</span><span class="n">material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">material</span>
+<span class="w">	</span><span class="n">add_child</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="bp">true</span><span class="p">)</span>
+<span class="w">	</span><span class="n">node</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span>
+<span class="w">	</span><span class="n">x</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">	</span><span class="n">node</span><span class="o">.</span><span class="n">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">edited_scene_root</span>
+</pre></div>
+</div>
+<p>Clicking on the different buttons, we can now instantiate 3 types of nodes.</p>
+<p><img alt="img" src="../_images/instantiate_scene.png" /></p>
+</section>
+<section id="deleting-child-nodes">
+<h2>Deleting child nodes<a class="headerlink" href="#deleting-child-nodes" title="Link to this heading">¶</a></h2>
+<p>We can access the child nodes and modify or remove them.
+Let’s create three more tool buttons to delete either all, the first or the last child node. This time we use the <code class="docutils literal notranslate"><span class="pre">Remove</span></code> icon.</p>
+<p><a class="reference internal" href="../_images/instantiate_inspector2.png"><img alt="img" src="../_images/instantiate_inspector2.png" style="width: 200px;" /></a></p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="err">@</span><span class="n">export_tool_button</span><span class="p">(</span><span class="s2">&quot;Delete All&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Remove&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">action4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">delete_all</span>
+<span class="err">@</span><span class="n">export_tool_button</span><span class="p">(</span><span class="s2">&quot;Delete Last&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Remove&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">action5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">delete_last</span>
+<span class="err">@</span><span class="n">export_tool_button</span><span class="p">(</span><span class="s2">&quot;Delete First&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Remove&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">action6</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">delete_first</span>
+</pre></div>
+</div>
+<p>The function <code class="docutils literal notranslate"><span class="pre">get_children()</span></code> returns a list with all children. We loop through the list and delete all children.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="c1">## Deletes all children.</span>
+<span class="k">func</span><span class="w"> </span><span class="n">delete_all</span><span class="p">():</span>
+<span class="w">	</span><span class="k">for</span><span class="w"> </span><span class="n">child</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">get_children</span><span class="p">():</span>
+<span class="w">		</span><span class="n">child</span><span class="o">.</span><span class="n">free</span><span class="p">()</span>
+<span class="w">	</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>With <code class="docutils literal notranslate"><span class="pre">get_child(-1)</span></code> we can access the last child. We must take care to call this function only if there are children.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="c1">## Deletes the last child.</span>
+<span class="k">func</span><span class="w"> </span><span class="n">delete_last</span><span class="p">():</span>
+<span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="n">get_child_count</span><span class="p">():</span>
+<span class="w">		</span><span class="n">get_child</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">free</span><span class="p">()</span>
+<span class="w">		</span><span class="n">x</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">		</span>
+<span class="c1">## Deletes the last child.</span>
+<span class="k">func</span><span class="w"> </span><span class="n">delete_first</span><span class="p">():</span>
+<span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="n">get_child_count</span><span class="p">():</span>
+<span class="w">		</span><span class="n">get_child</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">free</span><span class="p">()</span>
+<span class="w">		</span><span class="n">x</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>Download the <a class="reference download internal" download="" href="../_downloads/bcc5d01f2be30a26d01695f62293db7b/instantiate.gd"><code class="xref download docutils literal notranslate"><span class="pre">Godot</span> <span class="pre">Script</span></code></a>.</p>
 </section>
 <section id="create-a-hollow-box">
 <h2>Create a hollow box<a class="headerlink" href="#create-a-hollow-box" title="Link to this heading">¶</a></h2>
@@ -573,6 +675,8 @@ Make the height slightly larger to avoid “z-fighting”.</p>
 <li><a class="reference internal" href="#move-a-cube">Move a cube</a></li>
 <li><a class="reference internal" href="#change-parameters-in-the-inspector">Change parameters in the inspector</a></li>
 <li><a class="reference internal" href="#change-speed-and-amplitude">Change speed and amplitude</a></li>
+<li><a class="reference internal" href="#instantiate-new-nodes">Instantiate new nodes</a></li>
+<li><a class="reference internal" href="#deleting-child-nodes">Deleting child nodes</a></li>
 <li><a class="reference internal" href="#create-a-hollow-box">Create a hollow box</a></li>
 <li><a class="reference internal" href="#create-automatic-documentation">Create automatic documentation</a></li>
 <li><a class="reference internal" href="#hollow-tube">Hollow Tube</a></li>

@@ -1,0 +1,188 @@
+[gd_scene format=3 uid="uid://hglrguh2ys75"]
+
+[ext_resource type="Script" uid="uid://dtasdpywdg5uj" path="res://label_3d.gd" id="1_cuixc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cgcvp"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_cuixc"]
+height = 1.6
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0oxux"]
+height = 1.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cgcvp"]
+albedo_color = Color(0.3882353, 1, 1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cuixc"]
+material = SubResource("StandardMaterial3D_cgcvp")
+size = Vector2(1, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_u7mv8"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_1m4wr"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_cyw87"]
+
+[sub_resource type="TextMesh" id="TextMesh_5pcjf"]
+text = "Text"
+font_size = 64
+depth = 0.3
+
+[sub_resource type="TorusMesh" id="TorusMesh_ry3fd"]
+
+[sub_resource type="Curve" id="Curve_0oxux"]
+_data = [Vector2(0.0043478236, 0.1764273), 0.0, 0.02306368, 0, 0, Vector2(0.18043476, 0.36556172), 2.3045495, 2.3045495, 0, 0, Vector2(0.2565217, 0.9976059), 0.0, 0.0, 0, 0, Vector2(0.7304348, 0.29373854), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_tfafb"]
+radial_steps = 32
+curve = SubResource("Curve_0oxux")
+
+[sub_resource type="Curve" id="Curve_5bpbn"]
+_data = [Vector2(0.010869563, 0.76058936), 0.0, 0.0, 0, 0, Vector2(0.57391304, 0.28655618), 0.0, 0.0, 0, 0, Vector2(1, 0.6744015), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_2c0y8"]
+sections = 2
+section_length = 0.5
+curve = SubResource("Curve_5bpbn")
+
+[node name="MeshInstance3D" type="Node3D" unique_id=1466632809]
+
+[node name="BoxMesh" type="MeshInstance3D" parent="." unique_id=1788554529]
+visible = false
+mesh = SubResource("BoxMesh_cgcvp")
+
+[node name="Label3D" type="Label3D" parent="BoxMesh" unique_id=257741465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 2
+text = "BoxMesh"
+font_size = 64
+script = ExtResource("1_cuixc")
+
+[node name="CapsuleMesh" type="MeshInstance3D" parent="." unique_id=1294883652]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_cuixc")
+
+[node name="Label3D" type="Label3D" parent="CapsuleMesh" unique_id=547697572]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 2
+text = "CapsuleMesh"
+font_size = 64
+script = ExtResource("1_cuixc")
+
+[node name="CylinderMesh" type="MeshInstance3D" parent="." unique_id=295986275]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+visible = false
+mesh = SubResource("CylinderMesh_0oxux")
+
+[node name="Label3D" type="Label3D" parent="CylinderMesh" unique_id=1716058262]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 2
+text = "CylinderMesh"
+font_size = 64
+script = ExtResource("1_cuixc")
+
+[node name="PlaneMesh" type="MeshInstance3D" parent="." unique_id=398113481]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+visible = false
+mesh = SubResource("PlaneMesh_cuixc")
+
+[node name="Label3D" type="Label3D" parent="PlaneMesh" unique_id=243113040]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 2
+text = "PlaneMesh"
+font_size = 64
+script = ExtResource("1_cuixc")
+
+[node name="QuadMesh" type="MeshInstance3D" parent="." unique_id=1395557323]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+visible = false
+mesh = SubResource("QuadMesh_u7mv8")
+
+[node name="Label3D" type="Label3D" parent="QuadMesh" unique_id=2116005132]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 2
+text = "QuadMesh"
+font_size = 64
+script = ExtResource("1_cuixc")
+
+[node name="PrismMesh" type="MeshInstance3D" parent="." unique_id=1726593100]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2)
+mesh = SubResource("PrismMesh_1m4wr")
+
+[node name="Label3D" type="Label3D" parent="PrismMesh" unique_id=2102978768]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 2
+text = "PrismMesh"
+font_size = 64
+script = ExtResource("1_cuixc")
+
+[node name="SphereMesh" type="MeshInstance3D" parent="." unique_id=252191523]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+visible = false
+mesh = SubResource("SphereMesh_cyw87")
+
+[node name="Label3D" type="Label3D" parent="SphereMesh" unique_id=1931519178]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 2
+text = "SphereMesh"
+font_size = 64
+script = ExtResource("1_cuixc")
+
+[node name="TextMesh" type="MeshInstance3D" parent="." unique_id=866166891]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
+visible = false
+mesh = SubResource("TextMesh_5pcjf")
+
+[node name="Label3D" type="Label3D" parent="TextMesh" unique_id=1735918851]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8018156, 0)
+billboard = 2
+text = "TextMesh"
+font_size = 64
+script = ExtResource("1_cuixc")
+
+[node name="TorusMesh" type="MeshInstance3D" parent="." unique_id=2080757175]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
+visible = false
+mesh = SubResource("TorusMesh_ry3fd")
+
+[node name="Label3D" type="Label3D" parent="TorusMesh" unique_id=1122105407]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 2
+text = "TorusMesh"
+font_size = 64
+script = ExtResource("1_cuixc")
+
+[node name="TubeTrailMesh" type="MeshInstance3D" parent="." unique_id=409857466]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+mesh = SubResource("TubeTrailMesh_tfafb")
+
+[node name="Label3D" type="Label3D" parent="TubeTrailMesh" unique_id=47417330]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 2
+text = "TubeTrailMesh"
+font_size = 64
+script = ExtResource("1_cuixc")
+
+[node name="RibbonTrailMesh" type="MeshInstance3D" parent="." unique_id=1260426489]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
+mesh = SubResource("RibbonTrailMesh_2c0y8")
+
+[node name="Label3D" type="Label3D" parent="RibbonTrailMesh" unique_id=1818600280]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 2
+text = "RibbonTrailMesh"
+font_size = 64
+script = ExtResource("1_cuixc")
+
+[node name="RibbonTrailMesh2" type="MeshInstance3D" parent="." unique_id=1147041128]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
+
+[node name="Label3D" type="Label3D" parent="RibbonTrailMesh2" unique_id=353388975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 2
+text = "RibbonTrailMesh"
+font_size = 64
+script = ExtResource("1_cuixc")

@@ -3,10 +3,10 @@
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="MyST reference" href="../myst.html"><link rel="prev" title="Execute code in the editor" href="../chapter2/tool.html">
+<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Export properties" href="../chapter1/text.html"><link rel="prev" title="Introduction" href="../chapter0/intro.html">
 
     <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
-        <title>Constructive Solid Geometry - Godot 0.1 documentation</title>
+        <title>Create 3D meshes - Godot 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
@@ -193,10 +193,10 @@
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../chapter0/intro.html">Introduction</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Create 3D meshes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../chapter1/text.html">Export properties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../chapter2/tool.html">Execute code in the editor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../chapter2/tool.html#basics">Basics</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Constructive Solid Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_basics/basics.html">Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../myst.html">MyST reference</a></li>
 </ul>
 
@@ -218,7 +218,7 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="../_sources/chapter3/csg.md.txt" title="View this page">
+  <a class="muted-link" href="../_sources/1_mesh/mesh.md.txt" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
@@ -236,24 +236,88 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="constructive-solid-geometry">
-<h1>Constructive Solid Geometry<a class="headerlink" href="#constructive-solid-geometry" title="Link to this heading">¶</a></h1>
-<p><a class="external reference" href="../csg.html">Try the game</a></p>
+          <section id="create-3d-meshes">
+<h1>Create 3D meshes<a class="headerlink" href="#create-3d-meshes" title="Link to this heading">¶</a></h1>
+<p>A polygon mesh is a collection of vertices, edges and faces that define the surface of a polyhedral object.</p>
+<p><img alt="img" src="../_images/mesh_overview.png" /></p>
+<p>The above image shows these basic concepts:</p>
+<ul class="simple">
+<li><p>a <strong>vertex</strong> is a point in 3D space (<code class="docutils literal notranslate"><span class="pre">Vector3</span></code>)</p></li>
+<li><p>an <strong>edge</strong> is a connection between two vertices</p></li>
+<li><p>a <strong>face</strong> is a closed set of edges, such as a triangle or a quad (quadrilateral)</p></li>
+<li><p>a <strong>polygon</strong> is a flat (coplanar) set of faces</p></li>
+<li><p>a <strong>surface</strong> is a grouping of connected polygons</p></li>
+</ul>
+<section id="explore-the-meshinstances3d">
+<h2>Explore the MeshInstances3D<a class="headerlink" href="#explore-the-meshinstances3d" title="Link to this heading">¶</a></h2>
+<p>Create a new scene with cmd+N, or by clicking on the + sign.</p>
+<ul class="simple">
+<li><p>add a root <code class="docutils literal notranslate"><span class="pre">Node3D</span></code> and rename to <code class="docutils literal notranslate"><span class="pre">MeshInstance3D</span></code></p></li>
+<li><p>add a child node of <code class="docutils literal notranslate"><span class="pre">MeshInstance3D</span></code> class and rename to <code class="docutils literal notranslate"><span class="pre">BoxMesh</span></code></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/mesh_inspector.png"><img alt="img" src="../_images/mesh_inspector.png" style="width: 300px;" /></a></p>
+<p>The <strong>Mesh</strong> attribute in the inspector will be empty.<br />
+You can select among these predefined meshes:</p>
+<p><a class="reference internal" href="../_images/mesh_new.png"><img alt="img" src="../_images/mesh_new.png" style="width: 200px;" /></a></p>
+<ul class="simple">
+<li><p>select the <code class="docutils literal notranslate"><span class="pre">BoxMesh</span></code></p></li>
+<li><p>then add another <code class="docutils literal notranslate"><span class="pre">MeshInstance3D</span></code> with a <code class="docutils literal notranslate"><span class="pre">CapsuleMesh</span></code></p></li>
+<li><p>and add finally a node with a <code class="docutils literal notranslate"><span class="pre">CylinderMesh</span></code></p></li>
+</ul>
+<p><img alt="img" src="../_images/mesh1.png" /></p>
+<p>Add some more mesh instances:</p>
+<ul class="simple">
+<li><p>the <code class="docutils literal notranslate"><span class="pre">PlaneMesh</span></code> is a flat square which can be used as a floor.</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">QuadMesh</span></code> is basically the same thing as the PaneMesh, but vertical.</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">PrismMesh</span></code> is a triangular prism which can be deformed.</p></li>
+</ul>
+<p><img alt="img" src="../_images/mesh2.png" /></p>
+<p>Finally add a:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SphereMesh</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TextMesh</span></code> which displays text in 3D</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TorusMesh</span></code></p></li>
+</ul>
+<p><img alt="img" src="../_images/mesh3.png" /></p>
+</section>
+<section id="add-an-automatic-label">
+<h2>Add an automatic label<a class="headerlink" href="#add-an-automatic-label" title="Link to this heading">¶</a></h2>
+<p>The text on top of each mesh has been added with a <code class="docutils literal notranslate"><span class="pre">Label3D</span></code> child node.</p>
+<p><a class="reference internal" href="../_images/mesh_label3d.png"><img alt="img" src="../_images/mesh_label3d.png" style="width: 300px;" /></a></p>
+<p>You notice the blue script icon.
+In fact the text of the label is automatically set to be the parent’s name.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="err">@</span><span class="k">tool</span>
+<span class="linenos"> 2</span><span class="k">extends</span><span class="w"> </span><span class="n">Label3D</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="c1">## Button action to update the text.</span>
+<span class="linenos"> 5</span><span class="err">@</span><span class="n">export_tool_button</span><span class="p">(</span><span class="s2">&quot;Update&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">create</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="c1"># Called when the node enters the scene tree for the first time.</span>
+<span class="linenos"> 8</span><span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="linenos"> 9</span><span class="w">	</span><span class="n">create</span><span class="p">()</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="c1">## Sets the `Label3D` text attribute to the parent&#39;s name.</span>
+<span class="linenos">12</span><span class="k">func</span><span class="w"> </span><span class="n">create</span><span class="p">():</span>
+<span class="linenos">13</span><span class="w">	</span><span class="k">var</span><span class="w"> </span><span class="n">parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_parent</span><span class="p">()</span>
+<span class="linenos">14</span><span class="w">	</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parent</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
+</section>
 <section id="exercice-1">
 <h2>Exercice 1<a class="headerlink" href="#exercice-1" title="Link to this heading">¶</a></h2>
-<p>Create the 3 shapes which are combined from red cube and blue sphere</p>
-<p><img alt="tree" src="../_images/ex1_tree.png" /></p>
+<p>Create the 3 shapes, which are created from a red cube and a blue sphere</p>
+<p><a class="reference internal" href="../_images/ex1_tree.png"><img alt="tree" src="../_images/ex1_tree.png" style="width: 300px;" /></a></p>
 <p><img alt="scene" src="../_images/ex1_scene.png" /></p>
 </section>
 <section id="exercice-2">
 <h2>Exercice 2<a class="headerlink" href="#exercice-2" title="Link to this heading">¶</a></h2>
-<p>Create this complex shapes which are combined from a</p>
+<p>Create these complex shapes, which are combined with a</p>
 <ul class="simple">
 <li><p>red cube</p></li>
 <li><p>blue sphere</p></li>
 <li><p>3 green cylinders</p></li>
 </ul>
-<p><img alt="tree" src="../_images/ex2_tree.png" /></p>
+<p><a class="reference internal" href="../_images/ex2_tree.png"><img alt="tree" src="../_images/ex2_tree.png" style="width: 300px;" /></a></p>
 <p><img alt="scene" src="../_images/ex2_scene.png" /></p>
 </section>
 </section>
@@ -263,23 +327,23 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../myst.html">
+          <a class="next-page" href="../chapter1/text.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">MyST reference</div>
+                <div class="title">Export properties</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="../chapter2/tool.html">
+          <a class="prev-page" href="../chapter0/intro.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Execute code in the editor</div>
+                <div class="title">Introduction</div>
                 
               </div>
             </a>
@@ -313,7 +377,9 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Constructive Solid Geometry</a><ul>
+<li><a class="reference internal" href="#">Create 3D meshes</a><ul>
+<li><a class="reference internal" href="#explore-the-meshinstances3d">Explore the MeshInstances3D</a></li>
+<li><a class="reference internal" href="#add-an-automatic-label">Add an automatic label</a></li>
 <li><a class="reference internal" href="#exercice-1">Exercice 1</a></li>
 <li><a class="reference internal" href="#exercice-2">Exercice 2</a></li>
 </ul>
