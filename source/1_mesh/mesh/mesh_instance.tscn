@@ -50,7 +50,6 @@ curve = SubResource("Curve_5bpbn")
 [node name="MeshInstance3D" type="Node3D" unique_id=1466632809]
 
 [node name="BoxMesh" type="MeshInstance3D" parent="." unique_id=1788554529]
-visible = false
 mesh = SubResource("BoxMesh_cgcvp")
 
 [node name="Label3D" type="Label3D" parent="BoxMesh" unique_id=257741465]
@@ -62,7 +61,6 @@ script = ExtResource("1_cuixc")
 
 [node name="CapsuleMesh" type="MeshInstance3D" parent="." unique_id=1294883652]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-visible = false
 mesh = SubResource("CapsuleMesh_cuixc")
 
 [node name="Label3D" type="Label3D" parent="CapsuleMesh" unique_id=547697572]
@@ -74,7 +72,6 @@ script = ExtResource("1_cuixc")
 
 [node name="CylinderMesh" type="MeshInstance3D" parent="." unique_id=295986275]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
-visible = false
 mesh = SubResource("CylinderMesh_0oxux")
 
 [node name="Label3D" type="Label3D" parent="CylinderMesh" unique_id=1716058262]
@@ -86,7 +83,6 @@ script = ExtResource("1_cuixc")
 
 [node name="PlaneMesh" type="MeshInstance3D" parent="." unique_id=398113481]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
-visible = false
 mesh = SubResource("PlaneMesh_cuixc")
 
 [node name="Label3D" type="Label3D" parent="PlaneMesh" unique_id=243113040]
@@ -98,7 +94,6 @@ script = ExtResource("1_cuixc")
 
 [node name="QuadMesh" type="MeshInstance3D" parent="." unique_id=1395557323]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
-visible = false
 mesh = SubResource("QuadMesh_u7mv8")
 
 [node name="Label3D" type="Label3D" parent="QuadMesh" unique_id=2116005132]
@@ -121,7 +116,6 @@ script = ExtResource("1_cuixc")
 
 [node name="SphereMesh" type="MeshInstance3D" parent="." unique_id=252191523]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
-visible = false
 mesh = SubResource("SphereMesh_cyw87")
 
 [node name="Label3D" type="Label3D" parent="SphereMesh" unique_id=1931519178]
@@ -133,7 +127,6 @@ script = ExtResource("1_cuixc")
 
 [node name="TextMesh" type="MeshInstance3D" parent="." unique_id=866166891]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
-visible = false
 mesh = SubResource("TextMesh_5pcjf")
 
 [node name="Label3D" type="Label3D" parent="TextMesh" unique_id=1735918851]
@@ -145,7 +138,6 @@ script = ExtResource("1_cuixc")
 
 [node name="TorusMesh" type="MeshInstance3D" parent="." unique_id=2080757175]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
-visible = false
 mesh = SubResource("TorusMesh_ry3fd")
 
 [node name="Label3D" type="Label3D" parent="TorusMesh" unique_id=1122105407]

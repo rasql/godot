@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://l7h5hu1x5ir3"]
+
+[ext_resource type="Script" uid="uid://yk0hfrnv2o3c" path="res://addons/matrix.gd" id="1_ajxjt"]
+
+[node name="Test_matrix" type="Node3D" unique_id=858784512]
+
+[node name="Matrix" type="Node3D" parent="." unique_id=134955146]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -1.070147)
+script = ExtResource("1_ajxjt")
+metadata/_custom_type_script = "uid://yk0hfrnv2o3c"
+
+[node name="Matrix2" type="Node3D" parent="." unique_id=1175687593]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+script = ExtResource("1_ajxjt")
+metadata/_custom_type_script = "uid://yk0hfrnv2o3c"
+
+[node name="Matrix3" type="Node3D" parent="." unique_id=14405424]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+script = ExtResource("1_ajxjt")
+metadata/_custom_type_script = "uid://yk0hfrnv2o3c"
+
+[node name="Matrix" type="Node3D" parent="Matrix3" unique_id=1535134434]
+script = ExtResource("1_ajxjt")
+metadata/_custom_type_script = "uid://yk0hfrnv2o3c"

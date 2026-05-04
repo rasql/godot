@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c7k1y81b6vkph"]
+
+[ext_resource type="Script" uid="uid://cpb1tjgysm0l2" path="res://addons/grid_instantiate.gd" id="1_jdmi4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hj5yu"]
+albedo_color = Color(0.60784316, 0.9411765, 0, 1)
+
+[node name="Instantiate" type="Node3D" unique_id=1857059865]
+
+[node name="Instantiate" type="CSGCombiner3D" parent="." unique_id=2016450636]
+script = ExtResource("1_jdmi4")
+material = SubResource("StandardMaterial3D_hj5yu")
+dimension = null
+step = null
+metadata/_custom_type_script = "uid://cpb1tjgysm0l2"
+
+[node name="Box" type="CSGBox3D" parent="Instantiate" unique_id=1690572844]
+material = SubResource("StandardMaterial3D_hj5yu")
+
+[node name="Cylinder" type="CSGCylinder3D" parent="Instantiate" unique_id=1742168848]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.352072, 0, -1.5346913)
+material = SubResource("StandardMaterial3D_hj5yu")
+
+[node name="Sphere" type="CSGSphere3D" parent="Instantiate" unique_id=1785318581]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+material = SubResource("StandardMaterial3D_hj5yu")
+
+[node name="Sphere2" type="CSGSphere3D" parent="Instantiate" unique_id=927417632]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+material = SubResource("StandardMaterial3D_hj5yu")

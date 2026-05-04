@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dn2qc0vuh3ty5"]
+
+[ext_resource type="Script" uid="uid://ddew8dygfa00n" path="res://text.gd" id="1_aohfb"]
+
+[node name="Text" type="Node3D" unique_id=399851198]
+transform = Transform3D(1, 0, 0, 0, 0.9999926, 0.003839715, 0, -0.003839715, 0.9999926, 0, 0, 0)
+script = ExtResource("1_aohfb")
+text = "In Godot (specifically GDScript), \"text functions\" usually refer to the methods available within the String class. Since strings are a built-in primitive type, you call these functions directly on any piece of text.
+
+Here is a breakdown of the most essential text functions categorized by how they are used."
+path = "res://alice.txt"

@@ -8,31 +8,42 @@ albedo_color = Color(0.011764706, 0.019607844, 1, 1)
 
 [node name="ex1" type="Node3D" unique_id=536022974]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1294243678]
+[node name="Box" type="CSGBox3D" parent="." unique_id=1294243678]
 material = SubResource("StandardMaterial3D_l3jgc")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGBox3D" unique_id=292397412]
+[node name="Sphere" type="CSGSphere3D" parent="Box" unique_id=292397412]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -0.5)
 radial_segments = 24
 rings = 12
 material = SubResource("StandardMaterial3D_45j5m")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=937175415]
+[node name="Box2" type="CSGBox3D" parent="." unique_id=937175415]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+operation = 2
 material = SubResource("StandardMaterial3D_l3jgc")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGBox3D2" unique_id=759613841]
+[node name="Sphere" type="CSGSphere3D" parent="Box2" unique_id=759613841]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -0.5)
-operation = 2
 radial_segments = 24
 rings = 12
 material = SubResource("StandardMaterial3D_45j5m")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=762041125]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+[node name="Sphere" type="CSGSphere3D" parent="." unique_id=393531463]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -3.9592228)
+radial_segments = 24
+rings = 12
+material = SubResource("StandardMaterial3D_45j5m")
+
+[node name="Box" type="CSGBox3D" parent="Sphere" unique_id=138589924]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, 0.5)
+operation = 2
 material = SubResource("StandardMaterial3D_l3jgc")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGBox3D3" unique_id=262666711]
+[node name="Box3" type="CSGBox3D" parent="." unique_id=762041125]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+material = SubResource("StandardMaterial3D_l3jgc")
+
+[node name="Sphere" type="CSGSphere3D" parent="Box3" unique_id=262666711]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -0.5)
 operation = 1
 radial_segments = 24

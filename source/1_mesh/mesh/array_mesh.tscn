@@ -1,0 +1,54 @@
+[gd_scene format=4 uid="uid://chw3x5b26iw8c"]
+
+[ext_resource type="Script" uid="uid://dmpkcc4p1w3vm" path="res://addons/triangle.gd" id="1_dh112"]
+[ext_resource type="Script" uid="uid://bkjd4uhbd0sjx" path="res://addons/quad.gd" id="2_mv0kw"]
+[ext_resource type="Script" uid="uid://dv07mt7inuxv7" path="res://addons/pyramid.gd" id="3_mv0kw"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_mv0kw"]
+_surfaces = [{
+"aabb": AABB(0, 0, 0, 1, 1e-05, 1),
+"format": 34359738375,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 3,
+"vertex_data": PackedByteArray("AAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA//3///wAA/7//f///AAD/v/9///8AAP+/")
+}]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_yje4e"]
+_surfaces = [{
+"aabb": AABB(0, 0, 0, 1, 1e-05, 1),
+"format": 34359738375,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("AAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAIA/AACAPwAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAA/3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+/")
+}]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_hskjh"]
+_surfaces = [{
+"aabb": AABB(0, 0, 0, 1, 1, 1),
+"format": 34359738375,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 18,
+"vertex_data": PackedByteArray("AAAAAAAAAAAAAAAAAACAPwAAAAAAAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAPwAAgD8AAAA/AACAPwAAAAAAAAAAAACAPwAAAAAAAIA/AAAAPwAAgD8AAAA/AACAPwAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAPwAAgD8AAAA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAAAAPwAAgD8AAAA/5DCNJ0k/BMONpxtPPjlaoNz4bjwrp8qpjacbTz45WqDkMI0nST8Ew5BD3XjkrXir5DCNJ0k/BMPc+G48K6fKqf9///8AAP+/3PhuPCunyqmNpxtPPjlaoP9///8AAP+/jacbTz45WqCQQ9145K14q/9///8AAP+/kEPdeOSteKvkMI0nST8Ew/9///8AAP+/")
+}]
+
+[node name="ArrayMesh" type="Node3D" unique_id=957894079]
+
+[node name="Triangle" type="MeshInstance3D" parent="." unique_id=941521525]
+mesh = SubResource("ArrayMesh_mv0kw")
+script = ExtResource("1_dh112")
+metadata/_custom_type_script = "uid://dmpkcc4p1w3vm"
+
+[node name="Quad" type="MeshInstance3D" parent="." unique_id=1641029837]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+mesh = SubResource("ArrayMesh_yje4e")
+script = ExtResource("2_mv0kw")
+metadata/_custom_type_script = "uid://bkjd4uhbd0sjx"
+
+[node name="Pyramid" type="MeshInstance3D" parent="." unique_id=896675141]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+mesh = SubResource("ArrayMesh_hskjh")
+script = ExtResource("3_mv0kw")
+metadata/_custom_type_script = "uid://dv07mt7inuxv7"

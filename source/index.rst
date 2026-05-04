@@ -22,10 +22,10 @@ The final game is exported for the web.
    :caption: Contents:
 
 
-   chapter0/intro
+   0_intro/intro
    1_mesh/mesh
    chapter1/text
-   chapter2/tool
+   2_tool/tool
    3_basics/basics
    myst
 
