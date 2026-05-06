@@ -23,9 +23,11 @@ The final game is exported for the web.
 
 
    0_intro/intro
+   0_ui/ui
    1_mesh/mesh
    chapter1/text
    2_tool/tool
+   3_text/text
    3_basics/basics
    myst
 

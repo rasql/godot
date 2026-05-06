@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://bi5ilkiimjlf5"]
+
+[sub_resource type="Theme" id="Theme_hdsbg"]
+default_font_size = 32
+
+[node name="Tabs" type="Control" unique_id=1014860145]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_hdsbg")
+
+[node name="TabContainer" type="TabContainer" parent="." unique_id=172369787]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+
+[node name="HBoxContainer" type="TabBar" parent="TabContainer" unique_id=662266344]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/HBoxContainer" unique_id=1569907022]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 84.0
+offset_top = 76.0
+offset_right = -717.0
+offset_bottom = 282.0
+grow_horizontal = 2
+
+[node name="Button" type="Button" parent="TabContainer/HBoxContainer/HBoxContainer" unique_id=1173832326]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Button"
+
+[node name="Button2" type="Button" parent="TabContainer/HBoxContainer/HBoxContainer" unique_id=1284178686]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Button"
+
+[node name="Button3" type="Button" parent="TabContainer/HBoxContainer/HBoxContainer" unique_id=1842762398]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Button"
+
+[node name="Button4" type="Button" parent="TabContainer/HBoxContainer/HBoxContainer" unique_id=1810434819]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Button"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/HBoxContainer" unique_id=1060539321]
+layout_mode = 0
+offset_left = 1003.0
+offset_top = 84.0
+offset_right = 1316.0
+offset_bottom = 706.0
+
+[node name="Button" type="Button" parent="TabContainer/HBoxContainer/VBoxContainer" unique_id=1794794348]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Button"
+
+[node name="Button2" type="Button" parent="TabContainer/HBoxContainer/VBoxContainer" unique_id=510066017]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Button"
+
+[node name="Button3" type="Button" parent="TabContainer/HBoxContainer/VBoxContainer" unique_id=1035155906]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Button"
+
+[node name="TextEdit" type="TabBar" parent="TabContainer" unique_id=1875142341]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/TextEdit" unique_id=1933300427]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextEdit" type="TextEdit" parent="TabContainer/TextEdit/HBoxContainer" unique_id=929483030]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Text Edit"
+placeholder_text = "Placeholder"
+
+[node name="CodeEdit" type="CodeEdit" parent="TabContainer/TextEdit/HBoxContainer" unique_id=1014646616]
+layout_mode = 2
+text = "CodeEdit"
+
+[node name="TabBar3" type="TabBar" parent="TabContainer" unique_id=2113048619]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="TabBar4" type="TabBar" parent="TabContainer" unique_id=501704368]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="Tree" type="Tree" parent="TabContainer/TabBar4" unique_id=664423526]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 32.0
+offset_right = 344.0
+offset_bottom = 212.0
+columns = 2
+column_titles_visible = true
+allow_reselect = true
+allow_rmb_select = true

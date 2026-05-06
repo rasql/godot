@@ -458,6 +458,73 @@ Let’s create three more tool buttons to delete either all, the first or the la
 </div>
 <p>Download the <a class="reference download internal" download="" href="../_downloads/bcc5d01f2be30a26d01695f62293db7b/instantiate.gd"><code class="xref download docutils literal notranslate"><span class="pre">Godot</span> <span class="pre">Script</span></code></a>.</p>
 </section>
+<section id="instantiate-in-a-3d-grid">
+<h2>Instantiate in a 3D grid<a class="headerlink" href="#instantiate-in-a-3d-grid" title="Link to this heading">¶</a></h2>
+<p>So far we created just one object at a time. This time, let’s create a 3D grid of objects.</p>
+<ul class="simple">
+<li><p>in the <code class="docutils literal notranslate"><span class="pre">addons</span></code> folder create a new script called <code class="docutils literal notranslate"><span class="pre">grid_instantiate</span></code>.</p></li>
+<li><p>add the following code.</p></li>
+</ul>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="err">@</span><span class="k">tool</span>
+<span class="k">extends</span><span class="w"> </span><span class="n">CSGCombiner3D</span>
+<span class="k">class_name</span><span class="w"> </span><span class="n">GridInstantiate</span>
+<span class="c1">## Instantiates a 3D grid of CSC boxes</span>
+
+<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">material</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">BaseMaterial3D</span>
+<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">dimension</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vector3i</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">):</span>
+<span class="w">	</span><span class="n">set</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+<span class="w">		</span><span class="n">dimension</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span>
+<span class="w">		</span><span class="c1"># Only run if we are inside the editor tree to avoid startup errors</span>
+<span class="w">		</span><span class="k">if</span><span class="w"> </span><span class="n">is_inside_tree</span><span class="p">():</span>
+<span class="w">			</span><span class="n">create</span><span class="p">()</span>
+<span class="w">		</span>
+<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb nb-Type">Vector3</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="w"> </span><span class="mf">1.5</span><span class="p">)</span>
+
+<span class="err">@</span><span class="n">export_tool_button</span><span class="p">(</span><span class="s2">&quot;New Grid&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;CSGBox3D&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">action1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create</span>
+
+<span class="c1">## Instantiates a 3D grid CSG box.</span>
+<span class="k">func</span><span class="w"> </span><span class="n">create</span><span class="p">():</span>
+<span class="w">	</span><span class="n">delete_all</span><span class="p">()</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1"># Safety check for the scene root</span>
+<span class="w">	</span><span class="k">var</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">edited_scene_root</span>
+<span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">root</span><span class="p">:</span>
+<span class="w">		</span><span class="k">return</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="k">for</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">dimension</span><span class="o">.</span><span class="n">x</span><span class="p">:</span>
+<span class="w">		</span><span class="k">for</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">dimension</span><span class="o">.</span><span class="n">y</span><span class="p">:</span>
+<span class="w">			</span><span class="k">for</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">dimension</span><span class="o">.</span><span class="n">z</span><span class="p">:</span>
+<span class="w">				</span><span class="k">var</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CSGBox3D</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="w">				</span>
+<span class="w">				</span><span class="c1"># Unique naming helps with organization</span>
+<span class="w">				</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Box_</span><span class="si">%d</span><span class="s2">_</span><span class="si">%d</span><span class="s2">_</span><span class="si">%d</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">]</span>
+<span class="w">				</span><span class="n">node</span><span class="o">.</span><span class="n">material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">material</span>
+<span class="w">				</span>
+<span class="w">				</span><span class="n">add_child</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="bp">true</span><span class="p">)</span>
+<span class="w">				</span><span class="n">node</span><span class="o">.</span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb nb-Type">Vector3</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">step</span>
+<span class="w">				</span><span class="n">node</span><span class="o">.</span><span class="n">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">edited_scene_root</span>
+
+<span class="c1">## Deletes all children.</span>
+<span class="k">func</span><span class="w"> </span><span class="n">delete_all</span><span class="p">():</span>
+<span class="w">	</span><span class="k">for</span><span class="w"> </span><span class="n">child</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">get_children</span><span class="p">():</span>
+<span class="w">		</span><span class="n">child</span><span class="o">.</span><span class="n">free</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>In the inspector we can select the</p>
+<ul class="simple">
+<li><p>dimension : this is 3D integer array</p></li>
+<li><p>step: this is the distance to the next box</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/grid_inspector.png"><img alt="img" src="../_images/grid_inspector.png" style="width: 300px;" /></a></p>
+<p>Each node name contains the grid indices, by using a formatted string <code class="docutils literal notranslate"><span class="pre">&quot;Box_%d_%d_%d&quot;</span> <span class="pre">%</span> <span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code>.</p>
+<p><a class="reference internal" href="../_images/grid_tree.png"><img alt="img" src="../_images/grid_tree.png" style="width: 200px;" /></a></p>
+<p>This is an exemple of 2D and 3D grids.</p>
+<p><img alt="img" src="../_images/grid_scene.png" /></p>
+<p>In order to increase the efficiency, the grid can be baked into a <code class="docutils literal notranslate"><span class="pre">MeshInstance3D</span></code>.
+This is possible because the base node is of type <code class="docutils literal notranslate"><span class="pre">CSGCombiner3D</span></code>.
+The preview image appears in the inspector.</p>
+<p><a class="reference internal" href="../_images/grid_bake.png"><img alt="img" src="../_images/grid_bake.png" style="width: 300px;" /></a></p>
+</section>
 <section id="create-a-hollow-box">
 <h2>Create a hollow box<a class="headerlink" href="#create-a-hollow-box" title="Link to this heading">¶</a></h2>
 <p>In Godot it is possible to create new types of node objects. For example, it would be convienent to have not just a filled box, but also a hollow box. We can take an existing type and modify it.</p>
@@ -677,6 +744,7 @@ Make the height slightly larger to avoid “z-fighting”.</p>
 <li><a class="reference internal" href="#change-speed-and-amplitude">Change speed and amplitude</a></li>
 <li><a class="reference internal" href="#instantiate-new-nodes">Instantiate new nodes</a></li>
 <li><a class="reference internal" href="#deleting-child-nodes">Deleting child nodes</a></li>
+<li><a class="reference internal" href="#instantiate-in-a-3d-grid">Instantiate in a 3D grid</a></li>
 <li><a class="reference internal" href="#create-a-hollow-box">Create a hollow box</a></li>
 <li><a class="reference internal" href="#create-automatic-documentation">Create automatic documentation</a></li>
 <li><a class="reference internal" href="#hollow-tube">Hollow Tube</a></li>

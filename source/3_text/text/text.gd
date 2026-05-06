@@ -21,7 +21,7 @@ func text1():
 		child.free()
 		
 	# 1. Open the file for reading
-	print(path)
+	print("open file: ", path)
 	var file = FileAccess.open(path, FileAccess.READ)
 	
 	# 2. Check if the file actually exists/opened correctly

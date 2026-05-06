@@ -11,6 +11,16 @@ The above image shows these basic concepts:
 - a **polygon** is a flat (coplanar) set of faces
 - a **surface** is a grouping of connected polygons
 
+You can find an excellent YouTube playlist
+[3D Basics Explained](https://www.youtube.com/watch?v=p3MU7J-0284&list=PLZtt3F3T1SJFXHkw58TGeagSHNl-8gIQj)
+by the 
+[Digitalist](https://www.youtube.com/@3Digitalist).
+
+![img](images/youtube_3d_basics.png){w=400px}
+
+
+
+
 ## Create a simple ArrayMesh
 
 The `ArrayMesh` is a simple type of mesh which can be created via a script.
