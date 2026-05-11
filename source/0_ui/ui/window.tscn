@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://drkr43vl0geou"]
+
+[node name="Window" type="Node" unique_id=1182980395]
+
+[node name="Window" type="Window" parent="." unique_id=1054072688]
+oversampling_override = 1.0
+title = "My Window"
+position = Vector2i(50, 50)
+size = Vector2i(400, 300)
+content_scale_mode = 1
+content_scale_stretch = 1
+content_scale_factor = 2.0
+
+[node name="Button" type="Button" parent="Window" unique_id=636485525]
+anchors_preset = -1
+anchor_right = 0.425
+anchor_bottom = 0.3
+offset_left = 35.0
+offset_top = 41.0
+offset_right = -41.0
+offset_bottom = -7.0
+text = "Button
+"
+
+[node name="Window2" type="Window" parent="." unique_id=1660263589]
+oversampling_override = 1.0
+title = "Text Editor"
+position = Vector2i(400, 100)
+size = Vector2i(400, 300)
+
+[node name="TextEdit" type="TextEdit" parent="Window2" unique_id=2105360883]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "This is text"
+placeholder_text = "this placeholder"
+
+[node name="Window3" type="Window" parent="." unique_id=859637529]
+oversampling_override = 1.0
+title = "ColorRect"
+position = Vector2i(700, 200)
+size = Vector2i(400, 300)
+
+[node name="ColorRect" type="ColorRect" parent="Window3" unique_id=631252832]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.17254902, 0.19607843, 1, 1)

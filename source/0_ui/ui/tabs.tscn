@@ -8,6 +8,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 5.0
+offset_right = 1.0
+offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_hdsbg")
@@ -19,9 +23,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 0
+current_tab = 2
 
 [node name="HBoxContainer" type="TabBar" parent="TabContainer" unique_id=662266344]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -103,10 +108,63 @@ placeholder_text = "Placeholder"
 layout_mode = 2
 text = "CodeEdit"
 
-[node name="TabBar3" type="TabBar" parent="TabContainer" unique_id=2113048619]
-visible = false
+[node name="SplitContainer" type="TabBar" parent="TabContainer" unique_id=2113048619]
 layout_mode = 2
 metadata/_tab_index = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="TabContainer/SplitContainer" unique_id=1791737097]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 85.0
+offset_right = 1298.0
+offset_bottom = 199.0
+split_offsets = PackedInt32Array(137, 275)
+split_offset = 137
+
+[node name="Button" type="Button" parent="TabContainer/SplitContainer/HSplitContainer" unique_id=1993692713]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Button"
+
+[node name="Button2" type="Button" parent="TabContainer/SplitContainer/HSplitContainer" unique_id=1630883643]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Button"
+
+[node name="Button3" type="Button" parent="TabContainer/SplitContainer/HSplitContainer" unique_id=1253628858]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Button"
+
+[node name="VSplitContainer" type="VSplitContainer" parent="TabContainer/SplitContainer" unique_id=1869626307]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 249.0
+offset_right = 405.0
+offset_bottom = 788.0
+split_offsets = PackedInt32Array(137, 275)
+split_offset = 137
+
+[node name="Button" type="Button" parent="TabContainer/SplitContainer/VSplitContainer" unique_id=349413797]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Button"
+
+[node name="Button2" type="Button" parent="TabContainer/SplitContainer/VSplitContainer" unique_id=334159754]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Button"
+
+[node name="Button3" type="Button" parent="TabContainer/SplitContainer/VSplitContainer" unique_id=856856321]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Button"
 
 [node name="TabBar4" type="TabBar" parent="TabContainer" unique_id=501704368]
 visible = false

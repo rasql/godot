@@ -249,8 +249,8 @@
 <li><p>select a color</p></li>
 <li><p>open a web site</p></li>
 </ul>
-<p>When you add a button, you see the classe structure.
-There are 8 Button types</p>
+<p>When you add a button, you see the class structure.
+There are 8 button types.</p>
 <p><a class="reference internal" href="../_images/ui_buttons.png"><img alt="img" src="../_images/ui_buttons.png" width="300" /></a></p>
 <ul class="simple">
 <li><p>create a new scene</p></li>
@@ -408,7 +408,7 @@ They are called container nodes, such as</p>
 <section id="hflowcontainer">
 <h3>HFlowContainer<a class="headerlink" href="#hflowcontainer" title="Link to this heading">¶</a></h3>
 <p>A <code class="docutils literal notranslate"><span class="pre">HFlowContainer</span></code> is a container which arranges its children horizontally.
-When a line is full, they they start a new line. The last line is expanded to fill the whole space available.</p>
+When a line is full, they start a new line. The last line is expanded to fill the whole space available.</p>
 <ul class="simple">
 <li><p>add a <code class="docutils literal notranslate"><span class="pre">HFlowContainer</span></code> to create a horizontal arrangement</p></li>
 <li><p>copy the button from the previous container</p></li>
@@ -419,6 +419,157 @@ When a line is full, they they start a new line. The last line is expanded to fi
 <p>You get an automatically sized horizontal grid of buttons.</p>
 <p><a class="reference internal" href="../_images/hflow_scene.png"><img alt="img" src="../_images/hflow_scene.png" width="200" /></a></p>
 </section>
+</section>
+<section id="window">
+<h2>Window<a class="headerlink" href="#window" title="Link to this heading">¶</a></h2>
+<p>A window is a rectangular container. You can</p>
+<ul class="simple">
+<li><p><strong>reposition</strong> it by dragging the menu bar</p></li>
+<li><p><strong>resize</strong> it by dragging the borders</p></li>
+<li><p>bring it <strong>to the top</strong> by clicking in it</p></li>
+</ul>
+<p>Create the following scene tree, with a <code class="docutils literal notranslate"><span class="pre">Node</span></code> as root, which you call <code class="docutils literal notranslate"><span class="pre">Window</span></code>.
+Windows cannot be positioned in the editor. You have to set the <code class="docutils literal notranslate"><span class="pre">size</span></code> property.</p>
+<p>Add the first <code class="docutils literal notranslate"><span class="pre">Window</span></code> as a child</p>
+<ul class="simple">
+<li><p>set the title to <code class="docutils literal notranslate"><span class="pre">My</span> <span class="pre">Window</span></code></p></li>
+<li><p>position to (50, 50)</p></li>
+<li><p>size to (400, 300)</p></li>
+<li><p>add <code class="docutils literal notranslate"><span class="pre">Button</span></code> as a child</p></li>
+</ul>
+<p>Duplicate the previous <code class="docutils literal notranslate"><span class="pre">Window</span></code></p>
+<ul class="simple">
+<li><p>set the title to <code class="docutils literal notranslate"><span class="pre">TextEditor</span></code></p></li>
+<li><p>position to (400, 100)</p></li>
+<li><p>add <code class="docutils literal notranslate"><span class="pre">TextEdit</span></code> as a child</p></li>
+<li><p>select anchor preset to fill</p></li>
+</ul>
+<p>Duplicate the previous <code class="docutils literal notranslate"><span class="pre">Window</span></code></p>
+<ul class="simple">
+<li><p>set the title to <code class="docutils literal notranslate"><span class="pre">ColorRect</span></code></p></li>
+<li><p>add <code class="docutils literal notranslate"><span class="pre">ColorRect</span></code> as a child</p></li>
+<li><p>select anchor preset to fill</p></li>
+<li><p>select a color</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/window_tree.png"><img alt="img" src="../_images/window_tree.png" width="200" /></a></p>
+<p>When you play the scene, you can <strong>move, resize and reorder</strong> the three windows.</p>
+<p><img alt="img" src="../_images/window_scene.png" /></p>
+<section id="dialog-windows">
+<h3>Dialog Windows<a class="headerlink" href="#dialog-windows" title="Link to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Window</span></code> class has 5 subclasses. There are 3 dialog windows and 2 popup windows.
+When adding them to the scene tree, they are hidden. You have to make them visible.</p>
+<p><a class="reference internal" href="../_images/dialog_add.png"><img alt="img" src="../_images/dialog_add.png" width="200" /></a></p>
+<p>Create the following scene tree, with a <code class="docutils literal notranslate"><span class="pre">Node</span></code> as root, which you call <code class="docutils literal notranslate"><span class="pre">Dialog</span></code>.</p>
+<ul class="simple">
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">AcceptDialog</span></code> node and set position to (50, 50)</p></li>
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">ConfirmationDialog</span></code> node and set position to (50, 300)</p></li>
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">FileDialog</span></code> node and set position to (350, 50)</p></li>
+</ul>
+<p>Make all the three windows visible.</p>
+<p><a class="reference internal" href="../_images/dialog_tree.png"><img alt="img" src="../_images/dialog_tree.png" width="300" /></a></p>
+<p>You can <strong>move, resize and reorder</strong> the three dialog windows like ordinary windows.
+When you click on <code class="docutils literal notranslate"><span class="pre">Cancel</span></code> they disappear, becoming invisible.</p>
+<p><img alt="img" src="../_images/dialog_scene.png" /></p>
+<p>Now lets connect the two buttons (OK and Cancel):</p>
+<ul class="simple">
+<li><p>add a script to the <code class="docutils literal notranslate"><span class="pre">Dialog</span></code> node</p></li>
+<li><p>select the <code class="docutils literal notranslate"><span class="pre">AcceptDialog</span></code></p></li>
+<li><p>open the <code class="docutils literal notranslate"><span class="pre">Signal</span></code> tab in the inspector</p></li>
+<li><p>add the two signal functions</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/dialog_signal.png"><img alt="img" src="../_images/dialog_signal.png" width="300" /></a></p>
+<p>Add the following two functions to the <code class="docutils literal notranslate"><span class="pre">dialog.gd</span></code> script.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">func</span><span class="w"> </span><span class="n">_on_dialog_canceled</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">	</span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;dialog cancelled&#39;</span><span class="p">)</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">_on_dialog_confirmed</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">	</span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;dialog confirmed&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For the <code class="docutils literal notranslate"><span class="pre">ConfigurationDialog</span></code> we can reuse these functions.
+Click on the <code class="docutils literal notranslate"><span class="pre">Pick</span></code> button and select the same two functions.</p>
+<p><a class="reference internal" href="../_images/dialog_select.png"><img alt="img" src="../_images/dialog_select.png" width="300" /></a></p>
+<p>When you click on the buttons, you get this in the console.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="n">dialog</span><span class="w"> </span><span class="n">cancelled</span>
+<span class="n">dialog</span><span class="w"> </span><span class="n">confirmed</span>
+<span class="n">dialog</span><span class="w"> </span><span class="n">cancelled</span>
+</pre></div>
+</div>
+</section>
+<section id="file-dialog">
+<h3>File dialog<a class="headerlink" href="#file-dialog" title="Link to this heading">¶</a></h3>
+<p>In the inspector for <code class="docutils literal notranslate"><span class="pre">FileDialog</span></code> you can add a filter.</p>
+<p><a class="reference internal" href="../_images/dialog_filter.png"><img alt="img" src="../_images/dialog_filter.png" width="300" /></a></p>
+<p>As before, add two signal functions.</p>
+<p><a class="reference internal" href="../_images/dialog_signal2.png"><img alt="img" src="../_images/dialog_signal2.png" width="300" /></a></p>
+<p>Complete the two signal functions with this code.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">func</span><span class="w"> </span><span class="n">_on_file_dialog_dir_selected</span><span class="p">(</span><span class="n">dir</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">	</span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;directory selected: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">dir</span><span class="p">)</span>
+<span class="w">	</span>
+<span class="k">func</span><span class="w"> </span><span class="n">_on_file_dialog_file_selected</span><span class="p">(</span><span class="n">path</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">	</span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;file selected: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When selecting a file, you get something like this:</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="n">file</span><span class="w"> </span><span class="n">selected</span><span class="p">:</span><span class="w"> </span><span class="n">res</span><span class="p">:</span><span class="o">//</span><span class="n">alice</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">file</span><span class="w"> </span><span class="n">selected</span><span class="p">:</span><span class="w"> </span><span class="n">res</span><span class="p">:</span><span class="o">//</span><span class="n">text</span><span class="o">.</span><span class="n">gd</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="create-an-editor">
+<h2>Create an editor<a class="headerlink" href="#create-an-editor" title="Link to this heading">¶</a></h2>
+<p>Let’s create a simple text editor.</p>
+<p>To have some books in plain text, go to the Gutenberg Project website and download some books.
+For exampe <a class="reference external" href="https://www.gutenberg.org/cache/epub/11/pg11.txt">Alice’s Adventures in Wonderland</a>.
+Name the file <code class="docutils literal notranslate"><span class="pre">alice.txt</span></code> and save it to the ressource folder.</p>
+<p>Create a new scene, add a <code class="docutils literal notranslate"><span class="pre">Control</span></code> node and call it <code class="docutils literal notranslate"><span class="pre">Text</span></code>.</p>
+<ul class="simple">
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">VBoxContainer</span></code></p></li>
+<li><p>add a child <code class="docutils literal notranslate"><span class="pre">Button</span></code> and name it <code class="docutils literal notranslate"><span class="pre">New</span></code></p></li>
+<li><p>check <code class="docutils literal notranslate"><span class="pre">Control</span> <span class="pre">&gt;</span> <span class="pre">Layout</span> <span class="pre">&gt;</span> <span class="pre">Container</span> <span class="pre">Sizing</span> <span class="pre">&gt;</span> <span class="pre">Expand</span></code></p></li>
+<li><p>duplicate the button and name it <code class="docutils literal notranslate"><span class="pre">Load</span></code></p></li>
+<li><p>duplicate again and name it <code class="docutils literal notranslate"><span class="pre">Save</span></code></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/text_tree.png"><img alt="img" src="../_images/text_tree.png" width="300" /></a></p>
+<p>Add a <code class="docutils literal notranslate"><span class="pre">TextEdit</span></code> node and adjust the size to 3/4 of the screen.
+Set the placeholder text to <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">some</span> <span class="pre">text</span></code></p>
+<ul class="simple">
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">FileDialog</span></code></p></li>
+<li><p>set the filter to <code class="docutils literal notranslate"><span class="pre">*.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">*.gd</span></code></p></li>
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">FileDialog</span></code> and rename it to <code class="docutils literal notranslate"><span class="pre">SaveDialog</span></code></p></li>
+<li><p>set the File Mode to <code class="docutils literal notranslate"><span class="pre">Save</span></code></p></li>
+</ul>
+<p><img alt="img" src="../_images/text_scene.png" /></p>
+<p>In order to make the 3 buttons functional, add a script to the root node <code class="docutils literal notranslate"><span class="pre">Text</span></code>.
+Add a signal function to each button.</p>
+<p>When the <code class="docutils literal notranslate"><span class="pre">Load/Save</span></code> button is pressed, make the corresponding FileDialog visible.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">func</span><span class="w"> </span><span class="n">_on_new_button_down</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">	</span><span class="o">$</span><span class="n">TextEdit</span><span class="o">.</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">_on_load_button_down</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">	</span><span class="o">$</span><span class="n">FileDialog</span><span class="o">.</span><span class="n">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
+<span class="w">	</span>
+<span class="k">func</span><span class="w"> </span><span class="n">_on_save_button_down</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">	</span><span class="o">$</span><span class="n">SaveDialog</span><span class="o">.</span><span class="n">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
+</pre></div>
+</div>
+<p>Connect a signal function to the two <code class="docutils literal notranslate"><span class="pre">FileDialog</span></code> nodes.
+When the Load dialog is pressed, open the selected file,
+read its content and place it into the <code class="docutils literal notranslate"><span class="pre">TextEdit</span></code></p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">func</span><span class="w"> </span><span class="n">_on_file_dialog_file_selected</span><span class="p">(</span><span class="n">path</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">	</span><span class="k">var</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FileAccess</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">FileAccess</span><span class="o">.</span><span class="n">READ</span><span class="p">)</span>
+<span class="w">	</span><span class="k">var</span><span class="w"> </span><span class="n">content</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file</span><span class="o">.</span><span class="n">get_as_text</span><span class="p">()</span>
+<span class="w">	</span><span class="o">$</span><span class="n">TextEdit</span><span class="o">.</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">content</span>
+</pre></div>
+</div>
+<p>When the Save dialog is pressed, take the path and
+save the content of <code class="docutils literal notranslate"><span class="pre">TextEdit</span></code> to that file.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">func</span><span class="w"> </span><span class="n">_on_save_dialog_file_selected</span><span class="p">(</span><span class="n">path</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">	</span><span class="k">var</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FileAccess</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">FileAccess</span><span class="o">.</span><span class="n">WRITE</span><span class="p">)</span>
+<span class="w">	</span><span class="n">file</span><span class="o">.</span><span class="n">store_string</span><span class="p">(</span><span class="o">$</span><span class="n">TextEdit</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -492,6 +643,12 @@ When a line is full, they they start a new line. The last line is expanded to fi
 <li><a class="reference internal" href="#hflowcontainer">HFlowContainer</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#window">Window</a><ul>
+<li><a class="reference internal" href="#dialog-windows">Dialog Windows</a></li>
+<li><a class="reference internal" href="#file-dialog">File dialog</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#create-an-editor">Create an editor</a></li>
 </ul>
 </li>
 </ul>

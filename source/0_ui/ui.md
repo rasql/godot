@@ -9,8 +9,8 @@ Buttons are a primary GUI element to
 - select a color
 - open a web site
 
-When you add a button, you see the classe structure. 
-There are 8 Button types
+When you add a button, you see the class structure. 
+There are 8 button types.
 
 ![img](images/ui_buttons.png){w=300}
 
@@ -205,7 +205,7 @@ You get an automatically sized vertical grid of buttons.
 ### HFlowContainer
 
 A `HFlowContainer` is a container which arranges its children horizontally.
-When a line is full, they they start a new line. The last line is expanded to fill the whole space available.
+When a line is full, they start a new line. The last line is expanded to fill the whole space available.
 
 - add a `HFlowContainer` to create a horizontal arrangement
 - copy the button from the previous container
@@ -217,3 +217,181 @@ When a line is full, they they start a new line. The last line is expanded to fi
 You get an automatically sized horizontal grid of buttons.
 
 ![img](images/hflow_scene.png){w=200}
+
+## Window
+
+A window is a rectangular container. You can
+
+- **reposition** it by dragging the menu bar
+- **resize** it by dragging the borders
+- bring it **to the top** by clicking in it
+
+Create the following scene tree, with a `Node` as root, which you call `Window`.
+Windows cannot be positioned in the editor. You have to set the `size` property.
+
+Add the first `Window` as a child
+- set the title to `My Window`
+- position to (50, 50)
+- size to (400, 300)
+- add `Button` as a child
+
+Duplicate the previous `Window`
+- set the title to `TextEditor`
+- position to (400, 100)
+- add `TextEdit` as a child
+- select anchor preset to fill
+
+Duplicate the previous `Window`
+- set the title to `ColorRect`
+- add `ColorRect` as a child
+- select anchor preset to fill
+- select a color
+
+![img](images/window_tree.png){w=200}
+
+When you play the scene, you can **move, resize and reorder** the three windows.
+
+![img](images/window_scene.png)
+
+
+### Dialog Windows
+
+The `Window` class has 5 subclasses. There are 3 dialog windows and 2 popup windows.
+When adding them to the scene tree, they are hidden. You have to make them visible.
+
+![img](images/dialog_add.png){w=200}
+
+Create the following scene tree, with a `Node` as root, which you call `Dialog`.
+
+- add a `AcceptDialog` node and set position to (50, 50)
+- add a `ConfirmationDialog` node and set position to (50, 300)
+- add a `FileDialog` node and set position to (350, 50)
+
+Make all the three windows visible. 
+
+![img](images/dialog_tree.png){w=300}
+
+You can **move, resize and reorder** the three dialog windows like ordinary windows.
+When you click on `Cancel` they disappear, becoming invisible.
+
+![img](images/dialog_scene.png)
+
+Now lets connect the two buttons (OK and Cancel): 
+- add a script to the `Dialog` node
+- select the `AcceptDialog`
+- open the `Signal` tab in the inspector
+- add the two signal functions
+
+![img](images/dialog_signal.png){w=300}
+
+Add the following two functions to the `dialog.gd` script.
+
+```
+func _on_dialog_canceled() -> void:
+	print('dialog cancelled')
+
+func _on_dialog_confirmed() -> void:
+	print('dialog confirmed')
+```
+
+For the `ConfigurationDialog` we can reuse these functions.
+Click on the `Pick` button and select the same two functions.
+
+![img](images/dialog_select.png){w=300}
+
+When you click on the buttons, you get this in the console.
+
+```
+dialog cancelled
+dialog confirmed
+dialog cancelled
+```
+
+### File dialog
+
+In the inspector for `FileDialog` you can add a filter.
+
+![img](images/dialog_filter.png){w=300}
+
+As before, add two signal functions.
+
+![img](images/dialog_signal2.png){w=300}
+
+Complete the two signal functions with this code.
+
+```
+func _on_file_dialog_dir_selected(dir: String) -> void:
+	print('directory selected: ', dir)
+	
+func _on_file_dialog_file_selected(path: String) -> void:
+	print('file selected: ', path)
+```
+When selecting a file, you get something like this:
+
+```
+file selected: res://alice.txt
+file selected: res://text.gd
+```
+
+## Create an editor
+
+Let’s create a simple text editor.
+
+To have some books in plain text, go to the Gutenberg Project website and download some books.
+For exampe [Alice's Adventures in Wonderland](https://www.gutenberg.org/cache/epub/11/pg11.txt).
+Name the file `alice.txt` and save it to the ressource folder.
+
+Create a new scene, add a `Control` node and call it `Text`.
+- add a `VBoxContainer`
+- add a child `Button` and name it `New`
+- check `Control > Layout > Container Sizing > Expand`
+- duplicate the button and name it `Load`
+- duplicate again and name it `Save`
+
+![img](images/text_tree.png){w=300}
+
+Add a `TextEdit` node and adjust the size to 3/4 of the screen.
+Set the placeholder text to `type some text`
+
+- add a `FileDialog`
+- set the filter to `*.txt` and `*.gd` 
+- add a `FileDialog` and rename it to `SaveDialog`
+- set the File Mode to `Save`
+
+![img](images/text_scene.png)
+
+In order to make the 3 buttons functional, add a script to the root node `Text`.
+Add a signal function to each button.
+
+When the `Load/Save` button is pressed, make the corresponding FileDialog visible.
+
+```
+func _on_new_button_down() -> void:
+	$TextEdit.text = ""
+
+func _on_load_button_down() -> void:
+	$FileDialog.visible = true
+	
+func _on_save_button_down() -> void:
+	$SaveDialog.visible = true
+```
+
+Connect a signal function to the two `FileDialog` nodes.
+When the Load dialog is pressed, open the selected file, 
+read its content and place it into the `TextEdit`
+
+```
+func _on_file_dialog_file_selected(path: String) -> void:
+	var file = FileAccess.open(path, FileAccess.READ)
+	var content = file.get_as_text()
+	$TextEdit.text = content
+```
+
+When the Save dialog is pressed, take the path and 
+save the content of `TextEdit` to that file.
+
+```
+func _on_save_dialog_file_selected(path: String) -> void:
+	var file = FileAccess.open(path, FileAccess.WRITE)
+	file.store_string($TextEdit.text)
+```
