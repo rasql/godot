@@ -15,6 +15,18 @@ grow_vertical = 2
 theme = SubResource("Theme_2c6x0")
 metadata/_edit_lock_ = true
 
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="." unique_id=223701578]
+layout_mode = 0
+offset_left = 448.00006
+offset_top = 264.0
+offset_right = 819.0
+offset_bottom = 406.0
+rotation = 0.0053087682
+
+[node name="Button" type="Button" parent="AspectRatioContainer" unique_id=2088792470]
+layout_mode = 2
+text = "Button"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1855183191]
 layout_mode = 0
 offset_left = 68.0
@@ -99,54 +111,114 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Button"
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="." unique_id=223701578]
+[node name="FoldableContainer" type="FoldableContainer" parent="." unique_id=2128262376]
 layout_mode = 0
-offset_left = 573.0
-offset_top = 322.0
-offset_right = 976.0
-offset_bottom = 510.0
+offset_left = 73.0
+offset_top = 477.0
+offset_right = 573.0
+offset_bottom = 817.0
+title = "FoldableContainer"
+title_alignment = 1
 
-[node name="Button" type="Button" parent="AspectRatioContainer" unique_id=2088792470]
+[node name="GridContainer" type="GridContainer" parent="FoldableContainer" unique_id=634311219]
 layout_mode = 2
+columns = 3
+
+[node name="Button" type="Button" parent="FoldableContainer/GridContainer" unique_id=198472588]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "Button"
 
-[node name="Button2" type="Button" parent="AspectRatioContainer" unique_id=1319978816]
+[node name="Button2" type="Button" parent="FoldableContainer/GridContainer" unique_id=745244362]
 layout_mode = 2
-text = "Button2
-"
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Button"
 
-[node name="GridContainer" type="GridContainer" parent="." unique_id=634311219]
+[node name="Button3" type="Button" parent="FoldableContainer/GridContainer" unique_id=1904691027]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Button"
+
+[node name="Button4" type="Button" parent="FoldableContainer/GridContainer" unique_id=1532593736]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Button"
+
+[node name="Button5" type="Button" parent="FoldableContainer/GridContainer" unique_id=535099199]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Button"
+
+[node name="Button6" type="Button" parent="FoldableContainer/GridContainer" unique_id=1124539914]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Button"
+
+[node name="Button7" type="Button" parent="FoldableContainer/GridContainer" unique_id=224668535]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Button"
+
+[node name="HSplitContainer" type="HSplitContainer" parent="." unique_id=1054660282]
 layout_mode = 0
-offset_left = 75.0
-offset_top = 536.0
-offset_right = 449.0
-offset_bottom = 789.0
-columns = 2
+offset_left = 846.0
+offset_top = 388.0
+offset_right = 1536.0
+offset_bottom = 512.0
 
-[node name="Button3" type="Button" parent="GridContainer" unique_id=1904691027]
+[node name="Button" type="Button" parent="HSplitContainer" unique_id=1599230375]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
 text = "Button"
 
-[node name="Button" type="Button" parent="GridContainer" unique_id=198472588]
+[node name="Button2" type="Button" parent="HSplitContainer" unique_id=1800420218]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
 text = "Button"
 
-[node name="Button2" type="Button" parent="GridContainer" unique_id=745244362]
+[node name="TabContainer" type="TabContainer" parent="." unique_id=2003056717]
+layout_mode = 0
+offset_left = 854.0
+offset_top = 568.0
+offset_right = 1446.0
+offset_bottom = 821.0
+tab_alignment = 1
+current_tab = 1
+
+[node name="TabBar" type="TabBar" parent="TabContainer" unique_id=987394671]
+visible = false
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+tab_alignment = 1
+metadata/_tab_index = 0
+
+[node name="Button" type="Button" parent="TabContainer/TabBar" unique_id=880057682]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 43.0
+offset_right = 191.0
+offset_bottom = 96.0
 text = "Button"
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="GridContainer" unique_id=2056144696]
+[node name="TabBar2" type="TabBar" parent="TabContainer" unique_id=808009983]
 layout_mode = 2
-text = "ColorPicker"
-color = Color(0, 0.8901961, 0, 1)
+metadata/_tab_index = 1
 
-[node name="ColorPickerButton2" type="ColorPickerButton" parent="GridContainer" unique_id=1403726869]
+[node name="ColorPickerButton" type="ColorPickerButton" parent="TabContainer/TabBar2" unique_id=183841455]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 35.0
+offset_right = 270.0
+offset_bottom = 126.0
+color = Color(0.8117647, 0, 0, 1)
+
+[node name="TabBar3" type="TabBar" parent="TabContainer" unique_id=1432571127]
+visible = false
 layout_mode = 2
-text = "ColorPicker"
-color = Color(0.8809028, 0.61662054, 0.9749331, 1)
+metadata/_tab_index = 2

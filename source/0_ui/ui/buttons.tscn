@@ -92,6 +92,7 @@ offset_top = 245.0
 offset_right = 349.0
 offset_bottom = 283.0
 text = "MenuButton"
+switch_on_hover = true
 item_count = 3
 popup/item_0/text = "Menu 1"
 popup/item_0/id = 0

@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dn630yqxfa2cg"]
+
+[ext_resource type="Script" uid="uid://cury2h3sfmqrn" path="res://graph.gd" id="1_41hjn"]
+
+[node name="Graph" type="Control" unique_id=1762738921]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_41hjn")
+
+[node name="Add" type="Button" parent="." unique_id=1251853085]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 22.0
+offset_right = 164.0
+offset_bottom = 64.0
+size_flags_horizontal = 3
+text = "Add node"
+
+[node name="GraphEdit" type="GraphEdit" parent="." unique_id=39736258]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 84.0
+grow_horizontal = 2
+grow_vertical = 2
+scroll_offset = Vector2(-1600, -130)
+right_disconnects = true
+show_zoom_label = true
+
+[connection signal="pressed" from="Add" to="." method="_on_add_pressed"]
+[connection signal="connection_request" from="GraphEdit" to="." method="_on_graph_edit_connection_request"]
+[connection signal="disconnection_request" from="GraphEdit" to="." method="_on_graph_edit_disconnection_request"]

@@ -242,10 +242,10 @@
 <h1>User interface<a class="headerlink" href="#user-interface" title="Link to this heading">¶</a></h1>
 <section id="buttons">
 <h2>Buttons<a class="headerlink" href="#buttons" title="Link to this heading">¶</a></h2>
-<p>Buttons are a primary GUI element to</p>
+<p>Buttons are a primary UI element to</p>
 <ul class="simple">
 <li><p>start an action</p></li>
-<li><p>switch state</p></li>
+<li><p>switch a state</p></li>
 <li><p>select a color</p></li>
 <li><p>open a web site</p></li>
 </ul>
@@ -260,18 +260,18 @@ There are 8 button types.</p>
 <p><a class="reference internal" href="../_images/button_tree.png"><img alt="img" src="../_images/button_tree.png" width="200" /></a></p>
 <p>A button can contain text and an icon.</p>
 <ul class="simple">
-<li><p>add a <code class="docutils literal notranslate"><span class="pre">Button</span></code> and add text `Button``</p></li>
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">Button</span></code> and add a text <code class="docutils literal notranslate"><span class="pre">Button</span></code></p></li>
 <li><p>duplicate the button and add the Godot icon (<code class="docutils literal notranslate"><span class="pre">icon.svg</span></code>)</p></li>
 <li><p>duplicate again and remove the text</p></li>
 </ul>
 <p><img alt="img" src="../_images/button_scene.png" /></p>
-</section>
 <section id="start-an-action">
-<h2>Start an action<a class="headerlink" href="#start-an-action" title="Link to this heading">¶</a></h2>
-<p>Add a <code class="docutils literal notranslate"><span class="pre">Label</span></code> to display a status line.
-On the <code class="docutils literal notranslate"><span class="pre">Signal</span></code> tab, right next to the <code class="docutils literal notranslate"><span class="pre">Inspector</span></code> tab, connect these two signals.</p>
+<h3>Start an action<a class="headerlink" href="#start-an-action" title="Link to this heading">¶</a></h3>
+<p>A button down or button up event can be used to start an action.
+To execute code, we first need to add a script to the root node. Name the script <code class="docutils literal notranslate"><span class="pre">buttons.gd</span></code>.
+On the <code class="docutils literal notranslate"><span class="pre">Signal</span></code> tab, right next to the <code class="docutils literal notranslate"><span class="pre">Inspector</span></code> tab, connect these two signals to their default functions.</p>
 <p><a class="reference internal" href="../_images/button_signal.png"><img alt="img" src="../_images/button_signal.png" width="400" /></a></p>
-<p>Then add the code to display a message in the status field.</p>
+<p>Then add the code to display a message in the console.</p>
 <div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">func</span><span class="w"> </span><span class="n">_on_button_button_down</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
 <span class="w">	</span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Button down&#39;</span><span class="p">)</span>
 <span class="w">	</span>
@@ -292,10 +292,12 @@ On the <code class="docutils literal notranslate"><span class="pre">Signal</span
 <span class="n">Button</span><span class="w"> </span><span class="n">up</span>
 </pre></div>
 </div>
-<p>add 3 more buttons</p>
+<p>### CheckBox and CheckButton
+Add 3 more buttons</p>
 <p><a class="reference internal" href="../_images/ui_checkbox.png"><img alt="img" src="../_images/ui_checkbox.png" width="200" /></a></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">CheckBox</span></code> and <code class="docutils literal notranslate"><span class="pre">CheckButton</span></code> are 2-state toggle buttons.
 The state can be read in the <code class="docutils literal notranslate"><span class="pre">.toggled_on</span></code> attribute.</p>
+</section>
 <section id="colorpickerbutton">
 <h3>ColorPickerButton<a class="headerlink" href="#colorpickerbutton" title="Link to this heading">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">ColorPickerButton</span></code> displays a colored rectangle.
@@ -369,15 +371,30 @@ They are called container nodes, such as</p>
 <li><p>add a <code class="docutils literal notranslate"><span class="pre">Control</span></code> node and name it <code class="docutils literal notranslate"><span class="pre">Container</span></code></p></li>
 <li><p>save the scene as <code class="docutils literal notranslate"><span class="pre">container.gd</span></code></p></li>
 </ul>
+<section id="change-the-theme">
+<h3>Change the theme<a class="headerlink" href="#change-the-theme" title="Link to this heading">¶</a></h3>
 <p>In order to increase the size of all its children, create a theme and increase the font size.</p>
 <ul class="simple">
 <li><p>in the inspector find <code class="docutils literal notranslate"><span class="pre">Theme</span></code></p></li>
-<li><p>add a new theme</p></li>
+<li><p>add a new Theme</p></li>
 <li><p>set the font size to 32</p></li>
 </ul>
 <p><a class="reference internal" href="../_images/container_inspector.png"><img alt="img" src="../_images/container_inspector.png" width="400" /></a></p>
-<section id="hboxcontainer">
-<h3>HBoxContainer<a class="headerlink" href="#hboxcontainer" title="Link to this heading">¶</a></h3>
+</section>
+<section id="aspectratiocontainer">
+<h3>AspectRatioContainer<a class="headerlink" href="#aspectratiocontainer" title="Link to this heading">¶</a></h3>
+<p>This container arranges a single child to preserve its proportion.
+Whenever the parent aspect ratio changes, the child ratio stays the same.</p>
+<ul class="simple">
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">AspectRatioContainer</span></code></p></li>
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">Button</span></code> as a child</p></li>
+<li><p>make it square</p></li>
+</ul>
+<p>When changing the aspect ratio of the parent, the button keeps always the same aspect ratio.</p>
+<p><a class="reference internal" href="../_images/aspectratio.png"><img alt="img" src="../_images/aspectratio.png" width="300" /></a></p>
+</section>
+<section id="boxcontainer">
+<h3>BoxContainer<a class="headerlink" href="#boxcontainer" title="Link to this heading">¶</a></h3>
 <p>A <code class="docutils literal notranslate"><span class="pre">HBoxContainer</span></code> is a container which arranges its children horizontally.</p>
 <ul class="simple">
 <li><p>add a <code class="docutils literal notranslate"><span class="pre">HBoxContainer</span></code> as a child</p></li>
@@ -390,9 +407,6 @@ They are called container nodes, such as</p>
 <p><a class="reference internal" href="../_images/hbox_tree.png"><img alt="img" src="../_images/hbox_tree.png" width="200" /></a></p>
 <p>You get an automatically sized horizontal grid of buttons.</p>
 <p><a class="reference internal" href="../_images/hbox_scene.png"><img alt="img" src="../_images/hbox_scene.png" width="500" /></a></p>
-</section>
-<section id="vboxcontainer">
-<h3>VBoxContainer<a class="headerlink" href="#vboxcontainer" title="Link to this heading">¶</a></h3>
 <p>A <code class="docutils literal notranslate"><span class="pre">VBoxContainer</span></code> is a container which arranges its children vertically.</p>
 <ul class="simple">
 <li><p>add a <code class="docutils literal notranslate"><span class="pre">VBoxContainer</span></code> to create a vertical arrangement</p></li>
@@ -405,8 +419,8 @@ They are called container nodes, such as</p>
 <p>You get an automatically sized vertical grid of buttons.</p>
 <p><a class="reference internal" href="../_images/vbox_scene.png"><img alt="img" src="../_images/vbox_scene.png" width="200" /></a></p>
 </section>
-<section id="hflowcontainer">
-<h3>HFlowContainer<a class="headerlink" href="#hflowcontainer" title="Link to this heading">¶</a></h3>
+<section id="flowcontainer">
+<h3>FlowContainer<a class="headerlink" href="#flowcontainer" title="Link to this heading">¶</a></h3>
 <p>A <code class="docutils literal notranslate"><span class="pre">HFlowContainer</span></code> is a container which arranges its children horizontally.
 When a line is full, they start a new line. The last line is expanded to fill the whole space available.</p>
 <ul class="simple">
@@ -419,6 +433,78 @@ When a line is full, they start a new line. The last line is expanded to fill th
 <p>You get an automatically sized horizontal grid of buttons.</p>
 <p><a class="reference internal" href="../_images/hflow_scene.png"><img alt="img" src="../_images/hflow_scene.png" width="200" /></a></p>
 </section>
+<section id="gridcontainer">
+<h3>GridContainer<a class="headerlink" href="#gridcontainer" title="Link to this heading">¶</a></h3>
+<p>This container arranges its children in a grid layout. You can choose the number of columns</p>
+<ul class="simple">
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">GridContainer</span></code></p></li>
+<li><p>add 7 <code class="docutils literal notranslate"><span class="pre">Buttons</span></code></p></li>
+<li><p>change the number of columns and observe</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/grid.png"><img alt="img" src="../_images/grid.png" width="400" /></a></p>
+</section>
+<section id="foldablecontainer">
+<h3>FoldableContainer<a class="headerlink" href="#foldablecontainer" title="Link to this heading">¶</a></h3>
+<p>This container can be epanded/collapses.</p>
+<ul class="simple">
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">FoldableContainer</span></code></p></li>
+<li><p>make its title <code class="docutils literal notranslate"><span class="pre">FoldableContainer</span></code></p></li>
+<li><p>set the title alignment to center</p></li>
+<li><p>move the previous <code class="docutils literal notranslate"><span class="pre">GridContainer</span></code> inside it</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/foldable.png"><img alt="img" src="../_images/foldable.png" width="400" /></a></p>
+</section>
+<section id="splitcontainer">
+<h3>SplitContainer<a class="headerlink" href="#splitcontainer" title="Link to this heading">¶</a></h3>
+<p>This container arranges children horizontally or vertically and provides Grabbers to adjust the split ratio.</p>
+<ul class="simple">
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">HSplitContainer</span></code></p></li>
+<li><p>add two <code class="docutils literal notranslate"><span class="pre">Button</span></code> nodes</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/split.png"><img alt="img" src="../_images/split.png" width="400" /></a></p>
+</section>
+<section id="tabcontainer">
+<h3>TabContainer<a class="headerlink" href="#tabcontainer" title="Link to this heading">¶</a></h3>
+<p>This container creates tabs for each child <code class="docutils literal notranslate"><span class="pre">TabBar</span></code>.
+It allows to group related controls and show only one tab at a time.</p>
+<ul class="simple">
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">TabContainer</span></code></p></li>
+<li><p>add 3 <code class="docutils literal notranslate"><span class="pre">TabBar</span></code> nodes as children</p></li>
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">Button</span></code> to the first tab</p></li>
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">ColorPickerButton</span></code> to the second tab</p></li>
+</ul>
+<p>This is your scene tree</p>
+<p><a class="reference internal" href="../_images/tab_tree.png"><img alt="img" src="../_images/tab_tree.png" width="200" /></a></p>
+<p>And here is your tab container with the second tab on display.</p>
+<p><a class="reference internal" href="../_images/tab_scene.png"><img alt="img" src="../_images/tab_scene.png" width="400" /></a></p>
+</section>
+</section>
+<section id="numeric-controls">
+<h2>Numeric controls<a class="headerlink" href="#numeric-controls" title="Link to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">Range</span></code> class is the base class for controls that represent a value within a range [min, max].</p>
+<p><a class="reference internal" href="../_images/range_nodes.png"><img alt="img" src="../_images/range_nodes.png" width="200" /></a></p>
+<p>Create a new scene called <code class="docutils literal notranslate"><span class="pre">Numeric</span></code>.
+Add the following numeric controls, each with a <code class="docutils literal notranslate"><span class="pre">Label</span></code> child, to attach its name.</p>
+<p><a class="reference internal" href="../_images/range_tree.png"><img alt="img" src="../_images/range_tree.png" width="200" /></a></p>
+<p>Place each label beside the control and add the control name as a text.</p>
+<p><img alt="img" src="../_images/range_scene.png" /></p>
+<p>Let’s activate some of the controls.
+For the <code class="docutils literal notranslate"><span class="pre">VSlider</span></code> add a <code class="docutils literal notranslate"><span class="pre">value</span> <span class="pre">changed</span></code> signal connected to the following function.
+Moving the slider changes the progress bar value.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">func</span><span class="w"> </span><span class="n">_on_h_slider_value_changed</span><span class="p">(</span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">float</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">	</span><span class="o">$</span><span class="n">ProgressBar</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span>
+</pre></div>
+</div>
+<p>Add a signla to the <code class="docutils literal notranslate"><span class="pre">HScrollBar</span></code> and display it’s value in a Label, using this function:</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">func</span><span class="w"> </span><span class="n">_on_h_scroll_bar_value_changed</span><span class="p">(</span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">float</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">	</span><span class="o">$</span><span class="n">HScrollBar</span><span class="o">/</span><span class="n">Value</span><span class="o">.</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;value = &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally use the vertical slider to display progress in the <code class="docutils literal notranslate"><span class="pre">TextureProgressBar</span></code> in a radial way, choosing the clockwise mode.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">func</span><span class="w"> </span><span class="n">_on_v_slider_value_changed</span><span class="p">(</span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">float</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">	</span><span class="o">$</span><span class="n">TextureProgressBar</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span>
+</pre></div>
+</div>
 </section>
 <section id="window">
 <h2>Window<a class="headerlink" href="#window" title="Link to this heading">¶</a></h2>
@@ -571,6 +657,66 @@ save the content of <code class="docutils literal notranslate"><span class="pre"
 </pre></div>
 </div>
 </section>
+<section id="graph-editor">
+<h2>Graph editor<a class="headerlink" href="#graph-editor" title="Link to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">GraphEdit</span></code> node provides tooles for creation, manipulation and display of <code class="docutils literal notranslate"><span class="pre">GraphNodes</span></code>. It can be used in a visual editor.</p>
+<p>Create a new scene called <code class="docutils literal notranslate"><span class="pre">Graph</span></code>.</p>
+<ul class="simple">
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">Button</span></code> and name it <code class="docutils literal notranslate"><span class="pre">Add</span></code></p></li>
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">GraphEdit</span></code> node</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/graph_tree.png"><img alt="img" src="../_images/graph_tree.png" width="300" /></a></p>
+<p>Arrange the controls like this.
+The graph editor adds several icons, such as zoom controls, grid, and mini-map.</p>
+<p><img alt="img" src="../_images/graph_scene.png" /></p>
+<p>Add a script to the <code class="docutils literal notranslate"><span class="pre">Graph</span></code> node.</p>
+<p>Add a signal to the <code class="docutils literal notranslate"><span class="pre">Button</span></code> to call this function. When pressed it</p>
+<ul class="simple">
+<li><p>creates a new <code class="docutils literal notranslate"><span class="pre">GraphNode</span></code></p></li>
+<li><p>adds a title with an incrementing number</p></li>
+<li><p>a <code class="docutils literal notranslate"><span class="pre">Label</span></code> as a child</p></li>
+<li><p>and finally adds the <code class="docutils literal notranslate"><span class="pre">GraphNode</span></code> as a child to the <code class="docutils literal notranslate"><span class="pre">GraphEdit</span></code></p></li>
+</ul>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">extends</span><span class="w"> </span><span class="n">Control</span>
+<span class="c1"># Reference</span>
+<span class="c1"># Using GraphEdit and GraphNode to create flow charts</span>
+<span class="c1"># https://youtu.be/ZD9X3uvyWmg?si=GHPXb2AiSTLkPXFu</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">node_index</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">_on_add_pressed</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">	</span><span class="k">var</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GraphNode</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="w">	</span><span class="n">node</span><span class="o">.</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;node &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">node_index</span><span class="p">)</span>
+<span class="w">	</span><span class="n">node</span><span class="o">.</span><span class="n">scaling_menus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
+<span class="w">	</span><span class="n">node</span><span class="o">.</span><span class="n">position_offset</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">node_index</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb nb-Type">Vector2</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span>
+<span class="w">	</span><span class="n">node</span><span class="o">.</span><span class="n">custom_minimum_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb nb-Type">Vector2</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
+<span class="w">	</span><span class="n">node</span><span class="o">.</span><span class="n">set_slot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="bp">true</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb nb-Type">Color</span><span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">),</span><span class="w"> </span><span class="bp">true</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb nb-Type">Color</span><span class="p">(</span><span class="s1">&#39;blue&#39;</span><span class="p">))</span>
+<span class="w">	</span><span class="k">var</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TextEdit</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="w">	</span><span class="n">label</span><span class="o">.</span><span class="n">custom_minimum_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb nb-Type">Vector2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="p">)</span>
+<span class="w">	</span><span class="n">node</span><span class="o">.</span><span class="n">add_child</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+
+<span class="w">	</span><span class="o">$</span><span class="n">GraphEdit</span><span class="o">.</span><span class="n">add_child</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="w">	</span><span class="n">node_index</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>Connect two signals to the <code class="docutils literal notranslate"><span class="pre">GraphEdit</span></code> to these 2 functions.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">func</span><span class="w"> </span><span class="n">_on_graph_edit_connection_request</span><span class="p">(</span><span class="n">from_node</span><span class="p">:</span><span class="w"> </span><span class="n">StringName</span><span class="p">,</span><span class="w"> </span><span class="n">from_port</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="n">to_node</span><span class="p">:</span><span class="w"> </span><span class="n">StringName</span><span class="p">,</span><span class="w"> </span><span class="n">to_port</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="p">):</span>
+<span class="w">	</span><span class="o">$</span><span class="n">GraphEdit</span><span class="o">.</span><span class="n">connect_node</span><span class="p">(</span><span class="n">from_node</span><span class="p">,</span><span class="w"> </span><span class="n">from_port</span><span class="p">,</span><span class="w"> </span><span class="n">to_node</span><span class="p">,</span><span class="w"> </span><span class="n">to_port</span><span class="p">)</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">_on_graph_edit_disconnection_request</span><span class="p">(</span><span class="n">from_node</span><span class="p">:</span><span class="w"> </span><span class="n">StringName</span><span class="p">,</span><span class="w"> </span><span class="n">from_port</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="n">to_node</span><span class="p">:</span><span class="w"> </span><span class="n">StringName</span><span class="p">,</span><span class="w"> </span><span class="n">to_port</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="p">):</span>
+<span class="w">	</span><span class="o">$</span><span class="n">GraphEdit</span><span class="o">.</span><span class="n">disconnect_node</span><span class="p">(</span><span class="n">from_node</span><span class="p">,</span><span class="w"> </span><span class="n">from_port</span><span class="p">,</span><span class="w"> </span><span class="n">to_node</span><span class="p">,</span><span class="w"> </span><span class="n">to_port</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Add</span></code> button allows to add new nodes. You can</p>
+<ul class="simple">
+<li><p>enter text into the labels</p></li>
+<li><p>connect different nodes</p></li>
+<li><p>remove a connection by dragging</p></li>
+</ul>
+<p><img alt="img" src="../_images/graph_example.png" /></p>
+</section>
 </section>
 
         </article>
@@ -629,8 +775,8 @@ save the content of <code class="docutils literal notranslate"><span class="pre"
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">User interface</a><ul>
-<li><a class="reference internal" href="#buttons">Buttons</a></li>
-<li><a class="reference internal" href="#start-an-action">Start an action</a><ul>
+<li><a class="reference internal" href="#buttons">Buttons</a><ul>
+<li><a class="reference internal" href="#start-an-action">Start an action</a></li>
 <li><a class="reference internal" href="#colorpickerbutton">ColorPickerButton</a></li>
 <li><a class="reference internal" href="#menubutton">MenuButton</a></li>
 <li><a class="reference internal" href="#linkbutton">LinkButton</a></li>
@@ -638,17 +784,24 @@ save the content of <code class="docutils literal notranslate"><span class="pre"
 </ul>
 </li>
 <li><a class="reference internal" href="#containers">Containers</a><ul>
-<li><a class="reference internal" href="#hboxcontainer">HBoxContainer</a></li>
-<li><a class="reference internal" href="#vboxcontainer">VBoxContainer</a></li>
-<li><a class="reference internal" href="#hflowcontainer">HFlowContainer</a></li>
+<li><a class="reference internal" href="#change-the-theme">Change the theme</a></li>
+<li><a class="reference internal" href="#aspectratiocontainer">AspectRatioContainer</a></li>
+<li><a class="reference internal" href="#boxcontainer">BoxContainer</a></li>
+<li><a class="reference internal" href="#flowcontainer">FlowContainer</a></li>
+<li><a class="reference internal" href="#gridcontainer">GridContainer</a></li>
+<li><a class="reference internal" href="#foldablecontainer">FoldableContainer</a></li>
+<li><a class="reference internal" href="#splitcontainer">SplitContainer</a></li>
+<li><a class="reference internal" href="#tabcontainer">TabContainer</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#numeric-controls">Numeric controls</a></li>
 <li><a class="reference internal" href="#window">Window</a><ul>
 <li><a class="reference internal" href="#dialog-windows">Dialog Windows</a></li>
 <li><a class="reference internal" href="#file-dialog">File dialog</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#create-an-editor">Create an editor</a></li>
+<li><a class="reference internal" href="#graph-editor">Graph editor</a></li>
 </ul>
 </li>
 </ul>

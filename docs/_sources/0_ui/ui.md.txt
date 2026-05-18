@@ -2,10 +2,10 @@
 
 ## Buttons
 
-Buttons are a primary GUI element to
+Buttons are a primary UI element to
 
 - start an action
-- switch state
+- switch a state
 - select a color
 - open a web site
 
@@ -22,20 +22,21 @@ There are 8 button types.
 
 A button can contain text and an icon.
 
-- add a `Button` and add text `Button``
+- add a `Button` and add a text `Button`
 - duplicate the button and add the Godot icon (`icon.svg`)
 - duplicate again and remove the text
 
 ![img](images/button_scene.png)
 
-## Start an action
+### Start an action
 
-Add a `Label` to display a status line.
-On the `Signal` tab, right next to the `Inspector` tab, connect these two signals.
+A button down or button up event can be used to start an action. 
+To execute code, we first need to add a script to the root node. Name the script `buttons.gd`.
+On the `Signal` tab, right next to the `Inspector` tab, connect these two signals to their default functions.
 
 ![img](images/button_signal.png){w=400}
 
-Then add the code to display a message in the status field.
+Then add the code to display a message in the console.
 
 ```
 func _on_button_button_down() -> void:
@@ -60,7 +61,8 @@ Button pressed
 Button up
 ```
 
-add 3 more buttons
+### CheckBox and CheckButton
+Add 3 more buttons
 
 ![img](images/ui_checkbox.png){w=200}
 
@@ -159,15 +161,30 @@ When adding a new node (cmd+A) you can observe the class hierarchy of nodes.
 - add a `Control` node and name it `Container`
 - save the scene as `container.gd`
 
+### Change the theme
+
 In order to increase the size of all its children, create a theme and increase the font size.
 
 - in the inspector find `Theme`
-- add a new theme
+- add a new Theme
 - set the font size to 32
 
 ![img](images/container_inspector.png){w=400}
 
-### HBoxContainer
+### AspectRatioContainer
+
+This container arranges a single child to preserve its proportion.
+Whenever the parent aspect ratio changes, the child ratio stays the same.
+
+- add a `AspectRatioContainer`
+- add a `Button` as a child
+- make it square
+
+When changing the aspect ratio of the parent, the button keeps always the same aspect ratio.
+
+![img](images/aspectratio.png){w=300}
+
+### BoxContainer
 
 A `HBoxContainer` is a container which arranges its children horizontally.
 
@@ -186,7 +203,6 @@ You get an automatically sized horizontal grid of buttons.
 
 ![img](images/hbox_scene.png){w=500}
 
-### VBoxContainer
 
 A `VBoxContainer` is a container which arranges its children vertically.
 
@@ -202,7 +218,7 @@ You get an automatically sized vertical grid of buttons.
 
 ![img](images/vbox_scene.png){w=200}
 
-### HFlowContainer
+### FlowContainer
 
 A `HFlowContainer` is a container which arranges its children horizontally.
 When a line is full, they start a new line. The last line is expanded to fill the whole space available.
@@ -217,6 +233,94 @@ When a line is full, they start a new line. The last line is expanded to fill th
 You get an automatically sized horizontal grid of buttons.
 
 ![img](images/hflow_scene.png){w=200}
+
+### GridContainer
+
+This container arranges its children in a grid layout. You can choose the number of columns
+
+- add a `GridContainer`
+- add 7 `Buttons`
+- change the number of columns and observe
+
+![img](images/grid.png){w=400}
+
+### FoldableContainer
+
+This container can be epanded/collapses. 
+
+- add a `FoldableContainer`
+- make its title `FoldableContainer`
+- set the title alignment to center
+- move the previous `GridContainer` inside it
+
+![img](images/foldable.png){w=400}
+
+### SplitContainer
+
+This container arranges children horizontally or vertically and provides Grabbers to adjust the split ratio.
+
+- add a `HSplitContainer`
+- add two `Button` nodes
+
+![img](images/split.png){w=400}
+
+### TabContainer
+
+This container creates tabs for each child `TabBar`.
+It allows to group related controls and show only one tab at a time.
+
+- add a `TabContainer`
+- add 3 `TabBar` nodes as children
+- add a `Button` to the first tab
+- add a `ColorPickerButton` to the second tab
+
+This is your scene tree
+
+![img](images/tab_tree.png){w=200}
+
+And here is your tab container with the second tab on display.
+
+![img](images/tab_scene.png){w=400}
+
+## Numeric controls
+
+The `Range` class is the base class for controls that represent a value within a range [min, max].
+
+![img](images/range_nodes.png){w=200}
+
+Create a new scene called `Numeric`. 
+Add the following numeric controls, each with a `Label` child, to attach its name.
+
+![img](images/range_tree.png){w=200}
+
+Place each label beside the control and add the control name as a text.
+
+![img](images/range_scene.png)
+
+Let's activate some of the controls. 
+For the `VSlider` add a `value changed` signal connected to the following function.
+Moving the slider changes the progress bar value.
+
+```
+func _on_h_slider_value_changed(value: float) -> void:
+	$ProgressBar.value = value
+```
+
+Add a signla to the `HScrollBar` and display it's value in a Label, using this function:
+
+```
+func _on_h_scroll_bar_value_changed(value: float) -> void:
+	$HScrollBar/Value.text = "value = " + str(value)
+````
+
+Finally use the vertical slider to display progress in the `TextureProgressBar` in a radial way, choosing the clockwise mode.
+
+```
+func _on_v_slider_value_changed(value: float) -> void:
+	$TextureProgressBar.value = value
+```
+
+
 
 ## Window
 
@@ -395,3 +499,71 @@ func _on_save_dialog_file_selected(path: String) -> void:
 	var file = FileAccess.open(path, FileAccess.WRITE)
 	file.store_string($TextEdit.text)
 ```
+
+## Graph editor
+
+The `GraphEdit` node provides tooles for creation, manipulation and display of `GraphNodes`. It can be used in a visual editor.
+
+Create a new scene called `Graph`.
+- add a `Button` and name it `Add`
+- add a `GraphEdit` node 
+
+![img](images/graph_tree.png){w=300}
+
+Arrange the controls like this.
+The graph editor adds several icons, such as zoom controls, grid, and mini-map.
+
+![img](images/graph_scene.png)
+
+Add a script to the `Graph` node.
+
+Add a signal to the `Button` to call this function. When pressed it
+- creates a new `GraphNode`
+- adds a title with an incrementing number
+- a `Label` as a child
+- and finally adds the `GraphNode` as a child to the `GraphEdit`
+
+
+```
+extends Control
+# Reference
+# Using GraphEdit and GraphNode to create flow charts
+# https://youtu.be/ZD9X3uvyWmg?si=GHPXb2AiSTLkPXFu
+
+var node_index =0
+
+func _on_add_pressed() -> void:
+	var node = GraphNode.new()
+	node.title = "node " + str(node_index)
+	node.scaling_menus = true
+	node.position_offset += (3 + node_index) * Vector2(30, 30)
+	node.custom_minimum_size = Vector2(200, 100)
+	node.set_slot(0, true, 0, Color('red'), true, 0, Color('blue'))
+	var label = TextEdit.new()
+	label.custom_minimum_size = Vector2(0, 32)
+	node.add_child(label)
+
+	$GraphEdit.add_child(node)
+	node_index += 1
+```
+
+Connect two signals to the `GraphEdit` to these 2 functions.
+
+```
+func _on_graph_edit_connection_request(from_node: StringName, from_port: int, 
+            to_node: StringName, to_port: int):
+	$GraphEdit.connect_node(from_node, from_port, to_node, to_port)
+
+func _on_graph_edit_disconnection_request(from_node: StringName, from_port: int, 
+            to_node: StringName, to_port: int):
+	$GraphEdit.disconnect_node(from_node, from_port, to_node, to_port)
+```
+
+The `Add` button allows to add new nodes. You can 
+- enter text into the labels
+- connect different nodes
+- remove a connection by dragging
+
+
+![img](images/graph_example.png)
+

@@ -1,0 +1,22 @@
+[gd_resource type="Theme" format=3 uid="uid://478s04c76dv2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kumq8"]
+
+[resource]
+Button/colors/font_color = Color(0.9490196, 0.09411765, 0.8745098, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.32353237, 0.9862518, 0.3096362, 0.8)
+Button/colors/font_hover_color = Color(0.9490196, 0.9490196, 0.047058824, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0.96862745, 1)
+Button/colors/icon_normal_color = Color(0.02745098, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_kumq8")
+FoldableContainer/colors/collapsed_font_color = Color(1, 1, 1, 1)
+FoldableContainer/colors/font_color = Color(0.6745098, 0.92941177, 0.03529412, 1)
+TabBar/colors/drop_mark_color = Color(0.039215688, 0.2509804, 1, 1)
+TabBar/colors/font_outline_color = Color(0, 0, 0, 1)
+TabBar/colors/icon_unselected_color = Color(1, 1, 1, 1)
+TextEdit/colors/background_color = Color(0.39215687, 0.8235294, 0.1254902, 0.39607844)
+TextEdit/colors/caret_background_color = Color(0, 0, 0.9411765, 1)
+TextEdit/colors/caret_color = Color(0.8745098, 0.12941177, 0.8745098, 1)
