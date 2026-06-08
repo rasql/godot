@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://dqdyvrdlv8121"]
+
+[ext_resource type="Script" uid="uid://k5prndyfhrvl" path="res://web_browser.gd" id="1_05cin"]
+
+[node name="WebBrowser" type="Control" unique_id=1142124252]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_05cin")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=1576260835]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2124283433]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 16.0
+offset_top = 15.0
+offset_right = -19.0
+offset_bottom = 46.0
+grow_horizontal = 2
+metadata/_edit_group_ = true
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer" unique_id=90489986]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "https://docs.godotengine.org/"
+
+[node name="Button" type="Button" parent="HBoxContainer" unique_id=296479083]
+layout_mode = 2
+text = "Go"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=1428695202]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer2" unique_id=835910513]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "text"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer2" unique_id=1749216588]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Text"
+
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://bp6brq6c3erkj"]
+
+[ext_resource type="Script" uid="uid://co07kulmtm3ct" path="res://tree/scene_tree.gd" id="1_rt3g0"]
+
+[node name="SceneTree" type="Control" unique_id=1258751105]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rt3g0")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1359967617]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Tree" type="Tree" parent="HBoxContainer" unique_id=390990105]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+column_titles_visible = true
+allow_reselect = true
+allow_rmb_select = true
+
+[node name="TextEdit" type="TextEdit" parent="HBoxContainer" unique_id=1620471389]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=688028426]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1121130277]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Button"
+
+[node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1912268888]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Button"
+
+[node name="Button3" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=2111253663]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Button"
+
+[node name="Button4" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=305049245]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Button"
+
+[node name="Button5" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1799692880]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Button"
+
+[node name="Button6" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1415196297]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Button"
+
+[connection signal="cell_selected" from="HBoxContainer/Tree" to="." method="_on_tree_cell_selected"]
+[connection signal="column_title_clicked" from="HBoxContainer/Tree" to="." method="_on_tree_column_title_clicked"]

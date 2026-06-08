@@ -320,8 +320,71 @@ func _on_v_slider_value_changed(value: float) -> void:
 	$TextureProgressBar.value = value
 ```
 
+## Text controls
 
+To display text you can use these control nodes:
 
+- `Label` to display simple text (without scrollbar)
+- `RichTextLabel` to display text with style such bold or italics, with scrollbars
+- `LineEdit` to edit and enter text
+- `TextEdit` to edit a large text
+
+Create a new scene, add a `Control` node and name it `Text`.
+Add the following nodes:
+- `LineEdit` to enter an web address
+- `Label` and call it `URL`
+- `Button` and call it `Open Link`
+
+![img](images/text_tree.png){w=200}
+
+Connect a function to the button which takes the text in the `LineEdit` control and sends it to the OS to open it with the web browser.
+
+```
+func _on_button_pressed() -> void:
+	OS.shell_open($LineEdit.text)
+```
+
+Then add:
+- `HBoxContainer` to horizontally align the two text areas
+- `TextEdit` to enter simple text
+- `RichTextLabel` to display rich text
+
+To the `TextEdit` control add this function:
+
+```
+@onready var raw_text: TextEdit = $HBoxContainer/TextEdit
+@onready var rich_text: RichTextLabel = $HBoxContainer/RichTextLabel
+
+func _on_text_edit_text_changed() -> void:
+	rich_text.text = raw_text.text
+```
+
+You can enter simple BB markup text on the left side, and have it displayed with style on the right side.
+
+![img](images/text_scene.png)
+
+Here is the example text:
+
+```
+[font_size=40]BBCode[/font_size]
+Color: [color=green]green[/color] and [color=red]red[/color]
+Background : [bgcolor=blue]background[/bgcolor]
+[font_size=30]Stile[/font_size]
+- [b]bold[/b]
+- [i]italic[/i]
+- [u]underline[/u]
+- [s]strike-trough[/s]
+[font_size=30]Image and link[/font_size]
+[img]icon.svg[/img]
+[url=https://godotengine.org]https://godotengine.org[/url]
+[font_size=30]Effects[/font_size]
+- [pulse]Pulse[/pulse]
+- [wave]Wave[/wave]    
+- [tornado]Tornado[/tornado]
+- [shake]Shake[/shake]    
+- [fade start=75 length=7]Fade[/fade]
+- [rainbow]Rainbow[/rainbow]
+```
 ## Window
 
 A window is a rectangular container. You can
@@ -452,7 +515,7 @@ Create a new scene, add a `Control` node and call it `Text`.
 - duplicate the button and name it `Load`
 - duplicate again and name it `Save`
 
-![img](images/text_tree.png){w=300}
+![img](images/text_editor_tree.png){w=300}
 
 Add a `TextEdit` node and adjust the size to 3/4 of the screen.
 Set the placeholder text to `type some text`
@@ -462,7 +525,7 @@ Set the placeholder text to `type some text`
 - add a `FileDialog` and rename it to `SaveDialog`
 - set the File Mode to `Save`
 
-![img](images/text_scene.png)
+![img](images/text_editor_scene.png)
 
 In order to make the 3 buttons functional, add a script to the root node `Text`.
 Add a signal function to each button.
@@ -566,4 +629,116 @@ The `Add` button allows to add new nodes. You can
 
 
 ![img](images/graph_example.png)
+
+## Tree
+
+The `Tree` node is a control to show a hierarchical structure of `TreeItems`. 
+The tree items can be 
+- selected
+- expanded
+- collapsed
+
+The tree can have multiple columns with custom controls like
+- line edits
+- check boxes
+- options
+- spinboxes
+
+The tree has a single root, but multiple roots can be simulated with `hide_root`.
+
+Create a new scene and with a `Control` root node called `Tree`.
+- add a `Tree` node
+- add a `VBoxContainer`
+- add 6 `Buttons`
+
+Activate the **Group selected nodes** icon on the `VBoxContainer`. This allows to select the container and not the individual buttons when clicking inside. Then add a script to the root.
+
+![img](images/tree_tree.png){w=300}
+
+Arrange them like this. Name the Buttons accordingly.
+
+![img](images/tree_scene.png)
+
+Then connect the buttons with functions : 
+- the `Clear` button removes all `TreeItems`
+- the `Add Child` adds a child `TreeItem`
+- the `Add Sub-child` adds a sub-child `TreeItem`
+
+```
+func _on_clear_pressed() -> void:
+	tree.clear()
+	
+func _on_add_child_pressed() -> void:
+	child = tree.create_item()
+	child.set_text(0, "Child")
+	
+func _on_sub_child_pressed() -> void:
+	var sub_child = tree.create_item(child)
+	sub_child.set_text(0, "Sub-Child")
+```
+
+Now add 3 more functions in order to add a
+
+- checkbox item
+- range item
+- option item
+
+
+```
+func _on_add_check_pressed() -> void:
+	child = tree.create_item()
+	child.set_cell_mode(0, TreeItem.CELL_MODE_CHECK)
+	child.set_text(0, "Checkbox")
+	child.set_editable(0, true)
+
+func _on_add_range_pressed() -> void:
+	child = tree.create_item()
+	child.set_cell_mode(0, TreeItem.CELL_MODE_RANGE)
+	child.set_range(0, 50)
+	child.set_editable(0, true)
+
+func _on_add_option_pressed() -> void:
+	child = tree.create_item()
+	child.set_cell_mode(0, TreeItem.CELL_MODE_RANGE)
+	child.set_text(0, "Option 1, Option 2, Option 3")
+	child.set_editable(0, true)
+```
+
+The final result looks like this
+
+![img](images/tree1.png)
+
+It is also possible to create a tree completely with code. 
+The following tree control has
+
+- 2 columns
+- column titles
+- 3 x 3 sub-children
+- random integer numbers in column 2
+
+```
+func _ready():
+	var tree = Tree.new()
+	tree.size = Vector2(400, 400)
+	tree.position = Vector2(800, 40)
+	tree.columns = 2
+	tree.column_titles_visible = true
+	tree.set_column_title(0, 'Column 0')
+	tree.set_column_title(1, 'Column 1')
+	
+	var root = tree.create_item()
+	tree.hide_root = true
+	add_child(tree)
+
+	for i in 3:
+		var child = tree.create_item(root)
+		child.set_text(0, "Child" + str(i))
+		child.collapsed = true
+		for j in 3:
+			var subchild = tree.create_item(child)
+			subchild.set_text(0, "Subchild " + str(i) + str(j))
+			subchild.set_text(1, str(randi()))
+```
+
+![img](images/tree2.png)
 

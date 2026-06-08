@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://c3pjwk67e8dav"]
+
+[ext_resource type="Script" uid="uid://jd3tmaurgrva" path="res://tree.gd" id="1_brfkd"]
+
+[node name="Tree" type="Control" unique_id=1359162708]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_brfkd")
+
+[node name="Tree" type="Tree" parent="." unique_id=27801597]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 34.0
+offset_top = 21.0
+offset_right = 427.0
+offset_bottom = -475.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1725715211]
+layout_mode = 0
+offset_left = 481.0
+offset_top = 26.0
+offset_right = 649.0
+offset_bottom = 377.0
+metadata/_edit_group_ = true
+
+[node name="Clear" type="Button" parent="VBoxContainer" unique_id=2002840643]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Clear"
+
+[node name="AddChild" type="Button" parent="VBoxContainer" unique_id=298791356]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Add Child"
+
+[node name="SubChild" type="Button" parent="VBoxContainer" unique_id=172386913]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Add Sub-child"
+
+[node name="AddCheck" type="Button" parent="VBoxContainer" unique_id=613132163]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Add Checkbox"
+
+[node name="AddRange" type="Button" parent="VBoxContainer" unique_id=1479447061]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Add Range"
+
+[node name="AddOption" type="Button" parent="VBoxContainer" unique_id=1791195131]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Add Option"
+
+[connection signal="pressed" from="VBoxContainer/Clear" to="." method="_on_clear_pressed"]
+[connection signal="pressed" from="VBoxContainer/AddChild" to="." method="_on_add_child_pressed"]
+[connection signal="pressed" from="VBoxContainer/SubChild" to="." method="_on_sub_child_pressed"]
+[connection signal="pressed" from="VBoxContainer/AddCheck" to="." method="_on_add_check_pressed"]
+[connection signal="pressed" from="VBoxContainer/AddRange" to="." method="_on_add_range_pressed"]
+[connection signal="pressed" from="VBoxContainer/AddOption" to="." method="_on_add_option_pressed"]

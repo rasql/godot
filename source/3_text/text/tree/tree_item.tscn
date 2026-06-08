@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dqlabjq1qeewy"]
+
+[ext_resource type="Script" uid="uid://bfuvx6d2uq1w7" path="res://tree/tree_item.gd" id="1_4sh52"]
+
+[node name="TreeItem" type="Control" unique_id=1634023259]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4sh52")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=654989965]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Tree" type="Tree" parent="HBoxContainer" unique_id=1210851373]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 3
+column_titles_visible = true
+allow_reselect = true
+allow_rmb_select = true
+
+[node name="TextEdit" type="TextEdit" parent="HBoxContainer" unique_id=2027279166]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="button_clicked" from="HBoxContainer/Tree" to="." method="_on_tree_button_clicked"]
+[connection signal="cell_selected" from="HBoxContainer/Tree" to="." method="_on_tree_cell_selected"]
+[connection signal="column_title_clicked" from="HBoxContainer/Tree" to="." method="_on_tree_column_title_clicked"]

@@ -172,7 +172,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
       </label>
     </div>
@@ -193,8 +193,9 @@
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../0_intro/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0_ui/ui.html">User interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1_mesh/mesh.html">Create 3D meshes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../chapter1/text.html">Export properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_export/export.html">Export properties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../2_tool/tool.html">Execute code in the editor</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Work with text</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../3_basics/basics.html">Basics</a></li>
@@ -232,19 +233,503 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
           </label>
         </div>
         <article role="main" id="furo-main-content">
           <section id="work-with-text">
 <h1>Work with text<a class="headerlink" href="#work-with-text" title="Link to this heading">¶</a></h1>
-<p>There are 3 ways to display text</p>
+<p>There are 3 ways to display text inside a scene:</p>
 <ul class="simple">
 <li><p>TextMesh3D</p></li>
 <li><p>Label3D</p></li>
-<li><p>Label (control node)</p></li>
+<li><p>Label (2D control node)</p></li>
 </ul>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<p>Let’s show these three node types by creating a small scene called <code class="docutils literal notranslate"><span class="pre">Label</span></code>.</p>
+<p><a class="reference internal" href="../_images/label_tree.png"><img alt="img" src="../_images/label_tree.png" width="300" /></a></p>
+<ul class="simple">
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">MeshInstance3D</span></code>, select a <code class="docutils literal notranslate"><span class="pre">TextMesh</span></code> and set the text to <code class="docutils literal notranslate"><span class="pre">TextMesh</span></code>.</p></li>
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">Label3D</span></code>, select <code class="docutils literal notranslate"><span class="pre">Flags</span> <span class="pre">&gt;</span> <span class="pre">Y-Billboard</span></code> and set the text to <code class="docutils literal notranslate"><span class="pre">Label3D</span></code>.</p></li>
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">Label</span></code> and set the text to <code class="docutils literal notranslate"><span class="pre">Label</span> <span class="pre">(2D,</span> <span class="pre">control)</span></code>.</p></li>
+</ul>
+<p>In order to make the scene visible, we must add a <code class="docutils literal notranslate"><span class="pre">WorldEnvironment</span></code>, a <code class="docutils literal notranslate"><span class="pre">DirectionalLight3D</span></code> and a <code class="docutils literal notranslate"><span class="pre">Camera3D</span></code>.</p>
+<p><img alt="img" src="../_images/label_scene.png" /></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">TextMesh</span></code> is a 3D text object. Set the albedo color to violet.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Label3D</span></code> is a flat object. Seen from the back, it is transparent and the text is a mirror image. The <em>billboard</em> option allows the <code class="docutils literal notranslate"><span class="pre">Label3D</span></code> to always turn towards the camera. Set the outline to red, the font size to 32 and the outline size to 6.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Label</span></code> is a 2D object which is always in the same position within the camera viewport. We set the theme override font size to 80.</p>
+</section>
+<section id="text-to-speech">
+<h2>Text-to-speech<a class="headerlink" href="#text-to-speech" title="Link to this heading">¶</a></h2>
+<p>The text-to-speech (TTS) functionality allows to have text pronounced automatically.</p>
+<p>In order to use text-to-speech, you have to enable it in the project settings:</p>
+<ul class="simple">
+<li><p>Go to <strong>Project &gt; Project Settings</strong>.</p></li>
+<li><p>Display <strong>Advanced Settings</strong>.</p></li>
+<li><p>Check <strong>Audio &gt; General &gt; Text to Speech</strong>.</p></li>
+<li><p>Restart Godot.</p></li>
+</ul>
+<p>Depending on your OS, the voices will vary.
+Text-to-speech is a function of <code class="docutils literal notranslate"><span class="pre">DisplayServer</span></code>.</p>
+<p>There are 9 functions starting with <code class="docutils literal notranslate"><span class="pre">tts_</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">tts_get_voices()</span></code> returns a <code class="docutils literal notranslate"><span class="pre">PackedStringArray</span></code> of voices</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tts_get_voices_for_language(lang)</span></code> returns the voices for a given language (en, fr, de)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tts_is_paused()</span></code> returns true if paused</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tts_is_speaking()</span></code> returns true if speaking</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tts_pause()</span></code> pause speech production</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tts_resume()</span></code> resume speech when paused</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tts_set_utterance_callback(event:</span> <span class="pre">TTSUtteranceEvent,</span> <span class="pre">callable:</span> <span class="pre">Callable)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tts_speak(text,</span> <span class="pre">voice,</span> <span class="pre">volume,</span> <span class="pre">pitch,</span> <span class="pre">rate)</span></code> start the speech synthesizer</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tts_stop()</span></code> stop speech production</p></li>
+</ul>
+<p>Create a new scene, place a <code class="docutils literal notranslate"><span class="pre">Control</span></code> node as root and name it <code class="docutils literal notranslate"><span class="pre">Speech</span></code>.</p>
+<ul class="simple">
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">HBoxContainer</span></code> and fill all available space (anchor preset = Full Rect).</p></li>
+<li><p>add 3 items and select <code class="docutils literal notranslate"><span class="pre">Control</span> <span class="pre">&gt;</span> <span class="pre">Layout</span> <span class="pre">&gt;</span> <span class="pre">Container</span> <span class="pre">Sizing</span> <span class="pre">&gt;</span> <span class="pre">Expand</span></code>.</p></li>
+<li><p>refer to the image below.</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/tts_tree.png"><img alt="img" src="../_images/tts_tree.png" width="300" /></a></p>
+<p>Create global variables to access to 5 nodes we are going to use frequently.
+While you drag the node from the scene tree editor into the script, press the <code class="docutils literal notranslate"><span class="pre">cmd</span></code> key.
+This will automatically add the <code class="docutils literal notranslate"><span class="pre">&#64;onready</span></code> annotation.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">extends</span><span class="w"> </span><span class="n">Control</span>
+
+<span class="c1"># Pick a voice. Here, we arbitrarily pick the first English voice.</span>
+<span class="k">var</span><span class="w"> </span><span class="n">voice_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DisplayServer</span><span class="o">.</span><span class="n">tts_get_voices_for_language</span><span class="p">(</span><span class="s2">&quot;en&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="err">@</span><span class="k">onready</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">tree</span><span class="p">:</span><span class="w"> </span><span class="n">Tree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">$</span><span class="n">HBoxContainer</span><span class="o">/</span><span class="n">Tree</span>
+<span class="err">@</span><span class="k">onready</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">text</span><span class="p">:</span><span class="w"> </span><span class="n">TextEdit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">$</span><span class="n">HBoxContainer</span><span class="o">/</span><span class="n">Text</span>
+<span class="err">@</span><span class="k">onready</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">volume</span><span class="p">:</span><span class="w"> </span><span class="n">HSlider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">$</span><span class="n">HBoxContainer</span><span class="o">/</span><span class="n">VBoxContainer</span><span class="o">/</span><span class="n">Volume</span>
+<span class="err">@</span><span class="k">onready</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">pitch</span><span class="p">:</span><span class="w"> </span><span class="n">HSlider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">$</span><span class="n">HBoxContainer</span><span class="o">/</span><span class="n">VBoxContainer</span><span class="o">/</span><span class="n">Pitch</span>
+<span class="err">@</span><span class="k">onready</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">rate</span><span class="p">:</span><span class="w"> </span><span class="n">HSlider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">$</span><span class="n">HBoxContainer</span><span class="o">/</span><span class="n">VBoxContainer</span><span class="o">/</span><span class="n">Rate</span>
+</pre></div>
+</div>
+<p>We configure the <code class="docutils literal notranslate"><span class="pre">Tree</span></code> control and fill it with the available voices.</p>
+<ul class="simple">
+<li><p>create a root node and hide it</p></li>
+<li><p>add a column title</p></li>
+<li><p>enter a loop with the languages (French, German and English)</p></li>
+<li><p>get the list of voices for each language</p></li>
+<li><p>add each voice as a child to the given language.</p></li>
+</ul>
+<p>In the later part, we load the <code class="docutils literal notranslate"><span class="pre">TextEdit</span></code> node with the text from <strong>Alice in Wonderland.</strong></p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">	</span><span class="k">var</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="o">.</span><span class="n">create_item</span><span class="p">()</span>
+<span class="w">	</span><span class="n">tree</span><span class="o">.</span><span class="n">hide_root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
+<span class="w">	</span><span class="n">tree</span><span class="o">.</span><span class="n">column_titles_visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
+<span class="w">	</span><span class="n">tree</span><span class="o">.</span><span class="n">set_column_title</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Voices&#39;</span><span class="p">)</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="k">for</span><span class="w"> </span><span class="n">lang</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;fr&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;de&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;en&#39;</span><span class="p">]:</span>
+<span class="w">		</span><span class="k">var</span><span class="w"> </span><span class="n">parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="o">.</span><span class="n">create_item</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="w">		</span><span class="k">var</span><span class="w"> </span><span class="n">voices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DisplayServer</span><span class="o">.</span><span class="n">tts_get_voices_for_language</span><span class="p">(</span><span class="n">lang</span><span class="p">)</span>
+<span class="w">		</span><span class="n">parent</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> (</span><span class="si">%s</span><span class="s2">)&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="p">[</span><span class="n">lang</span><span class="p">,</span><span class="w"> </span><span class="n">voices</span><span class="o">.</span><span class="n">size</span><span class="p">()])</span>
+<span class="w">		</span><span class="k">for</span><span class="w"> </span><span class="n">voice</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">voices</span><span class="p">:</span>
+<span class="w">			</span><span class="k">var</span><span class="w"> </span><span class="n">child</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="o">.</span><span class="n">create_item</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+<span class="w">			</span><span class="n">child</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">voice</span><span class="p">)</span>
+<span class="w">		</span>
+<span class="w">	</span><span class="k">var</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;res://books/alice.txt&quot;</span>
+<span class="w">	</span><span class="k">var</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FileAccess</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">FileAccess</span><span class="o">.</span><span class="n">READ</span><span class="p">)</span>
+<span class="w">	</span><span class="k">var</span><span class="w"> </span><span class="n">content</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file</span><span class="o">.</span><span class="n">get_as_text</span><span class="p">()</span>
+<span class="w">	</span><span class="n">text</span><span class="o">.</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">content</span>
+</pre></div>
+</div>
+<p>In order to increase the text size of all controls, you can add a <code class="docutils literal notranslate"><span class="pre">Theme</span></code> to the root <code class="docutils literal notranslate"><span class="pre">Speech</span></code> node.
+There you can set the default font size to 28.</p>
+<p><a class="reference internal" href="../_images/tts_theme.png"><img alt="img" src="../_images/tts_theme.png" style="width: 300px;" /></a></p>
+<p>All of the text will now hava a larger font-size.</p>
+<p><img alt="img" src="../_images/tts_scene.png" /></p>
+<p>Connect each <code class="docutils literal notranslate"><span class="pre">_on_button_pressed</span></code> signal to the following functions:</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">func</span><span class="w"> </span><span class="n">_on_speak_pressed</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">	</span><span class="k">var</span><span class="w"> </span><span class="n">selection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">text</span><span class="o">.</span><span class="n">get_selected_text</span><span class="p">()</span>
+<span class="w">	</span><span class="n">DisplayServer</span><span class="o">.</span><span class="n">tts_speak</span><span class="p">(</span><span class="n">selection</span><span class="p">,</span><span class="w"> </span><span class="n">voice_id</span><span class="p">,</span><span class="w"> </span><span class="n">volume</span><span class="o">.</span><span class="n">value</span><span class="p">,</span><span class="w"> </span>
+<span class="w">	</span><span class="n">pitch</span><span class="o">.</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">rate</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">_on_pause_pressed</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">	</span><span class="n">DisplayServer</span><span class="o">.</span><span class="n">tts_pause</span><span class="p">()</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">_on_resume_pressed</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">	</span><span class="n">DisplayServer</span><span class="o">.</span><span class="n">tts_resume</span><span class="p">()</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">_on_stop_pressed</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">	</span><span class="n">DisplayServer</span><span class="o">.</span><span class="n">tts_stop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>When selecting a new voice in the <code class="docutils literal notranslate"><span class="pre">Tree</span></code> we update the global <code class="docutils literal notranslate"><span class="pre">voice_id</span></code> variable.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">func</span><span class="w"> </span><span class="n">_on_tree_cell_selected</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">	</span><span class="n">voice_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="o">.</span><span class="n">get_selected</span><span class="p">()</span><span class="o">.</span><span class="n">get_text</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="w">	</span><span class="n">_on_stop_pressed</span><span class="p">()</span>
+<span class="w">	</span><span class="n">_on_speak_pressed</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>For each of the 3 sliders, when the value changes, we stop the current speech and restart with the new parameters.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">func</span><span class="w"> </span><span class="n">_on_value_changed</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="w">	</span><span class="n">_on_stop_pressed</span><span class="p">()</span>
+<span class="w">	</span><span class="n">_on_speak_pressed</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>To test it do this:</p>
+<ul class="simple">
+<li><p>Choose a voice</p></li>
+<li><p>Select text with the mouse</p></li>
+<li><p>Click on <code class="docutils literal notranslate"><span class="pre">Speak</span></code></p></li>
+<li><p>Pause with <code class="docutils literal notranslate"><span class="pre">Pause</span></code></p></li>
+<li><p>Resume with <code class="docutils literal notranslate"><span class="pre">Resume</span></code></p></li>
+<li><p>Modify the 3 sliders (volume, pitch, rate).</p></li>
+</ul>
+</section>
+<section id="display-a-scene-tree">
+<h2>Display a scene tree<a class="headerlink" href="#display-a-scene-tree" title="Link to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">Tree</span></code> control can be used to display a hierarchy. A good example of a hierarchy is the scene tree, which is displayed in the <strong>scene editor</strong>.</p>
+<p>Create a new scene, place a <code class="docutils literal notranslate"><span class="pre">Control</span></code> node as root and name it <code class="docutils literal notranslate"><span class="pre">SceneTree</span></code>.</p>
+<ul class="simple">
+<li><p>save it and add a script</p></li>
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">HBoxContainer</span></code> and fill it to the maximum (anchor preset = Full Rect)</p></li>
+<li><p>add 3 items and select <strong>Control &gt; Layout &gt; Container Sizing &gt; Expand</strong></p></li>
+<li><p>refer to the image below</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/scene_editor.png"><img alt="img" src="../_images/scene_editor.png" width="200" /></a></p>
+<p>In the script we start with 2 variables to refer to</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Tree</span></code> which displays the scene tree</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TextEdit</span></code> which displays the callback functions when clicking inside the tree</p></li>
+</ul>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">extends</span><span class="w"> </span><span class="n">Control</span>
+
+<span class="err">@</span><span class="k">onready</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">tree</span><span class="p">:</span><span class="w"> </span><span class="n">Tree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">$</span><span class="n">HBoxContainer</span><span class="o">/</span><span class="n">Tree</span>
+<span class="err">@</span><span class="k">onready</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">text</span><span class="p">:</span><span class="w"> </span><span class="n">TextEdit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">$</span><span class="n">HBoxContainer</span><span class="o">/</span><span class="n">TextEdit</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">voice_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DisplayServer</span><span class="o">.</span><span class="n">tts_get_voices_for_language</span><span class="p">(</span><span class="s2">&quot;en&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The main work to fill the tree is done with the recursive <code class="docutils literal notranslate"><span class="pre">add_children()</span></code> function.</p>
+<ul class="simple">
+<li><p>it loops through all the children for a given <code class="docutils literal notranslate"><span class="pre">node</span></code></p></li>
+<li><p>creates a new child tree item</p></li>
+<li><p>sets name, class and path</p></li>
+<li><p>does recursively add the children to each child node</p></li>
+</ul>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">func</span><span class="w"> </span><span class="n">add_children</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="p">):</span>
+<span class="w">	</span><span class="k">for</span><span class="w"> </span><span class="n">child_node</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">node</span><span class="o">.</span><span class="n">get_children</span><span class="p">():</span>
+<span class="w">		</span><span class="k">var</span><span class="w"> </span><span class="n">tree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="o">.</span><span class="n">get_tree</span><span class="p">()</span>
+<span class="w">		</span><span class="k">var</span><span class="w"> </span><span class="n">node_class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">child_node</span><span class="o">.</span><span class="n">get_class</span><span class="p">()</span>
+<span class="w">		</span><span class="k">var</span><span class="w"> </span><span class="n">child_item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="o">.</span><span class="n">create_item</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="w">		</span>
+<span class="w">		</span><span class="n">child_item</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">child_node</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="w">		</span><span class="n">child_item</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">child_node</span><span class="o">.</span><span class="n">get_class</span><span class="p">())</span>
+<span class="w">		</span><span class="n">child_item</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">child_node</span><span class="o">.</span><span class="n">get_path</span><span class="p">())</span><span class="w">	</span>
+<span class="w">		</span><span class="n">child_item</span><span class="o">.</span><span class="n">set_metadata</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">child_node</span><span class="o">.</span><span class="n">get_path</span><span class="p">)</span>
+<span class="w">		</span><span class="n">add_children</span><span class="p">(</span><span class="n">child_node</span><span class="p">,</span><span class="w"> </span><span class="n">child_item</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In the <code class="docutils literal notranslate"><span class="pre">_ready()</span></code> function, we configure the <code class="docutils literal notranslate"><span class="pre">Tree</span></code> node:</p>
+<ul class="simple">
+<li><p>set to 3 columns</p></li>
+<li><p>add the column titles</p></li>
+<li><p>get the root node</p></li>
+<li><p>create a root tree item</p></li>
+<li><p>start by recursively adding the children</p></li>
+</ul>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">	</span><span class="n">tree</span><span class="o">.</span><span class="n">columns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span>
+<span class="w">	</span><span class="n">tree</span><span class="o">.</span><span class="n">column_titles_visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
+<span class="w">	</span><span class="n">tree</span><span class="o">.</span><span class="n">set_column_title</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Node&quot;</span><span class="p">)</span>
+<span class="w">	</span><span class="n">tree</span><span class="o">.</span><span class="n">set_column_title</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Type&quot;</span><span class="p">)</span>
+<span class="w">	</span><span class="n">tree</span><span class="o">.</span><span class="n">set_column_title</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Path&quot;</span><span class="p">)</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="k">var</span><span class="w"> </span><span class="n">scene_root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">root</span>
+<span class="w">	</span><span class="k">var</span><span class="w"> </span><span class="n">tree_root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="o">.</span><span class="n">create_item</span><span class="p">()</span>
+<span class="w">	</span><span class="n">tree</span><span class="o">.</span><span class="n">hide_root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
+<span class="w">	</span><span class="n">add_children</span><span class="p">(</span><span class="n">scene_root</span><span class="p">,</span><span class="w"> </span><span class="n">tree_root</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is the result, a tree with 3 columns:</p>
+<ul class="simple">
+<li><p>column 1 shows the collapsable scene tree</p></li>
+<li><p>column 2 shows the node type</p></li>
+<li><p>column 3 shows the complete node path</p></li>
+</ul>
+<p><img alt="img" src="../_images/scene_tree1.png" /></p>
+<p>In order to show the interaction when selecting a tree cell, add the following two functions.
+They add a line of text to the <code class="docutils literal notranslate"><span class="pre">TextEdit</span></code> and pronounce the cell content.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">func</span><span class="w"> </span><span class="n">_on_tree_cell_selected</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">	</span><span class="k">var</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="o">.</span><span class="n">get_selected</span><span class="p">()</span>
+<span class="w">	</span><span class="k">var</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="o">.</span><span class="n">get_index</span><span class="p">()</span>
+<span class="w">	</span><span class="k">var</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="o">.</span><span class="n">get_selected_column</span><span class="p">()</span>
+<span class="w">	</span><span class="k">var</span><span class="w"> </span><span class="n">content</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="o">.</span><span class="n">get_text</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="n">text</span><span class="o">.</span><span class="n">text</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">&quot;cell </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2"> selected: </span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="p">[</span><span class="n">row</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="p">,</span><span class="w"> </span><span class="n">content</span><span class="p">]</span>
+<span class="w">	</span><span class="n">DisplayServer</span><span class="o">.</span><span class="n">tts_stop</span><span class="p">()</span>
+<span class="w">	</span><span class="n">DisplayServer</span><span class="o">.</span><span class="n">tts_speak</span><span class="p">(</span><span class="n">content</span><span class="p">,</span><span class="w"> </span><span class="n">voice_id</span><span class="p">)</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">_on_tree_column_title_clicked</span><span class="p">(</span><span class="n">column</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="p">,</span><span class="w"> </span><span class="n">mouse_button_index</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">	</span><span class="n">text</span><span class="o">.</span><span class="n">text</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">&quot;column </span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> clicked</span><span class="se">\n</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="p">[</span><span class="n">column</span><span class="p">,</span><span class="w"> </span><span class="n">mouse_button_index</span><span class="w"> </span><span class="p">]</span>
+</pre></div>
+</div>
+<p>When clicking on a column header or on a cell, the following text is displayed in the text window:</p>
+<p><a class="reference internal" href="../_images/scene_console.png"><img alt="img" src="../_images/scene_console.png" width="500" /></a></p>
+</section>
+<section id="configure-tree-items">
+<h2>Configure tree items<a class="headerlink" href="#configure-tree-items" title="Link to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">TreeItems</span></code> can be configured with</p>
+<ul class="simple">
+<li><p>icon</p></li>
+<li><p>font size</p></li>
+<li><p>alignment</p></li>
+<li><p>text color and background color</p></li>
+</ul>
+<p>Create a new scene, place a <code class="docutils literal notranslate"><span class="pre">Control</span></code> node as root and name it <code class="docutils literal notranslate"><span class="pre">TreeItem</span></code>.</p>
+<ul class="simple">
+<li><p>save it and add a script</p></li>
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">HBoxContainer</span></code> and fill it to the maximum (anchor preset = Full Rect)</p></li>
+<li><p>add 2 items and select <strong>Control &gt; Layout &gt; Container Sizing &gt; Expand</strong></p></li>
+<li><p>refer to the image below</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/tree_item_tree.png"><img alt="img" src="../_images/tree_item_tree.png" width="200" /></a></p>
+<p>Start by defining these variables</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">extends</span><span class="w"> </span><span class="n">Control</span>
+
+<span class="err">@</span><span class="k">onready</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">tree</span><span class="p">:</span><span class="w"> </span><span class="n">Tree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">$</span><span class="n">HBoxContainer</span><span class="o">/</span><span class="n">Tree</span>
+<span class="err">@</span><span class="k">onready</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">text</span><span class="p">:</span><span class="w"> </span><span class="n">TextEdit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">$</span><span class="n">HBoxContainer</span><span class="o">/</span><span class="n">TextEdit</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">voices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DisplayServer</span><span class="o">.</span><span class="n">tts_get_voices_for_language</span><span class="p">(</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
+<span class="k">var</span><span class="w"> </span><span class="n">voice_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">voices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">_ready()</span></code> function to create a tree root item and 3 columns</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">	</span><span class="n">tree</span><span class="o">.</span><span class="n">hide_root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
+<span class="w">	</span><span class="n">tree</span><span class="o">.</span><span class="n">columns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span>
+<span class="w">	</span><span class="n">tree</span><span class="o">.</span><span class="n">column_titles_visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
+<span class="w">	</span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span>
+<span class="w">		</span><span class="n">tree</span><span class="o">.</span><span class="n">set_column_title</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Column &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Add the Godot logo as an icon.</p>
+<ul class="simple">
+<li><p>change the font size</p></li>
+<li><p>change the icon size.</p></li>
+</ul>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="o">.</span><span class="n">create_item</span><span class="p">()</span>
+<span class="w">	</span><span class="k">var</span><span class="w"> </span><span class="n">icon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">load</span><span class="p">(</span><span class="s2">&quot;res://icon.svg&quot;</span><span class="p">)</span>
+<span class="w">	</span><span class="k">var</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="o">.</span><span class="n">create_item</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="n">item</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;text with icon&quot;</span><span class="p">)</span>
+<span class="w">	</span><span class="n">item</span><span class="o">.</span><span class="n">set_icon</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">icon</span><span class="p">)</span>
+<span class="w">	</span><span class="n">item</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;fontsize=40&quot;</span><span class="p">)</span>
+<span class="w">	</span><span class="n">item</span><span class="o">.</span><span class="n">set_custom_font_size</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">)</span>
+<span class="w">	</span><span class="n">item</span><span class="o">.</span><span class="n">set_icon</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">icon</span><span class="p">)</span>
+<span class="w">	</span><span class="n">item</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;icon_max_width=40&quot;</span><span class="p">)</span>
+<span class="w">	</span><span class="n">item</span><span class="o">.</span><span class="n">set_icon_max_width</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Change the text color and the background color.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="n">icon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">load</span><span class="p">(</span><span class="s2">&quot;res://Tree.svg&quot;</span><span class="p">)</span>
+<span class="w">	</span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="o">.</span><span class="n">create_item</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="w">	</span><span class="n">item</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;text with icon&quot;</span><span class="p">)</span>
+<span class="w">	</span><span class="n">item</span><span class="o">.</span><span class="n">set_icon</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">icon</span><span class="p">)</span>
+<span class="w">	</span><span class="n">item</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;custom_color=red&quot;</span><span class="p">)</span>
+<span class="w">	</span><span class="n">item</span><span class="o">.</span><span class="n">set_custom_color</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb nb-Type">Color</span><span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">))</span>
+<span class="w">	</span><span class="n">item</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;custom_bg_color=blue&quot;</span><span class="p">)</span>
+<span class="w">	</span><span class="n">item</span><span class="o">.</span><span class="n">set_custom_bg_color</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nb nb-Type">Color</span><span class="p">(</span><span class="s1">&#39;blue&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Change the alignment.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="o">.</span><span class="n">create_item</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="w">	</span><span class="n">item</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;alignment=left&quot;</span><span class="p">)</span>
+<span class="w">	</span><span class="n">item</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;alignment=center&quot;</span><span class="p">)</span>
+<span class="w">	</span><span class="n">item</span><span class="o">.</span><span class="n">set_text_alignment</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">HorizontalAlignment</span><span class="o">.</span><span class="n">HORIZONTAL_ALIGNMENT_CENTER</span><span class="p">)</span>
+<span class="w">	</span><span class="n">item</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;alignment=right&quot;</span><span class="p">)</span>
+<span class="w">	</span><span class="n">item</span><span class="o">.</span><span class="n">set_text_alignment</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">HorizontalAlignment</span><span class="o">.</span><span class="n">HORIZONTAL_ALIGNMENT_RIGHT</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Add a parent and 3 collapsible children.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="o">.</span><span class="n">create_item</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="w">	</span><span class="n">parent</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Parent&quot;</span><span class="p">)</span><span class="w"> </span>
+<span class="w">	</span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span>
+<span class="w">		</span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="o">.</span><span class="n">create_item</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+<span class="w">		</span><span class="n">item</span><span class="o">.</span><span class="n">set_edit_multiline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="bp">true</span><span class="p">)</span>
+<span class="w">		</span><span class="n">item</span><span class="o">.</span><span class="n">set_editable</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="bp">true</span><span class="p">)</span>
+<span class="w">		</span><span class="n">item</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Child &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><img alt="img" src="../_images/tree_item_scene.png" /></p>
+</section>
+<section id="sort-a-table">
+<h2>Sort a table<a class="headerlink" href="#sort-a-table" title="Link to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">Tree</span></code> node can be used to display tables. We create a new class with the following properties:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">columns</span></code> = number of columns</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rows</span></code> = number or rows</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">column_titles</span></code> = an array of titles</p></li>
+<li><p>clicking on a column title : sorts the table by that column</p></li>
+</ul>
+<p>In the image below we see a 6 x 4 table, filled with random integers. It has been sorted in ascending order by the 3rd column (as shown by the the arrow). The first column has a yellow background and a red font-color.</p>
+<p><img alt="img" src="../_images/tree_table.png" /></p>
+<p>The inspector shows the 6 rows, the column titles, etc.
+When clicking on a cell, the content is pronounced.</p>
+<p><a class="reference internal" href="../_images/tree_table_inspector.png"><img alt="img" src="../_images/tree_table_inspector.png" style="width: 400px;" /></a></p>
+<p>The script has the <code class="docutils literal notranslate"><span class="pre">&#64;tool</span></code> annotation and makes it interactif in the editor.
+We extend the <code class="docutils literal notranslate"><span class="pre">Tree</span></code> class and call it <code class="docutils literal notranslate"><span class="pre">TreeTable</span></code>.
+The exported variables allow to configure the table in the editor.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="err">@</span><span class="k">tool</span>
+<span class="k">extends</span><span class="w"> </span><span class="n">Tree</span>
+<span class="k">class_name</span><span class="w"> </span><span class="n">TreeTable</span>
+
+<span class="c1">## A control which creates an editable table based on a Tree node.</span>
+<span class="c1">## </span>
+<span class="c1">## Clicking on the column titles sorts the table by column.</span>
+<span class="c1">## All the parameters of the table can be set in the inspector.</span>
+
+<span class="c1">## Number of rows to create.</span>
+<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">rows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span>
+<span class="c1">## List of column titles.</span>
+<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">column_titles</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">Array</span><span class="p">[</span><span class="nb nb-Type">String</span><span class="p">]</span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;first&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;second&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;third&#39;</span><span class="p">]</span>
+<span class="c1">## List of column title alignment (left, center, right).</span>
+<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">column_alignment</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">Array</span><span class="p">[</span><span class="n">HorizontalAlignment</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
+
+<span class="c1">## List indicating editable columns (true).</span>
+<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">editable</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">Array</span><span class="p">[</span><span class="nb nb-Type">bool</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
+<span class="c1">## List of column text alignment (left, center, right).</span>
+<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">cell_alignment</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">Array</span><span class="p">[</span><span class="n">HorizontalAlignment</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
+<span class="c1">## List of column text colors.</span>
+<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">color</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">Array</span><span class="p">[</span><span class="nb nb-Type">Color</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
+<span class="c1">## List of column background colors.</span>
+<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">background_color</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">Array</span><span class="p">[</span><span class="nb nb-Type">Color</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
+<span class="c1">## Pronounce the cell content via text-to-speech.</span>
+<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">pronounce_cell</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span>
+
+
+<span class="c1">## Button action to create the table.</span>
+<span class="err">@</span><span class="n">export_tool_button</span><span class="p">(</span><span class="s2">&quot;Make Table&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_table</span>
+<span class="c1">## Button action to fill the table with random integers.</span>
+<span class="err">@</span><span class="n">export_tool_button</span><span class="p">(</span><span class="s2">&quot;Fill Random&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">action1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fill_random</span>
+</pre></div>
+</div>
+<p>The above code creates this new class.
+All functions have a documentation comment (<code class="docutils literal notranslate"><span class="pre">##</span></code>).
+<a class="reference internal" href="../_images/tree_table_class.png"><img alt="img" src="../_images/tree_table_class.png" style="width: 250px;" /></a></p>
+<p>This new class is implemented by the following code.</p>
+<div class="highlight-gd notranslate"><div class="highlight"><pre><span></span><span class="c1">## The voice ID used to pronounce the cell content.</span>
+<span class="k">var</span><span class="w"> </span><span class="n">voice_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DisplayServer</span><span class="o">.</span><span class="n">tts_get_voices_for_language</span><span class="p">(</span><span class="s2">&quot;en&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">root</span><span class="p">:</span><span class="w"> </span><span class="n">TreeItem</span><span class="w"> 		</span><span class="c1">## Root tree item.</span>
+<span class="k">var</span><span class="w"> </span><span class="n">array</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">Array</span><span class="w">		</span><span class="c1">## Array which is displayed.</span>
+<span class="k">var</span><span class="w"> </span><span class="n">sort_order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="bp">true</span><span class="p">,</span><span class="w"> </span><span class="bp">true</span><span class="p">,</span><span class="w"> </span><span class="bp">true</span><span class="p">,</span><span class="w"> </span><span class="bp">true</span><span class="p">]</span><span class="w">  </span><span class="c1">## Sort order true=increasing.</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">():</span>
+<span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">column_title_clicked</span><span class="o">.</span><span class="n">is_connected</span><span class="p">(</span><span class="n">_on_column_title_clicked</span><span class="p">):</span>
+<span class="w">		</span><span class="n">column_title_clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_on_column_title_clicked</span><span class="p">)</span>
+<span class="w">		</span>
+<span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">cell_selected</span><span class="o">.</span><span class="n">is_connected</span><span class="p">(</span><span class="n">_on_cell_selected</span><span class="p">):</span>
+<span class="w">		</span><span class="n">cell_selected</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_on_cell_selected</span><span class="p">)</span>
+<span class="w">		</span>
+<span class="w">	</span><span class="n">make_table</span><span class="p">()</span>
+<span class="w">	</span><span class="n">fill_random</span><span class="p">()</span>
+
+<span class="c1">## Set the column titles and alignement.</span>
+<span class="k">func</span><span class="w"> </span><span class="n">make_columns</span><span class="p">():</span>
+<span class="w">	</span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="n">columns</span><span class="p">,</span><span class="w"> </span><span class="n">column_titles</span><span class="o">.</span><span class="n">size</span><span class="p">()):</span>
+<span class="w">		</span><span class="n">set_column_title</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">column_titles</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="n">columns</span><span class="p">,</span><span class="w"> </span><span class="n">column_alignment</span><span class="o">.</span><span class="n">size</span><span class="p">()):</span>
+<span class="w">		</span><span class="n">set_column_title_alignment</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">column_alignment</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="w">	</span>
+
+<span class="c1">## Create an empty table, with cell color and alignment.</span>
+<span class="k">func</span><span class="w"> </span><span class="n">make_table</span><span class="p">():</span>
+<span class="w">	</span><span class="n">clear</span><span class="p">()</span>
+<span class="w">	</span><span class="n">make_columns</span><span class="p">()</span>
+<span class="w">	</span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_item</span><span class="p">()</span>
+<span class="w">	</span><span class="n">hide_root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">rows</span><span class="p">:</span>
+<span class="w">		</span><span class="k">var</span><span class="w"> </span><span class="n">row_item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_item</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="w">		</span><span class="k">for</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">columns</span><span class="p">:</span>
+<span class="w">			</span><span class="n">row_item</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="n">col</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;cell </span><span class="si">%d</span><span class="s2">, </span><span class="si">%d</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="p">])</span>
+<span class="w">		</span><span class="k">for</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="n">columns</span><span class="p">,</span><span class="w"> </span><span class="n">cell_alignment</span><span class="o">.</span><span class="n">size</span><span class="p">()):</span>
+<span class="w">			</span><span class="n">row_item</span><span class="o">.</span><span class="n">set_text_alignment</span><span class="p">(</span><span class="n">col</span><span class="p">,</span><span class="w"> </span><span class="n">cell_alignment</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
+<span class="w">				</span>
+<span class="w">		</span><span class="k">for</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="n">columns</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="o">.</span><span class="n">size</span><span class="p">()):</span>
+<span class="w">			</span><span class="n">row_item</span><span class="o">.</span><span class="n">set_custom_color</span><span class="p">(</span><span class="n">col</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
+<span class="w">		</span><span class="k">for</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="n">columns</span><span class="p">,</span><span class="w"> </span><span class="n">background_color</span><span class="o">.</span><span class="n">size</span><span class="p">()):</span>
+<span class="w">			</span><span class="n">row_item</span><span class="o">.</span><span class="n">set_custom_bg_color</span><span class="p">(</span><span class="n">col</span><span class="p">,</span><span class="w"> </span><span class="n">background_color</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
+<span class="w">		</span><span class="k">for</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="n">columns</span><span class="p">,</span><span class="w"> </span><span class="n">editable</span><span class="o">.</span><span class="n">size</span><span class="p">()):</span>
+<span class="w">			</span><span class="n">row_item</span><span class="o">.</span><span class="n">set_editable</span><span class="p">(</span><span class="n">col</span><span class="p">,</span><span class="w"> </span><span class="n">editable</span><span class="p">[</span><span class="n">col</span><span class="p">])</span><span class="w">	</span>
+<span class="w">		</span>
+<span class="w">	</span>
+<span class="c1">## Create an array with random integers (0 to 1000).</span>
+<span class="k">func</span><span class="w"> </span><span class="n">make_random_array</span><span class="p">():</span>
+<span class="w">	</span><span class="n">array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">	</span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">rows</span><span class="p">:</span>
+<span class="w">		</span><span class="k">var</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">		</span><span class="k">for</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">columns</span><span class="p">:</span>
+<span class="w">			</span><span class="n">line</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">randi_range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">))</span>
+<span class="w">		</span><span class="n">array</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+
+<span class="c1">## Fill the tree with random integers.</span>
+<span class="k">func</span><span class="w"> </span><span class="n">fill_random</span><span class="p">():</span>
+<span class="w">	</span><span class="n">make_random_array</span><span class="p">()</span>
+<span class="w">	</span><span class="n">load_array</span><span class="p">()</span>
+
+
+<span class="c1">## Load the array into the tree table.</span>
+<span class="k">func</span><span class="w"> </span><span class="n">load_array</span><span class="p">():</span>
+<span class="w">	</span><span class="k">var</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">	</span><span class="k">for</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">root</span><span class="o">.</span><span class="n">get_children</span><span class="p">():</span>
+<span class="w">		</span><span class="k">for</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">columns</span><span class="p">:</span>
+<span class="w">			</span><span class="n">item</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]))</span>
+<span class="w">		</span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
+
+
+<span class="c1">## Load a new array into the tree array.</span>
+<span class="k">func</span><span class="w"> </span><span class="nb">load</span><span class="p">(</span><span class="n">new_array</span><span class="p">):</span>
+<span class="w">	</span><span class="n">rows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_array</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="w">	</span><span class="n">columns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="w">	</span><span class="n">array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_array</span><span class="o">.</span><span class="n">duplicate</span><span class="p">(</span><span class="bp">true</span><span class="p">)</span>
+<span class="w">	</span><span class="n">make_table</span><span class="p">()</span>
+<span class="w">	</span><span class="n">load_array</span><span class="p">()</span>
+
+
+<span class="c1">## Sort an array based on a given column.</span>
+<span class="k">func</span><span class="w"> </span><span class="n">sort_by_column</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="p">,</span><span class="w"> </span><span class="n">increasing</span><span class="o">=</span><span class="bp">true</span><span class="p">):</span>
+<span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="n">increasing</span><span class="p">:</span>
+<span class="w">		</span><span class="n">array</span><span class="o">.</span><span class="n">sort_custom</span><span class="p">(</span><span class="k">func</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">):</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
+<span class="w">	</span><span class="k">else</span><span class="p">:</span>
+<span class="w">		</span><span class="n">array</span><span class="o">.</span><span class="n">sort_custom</span><span class="p">(</span><span class="k">func</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">):</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
+
+
+<span class="c1">## Clicking on the column title sorts the table by that column.</span>
+<span class="k">func</span><span class="w"> </span><span class="n">_on_column_title_clicked</span><span class="p">(</span><span class="n">column</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="p">,</span><span class="w"> </span><span class="n">mouse_button_index</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">	</span><span class="nb">print</span><span class="p">(</span><span class="n">column</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot; - &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mouse_button_index</span><span class="p">)</span>
+<span class="w">	</span><span class="n">sort_order</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">sort_order</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="w"> </span>
+<span class="w">	</span><span class="n">sort_by_column</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="n">column</span><span class="p">,</span><span class="w"> </span><span class="n">sort_order</span><span class="p">[</span><span class="n">column</span><span class="p">])</span>
+<span class="w">	</span><span class="n">load_array</span><span class="p">()</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="n">columns</span><span class="p">,</span><span class="w"> </span><span class="n">column_titles</span><span class="o">.</span><span class="n">size</span><span class="p">()):</span>
+<span class="w">		</span><span class="k">var</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">column_titles</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="w">		</span><span class="k">if</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">column</span><span class="p">:</span>
+<span class="w">			</span><span class="n">title</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">&#39;⬇&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">sort_order</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;⬆&#39;</span>
+<span class="w">		</span><span class="n">set_column_title</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">)</span>
+<span class="w">		</span>
+
+<span class="c1">## Clicking on the cell will pronounce the  content.</span>
+<span class="k">func</span><span class="w"> </span><span class="n">_on_cell_selected</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="n">pronounce_cell</span><span class="p">:</span>
+<span class="w">		</span><span class="k">var</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_selected</span><span class="p">()</span>
+<span class="w">		</span><span class="k">var</span><span class="w"> </span><span class="n">column</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_selected_column</span><span class="p">()</span>
+<span class="w">		</span><span class="k">var</span><span class="w"> </span><span class="n">content</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="o">.</span><span class="n">get_text</span><span class="p">(</span><span class="n">column</span><span class="p">)</span>
+<span class="w">		</span><span class="n">DisplayServer</span><span class="o">.</span><span class="n">tts_stop</span><span class="p">()</span>
+<span class="w">		</span><span class="n">DisplayServer</span><span class="o">.</span><span class="n">tts_speak</span><span class="p">(</span><span class="n">content</span><span class="p">,</span><span class="w"> </span><span class="n">voice_id</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="download">
+<h2>Download<a class="headerlink" href="#download" title="Link to this heading">¶</a></h2>
+<p>Download the <a class="reference download internal" download="" href="../_downloads/28e473372cea415dc8accb58c6fedcae/text.zip"><code class="xref download docutils literal notranslate"><span class="pre">Godot</span> <span class="pre">Project</span></code></a>.</p>
+</section>
 </section>
 
         </article>
@@ -290,8 +775,32 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Work with text</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#text-to-speech">Text-to-speech</a></li>
+<li><a class="reference internal" href="#display-a-scene-tree">Display a scene tree</a></li>
+<li><a class="reference internal" href="#configure-tree-items">Configure tree items</a></li>
+<li><a class="reference internal" href="#sort-a-table">Sort a table</a></li>
+<li><a class="reference internal" href="#download">Download</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

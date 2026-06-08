@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cpruxoveiint3"]
+
+[ext_resource type="Script" uid="uid://dhm68bwqd3mj" path="res://addons/tree_config.gd" id="1_ce12v"]
+
+[node name="TestTreeConfig" type="Control" unique_id=362421651]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TreeConfig" type="Tree" parent="." unique_id=1559287939]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 491.0
+grow_vertical = 2
+columns = 3
+column_titles_visible = true
+allow_reselect = true
+allow_rmb_select = true
+drop_mode_flags = 3
+tile_scroll_hint = true
+script = ExtResource("1_ce12v")
+child_name = "Child pure"
+column_title = ["Column 1", "Column 2", null]
+metadata/_custom_type_script = "uid://dhm68bwqd3mj"

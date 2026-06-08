@@ -1,4 +1,30 @@
-The Project Gutenberg eBook of Alice's Adventures in Wonderland
+[gd_scene format=3 uid="uid://r4yxrmo8va48"]
+
+[ext_resource type="Script" uid="uid://b0nvki478sdr4" path="res://regex.gd" id="1_bmwle"]
+
+[node name="Regex" type="Control" unique_id=2094944448]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bmwle")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=992605879]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="Text" type="TextEdit" parent="HBoxContainer" unique_id=425704404]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "The Project Gutenberg eBook of Alice's Adventures in Wonderland
     
 This eBook is for the use of anyone anywhere in the United States and
 most other parts of the world at no cost and with almost no restrictions
@@ -3758,3 +3784,32 @@ This website includes information about Project Gutenberg,
 including how to make donations to the Project Gutenberg Literary
 Archive Foundation, how to help produce our new eBooks, and how to
 subscribe to our email newsletter to hear about new eBooks.
+"
+minimap_draw = true
+highlight_current_line = true
+draw_control_chars = true
+draw_tabs = true
+draw_spaces = true
+
+[node name="Result" type="TextEdit" parent="HBoxContainer" unique_id=913836113]
+layout_mode = 2
+size_flags_horizontal = 3
+minimap_draw = true
+highlight_current_line = true
+draw_control_chars = true
+draw_tabs = true
+draw_spaces = true
+
+[node name="Tree" type="Tree" parent="HBoxContainer" unique_id=325925350]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Pattern" type="LineEdit" parent="." unique_id=1967535344]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 18.0
+offset_right = 761.0
+offset_bottom = 49.0
+text = "A[a-z]+ [a-z]+"
+
+[connection signal="text_submitted" from="Pattern" to="." method="_on_pattern_text_submitted"]

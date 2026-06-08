@@ -10,10 +10,15 @@ config_version=5
 
 [application]
 
-config/name="New Game Project"
+config/name="export"
 run/main_scene="uid://brtxoygmw7k4f"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1600
+window/size/viewport_height=900
 
 [physics]
 

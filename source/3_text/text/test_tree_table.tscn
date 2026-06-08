@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://wqaw7ov7yei"]
+
+[ext_resource type="Script" uid="uid://cigthh8ionntm" path="res://addons/tree_table.gd" id="1_xbr47"]
+
+[sub_resource type="Theme" id="Theme_xbr47"]
+default_base_scale = 0.67
+Tree/font_sizes/font_size = 32
+Tree/font_sizes/title_button_font_size = 32
+
+[node name="TestTreeTable" type="Control" unique_id=1835445662]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_xbr47")
+
+[node name="TreeTable" type="Tree" parent="." unique_id=1263473931]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 39.0
+offset_top = 38.0
+offset_right = -856.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 1
+columns = 2
+column_titles_visible = true
+allow_rmb_select = true
+hide_root = true
+script = ExtResource("1_xbr47")
+rows = 100
+column_titles = Array[String](["key", "value", "function", "BET"])
+cell_alignment = Array[int]([1, 1, 1])
+pronounce_cell = true
+metadata/_custom_type_script = "uid://cigthh8ionntm"
+
+[node name="TreeTable2" type="Tree" parent="." unique_id=380298618]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 861.0
+offset_top = 30.0
+offset_right = -33.0
+offset_bottom = -471.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 1
+columns = 4
+column_titles_visible = true
+allow_reselect = true
+hide_root = true
+select_mode = 1
+script = ExtResource("1_xbr47")
+rows = 6
+column_titles = Array[String](["first", "second", "third", "forth"])
+column_alignment = Array[int]([0, 1, 1, 3])
+cell_alignment = Array[int]([0, 1, 1, 2])
+color = Array[Color]([Color(1, 0, 0, 1)])
+background_color = Array[Color]([Color(1, 1, 0, 1)])
+pronounce_cell = true
+metadata/_custom_type_script = "uid://cigthh8ionntm"
+
+[node name="TreeTable3" type="Tree" parent="." unique_id=1307896428]
+layout_mode = 0
+offset_left = 873.0
+offset_top = 501.0
+offset_right = 1557.0
+offset_bottom = 814.0
+columns = 3
+column_titles_visible = true
+hide_root = true
+script = ExtResource("1_xbr47")
+rows = 4
+column_alignment = Array[int]([0])
+cell_alignment = Array[int]([1, 1])
+color = Array[Color]([Color(0.9589844, 0.059936523, 0.059936523, 1)])
+background_color = Array[Color]([Color(0, 0.89411765, 0, 1)])
+pronounce_cell = true
+metadata/_custom_type_script = "uid://cigthh8ionntm"

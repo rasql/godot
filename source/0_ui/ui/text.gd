@@ -1,19 +1,10 @@
 extends Control
-	
-func _on_new_button_down() -> void:
-	$TextEdit.text = ""
 
-func _on_load_button_down() -> void:
-	$FileDialog.visible = true
-	
-func _on_save_button_down() -> void:
-	$SaveDialog.visible = true
+@onready var raw_text: TextEdit = $HBoxContainer/TextEdit
+@onready var rich_text: RichTextLabel = $HBoxContainer/RichTextLabel
 
-func _on_file_dialog_file_selected(path: String) -> void:
-	var file = FileAccess.open(path, FileAccess.READ)
-	var content = file.get_as_text()
-	$TextEdit.text = content
+func _on_text_edit_text_changed() -> void:
+	rich_text.text = raw_text.text
 
-func _on_save_dialog_file_selected(path: String) -> void:
-	var file = FileAccess.open(path, FileAccess.WRITE)
-	file.store_string($TextEdit.text)
+func _on_button_pressed() -> void:
+	OS.shell_open($LineEdit.text)

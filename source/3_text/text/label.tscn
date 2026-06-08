@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://ptq20fa5x03p"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_idm1v"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_4hwkf"]
+sky_material = SubResource("ProceduralSkyMaterial_idm1v")
+
+[sub_resource type="Environment" id="Environment_ke11c"]
+background_mode = 2
+sky = SubResource("Sky_4hwkf")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idm1v"]
+albedo_color = Color(0.97265625, 0.04559326, 0.41496992, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_idm1v"]
+material = SubResource("StandardMaterial3D_idm1v")
+text = "TextMesh"
+
+[node name="Label" type="Node3D" unique_id=966741663]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1808776937]
+environment = SubResource("Environment_ke11c")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1269072425]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1492488284]
+mesh = SubResource("TextMesh_idm1v")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=744057428]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, -0.5)
+billboard = 2
+outline_modulate = Color(0.97265625, 0.14627838, 0.060791016, 1)
+text = "Label3D"
+outline_size = 6
+
+[node name="Label" type="Label" parent="." unique_id=673879452]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 80
+text = "Label (2D, control)"
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1927268903]
+transform = Transform3D(0.86446273, -0.2316321, 0.44615096, 0.008669492, 0.8942525, 0.44747886, -0.50262207, -0.38296092, 0.77505606, 0.34982872, 0.23971248, 0.20632291)

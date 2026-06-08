@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://7lrjmdfg3thy"]
+
+[ext_resource type="Script" uid="uid://doycbhqswpo5e" path="res://speech.gd" id="1_1tdmq"]
+
+[sub_resource type="Theme" id="Theme_1tdmq"]
+default_font_size = 28
+
+[node name="Speech" type="Control" unique_id=417176059]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_1tdmq")
+script = ExtResource("1_1tdmq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=971982775]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Tree" type="Tree" parent="HBoxContainer" unique_id=1772237730]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="Text" type="TextEdit" parent="HBoxContainer" unique_id=2054725102]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+deselect_on_focus_loss_enabled = false
+virtual_keyboard_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1549585926]
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_edit_group_ = true
+
+[node name="Speak" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=336727373]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Speak"
+
+[node name="Pause" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1964409275]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Pause"
+
+[node name="Resume" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1928420465]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Resume"
+
+[node name="Stop" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1205211510]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Stop"
+
+[node name="Volume" type="HSlider" parent="HBoxContainer/VBoxContainer" unique_id=909027084]
+layout_mode = 2
+size_flags_vertical = 3
+value = 50.0
+rounded = true
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Volume" unique_id=828377770]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Volume"
+
+[node name="Pitch" type="HSlider" parent="HBoxContainer/VBoxContainer" unique_id=1535463808]
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 2.0
+step = 0.1
+value = 1.0
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Pitch" unique_id=2017051332]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Pitch"
+
+[node name="Rate" type="HSlider" parent="HBoxContainer/VBoxContainer" unique_id=1309026991]
+layout_mode = 2
+size_flags_vertical = 3
+min_value = 0.1
+max_value = 10.0
+step = 0.1
+value = 1.0
+exp_edit = true
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Rate" unique_id=1465579935]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Rate"
+
+[connection signal="cell_selected" from="HBoxContainer/Tree" to="." method="_on_tree_cell_selected"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Speak" to="." method="_on_speak_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Stop" to="." method="_on_stop_pressed"]
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer/Volume" to="." method="_on_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer/Pitch" to="." method="_on_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer/Rate" to="." method="_on_value_changed"]

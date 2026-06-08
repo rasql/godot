@@ -7,7 +7,7 @@ script = ExtResource("1_7voku")
 
 [node name="AcceptDialog" type="AcceptDialog" parent="." unique_id=94880906]
 oversampling_override = 1.0
-position = Vector2i(50, 50)
+position = Vector2i(50, 100)
 size = Vector2i(200, 100)
 visible = true
 
@@ -28,6 +28,28 @@ position = Vector2i(350, 50)
 visible = true
 file_mode = 0
 filters = PackedStringArray("*.txt", "*.gd")
+
+[node name="MenuBar" type="MenuBar" parent="." unique_id=1902301960]
+offset_left = 58.0
+offset_top = 3.0
+offset_right = 326.0
+offset_bottom = 34.0
+
+[node name="File" type="PopupMenu" parent="MenuBar" unique_id=459557183]
+oversampling_override = 1.0
+item_count = 2
+item_0/text = "Load"
+item_0/id = 0
+item_1/text = "New"
+item_1/id = 1
+
+[node name="Edit" type="PopupMenu" parent="MenuBar" unique_id=928594600]
+oversampling_override = 1.0
+item_count = 2
+item_0/text = "Load"
+item_0/id = 0
+item_1/text = "New"
+item_1/id = 1
 
 [connection signal="canceled" from="AcceptDialog" to="." method="_on_accept_dialog_canceled"]
 [connection signal="confirmed" from="AcceptDialog" to="." method="_on_accept_dialog_confirmed"]
